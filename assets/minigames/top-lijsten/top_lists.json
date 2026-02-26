@@ -1,0 +1,7269 @@
+{
+  "lists": [
+    {
+      "id": 1,
+      "title": "Top 10 landen naar oppervlakte",
+      "type": "top10",
+      "category": "Geografie",
+      "difficulty": "easy",
+      "items": [
+        { "rank": 1, "answer": "Rusland" },
+        { "rank": 2, "answer": "Canada" },
+        { "rank": 3, "answer": "China" },
+        { "rank": 4, "answer": "Verenigde Staten" },
+        { "rank": 5, "answer": "Brazili\u00eb" },
+        { "rank": 6, "answer": "Australi\u00eb" },
+        { "rank": 7, "answer": "India" },
+        { "rank": 8, "answer": "Argentini\u00eb" },
+        { "rank": 9, "answer": "Kazachstan" },
+        { "rank": 10, "answer": "Algerije" }
+      ],
+      "source": "CIA World Factbook (2023)"
+    },
+    {
+      "id": 2,
+      "title": "Top 10 landen naar bevolking",
+      "type": "top10",
+      "category": "Geografie",
+      "difficulty": "easy",
+      "items": [
+        { "rank": 1, "answer": "China" },
+        { "rank": 2, "answer": "India" },
+        { "rank": 3, "answer": "Verenigde Staten" },
+        { "rank": 4, "answer": "Indonesi\u00eb" },
+        { "rank": 5, "answer": "Pakistan" },
+        { "rank": 6, "answer": "Nigeria" },
+        { "rank": 7, "answer": "Brazili\u00eb" },
+        { "rank": 8, "answer": "Bangladesh" },
+        { "rank": 9, "answer": "Rusland" },
+        { "rank": 10, "answer": "Mexico" }
+      ],
+      "source": "VN Wereldbevolkingsrapport (2022)"
+    },
+    {
+      "id": 3,
+      "title": "Top 10 kleinste landen ter wereld",
+      "type": "top10",
+      "category": "Geografie",
+      "difficulty": "easy",
+      "items": [
+        { "rank": 1, "answer": "Vaticaanstad" },
+        { "rank": 2, "answer": "Monaco" },
+        { "rank": 3, "answer": "Nauru" },
+        { "rank": 4, "answer": "Tuvalu" },
+        { "rank": 5, "answer": "San Marino" },
+        { "rank": 6, "answer": "Liechtenstein" },
+        { "rank": 7, "answer": "Marshall-eilanden" },
+        { "rank": 8, "answer": "Saint Kitts en Nevis" },
+        { "rank": 9, "answer": "Maldiven" },
+        { "rank": 10, "answer": "Malta" }
+      ],
+      "source": "Wereldbank (2022)"
+    },
+    {
+      "id": 4,
+      "title": "Top 10 langste rivieren ter wereld",
+      "type": "top10",
+      "category": "Geografie",
+      "difficulty": "medium",
+      "items": [
+        { "rank": 1, "answer": "Nijl (Afrika)" },
+        { "rank": 2, "answer": "Amazone (Zuid-Amerika)" },
+        { "rank": 3, "answer": "Jangtsekiang (Azië)" },
+        { "rank": 4, "answer": "Mississippi-Missouri (Noord-Amerika)" },
+        { "rank": 5, "answer": "Jenisej-Angara (Azië)" },
+        { "rank": 6, "answer": "Geel (Huang He) (Azië)" },
+        { "rank": 7, "answer": "Ob-Irtysj (Azië)" },
+        { "rank": 8, "answer": "Paraná (Zuid-Amerika)" },
+        { "rank": 9, "answer": "Congo (Afrika)" },
+        { "rank": 10, "answer": "Amur (Azië)" }
+      ],
+      "source": "Encyclopaedia Britannica"
+    },
+    {
+      "id": 5,
+      "title": "Top 10 hoogste bergen ter wereld",
+      "type": "top10",
+      "category": "Wetenschap",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Mount Everest (8848 m)"
+        },
+        {
+          "rank": 2,
+          "answer": "K2 (8611 m)"
+        },
+        {
+          "rank": 3,
+          "answer": "Kangchenjunga (8586 m)"
+        },
+        {
+          "rank": 4,
+          "answer": "Lhotse (8516 m)"
+        },
+        {
+          "rank": 5,
+          "answer": "Makalu (8485 m)"
+        },
+        {
+          "rank": 6,
+          "answer": "Cho Oyu (8188 m)"
+        },
+        {
+          "rank": 7,
+          "answer": "Dhaulagiri I (8167 m)"
+        },
+        {
+          "rank": 8,
+          "answer": "Manaslu (8163 m)"
+        },
+        {
+          "rank": 9,
+          "answer": "Nanga Parbat (8126 m)"
+        },
+        {
+          "rank": 10,
+          "answer": "Annapurna I (8091 m)"
+        }
+      ],
+      "source": "National Geographic"
+    },
+    {
+      "id": 6,
+      "title": "Top 10 grootste eilanden ter wereld",
+      "type": "top10",
+      "category": "Geografie",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Groenland"
+        },
+        {
+          "rank": 2,
+          "answer": "Nieuw-Guinea"
+        },
+        {
+          "rank": 3,
+          "answer": "Borneo"
+        },
+        {
+          "rank": 4,
+          "answer": "Madagaskar"
+        },
+        {
+          "rank": 5,
+          "answer": "Baffineiland"
+        },
+        {
+          "rank": 6,
+          "answer": "Sumatra"
+        },
+        {
+          "rank": 7,
+          "answer": "Honshu"
+        },
+        {
+          "rank": 8,
+          "answer": "Victoria-eiland"
+        },
+        {
+          "rank": 9,
+          "answer": "Groot-Brittanni\u00eb"
+        },
+        {
+          "rank": 10,
+          "answer": "Ellesmere-eiland"
+        }
+      ],
+      "source": "World Atlas"
+    },
+    {
+      "id": 7,
+      "title": "Top 10 grootste woestijnen ter wereld",
+      "type": "top10",
+      "category": "Geografie",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Antarctische Woestijn"
+        },
+        {
+          "rank": 2,
+          "answer": "Arctische Woestijn"
+        },
+        {
+          "rank": 3,
+          "answer": "Sahara"
+        },
+        {
+          "rank": 4,
+          "answer": "Australische Woestijn (Great Australian)"
+        },
+        {
+          "rank": 5,
+          "answer": "Gobi-woestijn"
+        },
+        {
+          "rank": 6,
+          "answer": "Kalahariwoestijn"
+        },
+        {
+          "rank": 7,
+          "answer": "Patagonische Woestijn"
+        },
+        {
+          "rank": 8,
+          "answer": "Grote Arabische Woestijn"
+        },
+        {
+          "rank": 9,
+          "answer": "Syriatische Woestijn"
+        },
+        {
+          "rank": 10,
+          "answer": "Great Basin Desert (VS)"
+        }
+      ],
+      "source": "National Geographic"
+    },
+    {
+      "id": 8,
+      "title": "Top 10 langste kustlijnen per land",
+      "type": "top10",
+      "category": "Geografie",
+      "difficulty": "hard",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Canada"
+        },
+        {
+          "rank": 2,
+          "answer": "Indonesi\u00eb"
+        },
+        {
+          "rank": 3,
+          "answer": "Noorwegen"
+        },
+        {
+          "rank": 4,
+          "answer": "Rusland"
+        },
+        {
+          "rank": 5,
+          "answer": "Filipijnen"
+        },
+        {
+          "rank": 6,
+          "answer": "Japan"
+        },
+        {
+          "rank": 7,
+          "answer": "Australi\u00eb"
+        },
+        {
+          "rank": 8,
+          "answer": "Verenigde Staten"
+        },
+        {
+          "rank": 9,
+          "answer": "Nieuw-Zeeland"
+        },
+        {
+          "rank": 10,
+          "answer": "China"
+        }
+      ],
+      "source": "CIA World Factbook (2021)"
+    },
+    {
+      "id": 9,
+      "title": "Alle landen met kernwapens",
+      "type": "top9",
+      "category": "Geschiedenis",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Verenigde Staten"
+        },
+        {
+          "rank": 2,
+          "answer": "Rusland"
+        },
+        {
+          "rank": 3,
+          "answer": "China"
+        },
+        {
+          "rank": 4,
+          "answer": "Frankrijk"
+        },
+        {
+          "rank": 5,
+          "answer": "Verenigd Koninkrijk"
+        },
+        {
+          "rank": 6,
+          "answer": "Pakistan"
+        },
+        {
+          "rank": 7,
+          "answer": "India"
+        },
+        {
+          "rank": 8,
+          "answer": "Isra\u00ebl"
+        },
+        {
+          "rank": 9,
+          "answer": "Noord-Korea"
+        }
+      ],
+      "source": "SIPRI (2023)"
+    },
+    {
+      "id": 10,
+      "title": "Top 10 meest bevolkte steden ter wereld",
+      "type": "top10",
+      "category": "Geografie",
+      "difficulty": "medium",
+      "items": [
+        { "rank": 1, "answer": "Tokyo (Japan)" },
+        { "rank": 2, "answer": "Delhi (India)" },
+        { "rank": 3, "answer": "Shanghai (China)" },
+        { "rank": 4, "answer": "S\u00e3o Paulo (Brazili\u00eb)" },
+        { "rank": 5, "answer": "Mexico-Stad (Mexico)" },
+        { "rank": 6, "answer": "Ka\u00efro (Egypte)" },
+        { "rank": 7, "answer": "Mumbai (India)" },
+        { "rank": 8, "answer": "Beijing (China)" },
+        { "rank": 9, "answer": "Dhaka (Bangladesh)" },
+        { "rank": 10, "answer": "Osaka (Japan)" }
+      ],
+      "source": "VN Urbanisatievooruitzichten (2025)"
+    },
+    {
+      "id": 11,
+      "title": "Top 10 meest gesproken talen",
+      "type": "top10",
+      "category": "Talen & cultuur",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Engels"
+        },
+        {
+          "rank": 2,
+          "answer": "Mandarijn-Chinees"
+        },
+        {
+          "rank": 3,
+          "answer": "Hindi"
+        },
+        {
+          "rank": 4,
+          "answer": "Spaans"
+        },
+        {
+          "rank": 5,
+          "answer": "Frans"
+        },
+        {
+          "rank": 6,
+          "answer": "Arabisch (Standaard)"
+        },
+        {
+          "rank": 7,
+          "answer": "Bengaals"
+        },
+        {
+          "rank": 8,
+          "answer": "Russisch"
+        },
+        {
+          "rank": 9,
+          "answer": "Portugees"
+        },
+        {
+          "rank": 10,
+          "answer": "Urdu"
+        }
+      ],
+      "source": "Ethnologue (2022)"
+    },
+    {
+      "id": 12,
+      "title": "Top 5 grootste religies naar aantal aanhangers",
+      "type": "top5",
+      "category": "Talen & cultuur",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Christendom"
+        },
+        {
+          "rank": 2,
+          "answer": "Islam"
+        },
+        {
+          "rank": 3,
+          "answer": "Hindoe\u00efsme"
+        },
+        {
+          "rank": 4,
+          "answer": "Boeddhisme"
+        },
+        {
+          "rank": 5,
+          "answer": "Sikhisme"
+        }
+      ],
+      "source": "Pew Research (2020)"
+    },
+    {
+      "id": 13,
+      "title": "Top 10 landen met de meeste UNESCO-werelderfgoederen",
+      "type": "top10",
+      "category": "Geschiedenis",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Itali\u00eb"
+        },
+        {
+          "rank": 2,
+          "answer": "China"
+        },
+        {
+          "rank": 3,
+          "answer": "Duitsland"
+        },
+        {
+          "rank": 4,
+          "answer": "Spanje"
+        },
+        {
+          "rank": 5,
+          "answer": "Frankrijk"
+        },
+        {
+          "rank": 6,
+          "answer": "India"
+        },
+        {
+          "rank": 7,
+          "answer": "Mexico"
+        },
+        {
+          "rank": 8,
+          "answer": "Verenigd Koninkrijk"
+        },
+        {
+          "rank": 9,
+          "answer": "Rusland"
+        },
+        {
+          "rank": 10,
+          "answer": "Iran"
+        }
+      ],
+      "source": "UNESCO (2023)"
+    },
+    {
+      "id": 14,
+      "title": "Top 10 landen met de meeste talen",
+      "type": "top10",
+      "category": "Talen & cultuur",
+      "difficulty": "hard",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Papoea-Nieuw-Guinea"
+        },
+        {
+          "rank": 2,
+          "answer": "Indonesi\u00eb"
+        },
+        {
+          "rank": 3,
+          "answer": "Nigeria"
+        },
+        {
+          "rank": 4,
+          "answer": "India"
+        },
+        {
+          "rank": 5,
+          "answer": "Verenigde Staten"
+        },
+        {
+          "rank": 6,
+          "answer": "China"
+        },
+        {
+          "rank": 7,
+          "answer": "Mexico"
+        },
+        {
+          "rank": 8,
+          "answer": "Kameroen"
+        },
+        {
+          "rank": 9,
+          "answer": "Australi\u00eb"
+        },
+        {
+          "rank": 10,
+          "answer": "Brazili\u00eb"
+        }
+      ],
+      "source": "Ethnologue (2024)"
+    },
+    {
+      "id": 15,
+      "title": "Top 10 landen met de meeste toeristische aankomsten",
+      "type": "top10",
+      "category": "Economie & rijkdom",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Frankrijk"
+        },
+        {
+          "rank": 2,
+          "answer": "Spanje"
+        },
+        {
+          "rank": 3,
+          "answer": "Verenigde Staten"
+        },
+        {
+          "rank": 4,
+          "answer": "China"
+        },
+        {
+          "rank": 5,
+          "answer": "Itali\u00eb"
+        },
+        {
+          "rank": 6,
+          "answer": "Turkije"
+        },
+        {
+          "rank": 7,
+          "answer": "Mexico"
+        },
+        {
+          "rank": 8,
+          "answer": "Duitsland"
+        },
+        {
+          "rank": 9,
+          "answer": "Thailand"
+        },
+        {
+          "rank": 10,
+          "answer": "Verenigd Koninkrijk"
+        }
+      ],
+      "source": "UNWTO (2019)"
+    },
+    {
+      "id": 16,
+      "title": "Top 10 meest geconsumeerde dranken ter wereld",
+      "type": "top10",
+      "category": "Diversen",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Thee"
+        },
+        {
+          "rank": 2,
+          "answer": "Koffie"
+        },
+        {
+          "rank": 3,
+          "answer": "Bier"
+        },
+        {
+          "rank": 4,
+          "answer": "Melk"
+        },
+        {
+          "rank": 5,
+          "answer": "Sinaasappelsap"
+        },
+        {
+          "rank": 6,
+          "answer": "Wijn"
+        },
+        {
+          "rank": 7,
+          "answer": "Frisdrank"
+        },
+        {
+          "rank": 8,
+          "answer": "Soep"
+        },
+        {
+          "rank": 9,
+          "answer": "Vodka"
+        },
+        {
+          "rank": 10,
+          "answer": "Limonade"
+        }
+      ],
+      "source": "Wereldwijde consumptiecijfers (2023)"
+    },
+    {
+      "id": 17,
+      "title": "Top 10 meest voorkomende wachtwoorden",
+      "type": "top10",
+      "category": "Diversen",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "123456"
+        },
+        {
+          "rank": 2,
+          "answer": "password"
+        },
+        {
+          "rank": 3,
+          "answer": "123456789"
+        },
+        {
+          "rank": 4,
+          "answer": "12345"
+        },
+        {
+          "rank": 5,
+          "answer": "12345678"
+        },
+        {
+          "rank": 6,
+          "answer": "qwerty"
+        },
+        {
+          "rank": 7,
+          "answer": "1234567"
+        },
+        {
+          "rank": 8,
+          "answer": "111111"
+        },
+        {
+          "rank": 9,
+          "answer": "1234567890"
+        },
+        {
+          "rank": 10,
+          "answer": "123123"
+        }
+      ],
+      "source": "NordPass (2023)"
+    },
+    {
+      "id": 18,
+      "title": "Alle Nederlanders met een Ballon d'Or",
+      "type": "top3",
+      "category": "Sport",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Johan Cruijff"
+        },
+        {
+          "rank": 2,
+          "answer": "Ruud Gullit"
+        },
+        {
+          "rank": 3,
+          "answer": "Marco van Basten"
+        }
+      ],
+      "source": "France Football"
+    },
+    {
+      "id": 19,
+      "title": "Top 10 Nederlandse spelers met de meeste Premier League-wedstrijden",
+      "type": "top10",
+      "category": "Sport",
+      "difficulty": "hard",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "George Boateng"
+        },
+        {
+          "rank": 2,
+          "answer": "Virgil van Dijk"
+        },
+        {
+          "rank": 3,
+          "answer": "Dennis Bergkamp"
+        },
+        {
+          "rank": 4,
+          "answer": "Edwin van der Sar"
+        },
+        {
+          "rank": 5,
+          "answer": "Jimmy Floyd Hasselbaink"
+        },
+        {
+          "rank": 6,
+          "answer": "Mario Melchiot"
+        },
+        {
+          "rank": 7,
+          "answer": "Robin van Persie"
+        },
+        {
+          "rank": 8,
+          "answer": "Nathan Ak\u00e9"
+        },
+        {
+          "rank": 9,
+          "answer": "Erik Pieters"
+        },
+        {
+          "rank": 10,
+          "answer": "Tim Krul"
+        }
+      ],
+      "source": "Premier League Statistics (2023)"
+    },
+    {
+      "id": 20,
+      "title": "Top 10 clubs met de meeste Champions League-titels",
+      "type": "top10",
+      "category": "Sport",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Real Madrid (14 titels)"
+        },
+        {
+          "rank": 2,
+          "answer": "AC Milan (7)"
+        },
+        {
+          "rank": 3,
+          "answer": "Liverpool (6)"
+        },
+        {
+          "rank": 4,
+          "answer": "Bayern M\u00fcnchen (6)"
+        },
+        {
+          "rank": 5,
+          "answer": "FC Barcelona (5)"
+        },
+        {
+          "rank": 6,
+          "answer": "AFC Ajax (4)"
+        },
+        {
+          "rank": 7,
+          "answer": "Inter Milaan (3)"
+        },
+        {
+          "rank": 8,
+          "answer": "Manchester United (3)"
+        },
+        {
+          "rank": 9,
+          "answer": "Juventus (2)"
+        },
+        {
+          "rank": 10,
+          "answer": "Benfica (2)"
+        }
+      ],
+      "source": "UEFA (2023)"
+    },
+    {
+      "id": 21,
+      "title": "Top 10 landen met de meeste olympische medailles",
+      "type": "top10",
+      "category": "Sport",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Verenigde Staten"
+        },
+        {
+          "rank": 2,
+          "answer": "Sovjet-Unie"
+        },
+        {
+          "rank": 3,
+          "answer": "Duitsland"
+        },
+        {
+          "rank": 4,
+          "answer": "Groot-Brittanni\u00eb"
+        },
+        {
+          "rank": 5,
+          "answer": "Frankrijk"
+        },
+        {
+          "rank": 6,
+          "answer": "Itali\u00eb"
+        },
+        {
+          "rank": 7,
+          "answer": "Zweden"
+        },
+        {
+          "rank": 8,
+          "answer": "China"
+        },
+        {
+          "rank": 9,
+          "answer": "Oost-Duitsland"
+        },
+        {
+          "rank": 10,
+          "answer": "Hungrije"
+        }
+      ],
+      "source": "IOC (2021)"
+    },
+    {
+      "id": 22,
+      "title": "Top 10 Formule 1-coureurs met de meeste wereldtitels",
+      "type": "top10",
+      "category": "Sport",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Michael Schumacher (7)"
+        },
+        {
+          "rank": 2,
+          "answer": "Lewis Hamilton (7)"
+        },
+        {
+          "rank": 3,
+          "answer": "Juan Manuel Fangio (5)"
+        },
+        {
+          "rank": 4,
+          "answer": "Alain Prost (4)"
+        },
+        {
+          "rank": 5,
+          "answer": "Sebastian Vettel (4)"
+        },
+        {
+          "rank": 6,
+          "answer": "Jackie Stewart (3)"
+        },
+        {
+          "rank": 7,
+          "answer": "Niki Lauda (3)"
+        },
+        {
+          "rank": 8,
+          "answer": "Nelson Piquet (3)"
+        },
+        {
+          "rank": 9,
+          "answer": "Ayrton Senna (3)"
+        },
+        {
+          "rank": 10,
+          "answer": "Max Verstappen (2)"
+        }
+      ],
+      "source": "FIA (2023)"
+    },
+    {
+      "id": 23,
+      "title": "Alle landen die het WK voetbal gewonnen hebben",
+      "type": "top8",
+      "category": "Sport",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Brazili\u00eb"
+        },
+        {
+          "rank": 2,
+          "answer": "Duitsland"
+        },
+        {
+          "rank": 3,
+          "answer": "Itali\u00eb"
+        },
+        {
+          "rank": 4,
+          "answer": "Argentini\u00eb"
+        },
+        {
+          "rank": 5,
+          "answer": "Frankrijk"
+        },
+        {
+          "rank": 6,
+          "answer": "Uruguay"
+        },
+        {
+          "rank": 7,
+          "answer": "Engeland"
+        },
+        {
+          "rank": 8,
+          "answer": "Spanje"
+        }
+      ],
+      "source": "FIFA (2022)"
+    },
+    {
+      "id": 24,
+      "title": "Top 10 landen naar BBP (nominaal)",
+      "type": "top10",
+      "category": "Economie & rijkdom",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Verenigde Staten"
+        },
+        {
+          "rank": 2,
+          "answer": "China"
+        },
+        {
+          "rank": 3,
+          "answer": "Japan"
+        },
+        {
+          "rank": 4,
+          "answer": "Duitsland"
+        },
+        {
+          "rank": 5,
+          "answer": "India"
+        },
+        {
+          "rank": 6,
+          "answer": "Verenigd Koninkrijk"
+        },
+        {
+          "rank": 7,
+          "answer": "Frankrijk"
+        },
+        {
+          "rank": 8,
+          "answer": "Itali\u00eb"
+        },
+        {
+          "rank": 9,
+          "answer": "Canada"
+        },
+        {
+          "rank": 10,
+          "answer": "Zuid-Korea"
+        }
+      ],
+      "source": "IMF (2024)"
+    },
+    {
+      "id": 25,
+      "title": "Top 10 coureurs met de meeste Grand Prix-overwinningen",
+      "type": "top10",
+      "category": "Sport",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Lewis Hamilton (103)"
+        },
+        {
+          "rank": 2,
+          "answer": "Michael Schumacher (91)"
+        },
+        {
+          "rank": 3,
+          "answer": "Sebastian Vettel (53)"
+        },
+        {
+          "rank": 4,
+          "answer": "Alain Prost (51)"
+        },
+        {
+          "rank": 5,
+          "answer": "Max Verstappen (50)"
+        },
+        {
+          "rank": 6,
+          "answer": "Ayrton Senna (41)"
+        },
+        {
+          "rank": 7,
+          "answer": "Fernando Alonso (32)"
+        },
+        {
+          "rank": 8,
+          "answer": "Nigel Mansell (31)"
+        },
+        {
+          "rank": 9,
+          "answer": "Jackie Stewart (27)"
+        },
+        {
+          "rank": 10,
+          "answer": "Jim Clark (25)"
+        }
+      ],
+      "source": "Formula 1 Records (2023)"
+    },
+    {
+      "id": 26,
+      "title": "Top 10 mannelijke tennissers met de meeste Grand Slam-titels",
+      "type": "top10",
+      "category": "Sport",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Novak Djokovic (24)"
+        },
+        {
+          "rank": 2,
+          "answer": "Rafael Nadal (22)"
+        },
+        {
+          "rank": 3,
+          "answer": "Roger Federer (20)"
+        },
+        {
+          "rank": 4,
+          "answer": "Pete Sampras (14)"
+        },
+        {
+          "rank": 5,
+          "answer": "Roy Emerson (12)"
+        },
+        {
+          "rank": 6,
+          "answer": "Rod Laver (11)"
+        },
+        {
+          "rank": 7,
+          "answer": "Bj\u00f6rn Borg (11)"
+        },
+        {
+          "rank": 8,
+          "answer": "Ivan Lendl (8)"
+        },
+        {
+          "rank": 9,
+          "answer": "Andre Agassi (8)"
+        },
+        {
+          "rank": 10,
+          "answer": "Jimmy Connors (8)"
+        }
+      ],
+      "source": "ATP Records (2023)"
+    },
+    {
+      "id": 27,
+      "title": "Top 10 vrouwelijke tennissers met de meeste Grand Slam-titels",
+      "type": "top10",
+      "category": "Sport",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Margaret Court (24)"
+        },
+        {
+          "rank": 2,
+          "answer": "Serena Williams (23)"
+        },
+        {
+          "rank": 3,
+          "answer": "Steffi Graf (22)"
+        },
+        {
+          "rank": 4,
+          "answer": "Helen Wills Moody (19)"
+        },
+        {
+          "rank": 5,
+          "answer": "Chris Evert (18)"
+        },
+        {
+          "rank": 6,
+          "answer": "Martina Navr\u00e1tilov\u00e1 (18)"
+        },
+        {
+          "rank": 7,
+          "answer": "Billie Jean King (12)"
+        },
+        {
+          "rank": 8,
+          "answer": "Monica Seles (9)"
+        },
+        {
+          "rank": 9,
+          "answer": "Maria Sharapova (5)"
+        },
+        {
+          "rank": 10,
+          "answer": "Venus Williams (5)"
+        }
+      ],
+      "source": "WTA Records (2023)"
+    },
+    {
+      "id": 28,
+      "title": "Alle steden die de Olympische Spelen drie keer hebben georganiseerd",
+      "type": "top3",
+      "category": "Sport",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Londen"
+        },
+        {
+          "rank": 2,
+          "answer": "Los Angeles"
+        },
+        {
+          "rank": 3,
+          "answer": "Parijs"
+        }
+      ],
+      "source": "IOC (2024)"
+    },
+    {
+      "id": 29,
+      "title": "Top 10 NBA-spelers met de meeste punten",
+      "type": "top10",
+      "category": "Sport",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "LeBron James"
+        },
+        {
+          "rank": 2,
+          "answer": "Kareem Abdul-Jabbar"
+        },
+        {
+          "rank": 3,
+          "answer": "Karl Malone"
+        },
+        {
+          "rank": 4,
+          "answer": "Kobe Bryant"
+        },
+        {
+          "rank": 5,
+          "answer": "Michael Jordan"
+        },
+        {
+          "rank": 6,
+          "answer": "Dirk Nowitzki"
+        },
+        {
+          "rank": 7,
+          "answer": "Wilt Chamberlain"
+        },
+        {
+          "rank": 8,
+          "answer": "Shaquille O'Neal"
+        },
+        {
+          "rank": 9,
+          "answer": "Carmelo Anthony"
+        },
+        {
+          "rank": 10,
+          "answer": "Moses Malone"
+        }
+      ],
+      "source": "NBA Records (2023)"
+    },
+    {
+      "id": 30,
+      "title": "Top 10 atleten met de meeste olympische gouden medailles",
+      "type": "top10",
+      "category": "Sport",
+      "difficulty": "hard",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Michael Phelps (23 goud)"
+        },
+        {
+          "rank": 2,
+          "answer": "Larisa Latynina (9)"
+        },
+        {
+          "rank": 3,
+          "answer": "Paavo Nurmi (9)"
+        },
+        {
+          "rank": 4,
+          "answer": "Mark Spitz (9)"
+        },
+        {
+          "rank": 5,
+          "answer": "Carl Lewis (9)"
+        },
+        {
+          "rank": 6,
+          "answer": "Bj\u00f8rn D\u00e6hlie (8)"
+        },
+        {
+          "rank": 7,
+          "answer": "Ole Einar Bj\u00f8rndalen (8)"
+        },
+        {
+          "rank": 8,
+          "answer": "Marit Bj\u00f8rgen (8)"
+        },
+        {
+          "rank": 9,
+          "answer": "Usain Bolt (8)"
+        },
+        {
+          "rank": 10,
+          "answer": "Sawao Kato (8)"
+        }
+      ],
+      "source": "Olympedia (2021)"
+    },
+    {
+      "id": 31,
+      "title": "Top 10 NBA-teams met de meeste kampioenschappen",
+      "type": "top10",
+      "category": "Sport",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Boston Celtics (17)"
+        },
+        {
+          "rank": 2,
+          "answer": "Los Angeles Lakers (17)"
+        },
+        {
+          "rank": 3,
+          "answer": "Golden State Warriors (7)"
+        },
+        {
+          "rank": 4,
+          "answer": "Chicago Bulls (6)"
+        },
+        {
+          "rank": 5,
+          "answer": "San Antonio Spurs (5)"
+        },
+        {
+          "rank": 6,
+          "answer": "Philadelphia 76ers (3)"
+        },
+        {
+          "rank": 7,
+          "answer": "Detroit Pistons (3)"
+        },
+        {
+          "rank": 8,
+          "answer": "Miami Heat (3)"
+        },
+        {
+          "rank": 9,
+          "answer": "New York Knicks (2)"
+        },
+        {
+          "rank": 10,
+          "answer": "Houston Rockets (2)"
+        }
+      ],
+      "source": "NBA Records (2023)"
+    },
+    {
+      "id": 32,
+      "title": "Top 10 NHL-teams met de meeste Stanley Cup-titels",
+      "type": "top10",
+      "category": "Sport",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Montr\u00e9al Canadiens (24)"
+        },
+        {
+          "rank": 2,
+          "answer": "Toronto Maple Leafs (13)"
+        },
+        {
+          "rank": 3,
+          "answer": "Detroit Red Wings (11)"
+        },
+        {
+          "rank": 4,
+          "answer": "Boston Bruins (6)"
+        },
+        {
+          "rank": 5,
+          "answer": "Chicago Blackhawks (6)"
+        },
+        {
+          "rank": 6,
+          "answer": "Edmonton Oilers (5)"
+        },
+        {
+          "rank": 7,
+          "answer": "Pittsburgh Penguins (5)"
+        },
+        {
+          "rank": 8,
+          "answer": "New York Islanders (4)"
+        },
+        {
+          "rank": 9,
+          "answer": "New York Rangers (4)"
+        },
+        {
+          "rank": 10,
+          "answer": "New Jersey Devils (3)"
+        }
+      ],
+      "source": "NHL Records (2023)"
+    },
+    {
+      "id": 33,
+      "title": "Top 10 NFL-teams met de meeste Super Bowl-zeges",
+      "type": "top10",
+      "category": "Sport",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Pittsburgh Steelers (6)"
+        },
+        {
+          "rank": 2,
+          "answer": "New England Patriots (6)"
+        },
+        {
+          "rank": 3,
+          "answer": "San Francisco 49ers (5)"
+        },
+        {
+          "rank": 4,
+          "answer": "Dallas Cowboys (5)"
+        },
+        {
+          "rank": 5,
+          "answer": "Green Bay Packers (4)"
+        },
+        {
+          "rank": 6,
+          "answer": "New York Giants (4)"
+        },
+        {
+          "rank": 7,
+          "answer": "Denver Broncos (3)"
+        },
+        {
+          "rank": 8,
+          "answer": "Washington Football Team (3)"
+        },
+        {
+          "rank": 9,
+          "answer": "Oakland/LA Raiders (3)"
+        },
+        {
+          "rank": 10,
+          "answer": "Los Angeles Rams (2)"
+        }
+      ],
+      "source": "NFL Records (2023)"
+    },
+    {
+      "id": 34,
+      "title": "Top 10 landen met de meeste olympische gouden medailles",
+      "type": "top10",
+      "category": "Sport",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Verenigde Staten"
+        },
+        {
+          "rank": 2,
+          "answer": "Sovjet-Unie"
+        },
+        {
+          "rank": 3,
+          "answer": "Duitsland (incl. Oost/West)"
+        },
+        {
+          "rank": 4,
+          "answer": "Groot-Brittanni\u00eb"
+        },
+        {
+          "rank": 5,
+          "answer": "Itali\u00eb"
+        },
+        {
+          "rank": 6,
+          "answer": "Frankrijk"
+        },
+        {
+          "rank": 7,
+          "answer": "China"
+        },
+        {
+          "rank": 8,
+          "answer": "Zweden"
+        },
+        {
+          "rank": 9,
+          "answer": "Hongarije"
+        },
+        {
+          "rank": 10,
+          "answer": "Australi\u00eb"
+        }
+      ],
+      "source": "IOC (2021)"
+    },
+    {
+      "id": 35,
+      "title": "Top 10 grootste rijken uit de geschiedenis",
+      "type": "top10",
+      "category": "Geschiedenis",
+      "difficulty": "hard",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Britse Rijk (~35,5 mln km\u00b2)"
+        },
+        {
+          "rank": 2,
+          "answer": "Mongoolse Rijk (~24 mln km\u00b2)"
+        },
+        {
+          "rank": 3,
+          "answer": "Russische Rijk (~22,8 mln km\u00b2)"
+        },
+        {
+          "rank": 4,
+          "answer": "Qing-dynastie (China) (~14,7 mln km\u00b2)"
+        },
+        {
+          "rank": 5,
+          "answer": "Spaanse Koloniale Rijk (~13,7 mln km\u00b2)"
+        },
+        {
+          "rank": 6,
+          "answer": "Tweede Franse Koloniale Rijk (~13,0 mln km\u00b2)"
+        },
+        {
+          "rank": 7,
+          "answer": "Umayyad Kalifaat (~11,1 mln km\u00b2)"
+        },
+        {
+          "rank": 8,
+          "answer": "Yuan-dynastie (China) (~11,0 mln km\u00b2)"
+        },
+        {
+          "rank": 9,
+          "answer": "Abbasid Kalifaat (~10,0 mln km\u00b2)"
+        },
+        {
+          "rank": 10,
+          "answer": "Portugese Rijk (~10,4 mln km\u00b2)"
+        }
+      ],
+      "source": "Historische atlas"
+    },
+    {
+      "id": 36,
+      "title": "Top 10 dodelijkste conflicten ooit",
+      "type": "top10",
+      "category": "Geschiedenis",
+      "difficulty": "hard",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Tweede Wereldoorlog (~70-85 miljoen doden)"
+        },
+        {
+          "rank": 2,
+          "answer": "Mongoolse veroveringen (~30-60 miljoen)"
+        },
+        {
+          "rank": 3,
+          "answer": "Chinese Burgeroorlog (1927-1949, ~8-12 miljoen)"
+        },
+        {
+          "rank": 4,
+          "answer": "Taiping-opstand (~20-30 miljoen)"
+        },
+        {
+          "rank": 5,
+          "answer": "Overgang Ming-Qing-oorlogen (~25 miljoen)"
+        },
+        {
+          "rank": 6,
+          "answer": "Eerste Wereldoorlog (~15-20 miljoen)"
+        },
+        {
+          "rank": 7,
+          "answer": "An Lushan-opstand (~13 miljoen)"
+        },
+        {
+          "rank": 8,
+          "answer": "Conquistadores in Amerika (16e eeuw, ~8-15 miljoen)"
+        },
+        {
+          "rank": 9,
+          "answer": "Timur Lenk's veroveringen (~7-20 miljoen)"
+        },
+        {
+          "rank": 10,
+          "answer": "Russische Burgeroorlog (~5-9 miljoen)"
+        }
+      ],
+      "source": "Historische schattingen"
+    },
+    {
+      "id": 37,
+      "title": "Top 10 langst regerende monarchen ooit",
+      "type": "top10",
+      "category": "Geschiedenis",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Sobhuza II (Swaziland, regeerde 82 jaar)"
+        },
+        {
+          "rank": 2,
+          "answer": "Lodewijk XIV (Frankrijk, 72 jaar)"
+        },
+        {
+          "rank": 3,
+          "answer": "Elizabeth II (Verenigd Koninkrijk, 70 jaar)"
+        },
+        {
+          "rank": 4,
+          "answer": "Johannes II (Liechtenstein, 70 jaar)"
+        },
+        {
+          "rank": 5,
+          "answer": "Bhumibol (Rama IX) (Thailand, 70 jaar)"
+        },
+        {
+          "rank": 6,
+          "answer": "Faroek (Koeweit, 65 jaar)"
+        },
+        {
+          "rank": 7,
+          "answer": "Koningin Victoria (VK, 63 jaar)"
+        },
+        {
+          "rank": 8,
+          "answer": "Keizer Kangxi (China, 61 jaar)"
+        },
+        {
+          "rank": 9,
+          "answer": "Keizer Franz Jozef I (Oostenrijk, 68 jaar)"
+        },
+        {
+          "rank": 10,
+          "answer": "Keizer Hirohito (Japan, 62 jaar)"
+        }
+      ],
+      "source": "Guinness World Records (2022)"
+    },
+    {
+      "id": 38,
+      "title": "Top 10 dichtste chemische elementen",
+      "type": "top10",
+      "category": "Wetenschap",
+      "difficulty": "hard",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Osmium"
+        },
+        {
+          "rank": 2,
+          "answer": "Iridium"
+        },
+        {
+          "rank": 3,
+          "answer": "Platina"
+        },
+        {
+          "rank": 4,
+          "answer": "Rhenium"
+        },
+        {
+          "rank": 5,
+          "answer": "Neptunium"
+        },
+        {
+          "rank": 6,
+          "answer": "Plutonium"
+        },
+        {
+          "rank": 7,
+          "answer": "Tungsten (Wolfraam)"
+        },
+        {
+          "rank": 8,
+          "answer": "Goud"
+        },
+        {
+          "rank": 9,
+          "answer": "Uranium"
+        },
+        {
+          "rank": 10,
+          "answer": "Tantalium"
+        }
+      ],
+      "source": "Periodiek Systeem"
+    },
+    {
+      "id": 39,
+      "title": "Top 10 bosrijke landen (bosareaal)",
+      "type": "top10",
+      "category": "Wetenschap",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Rusland"
+        },
+        {
+          "rank": 2,
+          "answer": "Brazili\u00eb"
+        },
+        {
+          "rank": 3,
+          "answer": "Canada"
+        },
+        {
+          "rank": 4,
+          "answer": "Verenigde Staten"
+        },
+        {
+          "rank": 5,
+          "answer": "China"
+        },
+        {
+          "rank": 6,
+          "answer": "Australi\u00eb"
+        },
+        {
+          "rank": 7,
+          "answer": "Democratische Republiek Congo"
+        },
+        {
+          "rank": 8,
+          "answer": "Argentini\u00eb"
+        },
+        {
+          "rank": 9,
+          "answer": "India"
+        },
+        {
+          "rank": 10,
+          "answer": "Peru"
+        }
+      ],
+      "source": "FAO (2020)"
+    },
+    {
+      "id": 40,
+      "title": "Top 10 drukste luchthavens ter wereld",
+      "type": "top10",
+      "category": "Economie & rijkdom",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Hartsfield\u2013Jackson Atlanta (VS)"
+        },
+        {
+          "rank": 2,
+          "answer": "Beijing Capital (China)"
+        },
+        {
+          "rank": 3,
+          "answer": "Los Angeles International (VS)"
+        },
+        {
+          "rank": 4,
+          "answer": "Dubai International (VAE)"
+        },
+        {
+          "rank": 5,
+          "answer": "Tokyo Haneda (Japan)"
+        },
+        {
+          "rank": 6,
+          "answer": "Chicago O'Hare (VS)"
+        },
+        {
+          "rank": 7,
+          "answer": "London Heathrow (VK)"
+        },
+        {
+          "rank": 8,
+          "answer": "Shanghai Pudong (China)"
+        },
+        {
+          "rank": 9,
+          "answer": "Paris Charles de Gaulle (Frankrijk)"
+        },
+        {
+          "rank": 10,
+          "answer": "Dallas/Fort Worth (VS)"
+        }
+      ],
+      "source": "ACI World (2019)"
+    },
+    {
+      "id": 41,
+      "title": "Top 10 drukste havens (containeroverslag)",
+      "type": "top10",
+      "category": "Economie & rijkdom",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Shanghai (China)"
+        },
+        {
+          "rank": 2,
+          "answer": "Singapore"
+        },
+        {
+          "rank": 3,
+          "answer": "Ningbo-Zhoushan (China)"
+        },
+        {
+          "rank": 4,
+          "answer": "Shenzhen (China)"
+        },
+        {
+          "rank": 5,
+          "answer": "Guangzhou (China)"
+        },
+        {
+          "rank": 6,
+          "answer": "Qingdao (China)"
+        },
+        {
+          "rank": 7,
+          "answer": "Busan (Zuid-Korea)"
+        },
+        {
+          "rank": 8,
+          "answer": "Hongkong (China)"
+        },
+        {
+          "rank": 9,
+          "answer": "Tianjin (China)"
+        },
+        {
+          "rank": 10,
+          "answer": "Dubai (VAE)"
+        }
+      ],
+      "source": "World Shipping Council (2023)"
+    },
+    {
+      "id": 42,
+      "title": "Top 10 grootste legers (actieve troepen)",
+      "type": "top10",
+      "category": "Geschiedenis",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "China"
+        },
+        {
+          "rank": 2,
+          "answer": "India"
+        },
+        {
+          "rank": 3,
+          "answer": "Verenigde Staten"
+        },
+        {
+          "rank": 4,
+          "answer": "Noord-Korea"
+        },
+        {
+          "rank": 5,
+          "answer": "Rusland"
+        },
+        {
+          "rank": 6,
+          "answer": "Pakistan"
+        },
+        {
+          "rank": 7,
+          "answer": "Zuid-Korea"
+        },
+        {
+          "rank": 8,
+          "answer": "Iran"
+        },
+        {
+          "rank": 9,
+          "answer": "Vietnam"
+        },
+        {
+          "rank": 10,
+          "answer": "Egypte"
+        }
+      ],
+      "source": "Global Firepower (2023)"
+    },
+    {
+      "id": 43,
+      "title": "Top 10 landen met hoogste defensie-uitgaven",
+      "type": "top10",
+      "category": "Economie & rijkdom",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Verenigde Staten"
+        },
+        {
+          "rank": 2,
+          "answer": "China"
+        },
+        {
+          "rank": 3,
+          "answer": "India"
+        },
+        {
+          "rank": 4,
+          "answer": "Rusland"
+        },
+        {
+          "rank": 5,
+          "answer": "Verenigd Koninkrijk"
+        },
+        {
+          "rank": 6,
+          "answer": "Saoedi-Arabi\u00eb"
+        },
+        {
+          "rank": 7,
+          "answer": "Duitsland"
+        },
+        {
+          "rank": 8,
+          "answer": "Frankrijk"
+        },
+        {
+          "rank": 9,
+          "answer": "Japan"
+        },
+        {
+          "rank": 10,
+          "answer": "Zuid-Korea"
+        }
+      ],
+      "source": "SIPRI (2024)"
+    },
+    {
+      "id": 44,
+      "title": "Top 10 cryptocurrencies naar marktkapitalisatie",
+      "type": "top10",
+      "category": "Technologie & internet",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Bitcoin"
+        },
+        {
+          "rank": 2,
+          "answer": "Ethereum"
+        },
+        {
+          "rank": 3,
+          "answer": "Tether"
+        },
+        {
+          "rank": 4,
+          "answer": "Binance Coin"
+        },
+        {
+          "rank": 5,
+          "answer": "USD Coin"
+        },
+        {
+          "rank": 6,
+          "answer": "XRP (Ripple)"
+        },
+        {
+          "rank": 7,
+          "answer": "Cardano"
+        },
+        {
+          "rank": 8,
+          "answer": "Dogecoin"
+        },
+        {
+          "rank": 9,
+          "answer": "Solana"
+        },
+        {
+          "rank": 10,
+          "answer": "TRON"
+        }
+      ],
+      "source": "CoinMarketCap (2025)"
+    },
+    {
+      "id": 45,
+      "title": "Top 10 bestverkochte spelconsoles",
+      "type": "top10",
+      "category": "Media & entertainment",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "PlayStation 2 (~155 mln)"
+        },
+        {
+          "rank": 2,
+          "answer": "Nintendo DS (~154 mln)"
+        },
+        {
+          "rank": 3,
+          "answer": "Game Boy & Color (~119 mln)"
+        },
+        {
+          "rank": 4,
+          "answer": "PlayStation 4 (~117 mln)"
+        },
+        {
+          "rank": 5,
+          "answer": "Nintendo Switch (~114 mln)"
+        },
+        {
+          "rank": 6,
+          "answer": "PlayStation (~102 mln)"
+        },
+        {
+          "rank": 7,
+          "answer": "Wii (~102 mln)"
+        },
+        {
+          "rank": 8,
+          "answer": "PlayStation 3 (~87 mln)"
+        },
+        {
+          "rank": 9,
+          "answer": "Xbox 360 (~85 mln)"
+        },
+        {
+          "rank": 10,
+          "answer": "Game Boy Advance (~81 mln)"
+        }
+      ],
+      "source": "VGChartz (2022)"
+    },
+    {
+      "id": 46,
+      "title": "Top 10 belangrijkste energiebronnen (wereldverbruik)",
+      "type": "top10",
+      "category": "Wetenschap",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Olie"
+        },
+        {
+          "rank": 2,
+          "answer": "Steenkool"
+        },
+        {
+          "rank": 3,
+          "answer": "Aardgas"
+        },
+        {
+          "rank": 4,
+          "answer": "Biomassa"
+        },
+        {
+          "rank": 5,
+          "answer": "Waterkracht"
+        },
+        {
+          "rank": 6,
+          "answer": "Kernenergie"
+        },
+        {
+          "rank": 7,
+          "answer": "Windenergie"
+        },
+        {
+          "rank": 8,
+          "answer": "Zonne-energie"
+        },
+        {
+          "rank": 9,
+          "answer": "Geothermie"
+        },
+        {
+          "rank": 10,
+          "answer": "Zee/tij-energie"
+        }
+      ],
+      "source": "Internationaal Energieagentschap (2021)"
+    },
+    {
+      "id": 47,
+      "title": "Top 10 bierproducerende landen",
+      "type": "top10",
+      "category": "Economie & rijkdom",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "China"
+        },
+        {
+          "rank": 2,
+          "answer": "Verenigde Staten"
+        },
+        {
+          "rank": 3,
+          "answer": "Brazili\u00eb"
+        },
+        {
+          "rank": 4,
+          "answer": "Mexico"
+        },
+        {
+          "rank": 5,
+          "answer": "Duitsland"
+        },
+        {
+          "rank": 6,
+          "answer": "Rusland"
+        },
+        {
+          "rank": 7,
+          "answer": "Japan"
+        },
+        {
+          "rank": 8,
+          "answer": "Vietnam"
+        },
+        {
+          "rank": 9,
+          "answer": "Verenigd Koninkrijk"
+        },
+        {
+          "rank": 10,
+          "answer": "Polen"
+        }
+      ],
+      "source": "Brewers Association (2022)"
+    },
+    {
+      "id": 48,
+      "title": "Top 10 melkproducerende landen",
+      "type": "top10",
+      "category": "Economie & rijkdom",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "India"
+        },
+        {
+          "rank": 2,
+          "answer": "Verenigde Staten"
+        },
+        {
+          "rank": 3,
+          "answer": "Pakistan"
+        },
+        {
+          "rank": 4,
+          "answer": "China"
+        },
+        {
+          "rank": 5,
+          "answer": "Brazili\u00eb"
+        },
+        {
+          "rank": 6,
+          "answer": "Duitsland"
+        },
+        {
+          "rank": 7,
+          "answer": "Rusland"
+        },
+        {
+          "rank": 8,
+          "answer": "Frankrijk"
+        },
+        {
+          "rank": 9,
+          "answer": "Nieuw-Zeeland"
+        },
+        {
+          "rank": 10,
+          "answer": "Turkije"
+        }
+      ],
+      "source": "FAO (2021)"
+    },
+    {
+      "id": 49,
+      "title": "Top 10 valuta's in internationale handel",
+      "type": "top10",
+      "category": "Economie & rijkdom",
+      "difficulty": "hard",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Amerikaanse dollar"
+        },
+        {
+          "rank": 2,
+          "answer": "Euro"
+        },
+        {
+          "rank": 3,
+          "answer": "Japanse yen"
+        },
+        {
+          "rank": 4,
+          "answer": "Britse pond"
+        },
+        {
+          "rank": 5,
+          "answer": "Australische dollar"
+        },
+        {
+          "rank": 6,
+          "answer": "Canadese dollar"
+        },
+        {
+          "rank": 7,
+          "answer": "Zwitsers frank"
+        },
+        {
+          "rank": 8,
+          "answer": "Chinese yuan"
+        },
+        {
+          "rank": 9,
+          "answer": "Hongkong dollar"
+        },
+        {
+          "rank": 10,
+          "answer": "Nieuw-Zeelandse dollar"
+        }
+      ],
+      "source": "BIS (2022)"
+    },
+    {
+      "id": 50,
+      "title": "Top 10 rijkste vrouwen ter wereld",
+      "type": "top10",
+      "category": "Economie & rijkdom",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Fran\u00e7oise Bettencourt Meyers"
+        },
+        {
+          "rank": 2,
+          "answer": "Alice Walton"
+        },
+        {
+          "rank": 3,
+          "answer": "Julia Koch"
+        },
+        {
+          "rank": 4,
+          "answer": "Jacqueline Mars"
+        },
+        {
+          "rank": 5,
+          "answer": "Miriam Adelson"
+        },
+        {
+          "rank": 6,
+          "answer": "Gina Rinehart"
+        },
+        {
+          "rank": 7,
+          "answer": "Susanne Klatten"
+        },
+        {
+          "rank": 8,
+          "answer": "Yang Huiyan"
+        },
+        {
+          "rank": 9,
+          "answer": "Iris Fontbona"
+        },
+        {
+          "rank": 10,
+          "answer": "Abigail Johnson"
+        }
+      ],
+      "source": "Forbes (2025)"
+    },
+    {
+      "id": 51,
+      "title": "Top 10 goudproducerende landen",
+      "type": "top10",
+      "category": "Economie & rijkdom",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "China"
+        },
+        {
+          "rank": 2,
+          "answer": "Rusland"
+        },
+        {
+          "rank": 3,
+          "answer": "Australi\u00eb"
+        },
+        {
+          "rank": 4,
+          "answer": "Verenigde Staten"
+        },
+        {
+          "rank": 5,
+          "answer": "Canada"
+        },
+        {
+          "rank": 6,
+          "answer": "Ghana"
+        },
+        {
+          "rank": 7,
+          "answer": "Peru"
+        },
+        {
+          "rank": 8,
+          "answer": "Mexico"
+        },
+        {
+          "rank": 9,
+          "answer": "Oezbekistan"
+        },
+        {
+          "rank": 10,
+          "answer": "Indonesi\u00eb"
+        }
+      ],
+      "source": "USGS (2022)"
+    },
+    {
+      "id": 52,
+      "title": "Top 10 programmeertalen (populariteit)",
+      "type": "top10",
+      "category": "Technologie & internet",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Python"
+        },
+        {
+          "rank": 2,
+          "answer": "JavaScript"
+        },
+        {
+          "rank": 3,
+          "answer": "Java"
+        },
+        {
+          "rank": 4,
+          "answer": "C#"
+        },
+        {
+          "rank": 5,
+          "answer": "C"
+        },
+        {
+          "rank": 6,
+          "answer": "C++"
+        },
+        {
+          "rank": 7,
+          "answer": "PHP"
+        },
+        {
+          "rank": 8,
+          "answer": "TypeScript"
+        },
+        {
+          "rank": 9,
+          "answer": "Ruby"
+        },
+        {
+          "rank": 10,
+          "answer": "Swift"
+        }
+      ],
+      "source": "Stack Overflow Developer Survey (2023)"
+    },
+    {
+      "id": 53,
+      "title": "Top 10 bestverkochte films (wereldwijd)",
+      "type": "top10",
+      "category": "Media & entertainment",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Avatar (2009)"
+        },
+        {
+          "rank": 2,
+          "answer": "Avengers: Endgame (2019)"
+        },
+        {
+          "rank": 3,
+          "answer": "Avatar: The Way of Water (2022)"
+        },
+        {
+          "rank": 4,
+          "answer": "Titanic (1997)"
+        },
+        {
+          "rank": 5,
+          "answer": "Star Wars: The Force Awakens (2015)"
+        },
+        {
+          "rank": 6,
+          "answer": "Avengers: Infinity War (2018)"
+        },
+        {
+          "rank": 7,
+          "answer": "Spider-Man: No Way Home (2021)"
+        },
+        {
+          "rank": 8,
+          "answer": "Jurassic World (2015)"
+        },
+        {
+          "rank": 9,
+          "answer": "The Lion King (2019)"
+        },
+        {
+          "rank": 10,
+          "answer": "The Avengers (2012)"
+        }
+      ],
+      "source": "Box Office Mojo (2023)"
+    },
+    {
+      "id": 54,
+      "title": "Top 10 bestverkochte muziekartiesten aller tijden",
+      "type": "top10",
+      "category": "Media & entertainment",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "The Beatles"
+        },
+        {
+          "rank": 2,
+          "answer": "Elvis Presley"
+        },
+        {
+          "rank": 3,
+          "answer": "Michael Jackson"
+        },
+        {
+          "rank": 4,
+          "answer": "Elton John"
+        },
+        {
+          "rank": 5,
+          "answer": "Madonna"
+        },
+        {
+          "rank": 6,
+          "answer": "Led Zeppelin"
+        },
+        {
+          "rank": 7,
+          "answer": "Rihanna"
+        },
+        {
+          "rank": 8,
+          "answer": "Queen"
+        },
+        {
+          "rank": 9,
+          "answer": "Pink Floyd"
+        },
+        {
+          "rank": 10,
+          "answer": "Eminem"
+        }
+      ],
+      "source": "Guinness World Records (2021)"
+    },
+    {
+      "id": 55,
+      "title": "Top 10 meest gestreamde nummers op Spotify",
+      "type": "top10",
+      "category": "Media & entertainment",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Blinding Lights (The Weeknd)"
+        },
+        {
+          "rank": 2,
+          "answer": "Shape of You (Ed Sheeran)"
+        },
+        {
+          "rank": 3,
+          "answer": "Starboy (The Weeknd ft. Daft Punk)"
+        },
+        {
+          "rank": 4,
+          "answer": "Sweater Weather (The Neighbourhood)"
+        },
+        {
+          "rank": 5,
+          "answer": "Someone You Loved (Lewis Capaldi)"
+        },
+        {
+          "rank": 6,
+          "answer": "As It Was (Harry Styles)"
+        },
+        {
+          "rank": 7,
+          "answer": "Sunflower (Post Malone & Swae Lee)"
+        },
+        {
+          "rank": 8,
+          "answer": "One Dance (Drake ft. Wizkid & Kyla)"
+        },
+        {
+          "rank": 9,
+          "answer": "Perfect (Ed Sheeran)"
+        },
+        {
+          "rank": 10,
+          "answer": "STAY (The Kid LAROI & Justin Bieber)"
+        }
+      ],
+      "source": "Spotify Wrapped (2025)"
+    },
+    {
+      "id": 56,
+      "title": "Alle offici\u00eble talen van Zwitserland",
+      "type": "top4",
+      "category": "Talen & cultuur",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Duits"
+        },
+        {
+          "rank": 2,
+          "answer": "Frans"
+        },
+        {
+          "rank": 3,
+          "answer": "Italiaans"
+        },
+        {
+          "rank": 4,
+          "answer": "Reto-Romaans"
+        }
+      ],
+      "source": "Zwitserse overheid"
+    },
+    {
+      "id": 57,
+      "title": "Top 10 grootste metropolen in Afrika",
+      "type": "top10",
+      "category": "Geografie",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Ka\u00efro (Egypte)"
+        },
+        {
+          "rank": 2,
+          "answer": "Lagos (Nigeria)"
+        },
+        {
+          "rank": 3,
+          "answer": "Kinshasa (Congo-Kinshasa)"
+        },
+        {
+          "rank": 4,
+          "answer": "Johannesburg (Zuid-Afrika)"
+        },
+        {
+          "rank": 5,
+          "answer": "Dar es Salaam (Tanzania)"
+        },
+        {
+          "rank": 6,
+          "answer": "Khartoem (Soedan)"
+        },
+        {
+          "rank": 7,
+          "answer": "Nairobi (Kenia)"
+        },
+        {
+          "rank": 8,
+          "answer": "Luanda (Angola)"
+        },
+        {
+          "rank": 9,
+          "answer": "Alexandri\u00eb (Egypte)"
+        },
+        {
+          "rank": 10,
+          "answer": "Abidjan (Ivoorkust)"
+        }
+      ],
+      "source": "VN Urbanisatievooruitzichten (2020)"
+    },
+    {
+      "id": 58,
+      "title": "Top 10 bestverkochte mediafranchises",
+      "type": "top10",
+      "category": "Popcultuur",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Pok\u00e9mon (~$90 mld)"
+        },
+        {
+          "rank": 2,
+          "answer": "Hello Kitty (~$80 mld)"
+        },
+        {
+          "rank": 3,
+          "answer": "Mickey Mouse & Friends (~$70 mld)"
+        },
+        {
+          "rank": 4,
+          "answer": "Star Wars (~$65 mld)"
+        },
+        {
+          "rank": 5,
+          "answer": "Anpanman (~$60 mld)"
+        },
+        {
+          "rank": 6,
+          "answer": "Disney Princess (~$46 mld)"
+        },
+        {
+          "rank": 7,
+          "answer": "Mario (Nintendo) (~$36 mld)"
+        },
+        {
+          "rank": 8,
+          "answer": "Harry Potter (~$33 mld)"
+        },
+        {
+          "rank": 9,
+          "answer": "Marvel Cinematic Universe (~$30 mld)"
+        },
+        {
+          "rank": 10,
+          "answer": "Spider-Man (~$30 mld)"
+        }
+      ],
+      "source": "Statista (2023)"
+    },
+    {
+      "id": 59,
+      "title": "Top 10 smartphonemerken naar verkoopcijfers",
+      "type": "top10",
+      "category": "Technologie & internet",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Samsung"
+        },
+        {
+          "rank": 2,
+          "answer": "Apple"
+        },
+        {
+          "rank": 3,
+          "answer": "Xiaomi"
+        },
+        {
+          "rank": 4,
+          "answer": "Oppo"
+        },
+        {
+          "rank": 5,
+          "answer": "Vivo"
+        },
+        {
+          "rank": 6,
+          "answer": "Realme"
+        },
+        {
+          "rank": 7,
+          "answer": "Motorola"
+        },
+        {
+          "rank": 8,
+          "answer": "Huawei"
+        },
+        {
+          "rank": 9,
+          "answer": "Transsion (Tecno/Infinix)"
+        },
+        {
+          "rank": 10,
+          "answer": "Honor"
+        }
+      ],
+      "source": "IDC (2023)"
+    },
+    {
+      "id": 60,
+      "title": "Top 10 hoogste gebouwen ter wereld",
+      "type": "top10",
+      "category": "Technologie & internet",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Burj Khalifa (VAE, 828 m)"
+        },
+        {
+          "rank": 2,
+          "answer": "Merdeka 118 (Maleisi\u00eb, 678 m)"
+        },
+        {
+          "rank": 3,
+          "answer": "Shanghai Tower (China, 632 m)"
+        },
+        {
+          "rank": 4,
+          "answer": "Abraj Al-Bait Toren (Saoedi-Arabi\u00eb, 601 m)"
+        },
+        {
+          "rank": 5,
+          "answer": "Ping An Finance Centre (China, 599 m)"
+        },
+        {
+          "rank": 6,
+          "answer": "Lotte World Tower (Zuid-Korea, 555 m)"
+        },
+        {
+          "rank": 7,
+          "answer": "One World Trade Center (VS, 541 m)"
+        },
+        {
+          "rank": 8,
+          "answer": "Guangzhou CTF Finance Centre (China, 530 m)"
+        },
+        {
+          "rank": 9,
+          "answer": "Tianjin CTF Finance Centre (China, 530 m)"
+        },
+        {
+          "rank": 10,
+          "answer": "CITIC Tower (China, 528 m)"
+        }
+      ],
+      "source": "CTBUH (2023)"
+    },
+    {
+      "id": 61,
+      "title": "Top 10 landen met de meeste vulkanen",
+      "type": "top10",
+      "category": "Wetenschap",
+      "difficulty": "hard",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Verenigde Staten (~173 vulkanen)"
+        },
+        {
+          "rank": 2,
+          "answer": "Rusland (~166)"
+        },
+        {
+          "rank": 3,
+          "answer": "Indonesi\u00eb (~139)"
+        },
+        {
+          "rank": 4,
+          "answer": "Japan (~112)"
+        },
+        {
+          "rank": 5,
+          "answer": "Chili (~105)"
+        },
+        {
+          "rank": 6,
+          "answer": "Ethiopi\u00eb (~57)"
+        },
+        {
+          "rank": 7,
+          "answer": "Papoea-Nieuw-Guinea (~53)"
+        },
+        {
+          "rank": 8,
+          "answer": "Filipijnen (~50)"
+        },
+        {
+          "rank": 9,
+          "answer": "Mexico (~43)"
+        },
+        {
+          "rank": 10,
+          "answer": "IJsland (~35)"
+        }
+      ],
+      "source": "Smithsonian Institution (2015)"
+    },
+    {
+      "id": 62,
+      "title": "Alle zeven wereldwonderen van de Oudheid",
+      "type": "top7",
+      "category": "Geschiedenis",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Piramide van Cheops (Gizeh)"
+        },
+        {
+          "rank": 2,
+          "answer": "Hangende Tuinen van Babylon"
+        },
+        {
+          "rank": 3,
+          "answer": "Tempel van Artemis (Efeze)"
+        },
+        {
+          "rank": 4,
+          "answer": "Beeld van Zeus (Olympia)"
+        },
+        {
+          "rank": 5,
+          "answer": "Mausoleum van Halicarnassus"
+        },
+        {
+          "rank": 6,
+          "answer": "Kolossus van Rhodos"
+        },
+        {
+          "rank": 7,
+          "answer": "Pharos (Vuurtoren) van Alexandri\u00eb"
+        }
+      ],
+      "source": "Antieke historiografie"
+    },
+    {
+      "id": 63,
+      "title": "Alle Nieuwe Zeven Wereldwonderen (2007)",
+      "type": "top7",
+      "category": "Geschiedenis",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Chich\u00e9n Itz\u00e1 (Mexico)"
+        },
+        {
+          "rank": 2,
+          "answer": "Christus de Verlosser (Brazili\u00eb)"
+        },
+        {
+          "rank": 3,
+          "answer": "Colosseum (Itali\u00eb)"
+        },
+        {
+          "rank": 4,
+          "answer": "Chinese Muur (China)"
+        },
+        {
+          "rank": 5,
+          "answer": "Machu Picchu (Peru)"
+        },
+        {
+          "rank": 6,
+          "answer": "Petra (Jordani\u00eb)"
+        },
+        {
+          "rank": 7,
+          "answer": "Taj Mahal (India)"
+        }
+      ],
+      "source": "New7Wonders (2007)"
+    },
+    {
+      "id": 64,
+      "title": "Zeven toppen (hoogste bergen per continent)",
+      "type": "top7",
+      "category": "Wetenschap",
+      "difficulty": "hard",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Mount Everest (Azi\u00eb)"
+        },
+        {
+          "rank": 2,
+          "answer": "Aconcagua (Zuid-Amerika)"
+        },
+        {
+          "rank": 3,
+          "answer": "Denali (Noord-Amerika)"
+        },
+        {
+          "rank": 4,
+          "answer": "Kilimanjaro (Afrika)"
+        },
+        {
+          "rank": 5,
+          "answer": "Elbroes (Europa)"
+        },
+        {
+          "rank": 6,
+          "answer": "Vinson Massief (Antarctica)"
+        },
+        {
+          "rank": 7,
+          "answer": "Puncak Jaya (Oceani\u00eb)"
+        }
+      ],
+      "source": "Bergexpeditiegegevens"
+    },
+    {
+      "id": 65,
+      "title": "Alle vijf oceanen",
+      "type": "top5",
+      "category": "Geografie",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Grote Oceaan"
+        },
+        {
+          "rank": 2,
+          "answer": "Atlantische Oceaan"
+        },
+        {
+          "rank": 3,
+          "answer": "Indische Oceaan"
+        },
+        {
+          "rank": 4,
+          "answer": "Zuidelijke Oceaan"
+        },
+        {
+          "rank": 5,
+          "answer": "Noordelijke IJszee"
+        }
+      ],
+      "source": "NOAA"
+    },
+    {
+      "id": 66,
+      "title": "Alle continenten op volgorde van oppervlakte",
+      "type": "top7",
+      "category": "Geografie",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Azi\u00eb"
+        },
+        {
+          "rank": 2,
+          "answer": "Afrika"
+        },
+        {
+          "rank": 3,
+          "answer": "Noord-Amerika"
+        },
+        {
+          "rank": 4,
+          "answer": "Zuid-Amerika"
+        },
+        {
+          "rank": 5,
+          "answer": "Antarctica"
+        },
+        {
+          "rank": 6,
+          "answer": "Europa"
+        },
+        {
+          "rank": 7,
+          "answer": "Oceani\u00eb"
+        }
+      ],
+      "source": "Wereldatlas"
+    },
+    {
+      "id": 67,
+      "title": "Alle 12 tekens van de dierenriem (astrologie)",
+      "type": "top12",
+      "category": "Talen & cultuur",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Ram"
+        },
+        {
+          "rank": 2,
+          "answer": "Stier"
+        },
+        {
+          "rank": 3,
+          "answer": "Tweelingen"
+        },
+        {
+          "rank": 4,
+          "answer": "Kreeft"
+        },
+        {
+          "rank": 5,
+          "answer": "Leeuw"
+        },
+        {
+          "rank": 6,
+          "answer": "Maagd"
+        },
+        {
+          "rank": 7,
+          "answer": "Weegschaal"
+        },
+        {
+          "rank": 8,
+          "answer": "Schorpioen"
+        },
+        {
+          "rank": 9,
+          "answer": "Boogschutter"
+        },
+        {
+          "rank": 10,
+          "answer": "Steenbok"
+        },
+        {
+          "rank": 11,
+          "answer": "Waterman"
+        },
+        {
+          "rank": 12,
+          "answer": "Vissen"
+        }
+      ],
+      "source": "Astrologische traditie"
+    },
+    {
+      "id": 68,
+      "title": "Alle zeven kleuren van de regenboog",
+      "type": "top7",
+      "category": "Wetenschap",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Rood"
+        },
+        {
+          "rank": 2,
+          "answer": "Oranje"
+        },
+        {
+          "rank": 3,
+          "answer": "Geel"
+        },
+        {
+          "rank": 4,
+          "answer": "Groen"
+        },
+        {
+          "rank": 5,
+          "answer": "Blauw"
+        },
+        {
+          "rank": 6,
+          "answer": "Indigo"
+        },
+        {
+          "rank": 7,
+          "answer": "Violet"
+        }
+      ],
+      "source": "Optica"
+    },
+    {
+      "id": 69,
+      "title": "Alle G7-landen",
+      "type": "top7",
+      "category": "Economie & rijkdom",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Canada"
+        },
+        {
+          "rank": 2,
+          "answer": "Duitsland"
+        },
+        {
+          "rank": 3,
+          "answer": "Frankrijk"
+        },
+        {
+          "rank": 4,
+          "answer": "Itali\u00eb"
+        },
+        {
+          "rank": 5,
+          "answer": "Japan"
+        },
+        {
+          "rank": 6,
+          "answer": "Verenigd Koninkrijk"
+        },
+        {
+          "rank": 7,
+          "answer": "Verenigde Staten"
+        }
+      ],
+      "source": "Wereldpolitiek"
+    },
+    {
+      "id": 70,
+      "title": "Alle BRICS-landen",
+      "type": "top5",
+      "category": "Economie & rijkdom",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Brazili\u00eb"
+        },
+        {
+          "rank": 2,
+          "answer": "Rusland"
+        },
+        {
+          "rank": 3,
+          "answer": "India"
+        },
+        {
+          "rank": 4,
+          "answer": "China"
+        },
+        {
+          "rank": 5,
+          "answer": "Zuid-Afrika"
+        }
+      ],
+      "source": "Wereldwijde economie"
+    },
+    {
+      "id": 71,
+      "title": "Alle permanente leden van de VN-Veiligheidsraad",
+      "type": "top5",
+      "category": "Geschiedenis",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "China"
+        },
+        {
+          "rank": 2,
+          "answer": "Frankrijk"
+        },
+        {
+          "rank": 3,
+          "answer": "Rusland"
+        },
+        {
+          "rank": 4,
+          "answer": "Verenigd Koninkrijk"
+        },
+        {
+          "rank": 5,
+          "answer": "Verenigde Staten"
+        }
+      ],
+      "source": "Verenigde Naties"
+    },
+    {
+      "id": 72,
+      "title": "Alle nucleobasen in DNA",
+      "type": "top4",
+      "category": "Wetenschap",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Adenine"
+        },
+        {
+          "rank": 2,
+          "answer": "Cytosine"
+        },
+        {
+          "rank": 3,
+          "answer": "Guanine"
+        },
+        {
+          "rank": 4,
+          "answer": "Thymine"
+        }
+      ],
+      "source": "Biologie"
+    },
+    {
+      "id": 73,
+      "title": "Alle nucleobasen in RNA",
+      "type": "top4",
+      "category": "Wetenschap",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Adenine"
+        },
+        {
+          "rank": 2,
+          "answer": "Cytosine"
+        },
+        {
+          "rank": 3,
+          "answer": "Guanine"
+        },
+        {
+          "rank": 4,
+          "answer": "Uracil"
+        }
+      ],
+      "source": "Biologie"
+    },
+    {
+      "id": 74,
+      "title": "Alle primaire kleuren van licht",
+      "type": "top3",
+      "category": "Wetenschap",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Rood"
+        },
+        {
+          "rank": 2,
+          "answer": "Groen"
+        },
+        {
+          "rank": 3,
+          "answer": "Blauw"
+        }
+      ],
+      "source": "Kleurentheorie"
+    },
+    {
+      "id": 75,
+      "title": "Alle primaire kleuren van pigment",
+      "type": "top3",
+      "category": "Wetenschap",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Cyaan"
+        },
+        {
+          "rank": 2,
+          "answer": "Magenta"
+        },
+        {
+          "rank": 3,
+          "answer": "Geel"
+        }
+      ],
+      "source": "Kleurentheorie"
+    },
+    {
+      "id": 76,
+      "title": "Alle landen op het eiland Borneo",
+      "type": "top3",
+      "category": "Geografie",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Indonesi\u00eb"
+        },
+        {
+          "rank": 2,
+          "answer": "Maleisi\u00eb"
+        },
+        {
+          "rank": 3,
+          "answer": "Brunei"
+        }
+      ],
+      "source": "Atlas"
+    },
+    {
+      "id": 77,
+      "title": "Alle landen met \u00e9\u00e9n buurland",
+      "type": "top19",
+      "category": "Geografie",
+      "difficulty": "medium",
+      "items": [
+        { "rank": 1, "answer": "Bahrein (Saoedi-Arabi\u00eb)" },
+        { "rank": 2, "answer": "Brunei (Maleisi\u00eb)" },
+        { "rank": 3, "answer": "Canada (Verenigde Staten)" },
+        { "rank": 4, "answer": "Cyprus (Akrotiri en Dhekelia)" },
+        { "rank": 5, "answer": "Denemarken (Duitsland)" },
+        { "rank": 6, "answer": "Dominicaanse Republiek (Ha\u00efti)" },
+        { "rank": 7, "answer": "Gambia (Senegal)" },
+        { "rank": 8, "answer": "Ha\u00efti (Dominicaanse Republiek)" },
+        { "rank": 9, "answer": "Ierland (Verenigd Koninkrijk)" },
+        { "rank": 10, "answer": "Lesotho (Zuid-Afrika)" },
+        { "rank": 11, "answer": "Monaco (Frankrijk)" },
+        { "rank": 12, "answer": "Papoea-Nieuw-Guinea (Indonesi\u00eb)" },
+        { "rank": 13, "answer": "Portugal (Spanje)" },
+        { "rank": 14, "answer": "Qatar (Saoedi-Arabi\u00eb)" },
+        { "rank": 15, "answer": "San Marino (Itali\u00eb)" },
+        { "rank": 16, "answer": "Zuid-Korea (Noord-Korea)" },
+        { "rank": 17, "answer": "Oost-Timor (Indonesi\u00eb)" },
+        { "rank": 18, "answer": "Verenigd Koninkrijk (Ierland)" },
+        { "rank": 19, "answer": "Vaticaanstad (Itali\u00eb)" }
+      ],
+      "source": "Wereldkaartgegevens"
+    },
+    {
+      "id": 78,
+      "title": "Alle maanden met 31 dagen",
+      "type": "top7",
+      "category": "Diversen",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Januari"
+        },
+        {
+          "rank": 2,
+          "answer": "Maart"
+        },
+        {
+          "rank": 3,
+          "answer": "Mei"
+        },
+        {
+          "rank": 4,
+          "answer": "Juli"
+        },
+        {
+          "rank": 5,
+          "answer": "Augustus"
+        },
+        {
+          "rank": 6,
+          "answer": "Oktober"
+        },
+        {
+          "rank": 7,
+          "answer": "December"
+        }
+      ],
+      "source": "Kalender"
+    },
+    {
+      "id": 79,
+      "title": "Alle Olympische ringkleuren",
+      "type": "top5",
+      "category": "Sport",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Blauw"
+        },
+        {
+          "rank": 2,
+          "answer": "Geel"
+        },
+        {
+          "rank": 3,
+          "answer": "Zwart"
+        },
+        {
+          "rank": 4,
+          "answer": "Groen"
+        },
+        {
+          "rank": 5,
+          "answer": "Rood"
+        }
+      ],
+      "source": "Landenlijst"
+    },
+    {
+      "id": 80,
+      "title": "Alle zeven emiraten van de VAE",
+      "type": "top7",
+      "category": "Geografie",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Abu Dhabi"
+        },
+        {
+          "rank": 2,
+          "answer": "Dubai"
+        },
+        {
+          "rank": 3,
+          "answer": "Sharjah"
+        },
+        {
+          "rank": 4,
+          "answer": "Ajman"
+        },
+        {
+          "rank": 5,
+          "answer": "Fujairah"
+        },
+        {
+          "rank": 6,
+          "answer": "Ras al-Khaimah"
+        },
+        {
+          "rank": 7,
+          "answer": "Umm al-Qaiwain"
+        }
+      ],
+      "source": "Emiratenlijst"
+    },
+    {
+      "id": 81,
+      "title": "Alle leden van The Beatles",
+      "type": "top4",
+      "category": "Media & entertainment",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "John Lennon"
+        },
+        {
+          "rank": 2,
+          "answer": "Paul McCartney"
+        },
+        {
+          "rank": 3,
+          "answer": "George Harrison"
+        },
+        {
+          "rank": 4,
+          "answer": "Ringo Starr"
+        }
+      ],
+      "source": "Muziekgeschiedenis"
+    },
+    {
+      "id": 82,
+      "title": "Alle basisbewerkingen in de rekenkunde",
+      "type": "top4",
+      "category": "Wetenschap",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Optellen"
+        },
+        {
+          "rank": 2,
+          "answer": "Aftrekken"
+        },
+        {
+          "rank": 3,
+          "answer": "Vermenigvuldigen"
+        },
+        {
+          "rank": 4,
+          "answer": "Delen"
+        }
+      ],
+      "source": "Wiskunde"
+    },
+    {
+      "id": 83,
+      "title": "Alle Olympische continenten (vijf ringen)",
+      "type": "top5",
+      "category": "Sport",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Afrika"
+        },
+        {
+          "rank": 2,
+          "answer": "Amerika (Noord & Zuid)"
+        },
+        {
+          "rank": 3,
+          "answer": "Azi\u00eb"
+        },
+        {
+          "rank": 4,
+          "answer": "Europa"
+        },
+        {
+          "rank": 5,
+          "answer": "Oceani\u00eb"
+        }
+      ],
+      "source": "Olympische symboliek"
+    },
+    {
+      "id": 84,
+      "title": "Alle dagen van de week",
+      "type": "top7",
+      "category": "Diversen",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Maandag"
+        },
+        {
+          "rank": 2,
+          "answer": "Dinsdag"
+        },
+        {
+          "rank": 3,
+          "answer": "Woensdag"
+        },
+        {
+          "rank": 4,
+          "answer": "Donderdag"
+        },
+        {
+          "rank": 5,
+          "answer": "Vrijdag"
+        },
+        {
+          "rank": 6,
+          "answer": "Zaterdag"
+        },
+        {
+          "rank": 7,
+          "answer": "Zondag"
+        }
+      ],
+      "source": "Kalender"
+    },
+    {
+      "id": 85,
+      "title": "Alle maanden van het jaar",
+      "type": "top12",
+      "category": "Diversen",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Januari"
+        },
+        {
+          "rank": 2,
+          "answer": "Februari"
+        },
+        {
+          "rank": 3,
+          "answer": "Maart"
+        },
+        {
+          "rank": 4,
+          "answer": "April"
+        },
+        {
+          "rank": 5,
+          "answer": "Mei"
+        },
+        {
+          "rank": 6,
+          "answer": "Juni"
+        },
+        {
+          "rank": 7,
+          "answer": "Juli"
+        },
+        {
+          "rank": 8,
+          "answer": "Augustus"
+        },
+        {
+          "rank": 9,
+          "answer": "September"
+        },
+        {
+          "rank": 10,
+          "answer": "Oktober"
+        },
+        {
+          "rank": 11,
+          "answer": "November"
+        },
+        {
+          "rank": 12,
+          "answer": "December"
+        }
+      ],
+      "source": "Kalender"
+    },
+    {
+      "id": 86,
+      "title": "Alle vier Majors in golf",
+      "type": "top4",
+      "category": "Sport",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Masters Tournament"
+        },
+        {
+          "rank": 2,
+          "answer": "PGA Championship"
+        },
+        {
+          "rank": 3,
+          "answer": "US Open (golf)"
+        },
+        {
+          "rank": 4,
+          "answer": "The Open Championship (Brits Open)"
+        }
+      ],
+      "source": "Golf Majors"
+    },
+    {
+      "id": 87,
+      "title": "De medaillekleuren bij de Olympische Spelen",
+      "type": "top3",
+      "category": "Sport",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Goud"
+        },
+        {
+          "rank": 2,
+          "answer": "Zilver"
+        },
+        {
+          "rank": 3,
+          "answer": "Brons"
+        }
+      ],
+      "source": "Olympische traditie"
+    },
+    {
+      "id": 88,
+      "title": "Alle vijf menselijke zintuigen",
+      "type": "top5",
+      "category": "Wetenschap",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Zien"
+        },
+        {
+          "rank": 2,
+          "answer": "Horen"
+        },
+        {
+          "rank": 3,
+          "answer": "Voelen"
+        },
+        {
+          "rank": 4,
+          "answer": "Proeven"
+        },
+        {
+          "rank": 5,
+          "answer": "Ruiken"
+        }
+      ],
+      "source": "Biologie"
+    },
+    {
+      "id": 89,
+      "title": "Alle belangrijke stromingen in de islam",
+      "type": "top3",
+      "category": "Talen & cultuur",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Soennisme"
+        },
+        {
+          "rank": 2,
+          "answer": "Sjiisme"
+        },
+        {
+          "rank": 3,
+          "answer": "Ibadisme"
+        }
+      ],
+      "source": "Religiewetenschap"
+    },
+    {
+      "id": 90,
+      "title": "Alle hoofdtypen gesteente",
+      "type": "top3",
+      "category": "Wetenschap",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Stollingsgesteente"
+        },
+        {
+          "rank": 2,
+          "answer": "Sedimentgesteente"
+        },
+        {
+          "rank": 3,
+          "answer": "Metamorf gesteente"
+        }
+      ],
+      "source": "Geologie"
+    },
+    {
+      "id": 91,
+      "title": "Alle categorie\u00ebn Nobelprijzen",
+      "type": "top6",
+      "category": "Wetenschap",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Natuurkunde"
+        },
+        {
+          "rank": 2,
+          "answer": "Scheikunde"
+        },
+        {
+          "rank": 3,
+          "answer": "Fysiologie of Geneeskunde"
+        },
+        {
+          "rank": 4,
+          "answer": "Literatuur"
+        },
+        {
+          "rank": 5,
+          "answer": "Vrede"
+        },
+        {
+          "rank": 6,
+          "answer": "Economische Wetenschappen"
+        }
+      ],
+      "source": "Nobelstichting"
+    },
+    {
+      "id": 92,
+      "title": "Alle Grand Slam-toernooien in tennis",
+      "type": "top4",
+      "category": "Sport",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Australian Open"
+        },
+        {
+          "rank": 2,
+          "answer": "Roland Garros (Frans Open)"
+        },
+        {
+          "rank": 3,
+          "answer": "Wimbledon"
+        },
+        {
+          "rank": 4,
+          "answer": "US Open"
+        }
+      ],
+      "source": "ITF"
+    },
+    {
+      "id": 93,
+      "title": "Alle vijf Grote Meren van Noord-Amerika",
+      "type": "top5",
+      "category": "Geografie",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Bovenmeer (Superior)"
+        },
+        {
+          "rank": 2,
+          "answer": "Huronmeer"
+        },
+        {
+          "rank": 3,
+          "answer": "Michiganmeer"
+        },
+        {
+          "rank": 4,
+          "answer": "Eriemeer"
+        },
+        {
+          "rank": 5,
+          "answer": "Ontariomeer"
+        }
+      ],
+      "source": "Geografie"
+    },
+    {
+      "id": 94,
+      "title": "Alle Galile\u00efsche manen van Jupiter",
+      "type": "top4",
+      "category": "Wetenschap",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Io"
+        },
+        {
+          "rank": 2,
+          "answer": "Europa"
+        },
+        {
+          "rank": 3,
+          "answer": "Ganymedes"
+        },
+        {
+          "rank": 4,
+          "answer": "Callisto"
+        }
+      ],
+      "source": "Astronomie"
+    },
+    {
+      "id": 95,
+      "title": "Alle drie Baltische staten",
+      "type": "top3",
+      "category": "Geschiedenis",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Estland"
+        },
+        {
+          "rank": 2,
+          "answer": "Letland"
+        },
+        {
+          "rank": 3,
+          "answer": "Litouwen"
+        }
+      ],
+      "source": "Aardrijkskunde"
+    },
+    {
+      "id": 96,
+      "title": "Alle vijf Noordse landen",
+      "type": "top5",
+      "category": "Geografie",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Zweden"
+        },
+        {
+          "rank": 2,
+          "answer": "Noorwegen"
+        },
+        {
+          "rank": 3,
+          "answer": "Finland"
+        },
+        {
+          "rank": 4,
+          "answer": "Denemarken"
+        },
+        {
+          "rank": 5,
+          "answer": "IJsland"
+        }
+      ],
+      "source": "Europa"
+    },
+    {
+      "id": 97,
+      "title": "Alle zes oprichters van de Europese Unie (EEC)",
+      "type": "top6",
+      "category": "Geschiedenis",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Belgi\u00eb"
+        },
+        {
+          "rank": 2,
+          "answer": "Duitsland (West-Duitsland)"
+        },
+        {
+          "rank": 3,
+          "answer": "Frankrijk"
+        },
+        {
+          "rank": 4,
+          "answer": "Itali\u00eb"
+        },
+        {
+          "rank": 5,
+          "answer": "Luxemburg"
+        },
+        {
+          "rank": 6,
+          "answer": "Nederland"
+        }
+      ],
+      "source": "EU-geschiedenis (1957)"
+    },
+    {
+      "id": 98,
+      "title": "Alle acht Ivy League-universiteiten",
+      "type": "top8",
+      "category": "Diversen",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Harvard University"
+        },
+        {
+          "rank": 2,
+          "answer": "Yale University"
+        },
+        {
+          "rank": 3,
+          "answer": "Princeton University"
+        },
+        {
+          "rank": 4,
+          "answer": "Columbia University"
+        },
+        {
+          "rank": 5,
+          "answer": "Brown University"
+        },
+        {
+          "rank": 6,
+          "answer": "Dartmouth College"
+        },
+        {
+          "rank": 7,
+          "answer": "University of Pennsylvania"
+        },
+        {
+          "rank": 8,
+          "answer": "Cornell University"
+        }
+      ],
+      "source": "Onderwijsgeschiedenis"
+    },
+    {
+      "id": 99,
+      "title": "Alle vijf basissmaken",
+      "type": "top5",
+      "category": "Diversen",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Zoet"
+        },
+        {
+          "rank": 2,
+          "answer": "Zuur"
+        },
+        {
+          "rank": 3,
+          "answer": "Zout"
+        },
+        {
+          "rank": 4,
+          "answer": "Bitter"
+        },
+        {
+          "rank": 5,
+          "answer": "Umami"
+        }
+      ],
+      "source": "Voedingsleer"
+    },
+    {
+      "id": 100,
+      "title": "Alle vier aggregatietoestanden van materie",
+      "type": "top4",
+      "category": "Wetenschap",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Vast"
+        },
+        {
+          "rank": 2,
+          "answer": "Vloeibaar"
+        },
+        {
+          "rank": 3,
+          "answer": "Gas"
+        },
+        {
+          "rank": 4,
+          "answer": "Plasma"
+        }
+      ],
+      "source": "Natuurkunde"
+    },
+    {
+      "id": 101,
+      "title": "Alle vijf Grote Meren van Afrika",
+      "type": "top5",
+      "category": "Geografie",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Victoriameer"
+        },
+        {
+          "rank": 2,
+          "answer": "Tanganyikameer"
+        },
+        {
+          "rank": 3,
+          "answer": "Malawimeer"
+        },
+        {
+          "rank": 4,
+          "answer": "Turkanameer"
+        },
+        {
+          "rank": 5,
+          "answer": "Albertmeer"
+        }
+      ],
+      "source": "Afrika-geografie"
+    },
+    {
+      "id": 102,
+      "title": "Alle drie landen van Noord-Amerika",
+      "type": "top3",
+      "category": "Geografie",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Canada"
+        },
+        {
+          "rank": 2,
+          "answer": "Verenigde Staten"
+        },
+        {
+          "rank": 3,
+          "answer": "Mexico"
+        }
+      ],
+      "source": "Continentindeling"
+    },
+    {
+      "id": 103,
+      "title": "Alle zes landen ontstaan uit Joegoslavi\u00eb",
+      "type": "top6",
+      "category": "Geschiedenis",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Bosni\u00eb en Herzegovina"
+        },
+        {
+          "rank": 2,
+          "answer": "Kroati\u00eb"
+        },
+        {
+          "rank": 3,
+          "answer": "Noord-Macedoni\u00eb"
+        },
+        {
+          "rank": 4,
+          "answer": "Montenegro"
+        },
+        {
+          "rank": 5,
+          "answer": "Servi\u00eb"
+        },
+        {
+          "rank": 6,
+          "answer": "Sloveni\u00eb"
+        }
+      ],
+      "source": "Balkangeschiedenis"
+    },
+    {
+      "id": 104,
+      "title": "Alle landen die beginnen met 'Z' (in het Engels)",
+      "type": "top2",
+      "category": "Geografie",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Zambia"
+        },
+        {
+          "rank": 2,
+          "answer": "Zimbabwe"
+        }
+      ],
+      "source": "Landenlijst"
+    },
+    {
+      "id": 105,
+      "title": "Alle landen met 'Guinea' in de naam",
+      "type": "top4",
+      "category": "Geografie",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Equatoriaal-Guinea"
+        },
+        {
+          "rank": 2,
+          "answer": "Guinee"
+        },
+        {
+          "rank": 3,
+          "answer": "Guinee-Bissau"
+        },
+        {
+          "rank": 4,
+          "answer": "Papoea-Nieuw-Guinea"
+        }
+      ],
+      "source": "Landennamen"
+    },
+    {
+      "id": 106,
+      "title": "Alle landen met 'Congo' in de naam",
+      "type": "top2",
+      "category": "Geografie",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Republiek Congo (Congo-Brazzaville)"
+        },
+        {
+          "rank": 2,
+          "answer": "Democratische Republiek Congo (Congo-Kinshasa)"
+        }
+      ],
+      "source": "Landennamen"
+    },
+    {
+      "id": 107,
+      "title": "Alle landen waarvan de naam begint met 'Verenigde'",
+      "type": "top3",
+      "category": "Geografie",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Verenigde Arabische Emiraten"
+        },
+        {
+          "rank": 2,
+          "answer": "Verenigd Koninkrijk"
+        },
+        {
+          "rank": 3,
+          "answer": "Verenigde Staten"
+        }
+      ],
+      "source": "Landennamen"
+    },
+    {
+      "id": 108,
+      "title": "Alle landen die volledig door \u00e9\u00e9n ander land zijn omsloten",
+      "type": "top3",
+      "category": "Geografie",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Lesotho"
+        },
+        {
+          "rank": 2,
+          "answer": "San Marino"
+        },
+        {
+          "rank": 3,
+          "answer": "Vaticaanstad"
+        }
+      ],
+      "source": "Wereldatlas"
+    },
+    {
+      "id": 109,
+      "title": "Alle dubbel ingesloten landen",
+      "type": "top2",
+      "category": "Geografie",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Liechtenstein"
+        },
+        {
+          "rank": 2,
+          "answer": "Oezbekistan"
+        }
+      ],
+      "source": "Wereldatlas"
+    },
+    {
+      "id": 111,
+      "title": "Enig land met een niet-rechthoekige vlag",
+      "type": "top1",
+      "category": "Geografie",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Nepal"
+        }
+      ],
+      "source": "Vlaggenboek"
+    },
+    {
+      "id": 112,
+      "title": "Alle maanden met 30 dagen",
+      "type": "top4",
+      "category": "Diversen",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "April"
+        },
+        {
+          "rank": 2,
+          "answer": "Juni"
+        },
+        {
+          "rank": 3,
+          "answer": "September"
+        },
+        {
+          "rank": 4,
+          "answer": "November"
+        }
+      ],
+      "source": "Kalender"
+    },
+    {
+      "id": 113,
+      "title": "Alle 12 dieren van de Chinese dierenriem",
+      "type": "top12",
+      "category": "Talen & cultuur",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Rat"
+        },
+        {
+          "rank": 2,
+          "answer": "Os"
+        },
+        {
+          "rank": 3,
+          "answer": "Tijger"
+        },
+        {
+          "rank": 4,
+          "answer": "Konijn"
+        },
+        {
+          "rank": 5,
+          "answer": "Draak"
+        },
+        {
+          "rank": 6,
+          "answer": "Slang"
+        },
+        {
+          "rank": 7,
+          "answer": "Paard"
+        },
+        {
+          "rank": 8,
+          "answer": "Geit"
+        },
+        {
+          "rank": 9,
+          "answer": "Aap"
+        },
+        {
+          "rank": 10,
+          "answer": "Haan"
+        },
+        {
+          "rank": 11,
+          "answer": "Hond"
+        },
+        {
+          "rank": 12,
+          "answer": "Varken"
+        }
+      ],
+      "source": "Chinese kalender"
+    },
+    {
+      "id": 114,
+      "title": "Alle vier Amerikaanse staten die beginnen met 'New'",
+      "type": "top4",
+      "category": "Diversen",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "New Hampshire"
+        },
+        {
+          "rank": 2,
+          "answer": "New Jersey"
+        },
+        {
+          "rank": 3,
+          "answer": "New Mexico"
+        },
+        {
+          "rank": 4,
+          "answer": "New York"
+        }
+      ],
+      "source": "VS geografie"
+    },
+    {
+      "id": 115,
+      "title": "Alle drie Canadese territoria",
+      "type": "top3",
+      "category": "Diversen",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Yukon"
+        },
+        {
+          "rank": 2,
+          "answer": "Northwest Territories"
+        },
+        {
+          "rank": 3,
+          "answer": "Nunavut"
+        }
+      ],
+      "source": "Canada geografie"
+    },
+    {
+      "id": 116,
+      "title": "Alle vier zee\u00ebn vernoemd naar een kleur",
+      "type": "top4",
+      "category": "Geografie",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Rode Zee"
+        },
+        {
+          "rank": 2,
+          "answer": "Zwarte Zee"
+        },
+        {
+          "rank": 3,
+          "answer": "Gele Zee"
+        },
+        {
+          "rank": 4,
+          "answer": "Witte Zee"
+        }
+      ],
+      "source": "Zeespiegel"
+    },
+    {
+      "id": 117,
+      "title": "Alle drie Benelux-landen",
+      "type": "top3",
+      "category": "Geschiedenis",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Belgi\u00eb"
+        },
+        {
+          "rank": 2,
+          "answer": "Nederland"
+        },
+        {
+          "rank": 3,
+          "answer": "Luxemburg"
+        }
+      ],
+      "source": "Europees bestuur"
+    },
+    {
+      "id": 118,
+      "title": "Alle vier landen van het Verenigd Koninkrijk",
+      "type": "top4",
+      "category": "Geografie",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Engeland"
+        },
+        {
+          "rank": 2,
+          "answer": "Schotland"
+        },
+        {
+          "rank": 3,
+          "answer": "Wales"
+        },
+        {
+          "rank": 4,
+          "answer": "Noord-Ierland"
+        }
+      ],
+      "source": "VK staatsinrichting"
+    },
+    {
+      "id": 119,
+      "title": "Alle 12 oprichters van de NAVO",
+      "type": "top12",
+      "category": "Geschiedenis",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Belgi\u00eb"
+        },
+        {
+          "rank": 2,
+          "answer": "Canada"
+        },
+        {
+          "rank": 3,
+          "answer": "Denemarken"
+        },
+        {
+          "rank": 4,
+          "answer": "Frankrijk"
+        },
+        {
+          "rank": 5,
+          "answer": "IJsland"
+        },
+        {
+          "rank": 6,
+          "answer": "Itali\u00eb"
+        },
+        {
+          "rank": 7,
+          "answer": "Luxemburg"
+        },
+        {
+          "rank": 8,
+          "answer": "Nederland"
+        },
+        {
+          "rank": 9,
+          "answer": "Noorwegen"
+        },
+        {
+          "rank": 10,
+          "answer": "Portugal"
+        },
+        {
+          "rank": 11,
+          "answer": "Verenigd Koninkrijk"
+        },
+        {
+          "rank": 12,
+          "answer": "Verenigde Staten"
+        }
+      ],
+      "source": "NAVO 1949"
+    },
+    {
+      "id": 120,
+      "title": "Alle 15 voormalige Sovjet-republieken",
+      "type": "top15",
+      "category": "Geschiedenis",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Armeni\u00eb"
+        },
+        {
+          "rank": 2,
+          "answer": "Azerbeidzjan"
+        },
+        {
+          "rank": 3,
+          "answer": "Belarus (Wit-Rusland)"
+        },
+        {
+          "rank": 4,
+          "answer": "Estland"
+        },
+        {
+          "rank": 5,
+          "answer": "Georgi\u00eb"
+        },
+        {
+          "rank": 6,
+          "answer": "Kazachstan"
+        },
+        {
+          "rank": 7,
+          "answer": "Kirgizi\u00eb"
+        },
+        {
+          "rank": 8,
+          "answer": "Letland"
+        },
+        {
+          "rank": 9,
+          "answer": "Litouwen"
+        },
+        {
+          "rank": 10,
+          "answer": "Moldavi\u00eb"
+        },
+        {
+          "rank": 11,
+          "answer": "Oekra\u00efne"
+        },
+        {
+          "rank": 12,
+          "answer": "Oezbekistan"
+        },
+        {
+          "rank": 13,
+          "answer": "Rusland"
+        },
+        {
+          "rank": 14,
+          "answer": "Tadzjikistan"
+        },
+        {
+          "rank": 15,
+          "answer": "Turkmenistan"
+        }
+      ],
+      "source": "Sovjet-Unie geschiedenis"
+    },
+    {
+      "id": 121,
+      "title": "Landen waarvan land en hoofdstad met dezelfde letter beginnen",
+      "type": "top6",
+      "category": "Diversen",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Djibouti (Djibouti)"
+        },
+        {
+          "rank": 2,
+          "answer": "Guatemala (Guatemala-Stad)"
+        },
+        {
+          "rank": 3,
+          "answer": "Koeweit (Koeweit-Stad)"
+        },
+        {
+          "rank": 4,
+          "answer": "Luxemburg (Luxemburg)"
+        },
+        {
+          "rank": 5,
+          "answer": "Mexico (Mexico-Stad)"
+        },
+        {
+          "rank": 6,
+          "answer": "Panama (Panama-Stad)"
+        }
+      ],
+      "source": "Toponymie"
+    },
+    {
+      "id": 122,
+      "title": "Alle zeven hoofdzonden",
+      "type": "top7",
+      "category": "Diversen",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Hoogmoed"
+        },
+        {
+          "rank": 2,
+          "answer": "Hebzucht"
+        },
+        {
+          "rank": 3,
+          "answer": "Lust"
+        },
+        {
+          "rank": 4,
+          "answer": "Afgunst"
+        },
+        {
+          "rank": 5,
+          "answer": "Gulzigheid"
+        },
+        {
+          "rank": 6,
+          "answer": "Woede"
+        },
+        {
+          "rank": 7,
+          "answer": "Luiheid"
+        }
+      ],
+      "source": "Christelijke traditie"
+    },
+    {
+      "id": 123,
+      "title": "Alle zeven deugden",
+      "type": "top7",
+      "category": "Diversen",
+      "difficulty": "hard",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Nederigheid"
+        },
+        {
+          "rank": 2,
+          "answer": "Liefdadigheid (Vrijgevigheid)"
+        },
+        {
+          "rank": 3,
+          "answer": "Kuishheid (Kuisheid)"
+        },
+        {
+          "rank": 4,
+          "answer": "Geduld"
+        },
+        {
+          "rank": 5,
+          "answer": "Matigheid"
+        },
+        {
+          "rank": 6,
+          "answer": "Vriendelijkheid"
+        },
+        {
+          "rank": 7,
+          "answer": "IJver"
+        }
+      ],
+      "source": "Christelijke traditie"
+    },
+    {
+      "id": 124,
+      "title": "Alle continenten naar bevolkingsgrootte",
+      "type": "top6",
+      "category": "Geografie",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Azi\u00eb"
+        },
+        {
+          "rank": 2,
+          "answer": "Afrika"
+        },
+        {
+          "rank": 3,
+          "answer": "Europa"
+        },
+        {
+          "rank": 4,
+          "answer": "Noord-Amerika"
+        },
+        {
+          "rank": 5,
+          "answer": "Zuid-Amerika"
+        },
+        {
+          "rank": 6,
+          "answer": "Oceani\u00eb"
+        }
+      ],
+      "source": "VN bevolkingsdata"
+    },
+    {
+      "id": 125,
+      "title": "Alle vier modehoofdsteden van de wereld",
+      "type": "top4",
+      "category": "Diversen",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Parijs"
+        },
+        {
+          "rank": 2,
+          "answer": "Milaan"
+        },
+        {
+          "rank": 3,
+          "answer": "New York"
+        },
+        {
+          "rank": 4,
+          "answer": "Londen"
+        }
+      ],
+      "source": "Mode-industrie"
+    },
+    {
+      "id": 126,
+      "title": "Alle vier klassieke elementen",
+      "type": "top4",
+      "category": "Diversen",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Aarde"
+        },
+        {
+          "rank": 2,
+          "answer": "Water"
+        },
+        {
+          "rank": 3,
+          "answer": "Lucht"
+        },
+        {
+          "rank": 4,
+          "answer": "Vuur"
+        }
+      ],
+      "source": "Oud-Griekse filosofie"
+    },
+    {
+      "id": 127,
+      "title": "Alle acht windstreken",
+      "type": "top8",
+      "category": "Diversen",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Noord"
+        },
+        {
+          "rank": 2,
+          "answer": "Noordoost"
+        },
+        {
+          "rank": 3,
+          "answer": "Oost"
+        },
+        {
+          "rank": 4,
+          "answer": "Zuidoost"
+        },
+        {
+          "rank": 5,
+          "answer": "Zuid"
+        },
+        {
+          "rank": 6,
+          "answer": "Zuidwest"
+        },
+        {
+          "rank": 7,
+          "answer": "West"
+        },
+        {
+          "rank": 8,
+          "answer": "Noordwest"
+        }
+      ],
+      "source": "Kompas"
+    },
+    {
+      "id": 128,
+      "title": "Top 10 landen met de kortste namen",
+      "type": "top10",
+      "category": "Diversen",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Peru"
+        },
+        {
+          "rank": 2,
+          "answer": "Mali"
+        },
+        {
+          "rank": 3,
+          "answer": "Iran"
+        },
+        {
+          "rank": 4,
+          "answer": "Cuba"
+        },
+        {
+          "rank": 5,
+          "answer": "Oman"
+        },
+        {
+          "rank": 6,
+          "answer": "Togo"
+        },
+        {
+          "rank": 7,
+          "answer": "Fiji"
+        },
+        {
+          "rank": 8,
+          "answer": "Laos"
+        },
+        {
+          "rank": 9,
+          "answer": "Tsjaad"
+        },
+        {
+          "rank": 10,
+          "answer": "Niue"
+        }
+      ],
+      "source": "Landenlijst"
+    },
+    {
+      "id": 129,
+      "title": "Alle twee landen vernoemd naar een scheikundig element",
+      "type": "top2",
+      "category": "Diversen",
+      "difficulty": "hard",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Argentini\u00eb (zilver)"
+        },
+        {
+          "rank": 2,
+          "answer": "Cyprus (koper)"
+        }
+      ],
+      "source": "Landnaam etymologie"
+    },
+    {
+      "id": 130,
+      "title": "Alle zes edelgassen",
+      "type": "top6",
+      "category": "Wetenschap",
+      "difficulty": "hard",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Helium"
+        },
+        {
+          "rank": 2,
+          "answer": "Neon"
+        },
+        {
+          "rank": 3,
+          "answer": "Argon"
+        },
+        {
+          "rank": 4,
+          "answer": "Krypton"
+        },
+        {
+          "rank": 5,
+          "answer": "Xenon"
+        },
+        {
+          "rank": 6,
+          "answer": "Radon"
+        }
+      ],
+      "source": "Periodiek systeem"
+    },
+    {
+      "id": 131,
+      "title": "Top 10 landen alfabetisch (beginnend bij A)",
+      "type": "top10",
+      "category": "Diversen",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Afghanistan"
+        },
+        {
+          "rank": 2,
+          "answer": "Albani\u00eb"
+        },
+        {
+          "rank": 3,
+          "answer": "Algerije"
+        },
+        {
+          "rank": 4,
+          "answer": "Andorra"
+        },
+        {
+          "rank": 5,
+          "answer": "Angola"
+        },
+        {
+          "rank": 6,
+          "answer": "Antigua en Barbuda"
+        },
+        {
+          "rank": 7,
+          "answer": "Argentini\u00eb"
+        },
+        {
+          "rank": 8,
+          "answer": "Armeni\u00eb"
+        },
+        {
+          "rank": 9,
+          "answer": "Aruba"
+        },
+        {
+          "rank": 10,
+          "answer": "Australi\u00eb"
+        }
+      ],
+      "source": "Landenlijst"
+    },
+    {
+      "id": 132,
+      "title": "Top 10 landen met hoogste levensverwachting",
+      "type": "top10",
+      "category": "Wetenschap",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Hongkong"
+        },
+        {
+          "rank": 2,
+          "answer": "Japan"
+        },
+        {
+          "rank": 3,
+          "answer": "Macau"
+        },
+        {
+          "rank": 4,
+          "answer": "Zwitserland"
+        },
+        {
+          "rank": 5,
+          "answer": "Singapore"
+        },
+        {
+          "rank": 6,
+          "answer": "Itali\u00eb"
+        },
+        {
+          "rank": 7,
+          "answer": "Spanje"
+        },
+        {
+          "rank": 8,
+          "answer": "Australi\u00eb"
+        },
+        {
+          "rank": 9,
+          "answer": "IJsland"
+        },
+        {
+          "rank": 10,
+          "answer": "Isra\u00ebl"
+        }
+      ],
+      "source": "WHO (2019)"
+    },
+    {
+      "id": 133,
+      "title": "Top 10 landen met laagste vruchtbaarheidscijfer",
+      "type": "top10",
+      "category": "Wetenschap",
+      "difficulty": "hard",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Zuid-Korea"
+        },
+        {
+          "rank": 2,
+          "answer": "Hongkong"
+        },
+        {
+          "rank": 3,
+          "answer": "Singapore"
+        },
+        {
+          "rank": 4,
+          "answer": "Macau"
+        },
+        {
+          "rank": 5,
+          "answer": "Malta"
+        },
+        {
+          "rank": 6,
+          "answer": "Oekra\u00efne"
+        },
+        {
+          "rank": 7,
+          "answer": "Spanje"
+        },
+        {
+          "rank": 8,
+          "answer": "Itali\u00eb"
+        },
+        {
+          "rank": 9,
+          "answer": "Griekenland"
+        },
+        {
+          "rank": 10,
+          "answer": "Japan"
+        }
+      ],
+      "source": "Wereldbank (2020)"
+    },
+    {
+      "id": 134,
+      "title": "Top 10 langste grensparen tussen landen",
+      "type": "top10",
+      "category": "Geografie",
+      "difficulty": "hard",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "VS\u2013Canada (~8891 km)"
+        },
+        {
+          "rank": 2,
+          "answer": "Rusland\u2013Kazachstan (~6846 km)"
+        },
+        {
+          "rank": 3,
+          "answer": "Argentini\u00eb\u2013Chili (~5300 km)"
+        },
+        {
+          "rank": 4,
+          "answer": "China\u2013Mongoli\u00eb (~4677 km)"
+        },
+        {
+          "rank": 5,
+          "answer": "India\u2013Bangladesh (~4096 km)"
+        },
+        {
+          "rank": 6,
+          "answer": "Rusland\u2013China (~4000 km)"
+        },
+        {
+          "rank": 7,
+          "answer": "Brazili\u00eb\u2013Bolivia (~3423 km)"
+        },
+        {
+          "rank": 8,
+          "answer": "Kazachstan\u2013Oezbekistan (~2351 km)"
+        },
+        {
+          "rank": 9,
+          "answer": "Rusland\u2013Mongoli\u00eb (~3485 km)"
+        },
+        {
+          "rank": 10,
+          "answer": "Finland\u2013Zweden (~614 km, langste EU-grens)"
+        }
+      ],
+      "source": "Wereldatlas"
+    },
+    {
+      "id": 135,
+      "title": "Top 10 drukste spoorwegstations ter wereld",
+      "type": "top10",
+      "category": "Technologie & internet",
+      "difficulty": "hard",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Station Shinjuku (Tokio)"
+        },
+        {
+          "rank": 2,
+          "answer": "Station Shibuya (Tokio)"
+        },
+        {
+          "rank": 3,
+          "answer": "Station Ikebukuro (Tokio)"
+        },
+        {
+          "rank": 4,
+          "answer": "Station Umeda (Osaka)"
+        },
+        {
+          "rank": 5,
+          "answer": "Station Nagoya"
+        },
+        {
+          "rank": 6,
+          "answer": "Station Yokohama"
+        },
+        {
+          "rank": 7,
+          "answer": "Station Guangzhou"
+        },
+        {
+          "rank": 8,
+          "answer": "Station Seoel"
+        },
+        {
+          "rank": 9,
+          "answer": "Station Paris-Nord (Parijs)"
+        },
+        {
+          "rank": 10,
+          "answer": "Station New York Penn"
+        }
+      ],
+      "source": "Spoorstatistieken (2019)"
+    },
+    {
+      "id": 136,
+      "title": "Top 10 landen alfabetisch laatst",
+      "type": "top10",
+      "category": "Diversen",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Zimbabwe"
+        },
+        {
+          "rank": 2,
+          "answer": "Zambia"
+        },
+        {
+          "rank": 3,
+          "answer": "Jemen"
+        },
+        {
+          "rank": 4,
+          "answer": "Vietnam"
+        },
+        {
+          "rank": 5,
+          "answer": "Vaticaanstad"
+        },
+        {
+          "rank": 6,
+          "answer": "Uruguay"
+        },
+        {
+          "rank": 7,
+          "answer": "Oezbekistan"
+        },
+        {
+          "rank": 8,
+          "answer": "Verenigde Staten"
+        },
+        {
+          "rank": 9,
+          "answer": "Verenigd Koninkrijk"
+        },
+        {
+          "rank": 10,
+          "answer": "Tsjaad"
+        }
+      ],
+      "source": "Landenlijst"
+    },
+    {
+      "id": 137,
+      "title": "Top 10 rijkste personen ter wereld",
+      "type": "top10",
+      "category": "Economie & rijkdom",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Elon Musk"
+        },
+        {
+          "rank": 2,
+          "answer": "Bernard Arnault"
+        },
+        {
+          "rank": 3,
+          "answer": "Jeff Bezos"
+        },
+        {
+          "rank": 4,
+          "answer": "Bill Gates"
+        },
+        {
+          "rank": 5,
+          "answer": "Larry Ellison"
+        },
+        {
+          "rank": 6,
+          "answer": "Warren Buffett"
+        },
+        {
+          "rank": 7,
+          "answer": "Larry Page"
+        },
+        {
+          "rank": 8,
+          "answer": "Sergey Brin"
+        },
+        {
+          "rank": 9,
+          "answer": "Mark Zuckerberg"
+        },
+        {
+          "rank": 10,
+          "answer": "Carlos Slim"
+        }
+      ],
+      "source": "Forbes (2025)"
+    },
+    {
+      "id": 138,
+      "title": "Top 10 hoogste watervallen ter wereld",
+      "type": "top10",
+      "category": "Wetenschap",
+      "difficulty": "hard",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Angel Falls (Venezuela)"
+        },
+        {
+          "rank": 2,
+          "answer": "Tugela Falls (Zuid-Afrika)"
+        },
+        {
+          "rank": 3,
+          "answer": "Cataratas las Tres Hermanas (Peru)"
+        },
+        {
+          "rank": 4,
+          "answer": "Olo'upena Falls (Hawa\u00ef, VS)"
+        },
+        {
+          "rank": 5,
+          "answer": "Yumbilla Falls (Peru)"
+        },
+        {
+          "rank": 6,
+          "answer": "Vinnufossen (Noorwegen)"
+        },
+        {
+          "rank": 7,
+          "answer": "Bal\u00e5ifossen (Noorwegen)"
+        },
+        {
+          "rank": 8,
+          "answer": "Pu'uka'oku Falls (Hawa\u00ef, VS)"
+        },
+        {
+          "rank": 9,
+          "answer": "James Bruce Falls (Canada)"
+        },
+        {
+          "rank": 10,
+          "answer": "Browne Falls (Nieuw-Zeeland)"
+        }
+      ],
+      "source": "World Waterfall Database"
+    },
+    {
+      "id": 139,
+      "title": "Top 10 drukste metronetwerken (jaarlijkse reizigers)",
+      "type": "top10",
+      "category": "Technologie & internet",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Shanghai Metro (China)"
+        },
+        {
+          "rank": 2,
+          "answer": "Beijing Metro (China)"
+        },
+        {
+          "rank": 3,
+          "answer": "Tokyo Metro (Japan)"
+        },
+        {
+          "rank": 4,
+          "answer": "Moskou Metro (Rusland)"
+        },
+        {
+          "rank": 5,
+          "answer": "Guangzhou Metro (China)"
+        },
+        {
+          "rank": 6,
+          "answer": "Seoul Subway (Zuid-Korea)"
+        },
+        {
+          "rank": 7,
+          "answer": "New York City Subway (VS)"
+        },
+        {
+          "rank": 8,
+          "answer": "Mexico City Metro (Mexico)"
+        },
+        {
+          "rank": 9,
+          "answer": "Parijs M\u00e9tro (Frankrijk)"
+        },
+        {
+          "rank": 10,
+          "answer": "Londen Underground (VK)"
+        }
+      ],
+      "source": "UITP (2019)"
+    },
+    {
+      "id": 140,
+      "title": "Top 10 wijnproducerende landen",
+      "type": "top10",
+      "category": "Economie & rijkdom",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Itali\u00eb"
+        },
+        {
+          "rank": 2,
+          "answer": "Frankrijk"
+        },
+        {
+          "rank": 3,
+          "answer": "Spanje"
+        },
+        {
+          "rank": 4,
+          "answer": "Verenigde Staten"
+        },
+        {
+          "rank": 5,
+          "answer": "Australi\u00eb"
+        },
+        {
+          "rank": 6,
+          "answer": "Argentini\u00eb"
+        },
+        {
+          "rank": 7,
+          "answer": "China"
+        },
+        {
+          "rank": 8,
+          "answer": "Zuid-Afrika"
+        },
+        {
+          "rank": 9,
+          "answer": "Chili"
+        },
+        {
+          "rank": 10,
+          "answer": "Duitsland"
+        }
+      ],
+      "source": "OIV (2021)"
+    },
+    {
+      "id": 141,
+      "title": "Top 10 koffieverbruikende landen (per hoofd)",
+      "type": "top10",
+      "category": "Diversen",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Finland"
+        },
+        {
+          "rank": 2,
+          "answer": "Noorwegen"
+        },
+        {
+          "rank": 3,
+          "answer": "IJsland"
+        },
+        {
+          "rank": 4,
+          "answer": "Denemarken"
+        },
+        {
+          "rank": 5,
+          "answer": "Nederland"
+        },
+        {
+          "rank": 6,
+          "answer": "Zweden"
+        },
+        {
+          "rank": 7,
+          "answer": "Zwitserland"
+        },
+        {
+          "rank": 8,
+          "answer": "Belgi\u00eb"
+        },
+        {
+          "rank": 9,
+          "answer": "Canada"
+        },
+        {
+          "rank": 10,
+          "answer": "Oostenrijk"
+        }
+      ],
+      "source": "ICO (2019)"
+    },
+    {
+      "id": 142,
+      "title": "Top 10 bierdrinkende landen (per hoofd)",
+      "type": "top10",
+      "category": "Diversen",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Tsjechi\u00eb"
+        },
+        {
+          "rank": 2,
+          "answer": "Oostenrijk"
+        },
+        {
+          "rank": 3,
+          "answer": "Polen"
+        },
+        {
+          "rank": 4,
+          "answer": "Roemeni\u00eb"
+        },
+        {
+          "rank": 5,
+          "answer": "Duitsland"
+        },
+        {
+          "rank": 6,
+          "answer": "Estland"
+        },
+        {
+          "rank": 7,
+          "answer": "Namibi\u00eb"
+        },
+        {
+          "rank": 8,
+          "answer": "Ierland"
+        },
+        {
+          "rank": 9,
+          "answer": "Spanje"
+        },
+        {
+          "rank": 10,
+          "answer": "Finland"
+        }
+      ],
+      "source": "WHO (2018)"
+    },
+    {
+      "id": 143,
+      "title": "Top 10 landen met hoogste HDI",
+      "type": "top10",
+      "category": "Economie & rijkdom",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Zwitserland"
+        },
+        {
+          "rank": 2,
+          "answer": "Noorwegen"
+        },
+        {
+          "rank": 3,
+          "answer": "IJsland"
+        },
+        {
+          "rank": 4,
+          "answer": "Hongkong (China)"
+        },
+        {
+          "rank": 5,
+          "answer": "Australi\u00eb"
+        },
+        {
+          "rank": 6,
+          "answer": "Denemarken"
+        },
+        {
+          "rank": 7,
+          "answer": "Zweden"
+        },
+        {
+          "rank": 8,
+          "answer": "Ierland"
+        },
+        {
+          "rank": 9,
+          "answer": "Duitsland"
+        },
+        {
+          "rank": 10,
+          "answer": "Nederland"
+        }
+      ],
+      "source": "UNDP (2021)"
+    },
+    {
+      "id": 144,
+      "title": "Top 10 landen zonder Olympische medaille",
+      "type": "top10",
+      "category": "Sport",
+      "difficulty": "hard",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Bangladesh"
+        },
+        {
+          "rank": 2,
+          "answer": "Nepal"
+        },
+        {
+          "rank": 3,
+          "answer": "Myanmar"
+        },
+        {
+          "rank": 4,
+          "answer": "Andorra"
+        },
+        {
+          "rank": 5,
+          "answer": "Monaco"
+        },
+        {
+          "rank": 6,
+          "answer": "Tsjaad"
+        },
+        {
+          "rank": 7,
+          "answer": "Jemen"
+        },
+        {
+          "rank": 8,
+          "answer": "Cambodja"
+        },
+        {
+          "rank": 9,
+          "answer": "Laos"
+        },
+        {
+          "rank": 10,
+          "answer": "Liechtenstein"
+        }
+      ],
+      "source": "IOC-statistieken"
+    },
+    {
+      "id": 145,
+      "title": "Top 10 landen met de meeste tijdzones",
+      "type": "top10",
+      "category": "Geografie",
+      "difficulty": "hard",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Frankrijk (12, incl. overzeese gebieden)"
+        },
+        {
+          "rank": 2,
+          "answer": "Verenigde Staten (11, incl. territoria)"
+        },
+        {
+          "rank": 3,
+          "answer": "Rusland (11)"
+        },
+        {
+          "rank": 4,
+          "answer": "Verenigd Koninkrijk (9, incl. gebieden)"
+        },
+        {
+          "rank": 5,
+          "answer": "Australi\u00eb (8, incl. externe gebieden)"
+        },
+        {
+          "rank": 6,
+          "answer": "Canada (6)"
+        },
+        {
+          "rank": 7,
+          "answer": "Denemarken (5, incl. Groenland)"
+        },
+        {
+          "rank": 8,
+          "answer": "Nieuw-Zeeland (5, incl. territoria)"
+        },
+        {
+          "rank": 9,
+          "answer": "Brazili\u00eb (4)"
+        },
+        {
+          "rank": 10,
+          "answer": "Mexico (4)"
+        }
+      ],
+      "source": "TimeZone-database (2022)"
+    },
+    {
+      "id": 146,
+      "title": "Top 10 grootste steden in Europa",
+      "type": "top10",
+      "category": "Geografie",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Moskou (Rusland)"
+        },
+        {
+          "rank": 2,
+          "answer": "Istanbul (Turkije, Europees deel)"
+        },
+        {
+          "rank": 3,
+          "answer": "Parijs (Frankrijk)"
+        },
+        {
+          "rank": 4,
+          "answer": "Londen (VK)"
+        },
+        {
+          "rank": 5,
+          "answer": "Madrid (Spanje)"
+        },
+        {
+          "rank": 6,
+          "answer": "Sint-Petersburg (Rusland)"
+        },
+        {
+          "rank": 7,
+          "answer": "Rome (Itali\u00eb)"
+        },
+        {
+          "rank": 8,
+          "answer": "Kiev (Oekra\u00efne)"
+        },
+        {
+          "rank": 9,
+          "answer": "Berlijn (Duitsland)"
+        },
+        {
+          "rank": 10,
+          "answer": "Boekarest (Roemeni\u00eb)"
+        }
+      ],
+      "source": "VN Urbanisatie (2020)"
+    },
+    {
+      "id": 147,
+      "title": "Top 10 grootste steden in Noord-Amerika",
+      "type": "top10",
+      "category": "Geografie",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Mexico-Stad (Mexico)"
+        },
+        {
+          "rank": 2,
+          "answer": "New York City (VS)"
+        },
+        {
+          "rank": 3,
+          "answer": "Los Angeles (VS)"
+        },
+        {
+          "rank": 4,
+          "answer": "Chicago (VS)"
+        },
+        {
+          "rank": 5,
+          "answer": "Toronto (Canada)"
+        },
+        {
+          "rank": 6,
+          "answer": "Houston (VS)"
+        },
+        {
+          "rank": 7,
+          "answer": "Havana (Cuba)"
+        },
+        {
+          "rank": 8,
+          "answer": "Santo Domingo (Dominicaanse Republiek)"
+        },
+        {
+          "rank": 9,
+          "answer": "Montreal (Canada)"
+        },
+        {
+          "rank": 10,
+          "answer": "Philadelphia (VS)"
+        }
+      ],
+      "source": "VN Urbanisatie (2020)"
+    },
+    {
+      "id": 148,
+      "title": "Top 10 grootste steden in Zuid-Amerika",
+      "type": "top10",
+      "category": "Geografie",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "S\u00e3o Paulo (Brazili\u00eb)"
+        },
+        {
+          "rank": 2,
+          "answer": "Buenos Aires (Argentini\u00eb)"
+        },
+        {
+          "rank": 3,
+          "answer": "Rio de Janeiro (Brazili\u00eb)"
+        },
+        {
+          "rank": 4,
+          "answer": "Lima (Peru)"
+        },
+        {
+          "rank": 5,
+          "answer": "Bogot\u00e1 (Colombia)"
+        },
+        {
+          "rank": 6,
+          "answer": "Santiago (Chili)"
+        },
+        {
+          "rank": 7,
+          "answer": "Caracas (Venezuela)"
+        },
+        {
+          "rank": 8,
+          "answer": "Quito (Ecuador)"
+        },
+        {
+          "rank": 9,
+          "answer": "Salvador (Brazili\u00eb)"
+        },
+        {
+          "rank": 10,
+          "answer": "Brasilia (Brazili\u00eb)"
+        }
+      ],
+      "source": "VN Urbanisatie (2020)"
+    },
+    {
+      "id": 149,
+      "title": "Top 10 langste rivieren van Afrika",
+      "type": "top10",
+      "category": "Geografie",
+      "difficulty": "hard",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Nijl"
+        },
+        {
+          "rank": 2,
+          "answer": "Congo"
+        },
+        {
+          "rank": 3,
+          "answer": "Niger"
+        },
+        {
+          "rank": 4,
+          "answer": "Zambezi"
+        },
+        {
+          "rank": 5,
+          "answer": "Ubangi"
+        },
+        {
+          "rank": 6,
+          "answer": "Kasai"
+        },
+        {
+          "rank": 7,
+          "answer": "Oranje"
+        },
+        {
+          "rank": 8,
+          "answer": "Limpopo"
+        },
+        {
+          "rank": 9,
+          "answer": "Senegal"
+        },
+        {
+          "rank": 10,
+          "answer": "Blauwe Nijl"
+        }
+      ],
+      "source": "World Atlas"
+    },
+    {
+      "id": 150,
+      "title": "Top 10 hoogste bergen buiten Azi\u00eb",
+      "type": "top10",
+      "category": "Wetenschap",
+      "difficulty": "hard",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Aconcagua (Argentini\u00eb)"
+        },
+        {
+          "rank": 2,
+          "answer": "Ojos del Salado (Chili/Argentini\u00eb)"
+        },
+        {
+          "rank": 3,
+          "answer": "Denali (Verenigde Staten)"
+        },
+        {
+          "rank": 4,
+          "answer": "Kilimanjaro (Tanzania)"
+        },
+        {
+          "rank": 5,
+          "answer": "Elbroes (Rusland)"
+        },
+        {
+          "rank": 6,
+          "answer": "Pico de Orizaba (Mexico)"
+        },
+        {
+          "rank": 7,
+          "answer": "Vinson Massief (Antarctica)"
+        },
+        {
+          "rank": 8,
+          "answer": "Puncak Jaya (Indonesi\u00eb)"
+        },
+        {
+          "rank": 9,
+          "answer": "Mont Blanc (Frankrijk/Itali\u00eb)"
+        },
+        {
+          "rank": 10,
+          "answer": "Mount Logan (Canada)"
+        }
+      ],
+      "source": "Bergexpedities"
+    },
+    {
+      "id": 151,
+      "title": "Top 10 meest gezochte personen op Google in 2025 (wereldwijd)",
+      "type": "top10",
+      "category": "Popcultuur",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "d4vd (David Burke)"
+        },
+        {
+          "rank": 2,
+          "answer": "Kendrick Lamar"
+        },
+        {
+          "rank": 3,
+          "answer": "Jimmy Kimmel"
+        },
+        {
+          "rank": 4,
+          "answer": "Tyler Robinson"
+        },
+        {
+          "rank": 5,
+          "answer": "Paus Leo XIV"
+        },
+        {
+          "rank": 6,
+          "answer": "Vaibhav Suryavanshi"
+        },
+        {
+          "rank": 7,
+          "answer": "Shedeur Sanders"
+        },
+        {
+          "rank": 8,
+          "answer": "Bianca Censori"
+        },
+        {
+          "rank": 9,
+          "answer": "Zohran Mamdani"
+        },
+        {
+          "rank": 10,
+          "answer": "Greta Thunberg"
+        }
+      ],
+      "source": "Google Trends (2025)"
+    },
+    {
+      "id": 152,
+      "title": "Alle acht planeten van het zonnestelsel",
+      "type": "top8",
+      "category": "Wetenschap",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Mercurius"
+        },
+        {
+          "rank": 2,
+          "answer": "Venus"
+        },
+        {
+          "rank": 3,
+          "answer": "Aarde"
+        },
+        {
+          "rank": 4,
+          "answer": "Mars"
+        },
+        {
+          "rank": 5,
+          "answer": "Jupiter"
+        },
+        {
+          "rank": 6,
+          "answer": "Saturnus"
+        },
+        {
+          "rank": 7,
+          "answer": "Uranus"
+        },
+        {
+          "rank": 8,
+          "answer": "Neptunus"
+        }
+      ],
+      "source": "NASA"
+    },
+    {
+      "id": 153,
+      "title": "Alle vijf dwergplaneten (officieel)",
+      "type": "top5",
+      "category": "Wetenschap",
+      "difficulty": "hard",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Ceres"
+        },
+        {
+          "rank": 2,
+          "answer": "Pluto"
+        },
+        {
+          "rank": 3,
+          "answer": "Haumea"
+        },
+        {
+          "rank": 4,
+          "answer": "Makemake"
+        },
+        {
+          "rank": 5,
+          "answer": "Eris"
+        }
+      ],
+      "source": "IAU"
+    },
+    {
+      "id": 154,
+      "title": "Alle drie subatomaire deeltjes in een atoom",
+      "type": "top3",
+      "category": "Wetenschap",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Proton"
+        },
+        {
+          "rank": 2,
+          "answer": "Neutron"
+        },
+        {
+          "rank": 3,
+          "answer": "Elektron"
+        }
+      ],
+      "source": "Natuurkunde"
+    },
+    {
+      "id": 155,
+      "title": "Alle twee landen in Zuid-Amerika zonder kustlijn",
+      "type": "top2",
+      "category": "Geografie",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Bolivia"
+        },
+        {
+          "rank": 2,
+          "answer": "Paraguay"
+        }
+      ],
+      "source": "Wereldatlas"
+    },
+    {
+      "id": 156,
+      "title": "Alle twee Afrikaanse landen die nooit gekoloniseerd zijn",
+      "type": "top2",
+      "category": "Geschiedenis",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Liberia"
+        },
+        {
+          "rank": 2,
+          "answer": "Ethiopi\u00eb"
+        }
+      ],
+      "source": "Afrikaanse geschiedenis"
+    },
+    {
+      "id": 157,
+      "title": "Alle vier landen binnen het Koninkrijk der Nederlanden",
+      "type": "top4",
+      "category": "Geschiedenis",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Nederland"
+        },
+        {
+          "rank": 2,
+          "answer": "Aruba"
+        },
+        {
+          "rank": 3,
+          "answer": "Cura\u00e7ao"
+        },
+        {
+          "rank": 4,
+          "answer": "Sint Maarten"
+        }
+      ],
+      "source": "Rijksvoorlichtingsdienst"
+    },
+    {
+      "id": 158,
+      "title": "Alle acht Alpenlanden",
+      "type": "top8",
+      "category": "Geografie",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Duitsland"
+        },
+        {
+          "rank": 2,
+          "answer": "Frankrijk"
+        },
+        {
+          "rank": 3,
+          "answer": "Itali\u00eb"
+        },
+        {
+          "rank": 4,
+          "answer": "Liechtenstein"
+        },
+        {
+          "rank": 5,
+          "answer": "Monaco"
+        },
+        {
+          "rank": 6,
+          "answer": "Oostenrijk"
+        },
+        {
+          "rank": 7,
+          "answer": "Sloveni\u00eb"
+        },
+        {
+          "rank": 8,
+          "answer": "Zwitserland"
+        }
+      ],
+      "source": "Europese geografie"
+    },
+    {
+      "id": 159,
+      "title": "Alle drie Baltische hoofdsteden",
+      "type": "top3",
+      "category": "Talen & cultuur",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Tallinn (Estland)"
+        },
+        {
+          "rank": 2,
+          "answer": "Riga (Letland)"
+        },
+        {
+          "rank": 3,
+          "answer": "Vilnius (Litouwen)"
+        }
+      ],
+      "source": "Reisgidsen"
+    },
+    {
+      "id": 160,
+      "title": "Alle vijf Noordse hoofdsteden",
+      "type": "top5",
+      "category": "Geografie",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Stockholm (Zweden)"
+        },
+        {
+          "rank": 2,
+          "answer": "Oslo (Noorwegen)"
+        },
+        {
+          "rank": 3,
+          "answer": "Kopenhagen (Denemarken)"
+        },
+        {
+          "rank": 4,
+          "answer": "Helsinki (Finland)"
+        },
+        {
+          "rank": 5,
+          "answer": "Reykjavik (IJsland)"
+        }
+      ],
+      "source": "Noord-Europa"
+    },
+    {
+      "id": 161,
+      "title": "Alle vier hoofdsteden van het Verenigd Koninkrijk",
+      "type": "top4",
+      "category": "Geografie",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Londen (Engeland)"
+        },
+        {
+          "rank": 2,
+          "answer": "Edinburgh (Schotland)"
+        },
+        {
+          "rank": 3,
+          "answer": "Cardiff (Wales)"
+        },
+        {
+          "rank": 4,
+          "answer": "Belfast (Noord-Ierland)"
+        }
+      ],
+      "source": "VK staatsinrichting"
+    },
+    {
+      "id": 162,
+      "title": "Alle drie landen in de zuidelijke Kaukasus",
+      "type": "top3",
+      "category": "Geografie",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Armeni\u00eb"
+        },
+        {
+          "rank": 2,
+          "answer": "Azerbeidzjan"
+        },
+        {
+          "rank": 3,
+          "answer": "Georgi\u00eb"
+        }
+      ],
+      "source": "Geopolitiek"
+    },
+    {
+      "id": 163,
+      "title": "Top 10 landen beginnend met M",
+      "type": "top10",
+      "category": "Diversen",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Madagaskar"
+        },
+        {
+          "rank": 2,
+          "answer": "Malawi"
+        },
+        {
+          "rank": 3,
+          "answer": "Maleisi\u00eb"
+        },
+        {
+          "rank": 4,
+          "answer": "Maldiven"
+        },
+        {
+          "rank": 5,
+          "answer": "Mali"
+        },
+        {
+          "rank": 6,
+          "answer": "Malta"
+        },
+        {
+          "rank": 7,
+          "answer": "Marokko"
+        },
+        {
+          "rank": 8,
+          "answer": "Marshall-eilanden"
+        },
+        {
+          "rank": 9,
+          "answer": "Mauritani\u00eb"
+        },
+        {
+          "rank": 10,
+          "answer": "Mauritius"
+        }
+      ],
+      "source": "Landenlijst"
+    },
+    {
+      "id": 164,
+      "title": "Top 10 landen beginnend met S",
+      "type": "top10",
+      "category": "Diversen",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Saoedi-Arabi\u00eb"
+        },
+        {
+          "rank": 2,
+          "answer": "Senegal"
+        },
+        {
+          "rank": 3,
+          "answer": "Servi\u00eb"
+        },
+        {
+          "rank": 4,
+          "answer": "Seychellen"
+        },
+        {
+          "rank": 5,
+          "answer": "Sierra Leone"
+        },
+        {
+          "rank": 6,
+          "answer": "Singapore"
+        },
+        {
+          "rank": 7,
+          "answer": "Slowakije"
+        },
+        {
+          "rank": 8,
+          "answer": "Sloveni\u00eb"
+        },
+        {
+          "rank": 9,
+          "answer": "Somali\u00eb"
+        },
+        {
+          "rank": 10,
+          "answer": "Spanje"
+        }
+      ],
+      "source": "Landenlijst"
+    },
+    {
+      "id": 165,
+      "title": "Top 10 landen beginnend met T",
+      "type": "top10",
+      "category": "Diversen",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Tadzjikistan"
+        },
+        {
+          "rank": 2,
+          "answer": "Taiwan"
+        },
+        {
+          "rank": 3,
+          "answer": "Tanzania"
+        },
+        {
+          "rank": 4,
+          "answer": "Thailand"
+        },
+        {
+          "rank": 5,
+          "answer": "Togo"
+        },
+        {
+          "rank": 6,
+          "answer": "Tonga"
+        },
+        {
+          "rank": 7,
+          "answer": "Trinidad en Tobago"
+        },
+        {
+          "rank": 8,
+          "answer": "Tsjaad"
+        },
+        {
+          "rank": 9,
+          "answer": "Tsjechi\u00eb"
+        },
+        {
+          "rank": 10,
+          "answer": "Tunesi\u00eb"
+        }
+      ],
+      "source": "Landenlijst"
+    },
+    {
+      "id": 166,
+      "title": "Top 10 landen beginnend met P",
+      "type": "top10",
+      "category": "Diversen",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Pakistan"
+        },
+        {
+          "rank": 2,
+          "answer": "Palau"
+        },
+        {
+          "rank": 3,
+          "answer": "Panama"
+        },
+        {
+          "rank": 4,
+          "answer": "Papoea-Nieuw-Guinea"
+        },
+        {
+          "rank": 5,
+          "answer": "Paraguay"
+        },
+        {
+          "rank": 6,
+          "answer": "Peru"
+        },
+        {
+          "rank": 7,
+          "answer": "Filipijnen"
+        },
+        {
+          "rank": 8,
+          "answer": "Polen"
+        },
+        {
+          "rank": 9,
+          "answer": "Portugal"
+        },
+        {
+          "rank": 10,
+          "answer": "Qatar"
+        }
+      ],
+      "source": "Landenlijst"
+    },
+    {
+      "id": 167,
+      "title": "Top 10 landen beginnend met B",
+      "type": "top10",
+      "category": "Diversen",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Bahama's"
+        },
+        {
+          "rank": 2,
+          "answer": "Bahrein"
+        },
+        {
+          "rank": 3,
+          "answer": "Bangladesh"
+        },
+        {
+          "rank": 4,
+          "answer": "Barbados"
+        },
+        {
+          "rank": 5,
+          "answer": "Belgi\u00eb"
+        },
+        {
+          "rank": 6,
+          "answer": "Belize"
+        },
+        {
+          "rank": 7,
+          "answer": "Benin"
+        },
+        {
+          "rank": 8,
+          "answer": "Bhutan"
+        },
+        {
+          "rank": 9,
+          "answer": "Bolivia"
+        },
+        {
+          "rank": 10,
+          "answer": "Bosni\u00eb en Herzegovina"
+        }
+      ],
+      "source": "Landenlijst"
+    },
+    {
+      "id": 168,
+      "title": "Top 10 landen beginnend met I",
+      "type": "top10",
+      "category": "Diversen",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "IJsland"
+        },
+        {
+          "rank": 2,
+          "answer": "India"
+        },
+        {
+          "rank": 3,
+          "answer": "Indonesi\u00eb"
+        },
+        {
+          "rank": 4,
+          "answer": "Iran"
+        },
+        {
+          "rank": 5,
+          "answer": "Irak"
+        },
+        {
+          "rank": 6,
+          "answer": "Ierland"
+        },
+        {
+          "rank": 7,
+          "answer": "Isra\u00ebl"
+        },
+        {
+          "rank": 8,
+          "answer": "Itali\u00eb"
+        },
+        {
+          "rank": 9,
+          "answer": "Ivoorkust"
+        }
+      ],
+      "source": "Landenlijst"
+    },
+    {
+      "id": 169,
+      "title": "Top 10 landen beginnend met G",
+      "type": "top10",
+      "category": "Diversen",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Gabon"
+        },
+        {
+          "rank": 2,
+          "answer": "Gambia"
+        },
+        {
+          "rank": 3,
+          "answer": "Ghana"
+        },
+        {
+          "rank": 4,
+          "answer": "Grenada"
+        },
+        {
+          "rank": 5,
+          "answer": "Griekenland"
+        },
+        {
+          "rank": 6,
+          "answer": "Guatemala"
+        },
+        {
+          "rank": 7,
+          "answer": "Guinee"
+        },
+        {
+          "rank": 8,
+          "answer": "Guinee-Bissau"
+        },
+        {
+          "rank": 9,
+          "answer": "Guyana"
+        },
+        {
+          "rank": 10,
+          "answer": "Georgi\u00eb"
+        }
+      ],
+      "source": "Landenlijst"
+    },
+    {
+      "id": 170,
+      "title": "Alle 9 landen beginnend met L",
+      "type": "top9",
+      "category": "Diversen",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Laos"
+        },
+        {
+          "rank": 2,
+          "answer": "Lesotho"
+        },
+        {
+          "rank": 3,
+          "answer": "Letland"
+        },
+        {
+          "rank": 4,
+          "answer": "Liberia"
+        },
+        {
+          "rank": 5,
+          "answer": "Libanon"
+        },
+        {
+          "rank": 6,
+          "answer": "Libi\u00eb"
+        },
+        {
+          "rank": 7,
+          "answer": "Liechtenstein"
+        },
+        {
+          "rank": 8,
+          "answer": "Litouwen"
+        },
+        {
+          "rank": 9,
+          "answer": "Luxemburg"
+        }
+      ],
+      "source": "Landenlijst"
+    },
+    {
+      "id": 171,
+      "title": "Alle 4 landen beginnend met 'V'",
+      "type": "top4",
+      "category": "Geografie",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Vanuatu"
+        },
+        {
+          "rank": 2,
+          "answer": "Vaticaanstad"
+        },
+        {
+          "rank": 3,
+          "answer": "Venezuela"
+        },
+        {
+          "rank": 4,
+          "answer": "Vietnam"
+        }
+      ],
+      "source": "Landenlijst"
+    },
+    {
+      "id": 172,
+      "title": "Alle zeven SI-basiseenheden",
+      "type": "top7",
+      "category": "Wetenschap",
+      "difficulty": "hard",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "meter (m)"
+        },
+        {
+          "rank": 2,
+          "answer": "kilogram (kg)"
+        },
+        {
+          "rank": 3,
+          "answer": "seconde (s)"
+        },
+        {
+          "rank": 4,
+          "answer": "amp\u00e8re (A)"
+        },
+        {
+          "rank": 5,
+          "answer": "kelvin (K)"
+        },
+        {
+          "rank": 6,
+          "answer": "mol (mol)"
+        },
+        {
+          "rank": 7,
+          "answer": "candela (cd)"
+        }
+      ],
+      "source": "BIPM"
+    },
+    {
+      "id": 173,
+      "title": "Alle zes quarksmaken",
+      "type": "top6",
+      "category": "Wetenschap",
+      "difficulty": "hard",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "up"
+        },
+        {
+          "rank": 2,
+          "answer": "down"
+        },
+        {
+          "rank": 3,
+          "answer": "strange"
+        },
+        {
+          "rank": 4,
+          "answer": "charm"
+        },
+        {
+          "rank": 5,
+          "answer": "top"
+        },
+        {
+          "rank": 6,
+          "answer": "bottom"
+        }
+      ],
+      "source": "Deeltjefysica"
+    },
+    {
+      "id": 174,
+      "title": "Alle drie Triple Crown paardenraces (VS)",
+      "type": "top3",
+      "category": "Sport",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Kentucky Derby"
+        },
+        {
+          "rank": 2,
+          "answer": "Preakness Stakes"
+        },
+        {
+          "rank": 3,
+          "answer": "Belmont Stakes"
+        }
+      ],
+      "source": "Hippische sport"
+    },
+    {
+      "id": 175,
+      "title": "Alle 13 OPEC-landen (2023)",
+      "type": "top13",
+      "category": "Economie & rijkdom",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Algerije"
+        },
+        {
+          "rank": 2,
+          "answer": "Angola"
+        },
+        {
+          "rank": 3,
+          "answer": "Congo-Kinshasa"
+        },
+        {
+          "rank": 4,
+          "answer": "Equatoriaal-Guinea"
+        },
+        {
+          "rank": 5,
+          "answer": "Gabon"
+        },
+        {
+          "rank": 6,
+          "answer": "Iran"
+        },
+        {
+          "rank": 7,
+          "answer": "Irak"
+        },
+        {
+          "rank": 8,
+          "answer": "Koeweit"
+        },
+        {
+          "rank": 9,
+          "answer": "Libi\u00eb"
+        },
+        {
+          "rank": 10,
+          "answer": "Nigeria"
+        },
+        {
+          "rank": 11,
+          "answer": "Saoedi-Arabi\u00eb"
+        },
+        {
+          "rank": 12,
+          "answer": "Verenigde Arabische Emiraten"
+        },
+        {
+          "rank": 13,
+          "answer": "Venezuela"
+        }
+      ],
+      "source": "OPEC"
+    },
+    {
+      "id": 176,
+      "title": "Alle acht G8-landen",
+      "type": "top8",
+      "category": "Geschiedenis",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Canada"
+        },
+        {
+          "rank": 2,
+          "answer": "Duitsland"
+        },
+        {
+          "rank": 3,
+          "answer": "Frankrijk"
+        },
+        {
+          "rank": 4,
+          "answer": "Itali\u00eb"
+        },
+        {
+          "rank": 5,
+          "answer": "Japan"
+        },
+        {
+          "rank": 6,
+          "answer": "Rusland"
+        },
+        {
+          "rank": 7,
+          "answer": "Verenigd Koninkrijk"
+        },
+        {
+          "rank": 8,
+          "answer": "Verenigde Staten"
+        }
+      ],
+      "source": "Wereldpolitiek"
+    },
+    {
+      "id": 177,
+      "title": "Alle acht SAARC-landen",
+      "type": "top8",
+      "category": "Geschiedenis",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Afghanistan"
+        },
+        {
+          "rank": 2,
+          "answer": "Bangladesh"
+        },
+        {
+          "rank": 3,
+          "answer": "Bhutan"
+        },
+        {
+          "rank": 4,
+          "answer": "India"
+        },
+        {
+          "rank": 5,
+          "answer": "Maldiven"
+        },
+        {
+          "rank": 6,
+          "answer": "Nepal"
+        },
+        {
+          "rank": 7,
+          "answer": "Pakistan"
+        },
+        {
+          "rank": 8,
+          "answer": "Sri Lanka"
+        }
+      ],
+      "source": "Zuid-Aziatische samenwerking"
+    },
+    {
+      "id": 178,
+      "title": "Alle tien ASEAN-landen",
+      "type": "top10",
+      "category": "Geschiedenis",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Brunei"
+        },
+        {
+          "rank": 2,
+          "answer": "Cambodja"
+        },
+        {
+          "rank": 3,
+          "answer": "Filipijnen"
+        },
+        {
+          "rank": 4,
+          "answer": "Indonesi\u00eb"
+        },
+        {
+          "rank": 5,
+          "answer": "Laos"
+        },
+        {
+          "rank": 6,
+          "answer": "Maleisi\u00eb"
+        },
+        {
+          "rank": 7,
+          "answer": "Myanmar"
+        },
+        {
+          "rank": 8,
+          "answer": "Singapore"
+        },
+        {
+          "rank": 9,
+          "answer": "Thailand"
+        },
+        {
+          "rank": 10,
+          "answer": "Vietnam"
+        }
+      ],
+      "source": "Zuidoost-Azi\u00eb politiek"
+    },
+    {
+      "id": 179,
+      "title": "Alle zes offici\u00eble talen van de VN",
+      "type": "top6",
+      "category": "Talen & cultuur",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Arabisch"
+        },
+        {
+          "rank": 2,
+          "answer": "Chinees (Mandarijn)"
+        },
+        {
+          "rank": 3,
+          "answer": "Engels"
+        },
+        {
+          "rank": 4,
+          "answer": "Frans"
+        },
+        {
+          "rank": 5,
+          "answer": "Russisch"
+        },
+        {
+          "rank": 6,
+          "answer": "Spaans"
+        }
+      ],
+      "source": "Verenigde Naties"
+    },
+    {
+      "id": 180,
+      "title": "Top 10 meest gevolgde personen op Instagram",
+      "type": "top10",
+      "category": "Popcultuur",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Cristiano Ronaldo"
+        },
+        {
+          "rank": 2,
+          "answer": "Lionel Messi"
+        },
+        {
+          "rank": 3,
+          "answer": "Selena Gomez"
+        },
+        {
+          "rank": 4,
+          "answer": "Dwayne Johnson (The Rock)"
+        },
+        {
+          "rank": 5,
+          "answer": "Ariana Grande"
+        },
+        {
+          "rank": 6,
+          "answer": "Kim Kardashian"
+        },
+        {
+          "rank": 7,
+          "answer": "Beyonc\u00e9"
+        },
+        {
+          "rank": 8,
+          "answer": "Khlo\u00e9 Kardashian"
+        },
+        {
+          "rank": 9,
+          "answer": "Justin Bieber"
+        },
+        {
+          "rank": 10,
+          "answer": "Taylor Swift"
+        }
+      ],
+      "source": "Instagram-statistieken (2025)"
+    },
+    {
+      "id": 181,
+      "title": "Top 10 meest bezochte musea",
+      "type": "top10",
+      "category": "Diversen",
+      "difficulty": "medium",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Louvre (Frankrijk)"
+        },
+        {
+          "rank": 2,
+          "answer": "Nationaal Museum van China"
+        },
+        {
+          "rank": 3,
+          "answer": "Vaticaanse Musea (Vaticaanstad)"
+        },
+        {
+          "rank": 4,
+          "answer": "British Museum (VK)"
+        },
+        {
+          "rank": 5,
+          "answer": "Metropolitan Museum of Art (VS)"
+        },
+        {
+          "rank": 6,
+          "answer": "Tate Modern (VK)"
+        },
+        {
+          "rank": 7,
+          "answer": "National Gallery (VK)"
+        },
+        {
+          "rank": 8,
+          "answer": "American Museum of Natural History (VS)"
+        },
+        {
+          "rank": 9,
+          "answer": "Hermitage (Rusland)"
+        },
+        {
+          "rank": 10,
+          "answer": "National Gallery of Art (VS)"
+        }
+      ],
+      "source": "Museumcijfers (2019)"
+    },
+    {
+      "id": 182,
+      "title": "Alle zeven continenten",
+      "type": "top7",
+      "category": "Geografie",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Azi\u00eb"
+        },
+        {
+          "rank": 2,
+          "answer": "Afrika"
+        },
+        {
+          "rank": 3,
+          "answer": "Noord-Amerika"
+        },
+        {
+          "rank": 4,
+          "answer": "Zuid-Amerika"
+        },
+        {
+          "rank": 5,
+          "answer": "Antarctica"
+        },
+        {
+          "rank": 6,
+          "answer": "Europa"
+        },
+        {
+          "rank": 7,
+          "answer": "Oceani\u00eb"
+        }
+      ],
+      "source": "Wereldatlas"
+    },
+    {
+      "id": 183,
+      "title": "Alle drie hoofdpersonages uit Harry Potter",
+      "type": "top3",
+      "category": "Popcultuur",
+      "difficulty": "easy",
+      "items": [
+        {
+          "rank": 1,
+          "answer": "Harry"
+        },
+        {
+          "rank": 2,
+          "answer": "Hermelien"
+        },
+        {
+          "rank": 3,
+          "answer": "Ron"
+        }
+      ],
+      "source": "Boekenreeks"
+    },
+    {
+      "id": 184,
+      "title": "Top 10 trending zoekopdrachten (Nederland, 2025)",
+      "type": "top10",
+      "category": "Trends",
+      "difficulty": "medium",
+      "items": [
+        { "rank": 1, "answer": "Stemwijzer" },
+        { "rank": 2, "answer": "Charlie Kirk" },
+        { "rank": 3, "answer": "Verkiezingen 2025" },
+        { "rank": 4, "answer": "iPhone 17" },
+        { "rank": 5, "answer": "D66" },
+        { "rank": 6, "answer": "Rob Jetten" },
+        { "rank": 7, "answer": "EK Vrouwenvoetbal" },
+        { "rank": 8, "answer": "Labubu" },
+        { "rank": 9, "answer": "Marco Borsato" },
+        { "rank": 10, "answer": "NAVO-top" }
+      ],
+      "source": "Google Trends (NL)"
+    },
+    {
+      "id": 185,
+      "title": "Top 10 meest gegooglede BN'ers in 2025 (Nederland)",
+      "type": "top10",
+      "category": "Trends",
+      "difficulty": "medium",
+      "items": [
+        { "rank": 1, "answer": "Rob Jetten" },
+        { "rank": 2, "answer": "Marco Borsato" },
+        { "rank": 3, "answer": "Martijn Krabb\u00e9" },
+        { "rank": 4, "answer": "Jeffrey Erens" },
+        { "rank": 5, "answer": "Lidewij de Vos" },
+        { "rank": 6, "answer": "Frans Timmermans" },
+        { "rank": 7, "answer": "Noa Braaf" },
+        { "rank": 8, "answer": "Astrid Holleeder" },
+        { "rank": 9, "answer": "Famke Janssen" },
+        { "rank": 10, "answer": "Suzan en Freek" }
+      ],
+      "source": "Google Trends (NL)"
+    },
+    {
+      "id": 186,
+      "title": "Top 10 meest gegooglede internationale beroemdheden in 2025 (Nederland)",
+      "type": "top10",
+      "category": "Trends",
+      "difficulty": "medium",
+      "items": [
+        { "rank": 1, "answer": "K3" },
+        { "rank": 2, "answer": "Andy Byron" },
+        { "rank": 3, "answer": "Bonnie Blue" },
+        { "rank": 4, "answer": "Kendrick Lamar" },
+        { "rank": 5, "answer": "Avicii" },
+        { "rank": 6, "answer": "Greta Thunberg" },
+        { "rank": 7, "answer": "Belle Gibson" },
+        { "rank": 8, "answer": "Bianca Censori" },
+        { "rank": 9, "answer": "Melania Trump" },
+        { "rank": 10, "answer": "Charlie Hunnam" }
+      ],
+      "source": "Google Trends (NL)"
+    },
+    {
+      "id": 187,
+      "title": "Top 10 meest gegooglede Film & TV in 2025 (Nederland)",
+      "type": "top10",
+      "category": "Trends",
+      "difficulty": "medium",
+      "items": [
+        { "rank": 1, "answer": "Adolescence" },
+        { "rank": 2, "answer": "Squid Game" },
+        { "rank": 3, "answer": "Babygirl" },
+        { "rank": 4, "answer": "A Minecraft Movie" },
+        { "rank": 5, "answer": "Boer zoekt vrouw" },
+        { "rank": 6, "answer": "Nosferatu" },
+        { "rank": 7, "answer": "Bridget Jones" },
+        { "rank": 8, "answer": "One Battle After Another" },
+        { "rank": 9, "answer": "Ginny & Georgia" },
+        { "rank": 10, "answer": "Anora" }
+      ],
+      "source": "Google Trends (NL)"
+    },
+    {
+      "id": 188,
+      "title": "Top 10 meest gegooglede sportevenementen in 2025 (Nederland)",
+      "type": "top10",
+      "category": "Trends",
+      "difficulty": "medium",
+      "items": [
+        { "rank": 1, "answer": "Champions League" },
+        { "rank": 2, "answer": "Wimbledon" },
+        { "rank": 3, "answer": "EK Vrouwenvoetbal" },
+        { "rank": 4, "answer": "Tour de France" },
+        { "rank": 5, "answer": "Europa League" },
+        { "rank": 6, "answer": "WK-kwalificatie" },
+        { "rank": 7, "answer": "Super Bowl" },
+        { "rank": 8, "answer": "US Open" },
+        { "rank": 9, "answer": "Amstel Gold Race" },
+        { "rank": 10, "answer": "Olympische Spelen" }
+      ],
+      "source": "Google Trends (NL)"
+    }
+  ]
+}

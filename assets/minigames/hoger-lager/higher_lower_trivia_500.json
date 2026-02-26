@@ -1,0 +1,2501 @@
+[
+{
+"id": 1,
+"question": "Hoeveel continenten heeft de aarde?",
+"answer": 7,
+"unit": "continenten",
+"category": "geografie"
+},
+{
+"id": 2,
+"question": "Hoeveel oceanen zijn er op aarde?",
+"answer": 5,
+"unit": "oceanen",
+"category": "geografie"
+},
+{
+"id": 3,
+"question": "Hoeveel landen zijn er lid van de Verenigde Naties?",
+"answer": 193,
+"unit": "landen",
+"category": "geografie"
+},
+{
+"id": 4,
+"question": "Hoeveel landen zijn er in de Europese Unie?",
+"answer": 27,
+"unit": "landen",
+"category": "geografie"
+},
+{
+"id": 5,
+"question": "Hoeveel provincies heeft Nederland?",
+"answer": 12,
+"unit": "provincies",
+"category": "geografie"
+},
+{
+"id": 6,
+"question": "Hoeveel provincies heeft België?",
+"answer": 10,
+"unit": "provincies",
+"category": "geografie"
+},
+{
+"id": 7,
+"question": "Hoeveel deelstaten heeft Duitsland?",
+"answer": 16,
+"unit": "deelstaten",
+"category": "geografie"
+},
+{
+"id": 8,
+"question": "Hoeveel kantons heeft Zwitserland?",
+"answer": 26,
+"unit": "kantons",
+"category": "geografie"
+},
+{
+"id": 9,
+"question": "Hoeveel staten telt de Verenigde Staten van Amerika?",
+"answer": 50,
+"unit": "staten",
+"category": "geografie"
+},
+{
+"id": 10,
+"question": "Hoeveel staten heeft Australië?",
+"answer": 6,
+"unit": "staten",
+"category": "geografie"
+},
+{
+"id": 11,
+"question": "Hoeveel provincies heeft Canada?",
+"answer": 10,
+"unit": "provincies",
+"category": "geografie"
+},
+{
+"id": 12,
+"question": "Hoeveel deelstaten heeft India?",
+"answer": 28,
+"unit": "deelstaten",
+"category": "geografie"
+},
+{
+"id": 13,
+"question": "Hoeveel prefecturen heeft Japan?",
+"answer": 47,
+"unit": "prefecturen",
+"category": "geografie"
+},
+{
+"id": 14,
+"question": "Hoeveel landen telt Afrika?",
+"answer": 54,
+"unit": "landen",
+"category": "geografie"
+},
+{
+"id": 15,
+"question": "Hoeveel landen telt Zuid-Amerika?",
+"answer": 12,
+"unit": "landen",
+"category": "geografie"
+},
+{
+"id": 16,
+"question": "Hoeveel landen vormen het Verenigd Koninkrijk?",
+"answer": 4,
+"unit": "landen",
+"category": "geografie"
+},
+{
+"id": 17,
+"question": "Aan hoeveel landen grenst Duitsland?",
+"answer": 9,
+"unit": "landen",
+"category": "geografie"
+},
+{
+"id": 18,
+"question": "Aan hoeveel landen grenst China?",
+"answer": 14,
+"unit": "landen",
+"category": "geografie"
+},
+{
+"id": 19,
+"question": "Aan hoeveel landen grenst Brazilië?",
+"answer": 10,
+"unit": "landen",
+"category": "geografie"
+},
+{
+"id": 20,
+"question": "Hoeveel tijdzones heeft Rusland?",
+"answer": 11,
+"unit": "tijdzones",
+"category": "geografie"
+},
+{
+"id": 21,
+"question": "Hoeveel sterren staan er op de vlag van de Europese Unie?",
+"answer": 12,
+"unit": "sterren",
+"category": "geografie"
+},
+{
+"id": 22,
+"question": "Hoeveel sterren staan er op de vlag van de Verenigde Staten?",
+"answer": 50,
+"unit": "sterren",
+"category": "geografie"
+},
+{
+"id": 23,
+"question": "Hoeveel strepen telt de vlag van de Verenigde Staten?",
+"answer": 13,
+"unit": "strepen",
+"category": "geografie"
+},
+{
+"id": 24,
+"question": "Hoeveel kilometer is de omtrek van de aarde (equatoriaal)?",
+"answer": 40075,
+"unit": "km",
+"category": "geografie"
+},
+{
+"id": 25,
+"question": "Hoeveel kilometer is de diameter van de aarde?",
+"answer": 12742,
+"unit": "km",
+"category": "geografie"
+},
+{
+"id": 26,
+"question": "Hoe hoog is de Mount Everest?",
+"answer": 8848,
+"unit": "m",
+"category": "geografie"
+},
+{
+"id": 27,
+"question": "Hoe hoog is K2 (de op een na hoogste berg ter wereld)?",
+"answer": 8611,
+"unit": "m",
+"category": "geografie"
+},
+{
+"id": 28,
+"question": "Hoe hoog is de waterval Angel Falls?",
+"answer": 979,
+"unit": "m",
+"category": "geografie"
+},
+{
+"id": 29,
+"question": "Hoe lang is de rivier de Nijl?",
+"answer": 6650,
+"unit": "km",
+"category": "geografie"
+},
+{
+"id": 30,
+"question": "Hoeveel vierkante kilometer beslaat de Kaspische Zee?",
+"answer": 371000,
+"unit": "km²",
+"category": "geografie"
+},
+{
+"id": 31,
+"question": "Hoe diep is het Baikalmeer?",
+"answer": 1642,
+"unit": "m",
+"category": "geografie"
+},
+{
+"id": 32,
+"question": "Hoeveel vierkante kilometer beslaat de Sahara?",
+"answer": 9200000,
+"unit": "km²",
+"category": "geografie"
+},
+{
+"id": 33,
+"question": "Hoeveel vierkante kilometer beslaat de Grote Oceaan?",
+"answer": 165200000,
+"unit": "km²",
+"category": "geografie"
+},
+{
+"id": 34,
+"question": "Hoeveel vierkante kilometer beslaat Groenland?",
+"answer": 2166086,
+"unit": "km²",
+"category": "geografie"
+},
+{
+"id": 35,
+"question": "Hoe lang is de kustlijn van Canada?",
+"answer": 202080,
+"unit": "km",
+"category": "geografie"
+},
+{
+"id": 36,
+"question": "Hoeveel kilometer lang is de Chinese Muur?",
+"answer": 21196,
+"unit": "km",
+"category": "geografie"
+},
+{
+"id": 37,
+"question": "Hoeveel meter boven zeeniveau ligt La Paz, de hoogste hoofdstad ter wereld?",
+"answer": 3650,
+"unit": "m",
+"category": "geografie"
+},
+{
+"id": 38,
+"question": "Hoeveel eilanden bestaan de Malediven uit?",
+"answer": 1190,
+"unit": "eilanden",
+"category": "geografie"
+},
+{
+"id": 39,
+"question": "Hoeveel grote piramides staan er op het Gizeh-plateau in Egypte?",
+"answer": 3,
+"unit": "piramides",
+"category": "geografie"
+},
+{
+"id": 40,
+"question": "Hoeveel Grote Meren zijn er in Noord-Amerika?",
+"answer": 5,
+"unit": "meren",
+"category": "geografie"
+},
+{
+"id": 41,
+"question": "Hoeveel departementen heeft Frankrijk?",
+"answer": 101,
+"unit": "departementen",
+"category": "geografie"
+},
+{
+"id": 42,
+"question": "Hoeveel tijdzones gebruikt China officieel (ondanks zijn grootte)?",
+"answer": 1,
+"unit": "tijdzone",
+"category": "geografie"
+},
+{
+"id": 43,
+"question": "Aan hoeveel landen grenst België?",
+"answer": 4,
+"unit": "landen",
+"category": "geografie"
+},
+{
+"id": 44,
+"question": "Aan hoeveel landen grenst Nederland?",
+"answer": 2,
+"unit": "landen",
+"category": "geografie"
+},
+{
+"id": 45,
+"question": "Hoeveel landen telt Oceanië?",
+"answer": 14,
+"unit": "landen",
+"category": "geografie"
+},
+{
+"id": 46,
+"question": "Aan hoeveel landen grenst Rusland?",
+"answer": 14,
+"unit": "landen",
+"category": "geografie"
+},
+{
+"id": 47,
+"question": "Aan hoeveel landen grenst Frankrijk (met het Europese vasteland)?",
+"answer": 8,
+"unit": "landen",
+"category": "geografie"
+},
+{
+"id": 48,
+"question": "Aan hoeveel landen grenst Italië?",
+"answer": 6,
+"unit": "landen",
+"category": "geografie"
+},
+{
+"id": 49,
+"question": "Aan hoeveel landen grenst Kazachstan?",
+"answer": 5,
+"unit": "landen",
+"category": "geografie"
+},
+{
+"id": 50,
+"question": "Aan hoeveel landen grenst Soedan?",
+"answer": 7,
+"unit": "landen",
+"category": "geografie"
+},
+{
+"id": 51,
+"question": "Aan hoeveel landen grenst de Democratische Republiek Congo?",
+"answer": 9,
+"unit": "landen",
+"category": "geografie"
+},
+{
+"id": 52,
+"question": "Aan hoeveel landen grenst Oostenrijk?",
+"answer": 8,
+"unit": "landen",
+"category": "geografie"
+},
+{
+"id": 53,
+"question": "Aan hoeveel landen grenst Zambia?",
+"answer": 8,
+"unit": "landen",
+"category": "geografie"
+},
+{
+"id": 54,
+"question": "Aan hoeveel landen grenst Turkije?",
+"answer": 8,
+"unit": "landen",
+"category": "geografie"
+},
+{
+"id": 55,
+"question": "Aan hoeveel landen grenst Polen?",
+"answer": 7,
+"unit": "landen",
+"category": "geografie"
+},
+{
+"id": 56,
+"question": "Aan hoeveel landen grenst Saoedi-Arabië?",
+"answer": 7,
+"unit": "landen",
+"category": "geografie"
+},
+{
+"id": 57,
+"question": "Aan hoeveel landen grenst Zuid-Afrika?",
+"answer": 6,
+"unit": "landen",
+"category": "geografie"
+},
+{
+"id": 58,
+"question": "Aan hoeveel landen grenst Argentinië?",
+"answer": 5,
+"unit": "landen",
+"category": "geografie"
+},
+{
+"id": 59,
+"question": "Aan hoeveel landen grenst Indonesië (landgrenzen)?",
+"answer": 3,
+"unit": "landen",
+"category": "geografie"
+},
+{
+"id": 60,
+"question": "Aan hoeveel landen grenst Canada (landgrens)?",
+"answer": 1,
+"unit": "land",
+"category": "geografie"
+},
+{
+"id": 61,
+"question": "Aan hoeveel landen grenst Portugal?",
+"answer": 1,
+"unit": "land",
+"category": "geografie"
+},
+{
+"id": 62,
+"question": "Aan hoeveel landen grenst Ierland (landgrens)?",
+"answer": 1,
+"unit": "land",
+"category": "geografie"
+},
+{
+"id": 63,
+"question": "Aan hoeveel landen grenst Papoea-Nieuw-Guinea?",
+"answer": 1,
+"unit": "land",
+"category": "geografie"
+},
+{
+"id": 64,
+"question": "Aan hoeveel landen grenst Monaco?",
+"answer": 1,
+"unit": "land",
+"category": "geografie"
+},
+{
+"id": 65,
+"question": "Aan hoeveel landen grenst Vaticaanstad?",
+"answer": 1,
+"unit": "land",
+"category": "geografie"
+},
+{
+"id": 66,
+"question": "Aan hoeveel landen grenst San Marino?",
+"answer": 1,
+"unit": "land",
+"category": "geografie"
+},
+{
+"id": 67,
+"question": "Hoe hoog is de berg Aconcagua in de Andes (hoogste punt van Zuid-Amerika)?",
+"answer": 6961,
+"unit": "m",
+"category": "geografie"
+},
+{
+"id": 68,
+"question": "Hoe hoog is de berg Kilimanjaro (hoogste punt van Afrika)?",
+"answer": 5895,
+"unit": "m",
+"category": "geografie"
+},
+{
+"id": 69,
+"question": "Hoe hoog is de berg Denali (Mount McKinley), het hoogste punt van Noord-Amerika?",
+"answer": 6190,
+"unit": "m",
+"category": "geografie"
+},
+{
+"id": 70,
+"question": "Hoe hoog is de berg Elbroes in de Kaukasus (hoogste punt van Europa)?",
+"answer": 5642,
+"unit": "m",
+"category": "geografie"
+},
+{
+"id": 71,
+"question": "Hoe hoog is het Vinson-massief, het hoogste punt van Antarctica?",
+"answer": 4892,
+"unit": "m",
+"category": "geografie"
+},
+{
+"id": 72,
+"question": "Hoeveel meter onder zeeniveau ligt het diepste punt van de Marianentrog?",
+"answer": 10925,
+"unit": "m",
+"category": "geografie"
+},
+{
+"id": 73,
+"question": "Hoeveel meter boven zeeniveau ligt het Titicacameer (hoogst bevaarbare meer)?",
+"answer": 3812,
+"unit": "m",
+"category": "geografie"
+},
+{
+"id": 74,
+"question": "Hoeveel hectare bedraagt de oppervlakte van Vaticaanstad?",
+"answer": 44,
+"unit": "ha",
+"category": "geografie"
+},
+{
+"id": 75,
+"question": "Hoeveel vierkante kilometer bedraagt de oppervlakte van Canada?",
+"answer": 9984670,
+"unit": "km²",
+"category": "geografie"
+},
+{
+"id": 76,
+"question": "Hoeveel vierkante kilometer bedraagt de oppervlakte van China?",
+"answer": 9596960,
+"unit": "km²",
+"category": "geografie"
+},
+{
+"id": 77,
+"question": "Hoeveel vierkante kilometer bedraagt de oppervlakte van de Verenigde Staten?",
+"answer": 9826675,
+"unit": "km²",
+"category": "geografie"
+},
+{
+"id": 78,
+"question": "Hoeveel vierkante kilometer bedraagt de oppervlakte van Nederland?",
+"answer": 41543,
+"unit": "km²",
+"category": "geografie"
+},
+{
+"id": 79,
+"question": "Hoe lang is de Jangtsekiang (Yangtze), de langste rivier van Azië?",
+"answer": 6300,
+"unit": "km",
+"category": "geografie"
+},
+{
+"id": 80,
+"question": "Hoe lang is het Mississippisysteem (Mississippi-Missouri), de langste rivier van Noord-Amerika?",
+"answer": 6275,
+"unit": "km",
+"category": "geografie"
+},
+{
+"id": 81,
+"question": "Hoe lang is de Wolga, de langste rivier van Europa?",
+"answer": 3530,
+"unit": "km",
+"category": "geografie"
+},
+{
+"id": 82,
+"question": "Hoe lang is de Murray-Darling, de langste rivier van Australië?",
+"answer": 2500,
+"unit": "km",
+"category": "geografie"
+},
+{
+"id": 83,
+"question": "In welk jaar begon de Eerste Wereldoorlog?",
+"answer": 1914,
+"unit": "n.Chr.",
+"category": "geschiedenis"
+},
+{
+"id": 84,
+"question": "In welk jaar eindigde de Eerste Wereldoorlog?",
+"answer": 1918,
+"unit": "n.Chr.",
+"category": "geschiedenis"
+},
+{
+"id": 85,
+"question": "In welk jaar begon de Tweede Wereldoorlog?",
+"answer": 1939,
+"unit": "n.Chr.",
+"category": "geschiedenis"
+},
+{
+"id": 86,
+"question": "In welk jaar eindigde de Tweede Wereldoorlog?",
+"answer": 1945,
+"unit": "n.Chr.",
+"category": "geschiedenis"
+},
+{
+"id": 87,
+"question": "In welk jaar werd de Berlijnse Muur afgebroken?",
+"answer": 1989,
+"unit": "n.Chr.",
+"category": "geschiedenis"
+},
+{
+"id": 88,
+"question": "In welk jaar verklaarde de Verenigde Staten hun onafhankelijkheid?",
+"answer": 1776,
+"unit": "n.Chr.",
+"category": "geschiedenis"
+},
+{
+"id": 89,
+"question": "In welk jaar begon de Franse Revolutie?",
+"answer": 1789,
+"unit": "n.Chr.",
+"category": "geschiedenis"
+},
+{
+"id": 90,
+"question": "In welk jaar landde Apollo 11 op de maan?",
+"answer": 1969,
+"unit": "n.Chr.",
+"category": "geschiedenis"
+},
+{
+"id": 91,
+"question": "Hoeveel dagen duurde de Cubaanse Rakettencrisis van 1962?",
+"answer": 13,
+"unit": "dagen",
+"category": "geschiedenis"
+},
+{
+"id": 92,
+"question": "Hoeveel jaar duurde de Honderdjarige Oorlog?",
+"answer": 116,
+"unit": "jaar",
+"category": "geschiedenis"
+},
+{
+"id": 93,
+"question": "Hoeveel jaar duurde de Tachtigjarige Oorlog?",
+"answer": 80,
+"unit": "jaar",
+"category": "geschiedenis"
+},
+{
+"id": 94,
+"question": "Hoeveel stellingen spijkerde Maarten Luther op de kerkdeur te Wittenberg?",
+"answer": 95,
+"unit": "stellingen",
+"category": "geschiedenis"
+},
+{
+"id": 95,
+"question": "Hoeveel minuten duurde de kortste oorlog (de Engels-Zanzibarese oorlog van 1896)?",
+"answer": 38,
+"unit": "minuten",
+"category": "geschiedenis"
+},
+{
+"id": 96,
+"question": "In welk jaar zonk de Titanic?",
+"answer": 1912,
+"unit": "n.Chr.",
+"category": "geschiedenis"
+},
+{
+"id": 97,
+"question": "In welk jaar werd John F. Kennedy vermoord?",
+"answer": 1963,
+"unit": "n.Chr.",
+"category": "geschiedenis"
+},
+{
+"id": 98,
+"question": "In welk jaar werd Julius Caesar vermoord?",
+"answer": 44,
+"unit": "v.Chr.",
+"category": "geschiedenis"
+},
+{
+"id": 99,
+"question": "In welk jaar werd de Romeinse keizer Nero geboren?",
+"answer": 37,
+"unit": "n.Chr.",
+"category": "geschiedenis"
+},
+{
+"id": 100,
+"question": "In welk jaar werd Napoleon verslagen bij Waterloo?",
+"answer": 1815,
+"unit": "n.Chr.",
+"category": "geschiedenis"
+},
+{
+"id": 101,
+"question": "In welk jaar werd de VN opgericht?",
+"answer": 1945,
+"unit": "n.Chr.",
+"category": "geschiedenis"
+},
+{
+"id": 102,
+"question": "In welk jaar viel de Sovjet-Unie uit elkaar?",
+"answer": 1991,
+"unit": "n.Chr.",
+"category": "geschiedenis"
+},
+{
+"id": 103,
+"question": "Hoeveel jaar duurde de regeerperiode van koningin Victoria?",
+"answer": 64,
+"unit": "jaar",
+"category": "geschiedenis"
+},
+{
+"id": 104,
+"question": "Hoe oud werd koningin Elizabeth II bij haar overlijden?",
+"answer": 96,
+"unit": "jaar",
+"category": "geschiedenis"
+},
+{
+"id": 105,
+"question": "Hoeveel jaar heeft de Sovjet-Unie bestaan?",
+"answer": 69,
+"unit": "jaar",
+"category": "geschiedenis"
+},
+{
+"id": 106,
+"question": "Hoeveel kinderen kreeg koningin Victoria?",
+"answer": 9,
+"unit": "kinderen",
+"category": "geschiedenis"
+},
+{
+"id": 107,
+"question": "Hoeveel Apollo-missies hebben een bemande maanlanding uitgevoerd?",
+"answer": 6,
+"unit": "missies",
+"category": "geschiedenis"
+},
+{
+"id": 108,
+"question": "In welk jaar stierf Alexander de Grote?",
+"answer": 323,
+"unit": "v.Chr.",
+"category": "geschiedenis"
+},
+{
+"id": 109,
+"question": "In welk jaar werd de Magna Carta ondertekend?",
+"answer": 1215,
+"unit": "n.Chr.",
+"category": "geschiedenis"
+},
+{
+"id": 110,
+"question": "In welk jaar kreeg België onafhankelijkheid van Nederland?",
+"answer": 1830,
+"unit": "n.Chr.",
+"category": "geschiedenis"
+},
+{
+"id": 111,
+"question": "In welk jaar werd de Mount Everest voor het eerst succesvol beklommen?",
+"answer": 1953,
+"unit": "n.Chr.",
+"category": "geschiedenis"
+},
+{
+"id": 112,
+"question": "In welk jaar eindigde de Vietnamoorlog?",
+"answer": 1975,
+"unit": "n.Chr.",
+"category": "geschiedenis"
+},
+{
+"id": 113,
+"question": "In welk jaar vond de kernramp van Tsjernobyl plaats?",
+"answer": 1986,
+"unit": "n.Chr.",
+"category": "geschiedenis"
+},
+{
+"id": 114,
+"question": "In welk jaar vond de wereldwijde kredietcrisis (bankencrisis) plaats?",
+"answer": 2008,
+"unit": "n.Chr.",
+"category": "geschiedenis"
+},
+{
+"id": 115,
+"question": "In welk jaar werd de COVID-19 pandemie uitgeroepen door de WHO?",
+"answer": 2020,
+"unit": "n.Chr.",
+"category": "geschiedenis"
+},
+{
+"id": 116,
+"question": "In welk jaar publiceerde Dmitri Mendelejev zijn periodiek systeem der elementen?",
+"answer": 1869,
+"unit": "n.Chr.",
+"category": "geschiedenis"
+},
+{
+"id": 117,
+"question": "In welk jaar ontdekten Marie en Pierre Curie het element radium?",
+"answer": 1898,
+"unit": "n.Chr.",
+"category": "geschiedenis"
+},
+{
+"id": 118,
+"question": "In welk jaar ontdekte Alexander Fleming penicilline?",
+"answer": 1928,
+"unit": "n.Chr.",
+"category": "geschiedenis"
+},
+{
+"id": 119,
+"question": "In welk jaar publiceerde Albert Einstein zijn speciale relativiteitstheorie?",
+"answer": 1905,
+"unit": "n.Chr.",
+"category": "geschiedenis"
+},
+{
+"id": 120,
+"question": "Hoeveel jaar duurde de Tweede Wereldoorlog (1939-1945)?",
+"answer": 6,
+"unit": "jaar",
+"category": "geschiedenis"
+},
+{
+"id": 121,
+"question": "Hoeveel dagen duurde de missie van Apollo 11 (eerste maanlanding)?",
+"answer": 8,
+"unit": "dagen",
+"category": "geschiedenis"
+},
+{
+"id": 122,
+"question": "Hoeveel staten sloten zich aan bij de Geconfedereerde Staten van Amerika (Confederatie) in 1861?",
+"answer": 11,
+"unit": "staten",
+"category": "geschiedenis"
+},
+{
+"id": 123,
+"question": "In welk jaar werd de transistor uitgevonden?",
+"answer": 1947,
+"unit": "n.Chr.",
+"category": "technologie"
+},
+{
+"id": 124,
+"question": "In welk jaar werd de telefoon uitgevonden door Alexander Graham Bell?",
+"answer": 1876,
+"unit": "n.Chr.",
+"category": "technologie"
+},
+{
+"id": 125,
+"question": "In welk jaar maakten de Wright-broers hun eerste succesvolle vlucht?",
+"answer": 1903,
+"unit": "n.Chr.",
+"category": "technologie"
+},
+{
+"id": 126,
+"question": "In welk jaar werd de eerste mens in de ruimte gelanceerd?",
+"answer": 1961,
+"unit": "n.Chr.",
+"category": "technologie"
+},
+{
+"id": 127,
+"question": "In welk jaar werd de eerste kunstmaan (satelliet) gelanceerd?",
+"answer": 1957,
+"unit": "n.Chr.",
+"category": "technologie"
+},
+{
+"id": 128,
+"question": "In welk jaar werd het World Wide Web uitgevonden?",
+"answer": 1989,
+"unit": "n.Chr.",
+"category": "technologie"
+},
+{
+"id": 129,
+"question": "In welk jaar werd de eerste iPhone uitgebracht?",
+"answer": 2007,
+"unit": "n.Chr.",
+"category": "technologie"
+},
+{
+"id": 130,
+"question": "Hoeveel bits zitten er in een byte?",
+"answer": 8,
+"unit": "bits",
+"category": "technologie"
+},
+{
+"id": 131,
+"question": "Hoeveel bits telt een IPv4-adres?",
+"answer": 32,
+"unit": "bits",
+"category": "technologie"
+},
+{
+"id": 132,
+"question": "Hoeveel bits telt een IPv6-adres?",
+"answer": 128,
+"unit": "bits",
+"category": "technologie"
+},
+{
+"id": 133,
+"question": "Hoeveel bytes zijn 1 kilobyte in binair (2^10)?",
+"answer": 1024,
+"unit": "bytes",
+"category": "technologie"
+},
+{
+"id": 134,
+"question": "Hoeveel kilobyte zijn 1 megabyte (2^10-systeem)?",
+"answer": 1024,
+"unit": "KB",
+"category": "technologie"
+},
+{
+"id": 135,
+"question": "Hoeveel volt is de standaard netspanning in Nederland?",
+"answer": 230,
+"unit": "V",
+"category": "technologie"
+},
+{
+"id": 136,
+"question": "Hoeveel transistors had de eerste Intel-processor (4004) ongeveer?",
+"answer": 2300,
+"unit": "transistors",
+"category": "technologie"
+},
+{
+"id": 137,
+"question": "Hoeveel toetsen heeft een standaard QWERTY-toetsenbord (PC)?",
+"answer": 104,
+"unit": "toetsen",
+"category": "technologie"
+},
+{
+"id": 138,
+"question": "In welk jaar werd de eerste computer (ENIAC) operationeel?",
+"answer": 1945,
+"unit": "n.Chr.",
+"category": "technologie"
+},
+{
+"id": 139,
+"question": "Hoeveel polen heeft een magneet?",
+"answer": 2,
+"unit": "polen",
+"category": "technologie"
+},
+{
+"id": 140,
+"question": "Hoeveel kleuren kan een 24-bits beeldscherm maximaal weergeven?",
+"answer": 16777216,
+"unit": "kleuren",
+"category": "technologie"
+},
+{
+"id": 141,
+"question": "Hoeveel frames per seconde is de standaard in de filmindustrie (geluidfilm)?",
+"answer": 24,
+"unit": "fps",
+"category": "technologie"
+},
+{
+"id": 142,
+"question": "In welk jaar werd YouTube opgericht?",
+"answer": 2005,
+"unit": "n.Chr.",
+"category": "technologie"
+},
+{
+"id": 143,
+"question": "In welk jaar lanceerde IBM de eerste pc (IBM PC)?",
+"answer": 1981,
+"unit": "n.Chr.",
+"category": "technologie"
+},
+{
+"id": 144,
+"question": "In welk jaar ging de eerste vrouw de ruimte in?",
+"answer": 1963,
+"unit": "n.Chr.",
+"category": "technologie"
+},
+{
+"id": 145,
+"question": "In welk jaar vond de eerste Space Shuttle-vlucht plaats?",
+"answer": 1981,
+"unit": "n.Chr.",
+"category": "technologie"
+},
+{
+"id": 146,
+"question": "In welk jaar werd de eerste auto (Benz Patent-Motorwagen) gebouwd?",
+"answer": 1886,
+"unit": "n.Chr.",
+"category": "technologie"
+},
+{
+"id": 147,
+"question": "Hoeveel letters heeft het Nederlandse alfabet?",
+"answer": 26,
+"unit": "letters",
+"category": "cultuur"
+},
+{
+"id": 148,
+"question": "Hoeveel letters heeft het Griekse alfabet?",
+"answer": 24,
+"unit": "letters",
+"category": "cultuur"
+},
+{
+"id": 149,
+"question": "Hoeveel letters heeft het Hebreeuwse alfabet?",
+"answer": 22,
+"unit": "letters",
+"category": "cultuur"
+},
+{
+"id": 150,
+"question": "Hoeveel letters heeft het Russische alfabet (Cyrillisch)?",
+"answer": 33,
+"unit": "letters",
+"category": "cultuur"
+},
+{
+"id": 151,
+"question": "Hoeveel letters heeft het Arabische alfabet?",
+"answer": 28,
+"unit": "letters",
+"category": "cultuur"
+},
+{
+"id": 152,
+"question": "Hoeveel symfonieën componeerde Ludwig van Beethoven?",
+"answer": 9,
+"unit": "symfonieën",
+"category": "cultuur"
+},
+{
+"id": 153,
+"question": "Hoeveel symfonieën componeerde Wolfgang Amadeus Mozart?",
+"answer": 41,
+"unit": "symfonieën",
+"category": "cultuur"
+},
+{
+"id": 154,
+"question": "Hoeveel piano concerten componeerde Mozart?",
+"answer": 27,
+"unit": "concerten",
+"category": "cultuur"
+},
+{
+"id": 155,
+"question": "Hoeveel opera's componeerde Mozart?",
+"answer": 22,
+"unit": "opera's",
+"category": "cultuur"
+},
+{
+"id": 156,
+"question": "Hoeveel sonnetten schreef William Shakespeare?",
+"answer": 154,
+"unit": "sonnetten",
+"category": "cultuur"
+},
+{
+"id": 157,
+"question": "Hoeveel muzen zijn er in de Griekse mythologie?",
+"answer": 9,
+"unit": "muzen",
+"category": "cultuur"
+},
+{
+"id": 158,
+"question": "Hoeveel werken moest Herakles uitvoeren in de mythologie (de werken van Hercules)?",
+"answer": 12,
+"unit": "werken",
+"category": "cultuur"
+},
+{
+"id": 159,
+"question": "Hoeveel Olympische hoofdgoden waren er in de Griekse mythologie?",
+"answer": 12,
+"unit": "goden",
+"category": "cultuur"
+},
+{
+"id": 160,
+"question": "Hoeveel toetsen heeft een piano?",
+"answer": 88,
+"unit": "toetsen",
+"category": "cultuur"
+},
+{
+"id": 161,
+"question": "Hoeveel sterrenbeelden bevat de dierenriem (zodiac)?",
+"answer": 12,
+"unit": "sterrenbeelden",
+"category": "cultuur"
+},
+{
+"id": 162,
+"question": "Hoeveel symfonieën schreef Franz Schubert?",
+"answer": 9,
+"unit": "symfonieën",
+"category": "cultuur"
+},
+{
+"id": 163,
+"question": "Hoeveel vakjes telt het bord in het standaard Monopoly-spel?",
+"answer": 40,
+"unit": "vakjes",
+"category": "cultuur"
+},
+{
+"id": 164,
+"question": "Hoeveel verschillende aminozuren worden gecodeerd door het menselijk DNA?",
+"answer": 20,
+"unit": "aminozuren",
+"category": "wetenschap"
+},
+{
+"id": 165,
+"question": "Hoeveel botten of botstukken heeft de menselijke schedel?",
+"answer": 22,
+"unit": "botten",
+"category": "wetenschap"
+},
+{
+"id": 166,
+"question": "Hoeveel graden bedraagt de hellingshoek van de aardas ten opzichte van de baan om de zon?",
+"answer": 23.4,
+"unit": "°",
+"category": "wetenschap"
+},
+{
+"id": 167,
+"question": "Hoeveel procent van het aardoppervlak is bedekt met water?",
+"answer": 71,
+"unit": "%",
+"category": "wetenschap"
+},
+{
+"id": 168,
+"question": "Wat is de pH-waarde van neutraal water bij 25°C?",
+"answer": 7,
+"unit": "pH",
+"category": "wetenschap"
+},
+{
+"id": 169,
+"question": "Hoeveel nullen staan er in het getal een miljoen?",
+"answer": 6,
+"unit": "nullen",
+"category": "wetenschap"
+},
+{
+"id": 170,
+"question": "Hoeveel nullen staan er in het getal een miljard (10^9)?",
+"answer": 9,
+"unit": "nullen",
+"category": "wetenschap"
+},
+{
+"id": 171,
+"question": "Hoeveel nullen staan er in het getal een biljoen (10^12)?",
+"answer": 12,
+"unit": "nullen",
+"category": "wetenschap"
+},
+{
+"id": 172,
+"question": "Hoeveel meter is één zeemijl?",
+"answer": 1852,
+"unit": "m",
+"category": "wetenschap"
+},
+{
+"id": 173,
+"question": "Hoeveel priemgetallen zijn er kleiner dan 10?",
+"answer": 4,
+"unit": "priemgetallen",
+"category": "wetenschap"
+},
+{
+"id": 174,
+"question": "Hoeveel graden is een rechte hoek?",
+"answer": 90,
+"unit": "graden",
+"category": "wetenschap"
+},
+{
+"id": 175,
+"question": "Hoeveel zijden heeft een vijfhoek (pentagon)?",
+"answer": 5,
+"unit": "zijdes",
+"category": "wetenschap"
+},
+{
+"id": 176,
+"question": "Hoeveel ribben heeft een kubus?",
+"answer": 12,
+"unit": "ribben",
+"category": "wetenschap"
+},
+{
+"id": 177,
+"question": "Hoeveel hoekpunten heeft een kubus?",
+"answer": 8,
+"unit": "hoekpunten",
+"category": "wetenschap"
+},
+{
+"id": 178,
+"question": "Hoeveel zijvlakken heeft een kubus?",
+"answer": 6,
+"unit": "zijvlakken",
+"category": "wetenschap"
+},
+{
+"id": 179,
+"question": "Hoeveel nullen staan er in het getal googol (10^100)?",
+"answer": 100,
+"unit": "nullen",
+"category": "wetenschap"
+},
+{
+"id": 180,
+"question": "Bij hoeveel graden Fahrenheit bevriest water?",
+"answer": 32,
+"unit": "°F",
+"category": "wetenschap"
+},
+{
+"id": 181,
+"question": "Bij hoeveel graden Fahrenheit kookt water op zeeniveau?",
+"answer": 212,
+"unit": "°F",
+"category": "wetenschap"
+},
+{
+"id": 182,
+"question": "Hoeveel meter per seconde bedraagt de geluidssnelheid in lucht (bij 20°C)?",
+"answer": 343,
+"unit": "m/s",
+"category": "wetenschap"
+},
+{
+"id": 183,
+"question": "Hoeveel m/s² is de gemiddelde zwaartekrachtversnelling op aarde?",
+"answer": 9.81,
+"unit": "m/s²",
+"category": "wetenschap"
+},
+{
+"id": 184,
+"question": "Wat is het atoomnummer van koolstof (C)?",
+"answer": 6,
+"unit": "-",
+"category": "wetenschap"
+},
+{
+"id": 185,
+"question": "Wat is het atoomnummer van zuurstof (O)?",
+"answer": 8,
+"unit": "-",
+"category": "wetenschap"
+},
+{
+"id": 186,
+"question": "Wat is het atoomnummer van waterstof (H)?",
+"answer": 1,
+"unit": "-",
+"category": "wetenschap"
+},
+{
+"id": 187,
+"question": "Wat is het atoomnummer van helium (He)?",
+"answer": 2,
+"unit": "-",
+"category": "wetenschap"
+},
+{
+"id": 188,
+"question": "Wat is het atoomnummer van ijzer (Fe)?",
+"answer": 26,
+"unit": "-",
+"category": "wetenschap"
+},
+{
+"id": 189,
+"question": "Wat is het atoomnummer van uranium (U)?",
+"answer": 92,
+"unit": "-",
+"category": "wetenschap"
+},
+{
+"id": 190,
+"question": "Wat is het atoomnummer van lithium (Li)?",
+"answer": 3,
+"unit": "-",
+"category": "wetenschap"
+},
+{
+"id": 191,
+"question": "Wat is het atoomnummer van boor (B)?",
+"answer": 5,
+"unit": "-",
+"category": "wetenschap"
+},
+{
+"id": 192,
+"question": "Wat is het atoomnummer van stikstof (N)?",
+"answer": 7,
+"unit": "-",
+"category": "wetenschap"
+},
+{
+"id": 193,
+"question": "Wat is het atoomnummer van neon (Ne)?",
+"answer": 10,
+"unit": "-",
+"category": "wetenschap"
+},
+{
+"id": 194,
+"question": "Hoeveel poten heeft een spin?",
+"answer": 8,
+"unit": "poten",
+"category": "natuur"
+},
+{
+"id": 195,
+"question": "Hoeveel poten heeft een insect?",
+"answer": 6,
+"unit": "poten",
+"category": "natuur"
+},
+{
+"id": 196,
+"question": "Hoeveel armen heeft een octopus?",
+"answer": 8,
+"unit": "armen",
+"category": "natuur"
+},
+{
+"id": 197,
+"question": "Hoeveel harten heeft een octopus?",
+"answer": 3,
+"unit": "harten",
+"category": "natuur"
+},
+{
+"id": 198,
+"question": "Hoeveel magen heeft een koe?",
+"answer": 4,
+"unit": "magen",
+"category": "natuur"
+},
+{
+"id": 199,
+"question": "Hoeveel levens heeft een kat volgens het gezegde?",
+"answer": 9,
+"unit": "levens",
+"category": "natuur"
+},
+{
+"id": 200,
+"question": "Hoeveel vleugels heeft een bij?",
+"answer": 4,
+"unit": "vleugels",
+"category": "natuur"
+},
+{
+"id": 201,
+"question": "Hoeveel ogen heeft een bij?",
+"answer": 5,
+"unit": "ogen",
+"category": "natuur"
+},
+{
+"id": 202,
+"question": "Hoeveel tanden heeft een volwassen menselijk gebit?",
+"answer": 32,
+"unit": "tanden",
+"category": "natuur"
+},
+{
+"id": 203,
+"question": "Hoeveel ribben heeft een volwassen mens in totaal?",
+"answer": 24,
+"unit": "ribben",
+"category": "natuur"
+},
+{
+"id": 204,
+"question": "Hoeveel longen heeft een mens?",
+"answer": 2,
+"unit": "longen",
+"category": "natuur"
+},
+{
+"id": 205,
+"question": "Hoeveel botten zitten er in het menselijk oor (beide oren samen)?",
+"answer": 6,
+"unit": "botten",
+"category": "natuur"
+},
+{
+"id": 206,
+"question": "Hoeveel paar poten heeft een kreeft?",
+"answer": 5,
+"unit": "paar",
+"category": "natuur"
+},
+{
+"id": 207,
+"question": "Hoeveel harten heeft een regenworm (aantal aortaboogjes)?",
+"answer": 5,
+"unit": "harten",
+"category": "natuur"
+},
+{
+"id": 208,
+"question": "Hoeveel nekwervels heeft een giraffe?",
+"answer": 7,
+"unit": "nekwervels",
+"category": "natuur"
+},
+{
+"id": 209,
+"question": "Hoeveel armen heeft een zeester meestal?",
+"answer": 5,
+"unit": "armen",
+"category": "natuur"
+},
+{
+"id": 210,
+"question": "Hoeveel bulten heeft een dromedaris?",
+"answer": 1,
+"unit": "bult",
+"category": "natuur"
+},
+{
+"id": 211,
+"question": "Hoeveel bulten heeft een kameel van het type bactrianus?",
+"answer": 2,
+"unit": "bulten",
+"category": "natuur"
+},
+{
+"id": 212,
+"question": "Hoeveel hersenen heeft een octopus (verdeeld over lichaam)?",
+"answer": 9,
+"unit": "hersenen",
+"category": "natuur"
+},
+{
+"id": 213,
+"question": "Hoeveel magen heeft een giraffe?",
+"answer": 4,
+"unit": "magen",
+"category": "natuur"
+},
+{
+"id": 214,
+"question": "Hoeveel ogen hebben de meeste spinnen?",
+"answer": 8,
+"unit": "ogen",
+"category": "natuur"
+},
+{
+"id": 215,
+"question": "Hoeveel ledematen (armen + tentakels) heeft een pijlinktvis in totaal?",
+"answer": 10,
+"unit": "ledematen",
+"category": "natuur"
+},
+{
+"id": 216,
+"question": "Hoeveel tanden heeft een volwassen huiskat?",
+"answer": 30,
+"unit": "tanden",
+"category": "natuur"
+},
+{
+"id": 217,
+"question": "Hoeveel spelers staan er bij een voetbalelftal op het veld per team?",
+"answer": 11,
+"unit": "spelers",
+"category": "sport"
+},
+{
+"id": 218,
+"question": "Hoeveel spelers telt een volleybalteam op het veld per team?",
+"answer": 6,
+"unit": "spelers",
+"category": "sport"
+},
+{
+"id": 219,
+"question": "Hoeveel spelers staan er bij basketbal per team tegelijkertijd in het veld?",
+"answer": 5,
+"unit": "spelers",
+"category": "sport"
+},
+{
+"id": 220,
+"question": "Hoeveel spelers telt een honkbalteam op het veld (verdedigend)?",
+"answer": 9,
+"unit": "spelers",
+"category": "sport"
+},
+{
+"id": 221,
+"question": "Hoeveel spelers staan er bij rugby union per team in het veld?",
+"answer": 15,
+"unit": "spelers",
+"category": "sport"
+},
+{
+"id": 222,
+"question": "Hoeveel spelers staan er bij rugby league per team op het veld?",
+"answer": 13,
+"unit": "spelers",
+"category": "sport"
+},
+{
+"id": 223,
+"question": "Hoeveel spelers telt een waterpoloteam in het water per team?",
+"answer": 7,
+"unit": "spelers",
+"category": "sport"
+},
+{
+"id": 224,
+"question": "Hoeveel spelers heeft een cricketelftal?",
+"answer": 11,
+"unit": "spelers",
+"category": "sport"
+},
+{
+"id": 225,
+"question": "Uit hoeveel holes bestaat een volledige ronde golf?",
+"answer": 18,
+"unit": "holes",
+"category": "sport"
+},
+{
+"id": 226,
+"question": "Hoeveel punten is een try waard in rugby union?",
+"answer": 5,
+"unit": "punten",
+"category": "sport"
+},
+{
+"id": 227,
+"question": "Hoeveel punten is een touchdown waard in American football (zonder extra kick)?",
+"answer": 6,
+"unit": "punten",
+"category": "sport"
+},
+{
+"id": 228,
+"question": "Hoeveel ringen staan er op de Olympische vlag?",
+"answer": 5,
+"unit": "ringen",
+"category": "sport"
+},
+{
+"id": 229,
+"question": "Uit hoeveel onderdelen bestaat een tienkamp (decathlon)?",
+"answer": 10,
+"unit": "onderdelen",
+"category": "sport"
+},
+{
+"id": 230,
+"question": "Uit hoeveel onderdelen bestaat een zevenkamp (heptathlon)?",
+"answer": 7,
+"unit": "onderdelen",
+"category": "sport"
+},
+{
+"id": 231,
+"question": "Hoeveel minuten duurt een rugby union wedstrijd (zonder verlenging)?",
+"answer": 80,
+"unit": "minuten",
+"category": "sport"
+},
+{
+"id": 232,
+"question": "Hoeveel minuten duurt een voetbalwedstrijd (zonder blessuretijd)?",
+"answer": 90,
+"unit": "minuten",
+"category": "sport"
+},
+{
+"id": 233,
+"question": "Uit hoeveel periodes bestaat een ijshockeywedstrijd in de NHL?",
+"answer": 3,
+"unit": "periodes",
+"category": "sport"
+},
+{
+"id": 234,
+"question": "Uit hoeveel innings bestaat een standaard honkbalwedstrijd?",
+"answer": 9,
+"unit": "innings",
+"category": "sport"
+},
+{
+"id": 235,
+"question": "Hoeveel schaakstukken heeft elke speler bij aanvang van een partij?",
+"answer": 16,
+"unit": "stukken",
+"category": "sport"
+},
+{
+"id": 236,
+"question": "Hoeveel velden telt een schaakbord?",
+"answer": 64,
+"unit": "velden",
+"category": "sport"
+},
+{
+"id": 237,
+"question": "Hoeveel pionnen heeft elke speler bij het begin van een schaakspel?",
+"answer": 8,
+"unit": "pionnen",
+"category": "sport"
+},
+{
+"id": 238,
+"question": "Hoeveel zwarte ballen zijn er op tafel bij aanvang van een snookerframe?",
+"answer": 1,
+"unit": "bal",
+"category": "sport"
+},
+{
+"id": 239,
+"question": "Hoeveel punten is de zwarte bal waard in snooker?",
+"answer": 7,
+"unit": "punten",
+"category": "sport"
+},
+{
+"id": 240,
+"question": "Hoeveel pins moet men omverwerpen voor een strike bij bowlen?",
+"answer": 10,
+"unit": "pins",
+"category": "sport"
+},
+{
+"id": 241,
+"question": "Hoeveel strikes op rij zijn nodig voor een 300 game (perfect game) bij bowlen?",
+"answer": 12,
+"unit": "strikes",
+"category": "sport"
+},
+{
+"id": 242,
+"question": "Hoeveel spelers heeft een handbalteam op het veld (per team)?",
+"answer": 7,
+"unit": "spelers",
+"category": "sport"
+},
+{
+"id": 243,
+"question": "Hoeveel wereldkampioenschappen Formule 1 won Michael Schumacher?",
+"answer": 7,
+"unit": "titels",
+"category": "sport"
+},
+{
+"id": 244,
+"question": "Hoeveel gouden medailles won Usain Bolt op de Olympische Spelen?",
+"answer": 8,
+"unit": "medailles",
+"category": "sport"
+},
+{
+"id": 245,
+"question": "Hoeveel keer heeft Brazilië het WK voetbal gewonnen?",
+"answer": 5,
+"unit": "titels",
+"category": "sport"
+},
+{
+"id": 246,
+"question": "Hoe hoog hangt de basket in het basketbal?",
+"answer": 3.05,
+"unit": "m",
+"category": "sport"
+},
+{
+"id": 247,
+"question": "Hoeveel kilometer is een marathon?",
+"answer": 42.195,
+"unit": "km",
+"category": "sport"
+},
+{
+"id": 248,
+"question": "Hoeveel keer won Roger Federer een Grand Slam-titel?",
+"answer": 20,
+"unit": "titels",
+"category": "sport"
+},
+{
+"id": 249,
+"question": "Hoeveel keer won Eddy Merckx de Tour de France?",
+"answer": 5,
+"unit": "zeges",
+"category": "sport"
+},
+{
+"id": 250,
+"question": "Hoeveel spelers staan er bij een curlingteam op het ijs?",
+"answer": 4,
+"unit": "spelers",
+"category": "sport"
+},
+{
+"id": 251,
+"question": "Hoeveel keer won Nederland het EK Voetbal (mannen)?",
+"answer": 1,
+"unit": "titel",
+"category": "sport"
+},
+{
+"id": 252,
+"question": "Hoeveel punten levert een driepunter op in basketbal?",
+"answer": 3,
+"unit": "punten",
+"category": "sport"
+},
+{
+"id": 253,
+"question": "Hoeveel punten is de maximale break in snooker?",
+"answer": 147,
+"unit": "punten",
+"category": "sport"
+},
+{
+"id": 254,
+"question": "Hoeveel minuten duurt een ronde bij professioneel boksen (heren)?",
+"answer": 3,
+"unit": "minuten",
+"category": "sport"
+},
+{
+"id": 255,
+"question": "Uit hoeveel rondes bestaat een titelgevecht in het professionele boksen (heren)?",
+"answer": 12,
+"unit": "rondes",
+"category": "sport"
+},
+{
+"id": 256,
+"question": "Uit hoeveel onderdelen bestaat een triatlon?",
+"answer": 3,
+"unit": "onderdelen",
+"category": "sport"
+},
+{
+"id": 257,
+"question": "Hoeveel gewonnen sets zijn er nodig om een mannen Grand Slam tenniswedstrijd te winnen?",
+"answer": 3,
+"unit": "sets",
+"category": "sport"
+},
+{
+"id": 258,
+"question": "Hoeveel gewonnen games zijn er normaal nodig om een set te winnen in tennis?",
+"answer": 6,
+"unit": "games",
+"category": "sport"
+},
+{
+"id": 259,
+"question": "Hoeveel minuten zitten er in een minuut?",
+"answer": 60,
+"unit": "seconden",
+"category": "tijd"
+},
+{
+"id": 260,
+"question": "Hoeveel seconden zitten er in een minuut?",
+"answer": 60,
+"unit": "seconden",
+"category": "tijd"
+},
+{
+"id": 261,
+"question": "Hoeveel seconden zitten er in een uur?",
+"answer": 3600,
+"unit": "seconden",
+"category": "tijd"
+},
+{
+"id": 262,
+"question": "Hoeveel seconden zitten er in een dag?",
+"answer": 86400,
+"unit": "seconden",
+"category": "tijd"
+},
+{
+"id": 263,
+"question": "Hoeveel minuten zitten er in een dag?",
+"answer": 1440,
+"unit": "minuten",
+"category": "tijd"
+},
+{
+"id": 264,
+"question": "Hoeveel uren zitten er in een week?",
+"answer": 168,
+"unit": "uren",
+"category": "tijd"
+},
+{
+"id": 265,
+"question": "Hoeveel dagen zitten er in een week?",
+"answer": 7,
+"unit": "dagen",
+"category": "tijd"
+},
+{
+"id": 266,
+"question": "Hoeveel maanden zitten er in een jaar?",
+"answer": 12,
+"unit": "maanden",
+"category": "tijd"
+},
+{
+"id": 267,
+"question": "Hoeveel dagen telt de maand februari in een niet-schrikkeljaar?",
+"answer": 28,
+"unit": "dagen",
+"category": "tijd"
+},
+{
+"id": 268,
+"question": "Hoeveel dagen telt een schrikkeljaar?",
+"answer": 366,
+"unit": "dagen",
+"category": "tijd"
+},
+{
+"id": 269,
+"question": "Hoeveel weken zitten er in een jaar (afgerond)?",
+"answer": 52,
+"unit": "weken",
+"category": "tijd"
+},
+{
+"id": 270,
+"question": "Hoeveel dagen telt de maand januari?",
+"answer": 31,
+"unit": "dagen",
+"category": "tijd"
+},
+{
+"id": 271,
+"question": "Hoeveel maanden is een decennium?",
+"answer": 120,
+"unit": "maanden",
+"category": "tijd"
+},
+{
+"id": 272,
+"question": "Hoeveel jaar is een lustrum?",
+"answer": 5,
+"unit": "jaar",
+"category": "tijd"
+},
+{
+"id": 273,
+"question": "Hoeveel jaar is een eeuw?",
+"answer": 100,
+"unit": "jaar",
+"category": "tijd"
+},
+{
+"id": 274,
+"question": "Hoeveel jaar is een millennium?",
+"answer": 1000,
+"unit": "jaar",
+"category": "tijd"
+},
+{
+"id": 275,
+"question": "Hoeveel minuten zitten er in een kwartier?",
+"answer": 15,
+"unit": "minuten",
+"category": "tijd"
+},
+{
+"id": 276,
+"question": "Hoeveel dagen zit er tussen 1 januari en 1 maart in een niet-schrikkeljaar?",
+"answer": 59,
+"unit": "dagen",
+"category": "tijd"
+},
+{
+"id": 277,
+"question": "Hoeveel dagen duurt de maand augustus?",
+"answer": 31,
+"unit": "dagen",
+"category": "tijd"
+},
+{
+"id": 278,
+"question": "Hoeveel dagen zitten er in de maand mei?",
+"answer": 31,
+"unit": "dagen",
+"category": "tijd"
+},
+{
+"id": 279,
+"question": "Hoeveel maanden van het jaar hebben 31 dagen?",
+"answer": 7,
+"unit": "maanden",
+"category": "tijd"
+},
+{
+"id": 280,
+"question": "Hoeveel maanden van het jaar hebben 30 dagen?",
+"answer": 4,
+"unit": "maanden",
+"category": "tijd"
+},
+{
+"id": 281,
+"question": "Hoeveel dagen telt het tweede kwartaal van een kalenderjaar?",
+"answer": 91,
+"unit": "dagen",
+"category": "tijd"
+},
+{
+"id": 282,
+"question": "Hoeveel dagen telt de maand maart?",
+"answer": 31,
+"unit": "dagen",
+"category": "tijd"
+},
+{
+"id": 283,
+"question": "Hoeveel dagen telt de maand april?",
+"answer": 30,
+"unit": "dagen",
+"category": "tijd"
+},
+{
+"id": 284,
+"question": "Hoeveel dagen telt de maand juni?",
+"answer": 30,
+"unit": "dagen",
+"category": "tijd"
+},
+{
+"id": 285,
+"question": "Hoeveel dagen telt de maand juli?",
+"answer": 31,
+"unit": "dagen",
+"category": "tijd"
+},
+{
+"id": 286,
+"question": "Hoeveel dagen telt de maand september?",
+"answer": 30,
+"unit": "dagen",
+"category": "tijd"
+},
+{
+"id": 287,
+"question": "Hoeveel dagen telt de maand oktober?",
+"answer": 31,
+"unit": "dagen",
+"category": "tijd"
+},
+{
+"id": 288,
+"question": "Hoeveel dagen telt de maand november?",
+"answer": 30,
+"unit": "dagen",
+"category": "tijd"
+},
+{
+"id": 289,
+"question": "Hoeveel dagen telt de maand december?",
+"answer": 31,
+"unit": "dagen",
+"category": "tijd"
+},
+{
+"id": 290,
+"question": "Hoeveel uren zitten er in een dag?",
+"answer": 24,
+"unit": "uren",
+"category": "tijd"
+},
+{
+"id": 291,
+"question": "Hoeveel minuten zitten er in een uur?",
+"answer": 60,
+"unit": "minuten",
+"category": "tijd"
+},
+{
+"id": 292,
+"question": "Hoeveel seconden zitten er in een (normaal) jaar?",
+"answer": 31536000,
+"unit": "seconden",
+"category": "tijd"
+},
+{
+"id": 293,
+"question": "Hoeveel tijdzones zijn er op de wereld (theoretisch)?",
+"answer": 24,
+"unit": "tijdzones",
+"category": "tijd"
+},
+{
+"id": 294,
+"question": "Hoeveel planeten telt ons zonnestelsel?",
+"answer": 8,
+"unit": "planeten",
+"category": "astronomie"
+},
+{
+"id": 295,
+"question": "Hoeveel officieel erkende dwergplaneten zijn er in ons zonnestelsel?",
+"answer": 5,
+"unit": "dwergplaneten",
+"category": "astronomie"
+},
+{
+"id": 296,
+"question": "Hoeveel manen heeft de planeet Mercurius?",
+"answer": 0,
+"unit": "manen",
+"category": "astronomie"
+},
+{
+"id": 297,
+"question": "Hoeveel manen heeft de planeet Venus?",
+"answer": 0,
+"unit": "manen",
+"category": "astronomie"
+},
+{
+"id": 298,
+"question": "Hoeveel manen heeft de aarde?",
+"answer": 1,
+"unit": "maan",
+"category": "astronomie"
+},
+{
+"id": 299,
+"question": "Hoeveel manen heeft de planeet Mars?",
+"answer": 2,
+"unit": "manen",
+"category": "astronomie"
+},
+{
+"id": 300,
+"question": "Hoeveel planeten in ons zonnestelsel hebben ringen?",
+"answer": 4,
+"unit": "planeten",
+"category": "astronomie"
+},
+{
+"id": 301,
+"question": "Hoeveel mensen hebben op de maan gelopen?",
+"answer": 12,
+"unit": "personen",
+"category": "astronomie"
+},
+{
+"id": 302,
+"question": "Hoeveel sterren vormen de gordel van Orion?",
+"answer": 3,
+"unit": "sterren",
+"category": "astronomie"
+},
+{
+"id": 303,
+"question": "Hoeveel planeten zijn met het blote oog zichtbaar vanaf de aarde?",
+"answer": 5,
+"unit": "planeten",
+"category": "astronomie"
+},
+{
+"id": 304,
+"question": "Hoeveel officiële sterrenbeelden zijn er door de IAU gedefinieerd?",
+"answer": 88,
+"unit": "sterrenbeelden",
+"category": "astronomie"
+},
+{
+"id": 305,
+"question": "Hoeveel aardse dagen duurt een jaar op Mercurius (omloop om de zon)?",
+"answer": 88,
+"unit": "dagen",
+"category": "astronomie"
+},
+{
+"id": 306,
+"question": "Hoeveel gasreuzen telt ons zonnestelsel?",
+"answer": 4,
+"unit": "planeten",
+"category": "astronomie"
+},
+{
+"id": 307,
+"question": "Hoeveel kilometer is de aarde gemiddeld van de zon verwijderd?",
+"answer": 149600000,
+"unit": "km",
+"category": "astronomie"
+},
+{
+"id": 308,
+"question": "Hoeveel minuten doet het zonlicht erover om de aarde te bereiken?",
+"answer": 8,
+"unit": "minuten",
+"category": "astronomie"
+},
+{
+"id": 309,
+"question": "Hoeveel sterren telt ons zonnestelsel?",
+"answer": 1,
+"unit": "ster",
+"category": "astronomie"
+},
+{
+"id": 310,
+"question": "Hoeveel dagen duurt een jaar op Venus?",
+"answer": 225,
+"unit": "dagen",
+"category": "astronomie"
+},
+{
+"id": 311,
+"question": "Hoeveel lichtminuten is 1 AE (astronomische eenheid)?",
+"answer": 8.3,
+"unit": "minuten",
+"category": "astronomie"
+},
+{
+"id": 312,
+"question": "Hoeveel manen van Jupiter ontdekte Galileo Galilei in 1610?",
+"answer": 4,
+"unit": "manen",
+"category": "astronomie"
+},
+{
+"id": 313,
+"question": "Hoeveel landen gebruiken de euro als munt (2023)?",
+"answer": 20,
+"unit": "landen",
+"category": "economie"
+},
+{
+"id": 314,
+"question": "Hoeveel procent is het standaard BTW-tarief in Nederland?",
+"answer": 21,
+"unit": "%",
+"category": "economie"
+},
+{
+"id": 315,
+"question": "Hoeveel landen zijn lid van de G7 (Groep van Zeven)?",
+"answer": 7,
+"unit": "landen",
+"category": "economie"
+},
+{
+"id": 316,
+"question": "Hoeveel landen zijn er lid van de NAVO (2023)?",
+"answer": 31,
+"unit": "landen",
+"category": "economie"
+},
+{
+"id": 317,
+"question": "Hoeveel zetels telt de VN-Veiligheidsraad?",
+"answer": 15,
+"unit": "zetels",
+"category": "economie"
+},
+{
+"id": 318,
+"question": "Hoeveel landen zijn er lid van de OPEC oliekartel?",
+"answer": 13,
+"unit": "landen",
+"category": "economie"
+},
+{
+"id": 319,
+"question": "Hoeveel letters heeft het Latijnse alfabet (zoals in het Engels)?",
+"answer": 26,
+"unit": "letters",
+"category": "cultuur"
+},
+{
+"id": 320,
+"question": "Hoeveel Oscar Awards won de film Titanic?",
+"answer": 11,
+"unit": "Oscars",
+"category": "cultuur"
+},
+{
+"id": 321,
+"question": "Hoeveel Oscar Awards won de film The Lord of the Rings: The Return of the King?",
+"answer": 11,
+"unit": "Oscars",
+"category": "cultuur"
+},
+{
+"id": 322,
+"question": "Hoeveel symfonieën componeerde Johannes Brahms?",
+"answer": 4,
+"unit": "symfonieën",
+"category": "cultuur"
+},
+{
+"id": 323,
+"question": "Hoeveel genummerde symfonieën componeerde Pjotr Tsjaikovski?",
+"answer": 6,
+"unit": "symfonieën",
+"category": "cultuur"
+},
+{
+"id": 324,
+"question": "Hoeveel symfonieën componeerde Anton Bruckner?",
+"answer": 9,
+"unit": "symfonieën",
+"category": "cultuur"
+},
+{
+"id": 325,
+"question": "Hoeveel pianosonates componeerde Ludwig van Beethoven?",
+"answer": 32,
+"unit": "sonates",
+"category": "cultuur"
+},
+{
+"id": 326,
+"question": "Hoeveel toneelstukken schreef William Shakespeare?",
+"answer": 37,
+"unit": "stukken",
+"category": "cultuur"
+},
+{
+"id": 327,
+"question": "Hoeveel punten heeft de Davidster?",
+"answer": 6,
+"unit": "punten",
+"category": "cultuur"
+},
+{
+"id": 328,
+"question": "Hoeveel lettergrepen heeft een traditionele haiku (5-7-5 patroon)?",
+"answer": 17,
+"unit": "lettergrepen",
+"category": "cultuur"
+},
+{
+"id": 329,
+"question": "Hoeveel dwergen wonen er bij Sneeuwwitje in het sprookje?",
+"answer": 7,
+"unit": "dwergen",
+"category": "cultuur"
+},
+{
+"id": 330,
+"question": "Hoeveel koningen zitten er in een standaard pak speelkaarten?",
+"answer": 4,
+"unit": "koningen",
+"category": "cultuur"
+},
+{
+"id": 331,
+"question": "Hoeveel kaarten zitten er in een standaard kaartspel (exclusief jokers)?",
+"answer": 52,
+"unit": "kaarten",
+"category": "cultuur"
+},
+{
+"id": 332,
+"question": "Hoeveel Wereldwonderen kende de klassieke oudheid?",
+"answer": 7,
+"unit": "wereldwonderen",
+"category": "cultuur"
+},
+{
+"id": 333,
+"question": "Hoeveel apostelen had Jezus volgens het Nieuwe Testament?",
+"answer": 12,
+"unit": "apostelen",
+"category": "cultuur"
+},
+{
+"id": 334,
+"question": "Hoeveel schijven heeft elke speler bij aanvang van een damspel?",
+"answer": 12,
+"unit": "schijven",
+"category": "cultuur"
+},
+{
+"id": 335,
+"question": "Uit hoeveel boeken bestaat de Thora (de Pentateuch)?",
+"answer": 5,
+"unit": "boeken",
+"category": "cultuur"
+},
+{
+"id": 336,
+"question": "Hoeveel zuilen kent de islam (basisprincipes)?",
+"answer": 5,
+"unit": "zuilen",
+"category": "cultuur"
+},
+{
+"id": 337,
+"question": "Hoeveel schikgodinnen (Moirai) telt de Griekse mythologie?",
+"answer": 3,
+"unit": "godinnen",
+"category": "cultuur"
+},
+{
+"id": 338,
+"question": "Hoeveel diertekens kent de Chinese dierenriem?",
+"answer": 12,
+"unit": "dieren",
+"category": "cultuur"
+},
+{
+"id": 339,
+"question": "Hoeveel halve tonen (noten) beslaat een octaaf in de muziek?",
+"answer": 12,
+"unit": "noten",
+"category": "cultuur"
+},
+{
+"id": 340,
+"question": "Hoeveel regels telt een sonnet?",
+"answer": 14,
+"unit": "regels",
+"category": "cultuur"
+},
+{
+"id": 341,
+"question": "Hoeveel dagen duurt de vastentijd (de Veertigdagentijd) in het christendom?",
+"answer": 40,
+"unit": "dagen",
+"category": "cultuur"
+},
+{
+"id": 342,
+"question": "Uit hoeveel boeken bestaat het Nieuwe Testament van de Bijbel?",
+"answer": 27,
+"unit": "boeken",
+"category": "cultuur"
+},
+{
+"id": 343,
+"question": "Hoeveel vakjes (stickers) heeft één zijde van een 3x3x3 Rubiks kubus?",
+"answer": 9,
+"unit": "vakjes",
+"category": "cultuur"
+},
+{
+"id": 344,
+"question": "Hoeveel ronden heeft een olympische bokswedstrijd (amateurboksen)?",
+"answer": 3,
+"unit": "rondes",
+"category": "sport"
+},
+{
+"id": 345,
+"question": "Wat is de maximale score in een spelletje bowling?",
+"answer": 300,
+"unit": "punten",
+"category": "sport"
+},
+{
+"id": 346,
+"question": "Hoeveel spelers staan er in de Engelse Premier League per seizoen?",
+"answer": 20,
+"unit": "clubs",
+"category": "sport"
+},
+{
+"id": 347,
+"question": "Hoeveel punten krijgt een team voor een overwinning in de voetbalcompetitie?",
+"answer": 3,
+"unit": "punten",
+"category": "sport"
+},
+{
+"id": 348,
+"question": "Hoeveel minuten duurt een helft in een voetbalwedstrijd (reguliere speeltijd)?",
+"answer": 45,
+"unit": "minuten",
+"category": "sport"
+},
+{
+"id": 349,
+"question": "Hoeveel landen zijn er lid van de Europese Unie (2025)?",
+"answer": 27,
+"unit": "landen",
+"category": "economie"
+},
+{
+"id": 350,
+"question": "Welke waarde heeft het Romeinse cijfer I?",
+"answer": 1,
+"unit": "",
+"category": "cultuur"
+},
+{
+"id": 351,
+"question": "Welke waarde heeft het Romeinse cijfer V?",
+"answer": 5,
+"unit": "",
+"category": "cultuur"
+},
+{
+"id": 352,
+"question": "Welke waarde heeft het Romeinse cijfer X?",
+"answer": 10,
+"unit": "",
+"category": "cultuur"
+},
+{
+"id": 353,
+"question": "Welke waarde heeft het Romeinse cijfer L?",
+"answer": 50,
+"unit": "",
+"category": "cultuur"
+},
+{
+"id": 354,
+"question": "Welke waarde heeft het Romeinse cijfer C?",
+"answer": 100,
+"unit": "",
+"category": "cultuur"
+},
+{
+"id": 355,
+"question": "Welke waarde heeft het Romeinse cijfer D?",
+"answer": 500,
+"unit": "",
+"category": "cultuur"
+},
+{
+"id": 356,
+"question": "Welke waarde heeft het Romeinse cijfer M?",
+"answer": 1000,
+"unit": "",
+"category": "cultuur"
+},
+{
+"id": 357,
+"question": "Op welke plek staat Rio de Janeiro op de lijst van gevaarlijkste steden ter wereld (2023)?",
+"answer": 13,
+"unit": "plek",
+"category": "cultuur"
+}
+]

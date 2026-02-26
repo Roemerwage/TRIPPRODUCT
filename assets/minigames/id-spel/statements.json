@@ -1,0 +1,494 @@
+[
+  {
+    "id": "s1",
+    "text": "Is het meest waarschijnlijk om te verdwalen."
+  },
+  {
+    "id": "s2",
+    "text": "Staat altijd te laat klaar."
+  },
+  {
+    "id": "s3",
+    "text": "Weet altijd waar het goedkoopst is."
+  },
+  {
+    "id": "s4",
+    "text": "Heeft het strakste schema op z'n telefoon."
+  },
+  {
+    "id": "s5",
+    "text": "Kan het beste navigeren zonder kaart."
+  },
+  {
+    "id": "s6",
+    "text": "Is de eerste die nieuwe mensen aanspreekt."
+  },
+  {
+    "id": "s7",
+    "text": "Is het meest waarschijnlijk om te klagen over het weer."
+  },
+  {
+    "id": "s8",
+    "text": "Wie draagt het goedkoopste ondergoed?"
+  },
+  {
+    "id": "s9",
+    "text": "Wie is de grootste huismus?"
+  },
+  {
+    "id": "s10",
+    "text": "Wie is het creatiefst?"
+  },
+  {
+    "id": "s11",
+    "text": "Wie is de gezelligste prater?"
+  },
+  {
+    "id": "s12",
+    "text": "Wie is het minst tactvol?"
+  },
+  {
+    "id": "s13",
+    "text": "Wie is een echt toetjesmens?"
+  },
+  {
+    "id": "s14",
+    "text": "Voor wie is genieten in het leven het belangrijkste doel?"
+  },
+  {
+    "id": "s15",
+    "text": "Wie heeft de leukste kledingsstijl?"
+  },
+  {
+    "id": "s16",
+    "text": "Wie zal het snelst vreemdgaan?"
+  },
+  {
+    "id": "s17",
+    "text": "Wie is het meest in voor een triootje?"
+  },
+  {
+    "id": "s18",
+    "text": "Wie gaat het snelst uit de kleren voor 1 miljoen?"
+  },
+  {
+    "id": "s19",
+    "text": "Wie is de grootste doorzetter?"
+  },
+  {
+    "id": "s20",
+    "text": "Wie is de grootste twijfelaar?"
+  },
+  {
+    "id": "s21",
+    "text": "Wie is het serieust?"
+  },
+  {
+    "id": "s22",
+    "text": "Wie hecht het meeste waarde aan een goed salaris?"
+  },
+  {
+    "id": "s23",
+    "text": "Wie gebruikt het vaakst een leugentje om bestwil?"
+  },
+  {
+    "id": "s24",
+    "text": "Wie drinkt het meest?"
+  },
+  {
+    "id": "s25",
+    "text": "Wie is het best in bed?"
+  },
+  {
+    "id": "s26",
+    "text": "Wie heeft de meeste vakantieliefdes gehad?"
+  },
+  {
+    "id": "s27",
+    "text": "Wie is het liefst?"
+  },
+  {
+    "id": "s28",
+    "text": "Wie is de ideale schoondochter (of zoon)?"
+  },
+  {
+    "id": "s29",
+    "text": "Wie is het meest verlegen?"
+  },
+  {
+    "id": "s30",
+    "text": "Wie eet het meest?"
+  },
+  {
+    "id": "s31",
+    "text": "Wie is het meest zelfverzekerd?"
+  },
+  {
+    "id": "s32",
+    "text": "Wie heeft het minste ervaring?"
+  },
+  {
+    "id": "s33",
+    "text": "Wie leeft het minst gezond?"
+  },
+  {
+    "id": "s34",
+    "text": "Wie vertel je de meeste geheimen?"
+  },
+  {
+    "id": "s35",
+    "text": "Wie heeft het vaakst een crush?"
+  },
+  {
+    "id": "s36",
+    "text": "Wie is het meest 'one of the guys'?"
+  },
+  {
+    "id": "s37",
+    "text": "Wie is altijd met z'n mobiele telefoon bezig?"
+  },
+  {
+    "id": "s38",
+    "text": "Wie krijgt later de meeste kinderen?"
+  },
+  {
+    "id": "s39",
+    "text": "Wie snoept het meest?"
+  },
+  {
+    "id": "s40",
+    "text": "Wie zoent het lekkerst?"
+  },
+  {
+    "id": "s41",
+    "text": "Wie klaagt het meest?"
+  },
+  {
+    "id": "s42",
+    "text": "Wie heeft het minst een mening?"
+  },
+  {
+    "id": "s43",
+    "text": "Wie is het makkelijkst te versieren?"
+  },
+  {
+    "id": "s44",
+    "text": "Wie is het makkelijkst voor de gek te houden?"
+  },
+  {
+    "id": "s45",
+    "text": "Wie is het meest sarcastisch?"
+  },
+  {
+    "id": "s46",
+    "text": "Wie is het laatst van begrip?"
+  },
+  {
+    "id": "s47",
+    "text": "Wie is het meest bazig?"
+  },
+  {
+    "id": "s48",
+    "text": "Wie heeft de mooiste voeten?"
+  },
+  {
+    "id": "s49",
+    "text": "Wie draagt de meest gewaagde kleding?"
+  },
+  {
+    "id": "s50",
+    "text": "Wie gaat het meest bereiken?"
+  },
+  {
+    "id": "s51",
+    "text": "Wie vindt uiterlijk bij een man het belangrijkst?"
+  },
+  {
+    "id": "s52",
+    "text": "Wie mag je 's nachts wakker maken voor seks?"
+  },
+  {
+    "id": "s53",
+    "text": "Wie heeft het boeiendste leven?"
+  },
+  {
+    "id": "s54",
+    "text": "Als we allemaal een berg zouden moeten beklimmen, wie zou het overleven en als eerste boven zijn?"
+  },
+  {
+    "id": "s55",
+    "text": "Wie gaat er later het snelst in het buitenland wonen?"
+  },
+  {
+    "id": "s56",
+    "text": "Wie gaat er ooit een grote villa hebben?"
+  },
+  {
+    "id": "s57",
+    "text": "Wie gaat er ooit iets groots doen voor de mensheid?"
+  },
+  {
+    "id": "s58",
+    "text": "Wie gaat zijn leven wijden aan een goed doel?"
+  },
+  {
+    "id": "s59",
+    "text": "Wie gedraagt zich volwassener dan anderen?"
+  },
+  {
+    "id": "s60",
+    "text": "Wie heeft de meeste invloed in de groep?"
+  },
+  {
+    "id": "s61",
+    "text": "Wie heeft de meeste levenswijsheid in de groep?"
+  },
+  {
+    "id": "s62",
+    "text": "Wie heeft de mooiste glimlach?"
+  },
+  {
+    "id": "s63",
+    "text": "Wie heeft de mooiste ogen?"
+  },
+  {
+    "id": "s64",
+    "text": "Wie heeft er het meest verantwoordelijkheidsgevoel?"
+  },
+  {
+    "id": "s65",
+    "text": "Wie heeft het leukste kapsel?"
+  },
+  {
+    "id": "s66",
+    "text": "Wie heeft het meeste geluk?"
+  },
+  {
+    "id": "s67",
+    "text": "Wie heeft het meeste mensenkennis?"
+  },
+  {
+    "id": "s68",
+    "text": "Wie is de grootste genieter?"
+  },
+  {
+    "id": "s69",
+    "text": "Wie is de meest romantische ziel van de groep?"
+  },
+  {
+    "id": "s70",
+    "text": "Wie is er de beste moederfiguur? (of vaderfiguur?)"
+  },
+  {
+    "id": "s71",
+    "text": "Wie is er het gelukkigst?"
+  },
+  {
+    "id": "s72",
+    "text": "Wie is er het creatiefst?"
+  },
+  {
+    "id": "s73",
+    "text": "Wie is er het meest positief?"
+  },
+  {
+    "id": "s74",
+    "text": "Wie is het meest experimenteel?"
+  },
+  {
+    "id": "s75",
+    "text": "Wie is het meest sociaal, maakt gemakkelijk vrienden?"
+  },
+  {
+    "id": "s76",
+    "text": "Wie is het meest ijdel?"
+  },
+  {
+    "id": "s77",
+    "text": "Wie is verbaal het beste?"
+  },
+  {
+    "id": "s78",
+    "text": "Wie kan er het best luisteren?"
+  },
+  {
+    "id": "s79",
+    "text": "Wie heeft de meeste vrienden?"
+  },
+  {
+    "id": "s80",
+    "text": "Wie is het meest modebewust?"
+  },
+  {
+    "id": "s81",
+    "text": "Met wie zou je wel eens op wereldreis willen?"
+  },
+  {
+    "id": "s82",
+    "text": "Met wie zou je wel liefst in een nare situatie willen belanden?"
+  },
+  {
+    "id": "s83",
+    "text": "Wie kan het beste dingen aan anderen aanleren?"
+  },
+  {
+    "id": "s84",
+    "text": "Wie kan het beste problemen oplossen?"
+  },
+  {
+    "id": "s85",
+    "text": "Wie kan je best vertrouwen?"
+  },
+  {
+    "id": "s86",
+    "text": "Wie vind je het mooist?"
+  },
+  {
+    "id": "s87",
+    "text": "Wie past er het best in het kader 'huisje-tuintje-boompje'?"
+  },
+  {
+    "id": "s88",
+    "text": "Wie trouwt en blijft er met zijn/haar eerste liefde?"
+  },
+  {
+    "id": "s89",
+    "text": "Wie vindt zijn/haar familie het belangrijkste?"
+  },
+  {
+    "id": "s90",
+    "text": "Wie voelt er zich het beste thuis in deze groep?"
+  },
+  {
+    "id": "s91",
+    "text": "Wie wordt er multimiljonair?"
+  },
+  {
+    "id": "s92",
+    "text": "Wie zal er de langste relatie hebben?"
+  },
+  {
+    "id": "s93",
+    "text": "Wie is het meest sexy?"
+  },
+  {
+    "id": "s94",
+    "text": "Wie zal er het langst studeren?"
+  },
+  {
+    "id": "s95",
+    "text": "Wie zal er later nog het meest hetzelfde uitzien?"
+  },
+  {
+    "id": "s96",
+    "text": "Wie zal het eerste trouwen?"
+  },
+  {
+    "id": "s97",
+    "text": "Wie laat zich het snelst overhalen?"
+  },
+  {
+    "id": "s98",
+    "text": "Wie is het minst kieskeurig bij de andere sekse?"
+  },
+  {
+    "id": "s99",
+    "text": "Wie is de beste organisator?"
+  },
+  {
+    "id": "s100",
+    "text": "Wie vertrouw je het minst achter het stuur?"
+  },
+  {
+    "id": "s101",
+    "text": "Wie is het meest een beest in bed?"
+  },
+  {
+    "id": "s102",
+    "text": "Wie is het meest naief?"
+  },
+  {
+    "id": "s103",
+    "text": "Wie kan het beste knopen doorhakken?"
+  },
+  {
+    "id": "s104",
+    "text": "Wie is sinds de middelbare school het meest veranderd?"
+  },
+  {
+    "id": "s105",
+    "text": "Wie heeft de meeste lingeriesetjes in de kast liggen?"
+  },
+  {
+    "id": "s106",
+    "text": "Wie is het meest een meisje-meisje?"
+  },
+  {
+    "id": "s107",
+    "text": "Wie geeft het meeste geld uit aan haar uiterlijk?"
+  },
+  {
+    "id": "s108",
+    "text": "Wie brengt het langste tijd door op de toilet?"
+  },
+  {
+    "id": "s109",
+    "text": "Wie heeft de mooiste neus?"
+  },
+  {
+    "id": "s110",
+    "text": "Wie is het meest heldhaftig?"
+  },
+  {
+    "id": "s111",
+    "text": "Wie heeft er het vaakst gezoend? (dus niet aantal personen)"
+  },
+  {
+    "id": "s112",
+    "text": "Wie is het zeunigst op zijn spullen?"
+  },
+  {
+    "id": "s113",
+    "text": "Wie zal er het meest in het ziekenhuis belanden?"
+  },
+  {
+    "id": "s114",
+    "text": "Wie heeft de beste band met zijn gebroeders?"
+  },
+  {
+    "id": "s115",
+    "text": "Wie heeft er de minste schaamte?"
+  },
+  {
+    "id": "s116",
+    "text": "Wie zou er het snelst op een datingssite te vinden zijn?"
+  },
+  {
+    "id": "s117",
+    "text": "Wie leeft het langst?"
+  },
+  {
+    "id": "s118",
+    "text": "Wie krijgt later de knapste kinderen?"
+  },
+  {
+    "id": "s119",
+    "text": "Wie krijgt de knapste vrouw?"
+  },
+  {
+    "id": "s120",
+    "text": "Wie zal je later kunnen vinden bij de voedselbank?"
+  },
+  {
+    "id": "s121",
+    "text": "Wie krijgt er de beste baan?"
+  },
+  {
+    "id": "s122",
+    "text": "Wie heeft er de meeste geheimen?"
+  },
+  {
+    "id": "s123",
+    "text": "Wie maakt het beste vrienden?"
+  }
+]

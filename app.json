@@ -1,0 +1,76 @@
+{
+  "expo": {
+    "name": "Trip Planner",
+    "slug": "trip-planner-demo",
+    "version": "1.0.2",
+    "orientation": "portrait",
+    "icon": "./assets/images/ios-icon-1024.png",
+    "scheme": "trip-planner",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/images/new_splash_icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.example.tripplanner",
+      "buildNumber": "7",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "We gebruiken je locatie om relevante plekken en informatie in de app te tonen.",
+        "NSLocationAlwaysUsageDescription": "We gebruiken je locatie om relevante plekken en informatie in de app te tonen.",
+        "NSPhotoLibraryUsageDescription": "We gebruiken je foto's om afbeeldingen te kunnen selecteren en delen in de app.",
+        "NSCameraUsageDescription": "We gebruiken de camera om foto's te kunnen maken en delen in de app.",
+        "NSUserNotificationUsageDescription": "We gebruiken meldingen om je op de hoogte te houden van updates in de app.",
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    },
+    "android": {
+      "appName": "Trip Planner",
+      "versionCode": 7,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/ios-icon-512.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.example.tripplanner",
+      "permissions": [
+        "android.permission.RECEIVE_BOOT_COMPLETED",
+        "android.permission.SCHEDULE_EXACT_ALARM",
+        "android.permission.RECEIVE_BOOT_COMPLETED",
+        "android.permission.SCHEDULE_EXACT_ALARM"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/images/ios-icon-512.png"
+    },
+    "plugins": [
+      [
+        "expo-router",
+        {
+          "origin": "https://example.com/"
+        }
+      ],
+      "expo-font",
+      "expo-web-browser",
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/images/ios-icon-512.png",
+          "color": "#ffffff",
+          "defaultChannel": "default",
+          "enableBackgroundRemoteNotifications": false
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": "https://example.com/"
+      },
+      "testNotificationPassword": ""
+    }
+  }
+}
