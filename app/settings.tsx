@@ -11,9 +11,11 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { TEST_NOTIFICATION_PASSWORD, isTestNotificationPasswordConfigured } from '@/constants/security';
 
 export default function SettingsScreen() {
-  const { days, loadInitialTripData, sendTestNotificationForDay } = useTrip();
+  const { days, loadInitialTripData, sendTestNotificationForDay, importTripManifest } = useTrip();
   const [selectedTestDayId, setSelectedTestDayId] = useState<string | null>(null);
   const [testPassword, setTestPassword] = useState('');
+  const [manifestInput, setManifestInput] = useState('');
+  const [isImportingManifest, setIsImportingManifest] = useState(false);
   const { colors, mode, setThemeMode, resolvedMode } = useThemeMode();
   const styles = useMemo(() => createStyles(colors), [colors]);
   const insets = useSafeAreaInsets();
@@ -75,6 +77,26 @@ export default function SettingsScreen() {
     Alert.alert('Verstuurd', 'Testmelding staat klaar (binnen enkele seconden).');
   };
 
+  const handleImportManifest = async () => {
+    const trimmedInput = manifestInput.trim();
+    if (!trimmedInput) {
+      Alert.alert('Geen data', 'Plak eerst een geldig trip manifest (JSON).');
+      return;
+    }
+
+    try {
+      setIsImportingManifest(true);
+      await importTripManifest(trimmedInput);
+      setManifestInput('');
+      Alert.alert('Geimporteerd', 'Trip manifest is geladen.');
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Importeren mislukt.';
+      Alert.alert('Import mislukt', message);
+    } finally {
+      setIsImportingManifest(false);
+    }
+  };
+
   return (
     <>
       <Stack.Screen options={{ title: 'Instellingen', headerShown: false }} />
@@ -129,6 +151,30 @@ export default function SettingsScreen() {
               );
             })}
           </View>
+        </Card>
+
+        <Card style={styles.card}>
+          <Text style={styles.title}>Trip manifest import</Text>
+          <Text style={styles.subtitle}>
+            Plak een trip manifest in JSON-formaat. Dit overschrijft de huidige planning en crewdata.
+          </Text>
+          <TextInput
+            value={manifestInput}
+            onChangeText={setManifestInput}
+            placeholder="Plak hier je JSON manifest"
+            placeholderTextColor={colors.muted}
+            autoCapitalize="none"
+            autoCorrect={false}
+            multiline
+            textAlignVertical="top"
+            style={[styles.input, styles.manifestInput, { borderColor: colors.border, color: colors.textPrimary }]}
+          />
+          <Button
+            label={isImportingManifest ? 'Importeren...' : 'Importeer manifest'}
+            onPress={handleImportManifest}
+            disabled={isImportingManifest || !manifestInput.trim()}
+            style={styles.fullWidthButton}
+          />
         </Card>
 
         <Card style={styles.card}>
@@ -255,6 +301,14 @@ const createStyles = (palette: any) =>
       paddingHorizontal: Spacing.sm,
       paddingVertical: Spacing.sm,
       fontSize: Typography.body,
+    },
+    manifestInput: {
+      minHeight: 140,
+      fontFamily: Platform.select({
+        ios: 'Menlo',
+        android: 'monospace',
+        default: 'monospace',
+      }),
     },
     fullWidthButton: {
       alignSelf: 'stretch',

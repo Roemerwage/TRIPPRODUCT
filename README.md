@@ -1,6 +1,6 @@
 # Trip Planner (Portfolio Demo)
 
-A cross‑platform trip planning app built with Expo + React Native. This repository contains a **fully anonymized** dataset and uses **stock imagery** so it can be shared safely as a portfolio project.
+A cross‑platform trip planning app built with Expo + React Native. 
 
 ## Highlights
 - Day‑by‑day itinerary with activities, times, and notes

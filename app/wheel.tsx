@@ -15,7 +15,7 @@ import {
 import { Stack } from 'expo-router';
 import Svg, { G, Path } from 'react-native-svg';
 import { Check, Plus, X } from 'lucide-react-native';
-import { PARTICIPANTS } from '@/constants/participants';
+import { useTrip } from '@/contexts/TripContext';
 import { Participant } from '@/types/trip';
 import { FloatingActions } from '@/components/FloatingActions';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -39,7 +39,8 @@ type GuestParticipant = SelectableParticipant & {
 };
 
 export default function WheelScreen() {
-  const [selectedIds, setSelectedIds] = useState<string[]>(PARTICIPANTS.map(p => p.id));
+  const { participants } = useTrip();
+  const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const [winnerCount, setWinnerCount] = useState(1);
   const [winners, setWinners] = useState<SelectableParticipant[]>([]);
   const [spinAngle, setSpinAngle] = useState(0);
@@ -48,7 +49,7 @@ export default function WheelScreen() {
   const [currentStep, setCurrentStep] = useState<number>(0);
   const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
   const [spinCount, setSpinCount] = useState(0);
-  const [wheelParticipants, setWheelParticipants] = useState<SelectableParticipant[]>(PARTICIPANTS);
+  const [wheelParticipants, setWheelParticipants] = useState<SelectableParticipant[]>([]);
   const [spotlightWinner, setSpotlightWinner] = useState<SelectableParticipant | null>(null);
   const spotlightTimer = useRef<NodeJS.Timeout | null>(null);
   const [guestPlayers, setGuestPlayers] = useState<GuestParticipant[]>([]);
@@ -75,13 +76,34 @@ export default function WheelScreen() {
   });
 
   const allParticipants = useMemo(
-    () => [...PARTICIPANTS, ...guestPlayers],
-    [guestPlayers]
+    () => [...participants, ...guestPlayers],
+    [participants, guestPlayers]
   );
   const selectedParticipants = useMemo(
     () => allParticipants.filter(p => selectedIds.includes(p.id)),
     [selectedIds, allParticipants]
   );
+
+  useEffect(() => {
+    const participantIds = new Set(participants.map(person => person.id));
+    setSelectedIds(prev => {
+      const guestIds = prev.filter(id => id.startsWith('guest-'));
+      const participantSelection = prev.filter(id => participantIds.has(id));
+      if (participantSelection.length === 0 && guestIds.length === 0) {
+        return [...participants.map(person => person.id)];
+      }
+      return [...new Set([...participantSelection, ...guestIds])];
+    });
+
+    setWheelParticipants(prev => {
+      if (prev.length === 0) return participants;
+      return prev
+        .map(person =>
+          person.isGuest ? person : participants.find(item => item.id === person.id) ?? null
+        )
+        .filter(Boolean) as SelectableParticipant[];
+    });
+  }, [participants]);
 
   useEffect(() => {
     setWinnerCount(prev => {
