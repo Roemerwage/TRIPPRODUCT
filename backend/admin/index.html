@@ -7181,16 +7181,23 @@
         const silent = options.silent === true;
         const requestedTripId = String(options.tripId || "").trim();
         const fallbackToLast = options.fallbackToLast !== false;
+        const strictTrip = options.strictTrip === true;
         const draftStore = readDraftStore();
         const byTrip = draftStore.byTrip || {};
 
         const candidateKeys = [];
-        if (requestedTripId) candidateKeys.push(requestedTripId);
-        const currentKey = getCurrentDraftTripKey();
-        if (currentKey && !candidateKeys.includes(currentKey)) candidateKeys.push(currentKey);
-        if (fallbackToLast && draftStore.lastTripKey && !candidateKeys.includes(draftStore.lastTripKey)) {
-          candidateKeys.push(draftStore.lastTripKey);
+        if (requestedTripId) {
+          candidateKeys.push(requestedTripId);
         }
+
+        if (!strictTrip) {
+          const currentKey = getCurrentDraftTripKey();
+          if (currentKey && !candidateKeys.includes(currentKey)) candidateKeys.push(currentKey);
+          if (fallbackToLast && draftStore.lastTripKey && !candidateKeys.includes(draftStore.lastTripKey)) {
+            candidateKeys.push(draftStore.lastTripKey);
+          }
+        }
+
         if (candidateKeys.length === 0) {
           const anyKey = Object.keys(byTrip)[0];
           if (anyKey) candidateKeys.push(anyKey);
@@ -7860,7 +7867,8 @@
           const restored = restoreBuilderDraft({
             silent: true,
             tripId: cleanedTripId,
-            fallbackToLast: false
+            fallbackToLast: false,
+            strictTrip: true
           });
           if (restored) {
             setBuilderTab("trip");
@@ -7973,7 +7981,9 @@
         } catch (error) {
           const message = String(error?.message || "");
           const shouldRetryAsNewDraft =
-            Boolean(versionIdInput) && message.includes("Alleen draft versies kunnen overschreven worden");
+            Boolean(versionIdInput) &&
+            (message.includes("Alleen draft versies kunnen overschreven worden") ||
+              message.includes("Version id hoort bij een andere trip."));
           if (!shouldRetryAsNewDraft) {
             throw error;
           }
