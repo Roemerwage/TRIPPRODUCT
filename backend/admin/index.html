@@ -1585,6 +1585,10 @@
                           <textarea id="activityTemplateApplyDescription" name="activityTemplateApplyDescription" rows="3"></textarea>
                         </div>
                       </div>
+                      <div class="checkbox-row" id="activityTemplateApplySaveToLibraryRow" style="display:none;">
+                        <input id="activityTemplateApplySaveToLibrary" name="activityTemplateApplySaveToLibrary" type="checkbox" />
+                        <label for="activityTemplateApplySaveToLibrary">Save to activity library</label>
+                      </div>
                       <div class="builder-inline-actions">
                         <button id="activityTemplateApplySubmitBtn" type="submit">Add To Trip</button>
                         <button id="activityTemplateApplyCancelBtn" type="button" class="outline">Cancel</button>
@@ -2566,6 +2570,8 @@
       const activityTemplateApplyFormEl = document.getElementById("activityTemplateApplyForm");
       const activityTemplateApplySelectEl = document.getElementById("activityTemplateApplySelect");
       const activityTemplateApplyTemplateRowEl = document.getElementById("activityTemplateApplyTemplateRow");
+      const activityTemplateApplySaveToLibraryRowEl = document.getElementById("activityTemplateApplySaveToLibraryRow");
+      const activityTemplateApplySaveToLibraryEl = document.getElementById("activityTemplateApplySaveToLibrary");
       const activityTemplateApplyTitleEl = document.getElementById("activityTemplateApplyTitle");
       const activityTemplateApplySubmitBtnEl = document.getElementById("activityTemplateApplySubmitBtn");
       const activityListSearchEl = document.getElementById("activityListSearch");
@@ -4379,12 +4385,31 @@
             seed.travelMinutes === null || seed.travelMinutes === undefined ? "" : String(seed.travelMinutes),
           mapsLink: String(seed.mapsLink || ""),
           imageUrl: String(seed.imageUrl || ""),
-          description: String(seed.description || "")
+          description: String(seed.description || ""),
+          __expanded: seed.__expanded === true
         });
         activityRowsEl.appendChild(nextRow);
         sortActivityRowsInDom();
         refreshBuilderHealth();
         scheduleBuilderAutosave();
+      }
+
+      function getActivitySeedFromRow(rowEl) {
+        const typeRaw = readRowField(rowEl, "type");
+        return {
+          date: readRowField(rowEl, "date"),
+          name: readRowField(rowEl, "name"),
+          type: ACTIVITY_TYPES.includes(typeRaw) ? typeRaw : "event",
+          location: readRowField(rowEl, "location"),
+          startTime: readRowField(rowEl, "startTime"),
+          meetTime: readRowField(rowEl, "meetTime"),
+          departFrom: readRowField(rowEl, "departFrom"),
+          transport: readRowField(rowEl, "transport"),
+          travelMinutes: readRowField(rowEl, "travelMinutes"),
+          mapsLink: readRowField(rowEl, "mapsLink"),
+          imageUrl: readRowField(rowEl, "imageUrl"),
+          description: readRowField(rowEl, "description"),
+        };
       }
 
       function openTripActivitiesAddDrawer() {
@@ -4457,6 +4482,8 @@
 
         if (activityTemplateApplyMode === "library") {
           if (activityTemplateApplyTemplateRowEl) activityTemplateApplyTemplateRowEl.style.display = "";
+          if (activityTemplateApplySaveToLibraryRowEl) activityTemplateApplySaveToLibraryRowEl.style.display = "none";
+          if (activityTemplateApplySaveToLibraryEl) activityTemplateApplySaveToLibraryEl.checked = false;
           if (activityTemplateApplyTitleEl) activityTemplateApplyTitleEl.textContent = "Add From Activity Library";
           if (activityTemplateApplySubmitBtnEl) activityTemplateApplySubmitBtnEl.textContent = "Add To Trip";
           updateActivityTemplateApplyOptions(preferredTemplateId);
@@ -4467,6 +4494,8 @@
           }
         } else {
           if (activityTemplateApplyTemplateRowEl) activityTemplateApplyTemplateRowEl.style.display = "none";
+          if (activityTemplateApplySaveToLibraryRowEl) activityTemplateApplySaveToLibraryRowEl.style.display = "";
+          if (activityTemplateApplySaveToLibraryEl) activityTemplateApplySaveToLibraryEl.checked = false;
           if (activityTemplateApplyTitleEl) activityTemplateApplyTitleEl.textContent = "Add Manual Activity";
           if (activityTemplateApplySubmitBtnEl) activityTemplateApplySubmitBtnEl.textContent = "Add Activity";
           if (activityTemplateApplyMetaEl) {
@@ -4506,6 +4535,8 @@
           activityTemplateApplyFormEl.reset();
           setFieldValueAndNotify(document.getElementById("activityTemplateApplyImageUrl"), "");
           if (activityTemplateApplyTemplateRowEl) activityTemplateApplyTemplateRowEl.style.display = "";
+          if (activityTemplateApplySaveToLibraryRowEl) activityTemplateApplySaveToLibraryRowEl.style.display = "none";
+          if (activityTemplateApplySaveToLibraryEl) activityTemplateApplySaveToLibraryEl.checked = false;
           if (activityTemplateApplyTitleEl) activityTemplateApplyTitleEl.textContent = "Add From Activity Library";
           if (activityTemplateApplySubmitBtnEl) activityTemplateApplySubmitBtnEl.textContent = "Add To Trip";
           if (activityTemplateApplyMetaEl) {
@@ -5349,6 +5380,7 @@
             </div>
             <div class="activity-row-summary-actions">
               <button type="button" class="table-action-btn activity-row-edit-btn" title="Edit activity">✏️</button>
+              <button type="button" class="table-action-btn activity-row-duplicate-btn" title="Duplicate activity">⧉</button>
               <button type="button" class="table-action-btn remove-row-btn activity-row-delete" title="Delete activity">🗑️</button>
             </div>
           </div>
@@ -5387,6 +5419,7 @@
 
         const summaryEl = rowEl.querySelector(".activity-row-summary");
         const editBtn = rowEl.querySelector(".activity-row-edit-btn");
+        const duplicateBtn = rowEl.querySelector(".activity-row-duplicate-btn");
         if (summaryEl) {
           summaryEl.addEventListener("click", event => {
             const target = event.target;
@@ -5399,6 +5432,15 @@
           editBtn.addEventListener("click", () => {
             setActivityRowExpanded(rowEl, !rowEl.classList.contains("expanded"));
             updateActivityListMeta();
+          });
+        }
+        if (duplicateBtn) {
+          duplicateBtn.addEventListener("click", () => {
+            addTripActivityRow({
+              ...getActivitySeedFromRow(rowEl),
+              __expanded: true
+            });
+            setFlash("Activity duplicated.", "ok");
           });
         }
         const saveBtn = rowEl.querySelector(".activity-row-save-btn");
@@ -8175,11 +8217,13 @@
         }
       });
 
-      activityTemplateApplyFormEl.addEventListener("submit", event => {
+      activityTemplateApplyFormEl.addEventListener("submit", async event => {
         event.preventDefault();
         try {
           const form = new FormData(event.currentTarget);
           const isLibraryMode = activityTemplateApplyMode !== "manual";
+          const shouldSaveToLibrary =
+            !isLibraryMode && form.get("activityTemplateApplySaveToLibrary") === "on";
           if (isLibraryMode) {
             const templateId = String(form.get("activityTemplateApplySelect") || "").trim();
             const template = getAllActivityLibraryEntries().find(activity => String(activity.id || "") === templateId);
@@ -8197,7 +8241,7 @@
           if (rawStartTime && !startTime) throw new Error("Start time moet HH:MM zijn.");
           if (rawMeetTime && !meetTime) throw new Error("Meet time moet HH:MM zijn.");
 
-          addTripActivityRow({
+          const activityPayload = {
             date,
             name,
             type: String(form.get("activityTemplateApplyType") || "event").trim(),
@@ -8210,8 +8254,61 @@
             mapsLink: String(form.get("activityTemplateApplyMapsLink") || "").trim(),
             imageUrl: String(form.get("activityTemplateApplyImageUrl") || "").trim(),
             description: String(form.get("activityTemplateApplyDescription") || "").trim()
-          });
+          };
+
+          addTripActivityRow(activityPayload);
+
+          let librarySavedActivity = null;
+          let librarySaveError = null;
+          if (shouldSaveToLibrary) {
+            try {
+              const saveResponse = await api("/admin/activity-library", {
+                method: "POST",
+                body: {
+                  name: activityPayload.name,
+                  type: activityPayload.type,
+                  location: activityPayload.location,
+                  departFrom: activityPayload.departFrom,
+                  transport: activityPayload.transport,
+                  mapsLink: activityPayload.mapsLink,
+                  imageData: activityPayload.imageUrl,
+                  description: activityPayload.description,
+                  destinationKeys: getCurrentTripDestinationKeys(),
+                  tags: [],
+                  active: true
+                }
+              });
+              librarySavedActivity = saveResponse?.activity || null;
+              if (librarySavedActivity) {
+                const existingIndex = getAllActivityLibraryEntries().findIndex(
+                  entry => String(entry.id || "") === String(librarySavedActivity.id || "")
+                );
+                if (existingIndex >= 0) {
+                  latestAdminState.activityLibrary[existingIndex] = librarySavedActivity;
+                } else {
+                  latestAdminState.activityLibrary.unshift(librarySavedActivity);
+                }
+                renderActivityLibraryTable();
+                updateActivityLibraryGroupOptions();
+              }
+            } catch (error) {
+              librarySaveError = error;
+            }
+          }
+
           closeActivityTemplateApplyDrawer({ reset: true });
+
+          if (librarySaveError) {
+            setFlash(
+              "Manual activity added, but saving to library failed: " + (librarySaveError?.message || "Unknown error"),
+              "error"
+            );
+            return;
+          }
+          if (shouldSaveToLibrary && librarySavedActivity) {
+            setFlash("Manual activity added and saved to library.", "ok");
+            return;
+          }
           setFlash(isLibraryMode ? "Activity added from template." : "Manual activity added.", "ok");
         } catch (error) {
           setFlash(error.message, "error");
