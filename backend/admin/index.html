@@ -2481,7 +2481,7 @@
             id: "day-2026-07-10",
             date: "2026-07-10",
             dayName: "Vrijdag",
-            region: "Amsterdam",
+            region: "",
             activities: []
           }
         ]
@@ -6864,6 +6864,14 @@
       function mergeImportedManifestIntoCurrent(currentManifest, importedManifest) {
         const current = deepClone(currentManifest);
         const imported = deepClone(importedManifest);
+        const dayHasMeaningfulContent = day => {
+          if (!day || typeof day !== "object") return false;
+          const hasLodging = Boolean(day.lodging && typeof day.lodging === "object");
+          const hasActivities = Array.isArray(day.activities) && day.activities.length > 0;
+          const hasPlaces = Array.isArray(day.places) && day.places.length > 0;
+          const hasNotification = Boolean(day.notification && typeof day.notification === "object");
+          return hasLodging || hasActivities || hasPlaces || hasNotification;
+        };
 
         const mergedTrip = {
           ...imported.trip,
@@ -6887,10 +6895,14 @@
           const importedDay = importedDaysByDate.get(date);
 
           if (currentDay && importedDay) {
+            const importedRegion = String(importedDay.region || "").trim();
+            const currentRegion = String(currentDay.region || "").trim();
+            const shouldUseCurrentRegionFallback =
+              !importedRegion && currentRegion && dayHasMeaningfulContent(currentDay);
             const day = {
               ...importedDay,
               dayName: importedDay.dayName || currentDay.dayName || "",
-              region: importedDay.region || currentDay.region || "",
+              region: importedRegion || (shouldUseCurrentRegionFallback ? currentRegion : ""),
               lodging: importedDay.lodging || currentDay.lodging,
               activities: mergeUniqueRows(importedDay.activities, currentDay.activities, activitySignature),
               places: mergeUniqueRows(importedDay.places, currentDay.places, legacyPlaceSignature)
