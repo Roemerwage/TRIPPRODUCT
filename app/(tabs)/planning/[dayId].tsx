@@ -3,8 +3,8 @@ import { StyleSheet, Text, TextInput, View, ScrollView, TouchableOpacity, Linkin
 import { useLocalSearchParams, Stack, useRouter } from 'expo-router';
 import { useTrip } from '@/contexts/TripContext';
 import { MapPin, ExternalLink, Clock, Navigation, ChevronDown, X, ChevronLeft, ChevronRight } from 'lucide-react-native';
-import { getAccommodationMedia, getActivityImage, getActivityLink, getDayImage, getPlaceImage } from '@/constants/media';
-import { Activity, Day, Place } from '@/types/trip';
+import { getAccommodationMedia, getActivityImage, getActivityLink, getDayImage } from '@/constants/media';
+import { Activity, Day } from '@/types/trip';
 import { formatMinutesLabel, getFlightArrivalTime, getFlightLayoverMinutes } from '@/utils/flight';
 import { useThemeMode } from '@/contexts/ThemeContext';
 import { PreviewableImage } from '@/components/PreviewableImage';
@@ -30,49 +30,6 @@ const SECURITY_TIMESLOT_TIPS = [
   },
 ];
 
-type SpecialEventOptionKey = 'optionA' | 'optionB';
-
-const SPECIAL_EVENT_TABS: { key: SpecialEventOptionKey; label: string; icon: string }[] = [
-  { key: 'optionA', label: 'Optie A', icon: '🎉' },
-  { key: 'optionB', label: 'Optie B', icon: '🎭' },
-];
-
-const SPECIAL_EVENT_OPTIONS: {
-  key: SpecialEventOptionKey;
-  title: string;
-  body: string;
-  details: string[];
-  links: { label: string; url: string }[];
-  note?: string;
-}[] = [
-  {
-    key: 'optionA',
-    title: 'Optie 1: Dagprogramma',
-    body: 'Openluchtprogramma met muziek, workshops en informele activiteiten. Details volgen in de app.',
-    details: [
-      'Start: 08:00',
-      'Locatie: Stadscentrum',
-      'Toegang: Gratis',
-    ],
-    links: [
-      { label: 'Info', url: 'https://example.com/event-info' },
-      { label: 'Maps', url: 'https://example.com/map' },
-    ],
-  },
-  {
-    key: 'optionB',
-    title: 'Optie 2: Ochtendprogramma',
-    body: 'Groot evenement met veel bezoekers, muziek en entertainment.',
-    details: [
-      'Start: 07:00',
-      'Adres: Hoofdstraat',
-    ],
-    links: [
-      { label: 'Info', url: 'https://example.com/event-details' },
-      { label: 'Maps', url: 'https://example.com/map' },
-    ],
-  },
-];
 
 export default function DayDetailScreen() {
   const { dayId, dir } = useLocalSearchParams<{ dayId: string; dir?: 'next' | 'prev' }>();
@@ -80,7 +37,6 @@ export default function DayDetailScreen() {
   const router = useRouter();
   const [roomsExpanded, setRoomsExpanded] = useState(false);
   const [freeDayTab, setFreeDayTab] = useState<FreeDayTabKey | null>(null);
-  const [specialEventTab, setSpecialEventTab] = useState<SpecialEventOptionKey | null>(null);
   const [settingsVisible, setSettingsVisible] = useState(false);
   const [testPickerVisible, setTestPickerVisible] = useState(false);
   const [selectedTestDayId, setSelectedTestDayId] = useState<string | null>(null);
@@ -115,64 +71,22 @@ export default function DayDetailScreen() {
     [day]
   );
   const roomAssignments = day ? getRoomAssignments(day.verblijf) : [];
-  const isFreeDay = day ? day.activiteiten.some(activity => activity.type === 'free_day') : false;
+  const isFreeDay = day
+    ? day.activiteiten.length > 0 &&
+      day.activiteiten.every(activity => activity.type === 'free_day')
+    : false;
 
-  const placeGroups = useMemo(() => {
-    if (!day?.places?.length) return [];
-    const grouped = new Map<string, Place[]>();
-    day.places.forEach(place => {
-      const group = place.group || 'Overig';
-      if (!grouped.has(group)) {
-        grouped.set(group, []);
-      }
-      grouped.get(group)!.push(place);
+  const planningActivities = useMemo(() => {
+    if (!day) return [];
+    return [...day.activiteiten].sort((a, b) => {
+      const aTime = a.verzamelTijd || a.startTijd;
+      const bTime = b.verzamelTijd || b.startTijd;
+      if (aTime && bTime) return aTime.getTime() - bTime.getTime();
+      if (aTime) return -1;
+      if (bTime) return 1;
+      return a.naam.localeCompare(b.naam);
     });
-    return Array.from(grouped.entries())
-      .map(([group, items]) => ({
-        group,
-        items: items.sort((a, b) => {
-          const aTime = a.startTijd?.getTime() ?? Number.POSITIVE_INFINITY;
-          const bTime = b.startTijd?.getTime() ?? Number.POSITIVE_INFINITY;
-          if (aTime !== bTime) return aTime - bTime;
-          return a.naam.localeCompare(b.naam);
-        }),
-      }))
-      .sort((a, b) => getPlaceGroupOrder(a.group) - getPlaceGroupOrder(b.group));
   }, [day]);
-
-  const planningItems = useMemo(() => {
-    const activityItems = day
-      ? day.activiteiten.map(activity => {
-          const time = activity.verzamelTijd || activity.startTijd;
-          return {
-            kind: 'activity' as const,
-            time: time ? time.getTime() : Number.POSITIVE_INFINITY,
-            activity,
-          };
-        })
-      : [];
-
-    const placeItems = placeGroups.map(group => {
-      const earliest = group.items.reduce((acc, item) => {
-        const time = item.startTijd ? item.startTijd.getTime() : Number.POSITIVE_INFINITY;
-        return Math.min(acc, time);
-      }, Number.POSITIVE_INFINITY);
-      return {
-        kind: 'placeGroup' as const,
-        time: earliest,
-        order: getPlaceGroupOrder(group.group),
-        group,
-      };
-    });
-
-    return [...placeItems, ...activityItems].sort((a, b) => {
-      if (a.time !== b.time) return a.time - b.time;
-      if ('order' in a && 'order' in b) return a.order - b.order;
-      if ('order' in a) return -1;
-      if ('order' in b) return 1;
-      return 0;
-    });
-  }, [day, placeGroups]);
 
   if (!day) {
     return (
@@ -562,105 +476,9 @@ export default function DayDetailScreen() {
         ) : (
           <View style={styles.activitiesSection}>
             <Text style={styles.sectionTitle}>Planning</Text>
-            {planningItems.map(item => {
-              if (item.kind === 'placeGroup') {
-                return (
-                  <View key={`place-${item.group.group}`} style={styles.placeGroupCard}>
-                    {!isMorningGroup(item.group.group) && (
-                      <View style={styles.placeGroupHeader}>
-                        <Text style={styles.placeGroupTitle}>{item.group.group}</Text>
-                      </View>
-                    )}
-                    {item.group.items.map((place, index) => {
-                      const timeLabel = formatTime(place.startTijd);
-                      const placeImage = getPlaceImage(place.naam, place.locatie);
-                      return (
-                        <View key={place.id} style={[styles.placeRow, index > 0 && styles.placeRowDivider]}>
-                          {getPlaceEmoji(place.type, place.naam) ? (
-                            <View style={styles.placeIcon}>
-                              <Text style={styles.placeEmoji}>{getPlaceEmoji(place.type, place.naam)}</Text>
-                            </View>
-                          ) : null}
-                          <View style={styles.placeContent}>
-                            {placeImage && (
-                              <PreviewableImage
-                                source={placeImage}
-                                style={[
-                                  styles.placeImage,
-                                  isHeroPlace(place.naam) && styles.placeImageLarge,
-                                ]}
-                                onPreviewVisibilityChange={setIsPreviewOpen}
-                                accessibilityLabel={place.naam || 'Locatie'}
-                              />
-                            )}
-                            <View style={styles.placeHeaderRow}>
-                              <View style={styles.placeTitleWrap}>
-                                <Text style={styles.placeName}>{place.naam}</Text>
-                                <Text style={styles.placeType}>{getPlaceTypeLabel(place.type)}</Text>
-                              </View>
-                              {timeLabel && <Text style={styles.placeTime}>{timeLabel}</Text>}
-                            </View>
-                            {!!place.beschrijving && (
-                              <Text style={styles.placeDescription}>{place.beschrijving}</Text>
-                            )}
-                            {!!place.locations?.length && (
-                              <View style={styles.placeLocations}>
-                                {place.locations.map(link => (
-                                  <TouchableOpacity
-                                    key={link.url}
-                                    style={styles.placeLocationButton}
-                                    onPress={() => Linking.openURL(link.url)}
-                                  >
-                                    <MapPin size={14} color={colors.primary} />
-                                    <Text style={styles.placeLocationText}>{link.label}</Text>
-                                  </TouchableOpacity>
-                                ))}
-                              </View>
-                            )}
-                            {(!place.locations?.length && place.locatie && place.locatie !== 'x') && (
-                              <TouchableOpacity
-                                style={styles.placeDetail}
-                                activeOpacity={place.mapsLink ? 0.7 : 1}
-                                onPress={() => {
-                                  if (place.mapsLink && place.mapsLink !== 'x') {
-                                    Linking.openURL(place.mapsLink);
-                                  }
-                                }}
-                              >
-                                <MapPin size={14} color={place.mapsLink ? colors.primary : colors.textSecondary} />
-                                <Text style={[styles.placeDetailText, place.mapsLink && styles.placeDetailLink]}>
-                                  {place.locatie}
-                                </Text>
-                                {place.mapsLink && <ExternalLink size={14} color={colors.primary} />}
-                              </TouchableOpacity>
-                            )}
-                            {!!place.links?.length && (
-                              <View style={styles.placeLinks}>
-                                {place.links.map(link => (
-                                  <TouchableOpacity
-                                    key={link.url}
-                                    style={styles.placeLinkButton}
-                                    onPress={() => Linking.openURL(link.url)}
-                                  >
-                                    <Text style={styles.placeLinkText}>{link.label}</Text>
-                                  </TouchableOpacity>
-                                ))}
-                              </View>
-                            )}
-                          </View>
-                        </View>
-                      );
-                    })}
-                  </View>
-                );
-              }
-
-              const activity = item.activity;
+            {planningActivities.map(activity => {
               const displayTime = activity.verzamelTijd || activity.startTijd;
               const isFlight = activity.type === 'flight';
-              const isSpecialEventActivity = activity.type === 'event';
-              const firstEventId = day.activiteiten.find(a => a.type === 'event')?.id;
-              const isSpecialEventMainDay = isSpecialEventActivity && firstEventId === activity.id;
               const departureTime = isFlight ? activity.startTijd || activity.verzamelTijd : displayTime;
               const timeStr = departureTime
                 ? `${String(departureTime.getHours()).padStart(2, '0')}:${String(departureTime.getMinutes()).padStart(2, '0')}`
@@ -704,58 +522,6 @@ export default function DayDetailScreen() {
                 ? stripTimeFromFlightDetail(parsedFlightDetails.arrival)
                 : null;
               const arrivalTimeStr = parsedArrivalTime || (arrivalTime ? formatTime(arrivalTime) : null);
-
-              if (isSpecialEventMainDay) {
-                return (
-                  <View key={activity.id} style={[styles.activityCard, styles.specialEventSection]}>
-                    {activityImage ? (
-                      <PreviewableImage
-                        source={activityImage}
-                        style={styles.specialEventImage}
-                        onPreviewVisibilityChange={setIsPreviewOpen}
-                        accessibilityLabel="Event afbeelding"
-                      />
-                    ) : (
-                      <View style={styles.specialEventImagePlaceholder}>
-                        <Text style={styles.specialEventImageText}>Event</Text>
-                      </View>
-                    )}
-                    <View style={styles.specialEventHeader}>
-                      <Text style={styles.activityEmoji}>🎉</Text>
-                      <View style={styles.specialEventHeaderText}>
-                        <Text style={[styles.sectionTitle, styles.specialEventTitle]}>Speciale activiteit</Text>
-                        <Text style={[styles.activityTime, styles.specialEventTime]}>07:00</Text>
-                      </View>
-                    </View>
-                    <Text style={styles.specialEventIntro}>
-                      Een grote gezamenlijke activiteit met meerdere opties. Kies een route voor de details:
-                    </Text>
-                    <View style={styles.segmentControl}>
-                      {SPECIAL_EVENT_TABS.map(tab => {
-                        const isActive = specialEventTab === tab.key;
-                        return (
-                          <TouchableOpacity
-                            key={tab.key}
-                            style={[styles.segmentButton, isActive && styles.segmentButtonActive]}
-                            onPress={() => setSpecialEventTab(prev => (prev === tab.key ? null : tab.key))}
-                          >
-                            <Text style={[styles.segmentLabel, isActive && styles.segmentLabelActive]}>
-                              {tab.icon} {tab.label}
-                            </Text>
-                          </TouchableOpacity>
-                        );
-                      })}
-                    </View>
-                    <View style={styles.segmentContent}>
-                      {specialEventTab ? (
-                        renderSpecialEventContent(specialEventTab, styles)
-                      ) : (
-                        <Text style={styles.specialEventPlaceholder}>Tik een optie voor details.</Text>
-                      )}
-                    </View>
-                  </View>
-                );
-              }
 
               return (
                 <TouchableOpacity
@@ -1091,52 +857,14 @@ function getActivityEmoji(type: string): string {
     tour: '🗺️',
     hike: '🥾',
     event: '🎉',
+    breakfast: '☕',
+    lunch: '🥪',
+    dinner: '🍽️',
+    drinks: '🍹',
     free_day: '🧘',
     flight: '✈️',
   };
   return emojiMap[type] || '📍';
-}
-
-function getPlaceEmoji(type: string, name?: string): string {
-  const emojiMap: Record<string, string> = {
-    food: '🍴',
-    drink: '🍹',
-    nightlife: '🌙',
-    logistics: '🧭',
-    spot: '📍',
-    other: '✨',
-  };
-  return emojiMap[type] || '✨';
-}
-
-function getPlaceTypeLabel(type: string): string {
-  const labelMap: Record<string, string> = {
-    food: 'Restaurant',
-    drink: 'Drinks',
-    nightlife: 'Avond',
-    logistics: 'Plan',
-    spot: 'Spot',
-    other: 'Overig',
-  };
-  return labelMap[type] || 'Overig';
-}
-
-function getPlaceGroupOrder(group: string): number {
-  const normalized = group.toLowerCase();
-  if (normalized.includes('ochtend')) return 1;
-  if (normalized.includes('lunch')) return 2;
-  if (normalized.includes('middag')) return 3;
-  if (normalized.includes('avond')) return 4;
-  if (normalized.includes('nacht')) return 5;
-  return 10;
-}
-
-function isMorningGroup(group: string): boolean {
-  return group.toLowerCase().includes('ochtend');
-}
-
-function isHeroPlace(_: string | undefined): boolean {
-  return false;
 }
 
 function formatTime(date: Date | null): string | null {
@@ -1188,45 +916,6 @@ function getDepartureLocation(value: string | null | undefined, fallback?: strin
     return fallback;
   }
   return value;
-}
-
-function renderSpecialEventContent(selected: SpecialEventOptionKey, styles: ReturnType<typeof createStyles>) {
-  const option = SPECIAL_EVENT_OPTIONS.find(opt => opt.key === selected);
-  if (!option) return null;
-
-  return (
-    <View style={styles.specialEventCard}>
-      <Text style={styles.specialEventCardTitle}>{option.title}</Text>
-      <Text style={styles.specialEventBody}>{option.body}</Text>
-      <View style={styles.specialEventInfoList}>
-        {option.details.map(detail => (
-          <Text key={detail} style={styles.specialEventInfo}>{detail}</Text>
-        ))}
-      </View>
-      <View style={styles.specialEventLinks}>
-        {option.links.map((link, idx) => (
-          <TouchableOpacity
-            key={link.url}
-            style={[
-              styles.specialEventLinkButton,
-              idx === 0 ? styles.specialEventLinkPrimary : styles.specialEventLinkSecondary,
-            ]}
-            onPress={() => Linking.openURL(link.url)}
-          >
-            <Text
-              style={[
-                styles.specialEventLinkText,
-                idx === 0 ? styles.specialEventLinkTextPrimary : styles.specialEventLinkTextSecondary,
-              ]}
-            >
-              {link.label}
-            </Text>
-          </TouchableOpacity>
-        ))}
-      </View>
-      {option.note ? <Text style={styles.specialEventNote}>{option.note}</Text> : null}
-    </View>
-  );
 }
 
 type FreeDayTabKey = 'fishing' | 'hike' | 'beach' | 'custom';
@@ -1741,10 +1430,6 @@ const createStyles = (palette: any) => StyleSheet.create({
   specialEventTime: {
     marginBottom: Spacing.sm,
   },
-  placesSection: {
-    paddingHorizontal: Spacing.md,
-    paddingTop: Spacing.md,
-  },
   freeDaySection: {
     padding: Spacing.md,
     gap: Spacing.md,
@@ -1754,137 +1439,6 @@ const createStyles = (palette: any) => StyleSheet.create({
     fontWeight: '700' as const,
     color: palette.textPrimary,
     marginBottom: Spacing.sm,
-  },
-  placeGroupCard: {
-    backgroundColor: palette.surface,
-    borderRadius: Radius.md,
-    padding: Spacing.md,
-    marginBottom: Spacing.sm,
-    borderWidth: 1,
-    borderColor: palette.border,
-  },
-  placeGroupHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    marginBottom: Spacing.sm,
-  },
-  placeGroupTitle: {
-    fontSize: Typography.section,
-    fontWeight: '700' as const,
-    color: palette.textPrimary,
-  },
-  placeRow: {
-    flexDirection: 'row',
-    gap: Spacing.sm,
-    paddingVertical: Spacing.sm,
-  },
-  placeRowDivider: {
-    borderTopWidth: 1,
-    borderTopColor: palette.border,
-  },
-  placeIcon: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: palette.background,
-  },
-  placeEmoji: {
-    fontSize: 20,
-  },
-  placeContent: {
-    flex: 1,
-  },
-  placeHeaderRow: {
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    justifyContent: 'space-between',
-    gap: Spacing.sm,
-  },
-  placeTitleWrap: {
-    flex: 1,
-  },
-  placeName: {
-    fontSize: Typography.body,
-    fontWeight: '700' as const,
-    color: palette.textPrimary,
-    marginBottom: 2,
-  },
-  placeImage: {
-    width: '100%',
-    height: 140,
-    borderRadius: Radius.md,
-    marginBottom: Spacing.sm,
-  },
-  placeImageLarge: {
-    height: 200,
-  },
-  placeType: {
-    fontSize: Typography.label,
-    color: palette.muted,
-  },
-  placeTime: {
-    fontSize: Typography.body,
-    color: palette.primary,
-    fontWeight: '600' as const,
-  },
-  placeDescription: {
-    fontSize: Typography.body,
-    color: palette.textSecondary,
-    lineHeight: 21,
-    marginTop: Spacing.xs,
-  },
-  placeDetail: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: Spacing.xs,
-    marginTop: Spacing.xs,
-  },
-  placeDetailText: {
-    fontSize: Typography.body,
-    color: palette.textSecondary,
-  },
-  placeDetailLink: {
-    color: palette.primary,
-  },
-  placeLinks: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: Spacing.xs,
-    marginTop: Spacing.xs,
-  },
-  placeLinkButton: {
-    backgroundColor: palette.background,
-    borderRadius: Radius.sm,
-    paddingHorizontal: Spacing.sm,
-    paddingVertical: Spacing.xs,
-  },
-  placeLinkText: {
-    fontSize: Typography.label,
-    color: palette.primary,
-    fontWeight: '600' as const,
-  },
-  placeLocations: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: Spacing.xs,
-    marginTop: Spacing.xs,
-  },
-  placeLocationButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 6,
-    backgroundColor: `${palette.primary}10`,
-    borderRadius: Radius.sm,
-    paddingHorizontal: Spacing.sm,
-    paddingVertical: Spacing.xs,
-  },
-  placeLocationText: {
-    fontSize: Typography.label,
-    color: palette.primary,
-    fontWeight: '600' as const,
   },
   activityCard: {
     backgroundColor: palette.surface,

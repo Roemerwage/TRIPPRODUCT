@@ -1,0 +1,2 @@
+Datum,Dag,Stad / Regio,Verblijf,Verblijf link,Verblijf adres / pin,Google maps link,Activiteit,Activiteitstype,Activiteit locatie,Activiteit maps link,Starttijd,Verzameltijd,Vertrek vanaf,Vervoer,Reistijd,Melding,Avondmelding (template),Beschrijving
+2026-07-10,Friday,Amsterdam,Hotel A,https://hotel.example,Damrak 1 Amsterdam,https://maps.google.com/?q=Damrak+1+Amsterdam,Arrival briefing,event,Hotel lobby,https://maps.google.com/?q=Dam+Square+Amsterdam,16:00,15:45,Schiphol,Bus,45,21:00,Reminder for next day,Welcome and room check-in

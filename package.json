@@ -6,6 +6,8 @@
     "start": "expo start",
     "start-web": "expo start --web",
     "start-web-dev": "EXPO_DEBUG=true expo start --web",
+    "start:api": "node backend/server.js",
+    "preflight:prod": "node scripts/preflight-prod.js",
     "lint": "expo lint",
     "android": "expo run:android",
     "ios": "expo run:ios"

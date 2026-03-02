@@ -6,6 +6,12 @@ const MONTH_MAP: Record<string, number> = {
   Jul: 6, Aug: 7, Sep: 8, Okt: 9, Nov: 10, Dec: 11,
 };
 
+const PLACEHOLDER_VALUES = new Set(['', 'x', 'unknown', 'tba', 'tbd', 'nvt', 'n/a', '-', 'na']);
+
+const normalizeLower = (value?: string | null) => String(value ?? '').trim().toLowerCase();
+const hasMeaningfulText = (value?: string | null) => !PLACEHOLDER_VALUES.has(normalizeLower(value));
+const normalizeHeader = (value?: string | null) => normalizeLower(value).replace(/[^a-z0-9]/g, '');
+
 function parseDate(dateStr: string): Date | null {
   if (!dateStr || dateStr === 'x' || dateStr.toLowerCase() === 'unknown' || dateStr.toLowerCase() === 'tba') {
     return null;
@@ -54,6 +60,10 @@ function normalizeActivityType(type: string): ActivityType {
   if (normalized === 'tour') return 'tour';
   if (normalized === 'hike') return 'hike';
   if (normalized === 'event') return 'event';
+  if (normalized === 'breakfast' || normalized === 'ontbijt') return 'breakfast';
+  if (normalized === 'lunch') return 'lunch';
+  if (normalized === 'dinner' || normalized === 'diner') return 'dinner';
+  if (normalized === 'drinks' || normalized === 'drink') return 'drinks';
   if (normalized === 'free_day') return 'free_day';
   if (normalized === 'flight') return 'flight';
   return 'event';
@@ -78,11 +88,20 @@ export function parseTSV(tsvContent: string): Day[] {
     throw new Error('TSV moet minimaal een header en één rij bevatten');
   }
 
+  const headerCells = lines[0].split('\t');
+  const hasActivityMapsColumn = headerCells.some(cell => {
+    const normalized = normalizeHeader(cell);
+    return normalized === 'activiteitmapslink' || normalized === 'activitymapslink';
+  });
+
   const rows: TripRow[] = [];
   
   for (let i = 1; i < lines.length; i++) {
     const cells = lines[i].split('\t');
     if (cells.length < 18) continue;
+
+    const rowHasActivityMapsColumn = hasActivityMapsColumn && cells.length >= 19;
+    const offset = rowHasActivityMapsColumn ? 1 : 0;
     
     rows.push({
       datum: cells[0] || '',
@@ -95,14 +114,15 @@ export function parseTSV(tsvContent: string): Day[] {
       activiteit: cells[7] || '',
       activiteitType: cells[8] || '',
       activiteitLocatie: cells[9] || '',
-      startTijd: cells[10] || '',
-      verzamelTijd: cells[11] || '',
-      vertrekVanaf: cells[12] || '',
-      vervoer: cells[13] || '',
-      reisTijd: cells[14] || '',
-      melding: cells[15] || '',
-      avondMelding: cells[16] || '',
-      beschrijving: cells[17] || '',
+      activiteitMapsLink: rowHasActivityMapsColumn ? cells[10] || '' : '',
+      startTijd: cells[10 + offset] || '',
+      verzamelTijd: cells[11 + offset] || '',
+      vertrekVanaf: cells[12 + offset] || '',
+      vervoer: cells[13 + offset] || '',
+      reisTijd: cells[14 + offset] || '',
+      melding: cells[15 + offset] || '',
+      avondMelding: cells[16 + offset] || '',
+      beschrijving: cells[17 + offset] || '',
     });
   }
 
@@ -136,6 +156,24 @@ export function parseTSV(tsvContent: string): Day[] {
     }
 
     const day = dayMap.get(dateKey)!;
+
+    const explicitActivityMapsLink =
+      resolveActivityLink(row.activiteit, row.activiteitLocatie, row.activiteitMapsLink) ?? '';
+
+    let fallbackActivityMapsLink = '';
+    if (!explicitActivityMapsLink && hasMeaningfulText(row.googleMapsLink)) {
+      const sharedDayMapLink = row.googleMapsLink.trim();
+      const lodgingMapLink = (day.verblijfMapsLink || '').trim();
+      const lodgingLooksEmpty =
+        !hasMeaningfulText(day.verblijf) &&
+        !hasMeaningfulText(day.verblijfLink) &&
+        !hasMeaningfulText(day.verblijfAdres);
+
+      if (!lodgingMapLink || sharedDayMapLink !== lodgingMapLink || lodgingLooksEmpty) {
+        fallbackActivityMapsLink =
+          resolveActivityLink(row.activiteit, row.activiteitLocatie, sharedDayMapLink) ?? '';
+      }
+    }
     
     const activity: Activity = {
       id: `${dateKey}-${index}`,
@@ -148,7 +186,7 @@ export function parseTSV(tsvContent: string): Day[] {
       vervoer: row.vervoer,
       reisTijd: parseMinutes(row.reisTijd),
       beschrijving: unescapeNewlines(row.beschrijving) ?? '',
-      mapsLink: resolveActivityLink(row.activiteit, row.activiteitLocatie, row.googleMapsLink) ?? '',
+      mapsLink: explicitActivityMapsLink || fallbackActivityMapsLink,
     };
 
     day.activiteiten.push(activity);
@@ -181,11 +219,11 @@ export function parsePlacesTSV(tsvContent: string): Map<string, Place[]> {
   const placeMap = new Map<string, Place[]>();
   const parseLinkPairs = (labelsRaw: string, urlsRaw: string) => {
     const labels = labelsRaw
-      .split(' | ')
+      .split('|')
       .map(value => value.trim())
       .filter(Boolean);
     const urls = urlsRaw
-      .split(' | ')
+      .split('|')
       .map(value => value.trim())
       .filter(Boolean);
     if (labels.length === 0 || urls.length === 0) return undefined;

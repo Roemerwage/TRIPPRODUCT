@@ -28,6 +28,15 @@ const CITY_IMAGES: Record<string, string> = {
 };
 
 const CITY_COORDINATES: Record<string, Coordinate> = {
+  amsterdam: { latitude: 52.3676, longitude: 4.9041 },
+  frankfurt: { latitude: 50.1109, longitude: 8.6821 },
+  rio: { latitude: -22.9068, longitude: -43.1729 },
+  "rio de janeiro": { latitude: -22.9068, longitude: -43.1729 },
+  teresopolis: { latitude: -22.4165, longitude: -42.9752 },
+  "teresópolis": { latitude: -22.4165, longitude: -42.9752 },
+  "ilha grande": { latitude: -23.1394, longitude: -44.1978 },
+  buzios: { latitude: -22.7486, longitude: -41.8819 },
+  "búzios": { latitude: -22.7486, longitude: -41.8819 },
   'city 1': { latitude: 10.0, longitude: 10.0 },
   'city 2': { latitude: 10.5, longitude: 10.5 },
   'city 3': { latitude: 11.0, longitude: 11.0 },
@@ -81,6 +90,26 @@ const ACTIVITY_TYPE_FALLBACK: Record<ActivityType, MediaEntry & { color: string 
       coordinate: undefined,
       color: "#AF52DE",
     },
+    breakfast: {
+      image: undefined,
+      coordinate: undefined,
+      color: "#F59E0B",
+    },
+    lunch: {
+      image: undefined,
+      coordinate: undefined,
+      color: "#16A34A",
+    },
+    dinner: {
+      image: undefined,
+      coordinate: undefined,
+      color: "#C2410C",
+    },
+    drinks: {
+      image: undefined,
+      coordinate: undefined,
+      color: "#0F766E",
+    },
     free_day: {
       image: 'https://picsum.photos/seed/activity-free/1600/900',
       coordinate: undefined,
@@ -99,18 +128,47 @@ const DAY_IMAGES: Record<string, string> = {
   ...CITY_IMAGES,
 };
 
-const ILHA_GRANDE_FREE_DAY_SUGGESTIONS: Array<{
+const ILHA_GRANDE_FREE_DAY_SUGGESTIONS: {
   id: string;
   title: string;
   description: string;
   coordinate: Coordinate;
   link: string;
   type: ActivityType;
-}> = [];
+}[] = [];
 
 export const FREE_DAY_MARKERS = ILHA_GRANDE_FREE_DAY_SUGGESTIONS;
 
-export type TipType = 'bar' | 'restaurant' | 'brunch' | 'juice' | 'street' | 'square' | 'gym' | 'event';
+export type TipType =
+  | 'event'
+  | 'bar'
+  | 'restaurant'
+  | 'brunch'
+  | 'juice'
+  | 'street'
+  | 'square'
+  | 'gym'
+  | 'cafe'
+  | 'beach'
+  | 'market'
+  | 'museum'
+  | 'nightlife'
+  | 'viewpoint'
+  | 'shopping'
+  | 'custom';
+
+export interface TipMarker {
+  id: string;
+  title: string;
+  description: string;
+  link: string;
+  type: TipType;
+  emoji?: string;
+  destinationKeys: string[];
+  coordinate?: Coordinate;
+  tags?: string[];
+  active?: boolean;
+}
 
 export const TIP_TYPE_META: Record<TipType, { label: string; emoji: string; color: string }> = {
   event: { label: 'Event', emoji: '🎉', color: '#C1121F' },
@@ -121,39 +179,341 @@ export const TIP_TYPE_META: Record<TipType, { label: string; emoji: string; colo
   street: { label: 'Straat', emoji: '🛣️', color: '#5F6C7B' },
   square: { label: 'Plein', emoji: '🏛️', color: '#6D597A' },
   gym: { label: 'Gym', emoji: '🏋️', color: '#1D3557' },
+  cafe: { label: 'Café', emoji: '☕', color: '#9C6644' },
+  beach: { label: 'Beach', emoji: '🏖️', color: '#3A86FF' },
+  market: { label: 'Market', emoji: '🧺', color: '#F4A261' },
+  museum: { label: 'Museum', emoji: '🖼️', color: '#4A4E69' },
+  nightlife: { label: 'Nightlife', emoji: '🌃', color: '#7B2CBF' },
+  viewpoint: { label: 'Viewpoint', emoji: '🌅', color: '#FF7B00' },
+  shopping: { label: 'Shopping', emoji: '🛍️', color: '#D62828' },
+  custom: { label: 'Custom', emoji: '📌', color: '#495057' },
 };
 
-export const TIP_MARKERS: {
-  id: string;
-  title: string;
-  description: string;
-  coordinate: Coordinate;
-  link: string;
-  type: TipType;
-}[] = [];
+// Productized mode: tips come from admin/backend only.
+export const TIP_MARKERS: TipMarker[] = [];
 
-const COORDINATE_PATTERNS: RegExp[] = [
-  /@(-?\d+\.\d+),(-?\d+\.\d+)/,
-  /!3d(-?\d+\.\d+)!4d(-?\d+\.\d+)/,
-  /q=(-?\d+\.\d+),(-?\d+\.\d+)/,
-  /%40(-?\d+\.\d+)%2C(-?\d+\.\d+)/,
-  /\?ll=(-?\d+\.\d+),(-?\d+\.\d+)/,
+const normalizeDestinationKey = (value?: string | null) =>
+  (value || '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .trim();
+
+const REGION_ALIASES: { key: string; matchers: string[] }[] = [
+  { key: 'rio', matchers: ['rio', 'rio de janeiro', 'copacabana', 'botafogo'] },
+  { key: 'buzios', matchers: ['buzios', 'armacao dos buzios', 'tucuns'] },
+  { key: 'ilha-grande', matchers: ['ilha grande', 'abraao'] },
+  { key: 'teresopolis', matchers: ['teresopolis', 'teresopolis -> ilha grande', 'vale dos frades'] },
+  { key: 'amsterdam', matchers: ['amsterdam'] },
+  { key: 'frankfurt', matchers: ['frankfurt'] },
 ];
 
-export function extractCoordinatesFromLink(link?: string | null): Coordinate | undefined {
-  if (!link || link === 'x' || link.toLowerCase() === 'unknown') return undefined;
-  const decoded = decodeURIComponent(link);
+export function getDestinationKeysForRegions(regions: (string | null | undefined)[]): string[] {
+  const keys = new Set<string>();
+  regions.forEach(regionRaw => {
+    const region = normalizeDestinationKey(regionRaw);
+    if (!region) return;
+    REGION_ALIASES.forEach(alias => {
+      if (alias.matchers.some(matcher => region.includes(matcher))) {
+        keys.add(alias.key);
+      }
+    });
+  });
+  return Array.from(keys);
+}
+
+export function getReusableTipsForRegions(
+  regions: (string | null | undefined)[],
+  sourceTips?: TipMarker[]
+): TipMarker[] {
+  const tipsLibrary = Array.isArray(sourceTips) ? sourceTips : TIP_MARKERS;
+  const destinationKeys = new Set(getDestinationKeysForRegions(regions));
+  return tipsLibrary.filter(tip => {
+    if (tip.active === false) return false;
+    if (!tip.destinationKeys || tip.destinationKeys.length === 0) return true;
+    return tip.destinationKeys.some(key => destinationKeys.has(normalizeDestinationKey(key)));
+  });
+}
+
+export async function fetchPublicTipsLibrary(): Promise<TipMarker[] | null> {
+  const apiBaseUrl = getApiBaseUrl();
+  if (!apiBaseUrl) return null;
+
+  try {
+    const response = await fetch(buildAbsoluteUrl(apiBaseUrl, PUBLIC_TIPS_LIBRARY_PATH), {
+      method: "GET",
+    });
+    if (!response.ok) return null;
+
+    const payload = await response.json();
+    const tipsRaw = Array.isArray(payload?.tips) ? payload.tips : [];
+    return tipsRaw
+      .map((item: unknown) => normalizeTipMarker(item))
+      .filter(Boolean) as TipMarker[];
+  } catch {
+    return null;
+  }
+}
+
+const COORDINATE_PATTERNS: RegExp[] = [
+  /!3d(-?\d+(?:\.\d+)?)!4d(-?\d+(?:\.\d+)?)/i,
+  /@(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)/i,
+  /[?&]destination=(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)/i,
+  /[?&]origin=(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)/i,
+  /[?&]q=(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)/i,
+  /[?&]query=(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)/i,
+  /[?&]ll=(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)/i,
+  /[?&]center=(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)/i,
+  /%40(-?\d+(?:\.\d+)?)%2C(-?\d+(?:\.\d+)?)/i,
+];
+
+const resolvedGoogleLinkCache = new Map<string, Coordinate | null>();
+const RESOLVE_MAP_LINK_PATH = "/public/resolve-map-link";
+const PUBLIC_TIPS_LIBRARY_PATH = "/public/tips-library";
+
+function isValidCoordinatePair(latitude: number, longitude: number) {
+  return (
+    Number.isFinite(latitude) &&
+    Number.isFinite(longitude) &&
+    latitude >= -90 &&
+    latitude <= 90 &&
+    longitude >= -180 &&
+    longitude <= 180
+  );
+}
+
+function tryCreateCoordinate(latitudeRaw: string, longitudeRaw: string): Coordinate | undefined {
+  const latitude = Number.parseFloat(latitudeRaw);
+  const longitude = Number.parseFloat(longitudeRaw);
+  if (!isValidCoordinatePair(latitude, longitude)) return undefined;
+  return { latitude, longitude };
+}
+
+function tryExtractCoordinatesFromText(raw: string): Coordinate | undefined {
+  let decoded = raw;
+  try {
+    decoded = decodeURIComponent(raw);
+  } catch {
+    decoded = raw;
+  }
+
   for (const pattern of COORDINATE_PATTERNS) {
-    const match = decoded.match(pattern);
-    if (match && match[1] && match[2]) {
-      const latitude = parseFloat(match[1]);
-      const longitude = parseFloat(match[2]);
-      if (!Number.isNaN(latitude) && !Number.isNaN(longitude)) {
-        return { latitude, longitude };
+    const globalPattern = new RegExp(pattern.source, pattern.flags.includes('g') ? pattern.flags : `${pattern.flags}g`);
+    const matches = Array.from(decoded.matchAll(globalPattern));
+    for (let idx = matches.length - 1; idx >= 0; idx -= 1) {
+      const match = matches[idx];
+      if (!match || !match[1] || !match[2]) continue;
+      const coordinate = tryCreateCoordinate(match[1], match[2]);
+      if (coordinate) {
+        return coordinate;
       }
     }
   }
   return undefined;
+}
+
+const getApiBaseUrl = () => process.env.EXPO_PUBLIC_API_BASE_URL?.trim() ?? "";
+
+const buildAbsoluteUrl = (baseUrl: string, input: string) => {
+  if (/^https?:\/\//i.test(input)) return input;
+  const sanitizedBase = baseUrl.replace(/\/+$/, "");
+  const sanitizedPath = input.startsWith("/") ? input : `/${input}`;
+  return `${sanitizedBase}${sanitizedPath}`;
+};
+
+const isGoogleMapsHost = (link: string) => {
+  try {
+    const parsed = new URL(link);
+    const host = parsed.hostname.toLowerCase();
+    return (
+      host === "maps.app.goo.gl" ||
+      host === "goo.gl" ||
+      host === "google.com" ||
+      host === "maps.google.com" ||
+      host.endsWith(".google.com")
+    );
+  } catch {
+    return false;
+  }
+};
+
+const isTipType = (value: string): value is TipType => {
+  return Object.prototype.hasOwnProperty.call(TIP_TYPE_META, value);
+};
+
+const normalizeTipMarker = (value: unknown): TipMarker | null => {
+  if (!value || typeof value !== "object") return null;
+  const input = value as Record<string, unknown>;
+
+  const id = String(input.id || "").trim();
+  const title = String(input.title || "").trim();
+  const description = String(input.description || "").trim();
+  const link = String(input.link || "").trim();
+  const typeRaw = String(input.type || "").trim().toLowerCase();
+  if (!id || !title || !description || !link || !isTipType(typeRaw)) {
+    return null;
+  }
+  const emojiRaw = String(input.emoji || "").trim();
+  const emoji = emojiRaw ? Array.from(emojiRaw).slice(0, 4).join("") : undefined;
+
+  const destinationKeysRaw = Array.isArray(input.destinationKeys) ? input.destinationKeys : [];
+  const destinationKeys = Array.from(
+    new Set(
+      destinationKeysRaw
+        .map((item: unknown) => normalizeDestinationKey(String(item || "")))
+        .filter((item): item is string => Boolean(item))
+    )
+  );
+
+  const tags = Array.isArray(input.tags)
+    ? input.tags
+        .map((item: unknown) => String(item || "").trim())
+        .filter((item): item is string => Boolean(item))
+    : [];
+
+  const coordinateInput =
+    input.coordinate && typeof input.coordinate === "object"
+      ? (input.coordinate as Record<string, unknown>)
+      : {};
+  const latitude = Number.parseFloat(String(coordinateInput.latitude));
+  const longitude = Number.parseFloat(String(coordinateInput.longitude));
+  const coordinate =
+    Number.isFinite(latitude) && Number.isFinite(longitude)
+      ? { latitude, longitude }
+      : undefined;
+
+  return {
+    id,
+    title,
+    description,
+    link,
+    type: typeRaw,
+    emoji,
+    destinationKeys,
+    coordinate,
+    tags,
+    active: input.active !== false,
+  };
+};
+
+async function resolveCoordinatesViaBackend(link: string): Promise<Coordinate | undefined> {
+  const apiBaseUrl = getApiBaseUrl();
+  if (!apiBaseUrl) return undefined;
+
+  try {
+    const response = await fetch(buildAbsoluteUrl(apiBaseUrl, RESOLVE_MAP_LINK_PATH), {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ url: link }),
+    });
+
+    if (!response.ok) return undefined;
+    const payload = await response.json();
+    const coordinate = payload?.coordinate;
+    if (!coordinate) return undefined;
+    const latitude = Number.parseFloat(String(coordinate.latitude));
+    const longitude = Number.parseFloat(String(coordinate.longitude));
+    if (!isValidCoordinatePair(latitude, longitude)) return undefined;
+    return { latitude, longitude };
+  } catch {
+    return undefined;
+  }
+}
+
+export function extractCoordinatesFromLink(link?: string | null): Coordinate | undefined {
+  if (!link || link === "x" || link.toLowerCase() === "unknown") return undefined;
+  return tryExtractCoordinatesFromText(link);
+}
+
+const shouldResolveShortGoogleLink = (link: string) => {
+  try {
+    const parsed = new URL(link);
+    const host = parsed.hostname.toLowerCase();
+    return host.includes("maps.app.goo.gl") || host === "goo.gl";
+  } catch {
+    return false;
+  }
+};
+
+export async function resolveCoordinatesFromGoogleMapsLink(link?: string | null): Promise<Coordinate | undefined> {
+  if (!link || link === "x" || link.toLowerCase() === "unknown") return undefined;
+
+  const normalized = link.trim();
+  if (!normalized) return undefined;
+
+  const direct = extractCoordinatesFromLink(normalized);
+  if (direct) return direct;
+
+  if (resolvedGoogleLinkCache.has(normalized)) {
+    return resolvedGoogleLinkCache.get(normalized) || undefined;
+  }
+
+  if (isGoogleMapsHost(normalized)) {
+    const viaBackend = await resolveCoordinatesViaBackend(normalized);
+    if (viaBackend) {
+      resolvedGoogleLinkCache.set(normalized, viaBackend);
+      return viaBackend;
+    }
+  }
+
+  if (!shouldResolveShortGoogleLink(normalized)) {
+    resolvedGoogleLinkCache.set(normalized, null);
+    return undefined;
+  }
+
+  try {
+    // Try to resolve via explicit redirect chain first (more reliable than parsing HTML bodies).
+    let currentUrl = normalized;
+    for (let hop = 0; hop < 6; hop += 1) {
+      let response: Response;
+      try {
+        response = await fetch(currentUrl, {
+          method: "GET",
+          redirect: "manual",
+        });
+      } catch {
+        break;
+      }
+
+      const directFromCurrent = extractCoordinatesFromLink(currentUrl);
+      if (directFromCurrent) {
+        resolvedGoogleLinkCache.set(normalized, directFromCurrent);
+        return directFromCurrent;
+      }
+
+      const locationHeader = response.headers.get("location");
+      if (!locationHeader) {
+        break;
+      }
+
+      const nextUrl = new URL(locationHeader, currentUrl).toString();
+      const fromRedirectTarget = extractCoordinatesFromLink(nextUrl);
+      if (fromRedirectTarget) {
+        resolvedGoogleLinkCache.set(normalized, fromRedirectTarget);
+        return fromRedirectTarget;
+      }
+      currentUrl = nextUrl;
+    }
+
+    const response = await fetch(normalized, {
+      method: "GET",
+      redirect: "follow",
+    });
+
+    const finalUrl = response.url || normalized;
+    const fromFinalUrl = extractCoordinatesFromLink(finalUrl);
+    if (fromFinalUrl) {
+      resolvedGoogleLinkCache.set(normalized, fromFinalUrl);
+      return fromFinalUrl;
+    }
+    resolvedGoogleLinkCache.set(normalized, null);
+    return undefined;
+  } catch {
+    resolvedGoogleLinkCache.set(normalized, null);
+    return undefined;
+  }
 }
 
 const toLocalDateKey = (d: Date) => {
@@ -220,10 +580,29 @@ function getActivityMediaByNameOrLocation(name?: string | null, location?: strin
 
 const toImageSource = (img?: string | ImageSourcePropType): ImageSourcePropType | undefined => {
   if (!img) return undefined;
-  return typeof img === 'string' ? { uri: img } : img;
+  if (typeof img !== 'string') return img;
+  const normalized = normalizeImageUri(img);
+  return normalized ? { uri: normalized } : undefined;
+};
+
+const normalizeImageUri = (value: string) => {
+  const trimmed = value.trim();
+  if (!trimmed) return '';
+  if (!trimmed.startsWith('data:')) return trimmed;
+
+  const commaIndex = trimmed.indexOf(',');
+  if (commaIndex < 0) return trimmed;
+
+  const prefix = trimmed.slice(0, commaIndex + 1);
+  const payload = trimmed.slice(commaIndex + 1).replace(/\s+/g, '');
+  return `${prefix}${payload}`;
 };
 
 export function getActivityImage(activity: Activity): ImageSourcePropType | undefined {
+  if (activity.imageUrl && activity.imageUrl.trim()) {
+    return toImageSource(activity.imageUrl.trim());
+  }
+
   const local =
     getLocalActivityImage(activity.type) ||
     getLocalActivityImage(activity.naam) ||

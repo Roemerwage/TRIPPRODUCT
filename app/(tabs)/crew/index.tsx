@@ -1,11 +1,11 @@
 import React, { useMemo, useRef } from 'react';
 import { Animated, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import { Image } from 'expo-image';
 import { Stack, useRouter } from 'expo-router';
 import { useTrip } from '@/contexts/TripContext';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useThemeMode } from '@/contexts/ThemeContext';
 import { Card } from '@/components/Card';
+import { PreviewableImage } from '@/components/PreviewableImage';
 import { FloatingActions } from '@/components/FloatingActions';
 import { Radius, Spacing, Typography } from '@/constants/tokens';
 import { SPOTIFY_PLAYLIST_URL } from '@/constants/spotify';
@@ -52,7 +52,7 @@ export default function CrewScreen() {
               >
                 <Card style={styles.card}>
                   {person.avatar ? (
-                    <Image source={person.avatar} style={styles.avatar} />
+                    <PreviewableImage source={person.avatar} style={styles.avatar} accessibilityLabel={person.naam} />
                   ) : (
                     <View style={styles.avatarPlaceholder}>
                       <Text style={styles.avatarInitials}>{getInitials(person.naam)}</Text>

@@ -1,6 +1,6 @@
 import React, { useMemo, useRef, useState } from 'react';
 import { Alert, Animated, KeyboardAvoidingView, Platform, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
-import { Stack } from 'expo-router';
+import { Stack, useRouter } from 'expo-router';
 import { useTrip } from '@/contexts/TripContext';
 import { useThemeMode } from '@/contexts/ThemeContext';
 import { Button } from '@/components/Button';
@@ -11,7 +11,8 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { TEST_NOTIFICATION_PASSWORD, isTestNotificationPasswordConfigured } from '@/constants/security';
 
 export default function SettingsScreen() {
-  const { days, loadInitialTripData, sendTestNotificationForDay, importTripManifest } = useTrip();
+  const { days, loadInitialTripData, sendTestNotificationForDay, importTripManifest, clearData } = useTrip();
+  const router = useRouter();
   const [selectedTestDayId, setSelectedTestDayId] = useState<string | null>(null);
   const [testPassword, setTestPassword] = useState('');
   const [manifestInput, setManifestInput] = useState('');
@@ -97,6 +98,24 @@ export default function SettingsScreen() {
     }
   };
 
+  const handleLeaveTrip = async () => {
+    Alert.alert(
+      'Huidige trip verlaten?',
+      'De lokaal geladen tripdata wordt verwijderd. Daarna ga je terug naar het tripcode-scherm.',
+      [
+        { text: 'Annuleren', style: 'cancel' },
+        {
+          text: 'Verlaten',
+          style: 'destructive',
+          onPress: async () => {
+            await clearData();
+            router.replace('/join');
+          },
+        },
+      ]
+    );
+  };
+
   return (
     <>
       <Stack.Screen options={{ title: 'Instellingen', headerShown: false }} />
@@ -122,6 +141,12 @@ export default function SettingsScreen() {
           <Button
             label="Herladen standaardplanning"
             onPress={() => handleReload()}
+            style={styles.fullWidthButton}
+          />
+          <Button
+            label="Verlaat huidige trip"
+            variant="secondary"
+            onPress={handleLeaveTrip}
             style={styles.fullWidthButton}
           />
         </Card>

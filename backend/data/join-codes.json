@@ -1,0 +1,12 @@
+[
+  {
+    "code": "RIO2026",
+    "tripVersionId": "trv_demo",
+    "active": true
+  },
+  {
+    "code": "SUMMERTEST",
+    "tripVersionId": "trv_demo",
+    "active": true
+  }
+]

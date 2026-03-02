@@ -1,17 +1,19 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
-  ImageBackground,
+  Image,
   Modal,
   Pressable,
   ScrollView,
   StyleSheet,
-  View,
   TouchableWithoutFeedback,
+  View,
+  type ImageSourcePropType,
+  type StyleProp,
+  type ViewStyle,
+  type ImageStyle,
 } from 'react-native';
 import { Dimensions } from 'react-native';
-import { Image } from 'expo-image';
-import { Asset } from 'expo-asset';
-import type { ImageSourcePropType, StyleProp, ViewStyle, ImageStyle } from 'react-native';
+import * as FileSystem from 'expo-file-system/legacy';
 
 type Props = {
   source: ImageSourcePropType | string;
@@ -24,7 +26,72 @@ type Props = {
 };
 
 const normalizeSource = (value: ImageSourcePropType | string): ImageSourcePropType =>
-  typeof value === 'string' ? { uri: value } : value;
+  typeof value === 'string'
+    ? { uri: normalizeImageUri(value) }
+    : value && typeof value === 'object' && 'uri' in value
+      ? { ...(value as Record<string, unknown>), uri: normalizeImageUri(String((value as { uri?: string }).uri || '')) }
+      : value;
+
+const normalizeImageUri = (value: string): string => {
+  const trimmed = value.trim();
+  if (!trimmed.startsWith('data:')) return trimmed;
+
+  const commaIndex = trimmed.indexOf(',');
+  if (commaIndex < 0) return trimmed;
+
+  // Strip accidental whitespace/newlines in base64 payloads copied from forms.
+  const prefix = trimmed.slice(0, commaIndex + 1);
+  const payload = trimmed.slice(commaIndex + 1).replace(/\s+/g, '');
+  return `${prefix}${payload}`;
+};
+
+const parseDataImageUri = (uri: string) => {
+  const match = uri.match(/^data:(image\/[a-zA-Z0-9.+-]+);base64,(.+)$/);
+  if (!match) return null;
+  return {
+    mimeType: match[1].toLowerCase(),
+    base64: match[2],
+  };
+};
+
+const getImageExtension = (mimeType: string) => {
+  if (mimeType.includes('png')) return 'png';
+  if (mimeType.includes('jpeg') || mimeType.includes('jpg')) return 'jpg';
+  if (mimeType.includes('webp')) return 'webp';
+  if (mimeType.includes('gif')) return 'gif';
+  return 'img';
+};
+
+const hashString = (input: string) => {
+  let hash = 0;
+  for (let i = 0; i < input.length; i += 1) {
+    hash = (hash * 31 + input.charCodeAt(i)) >>> 0;
+  }
+  return hash.toString(16);
+};
+
+const toDataUriCacheFile = async (uri: string): Promise<string | null> => {
+  const parsed = parseDataImageUri(uri);
+  if (!parsed || !FileSystem.cacheDirectory) return null;
+
+  const ext = getImageExtension(parsed.mimeType);
+  const fileName = `embedded-${hashString(uri)}.${ext}`;
+  const fileUri = `${FileSystem.cacheDirectory}${fileName}`;
+  const info = await FileSystem.getInfoAsync(fileUri);
+  if (!info.exists) {
+    await FileSystem.writeAsStringAsync(fileUri, parsed.base64, {
+      encoding: FileSystem.EncodingType.Base64,
+    });
+  }
+  return fileUri;
+};
+
+const getUriFromSource = (source: ImageSourcePropType): string | null => {
+  if (source && typeof source === 'object' && 'uri' in source) {
+    return String((source as { uri?: string }).uri || '') || null;
+  }
+  return null;
+};
 
 export function PreviewableImage({
   source,
@@ -36,46 +103,47 @@ export function PreviewableImage({
   onPreviewVisibilityChange,
 }: Props) {
   const [previewVisible, setPreviewVisible] = useState(false);
-  const [resolvedUri, setResolvedUri] = useState<string | null>(null);
   const [previewKey, setPreviewKey] = useState(0);
+  const [resolvedSource, setResolvedSource] = useState<ImageSourcePropType>(() => normalizeSource(source));
   const scrollRef = useRef<ScrollView | null>(null);
   const viewportSize = useRef({ width: 0, height: 0 });
 
   const normalizedSource = useMemo(() => normalizeSource(source), [source]);
 
   useEffect(() => {
-    setResolvedUri(null);
-  }, [source]);
+    let cancelled = false;
 
-  const ensureUri = useCallback(async () => {
-    if (resolvedUri) return resolvedUri;
-    if (typeof source === 'string') {
-      setResolvedUri(source);
-      return source;
-    }
-    if (source && typeof source === 'object' && 'uri' in source) {
-      const uri = (source as { uri?: string }).uri;
-      if (uri) {
-        setResolvedUri(uri);
-        return uri;
+    const resolveSource = async () => {
+      const candidate = normalizedSource;
+      const uri = getUriFromSource(candidate);
+      if (!uri || !uri.startsWith('data:image/')) {
+        if (!cancelled) setResolvedSource(candidate);
+        return;
       }
-    }
-    const asset = Asset.fromModule(source);
-    if (!asset.localUri) {
-      await asset.downloadAsync();
-    }
-    const uri = asset.localUri || asset.uri;
-    setResolvedUri(uri);
-    return uri;
-  }, [resolvedUri, source]);
+
+      try {
+        const fileUri = await toDataUriCacheFile(uri);
+        if (!cancelled) {
+          setResolvedSource(fileUri ? { uri: fileUri } : candidate);
+        }
+      } catch (error) {
+        console.warn('Failed to convert embedded image to cache file', error);
+        if (!cancelled) {
+          setResolvedSource(candidate);
+        }
+      }
+    };
+
+    resolveSource();
+    return () => {
+      cancelled = true;
+    };
+  }, [normalizedSource]);
 
   const openPreview = useCallback(() => {
     setPreviewKey(prev => prev + 1);
     setPreviewVisible(true);
-    ensureUri().catch(err => {
-      console.warn('Failed to resolve image preview uri', err);
-    });
-  }, [ensureUri]);
+  }, []);
 
   const resetZoomAndPosition = useCallback(() => {
     const ref: any = scrollRef.current;
@@ -92,7 +160,6 @@ export function PreviewableImage({
   const closePreview = useCallback(() => {
     resetZoomAndPosition();
     setPreviewVisible(false);
-    setResolvedUri(null);
   }, [resetZoomAndPosition]);
 
   useEffect(() => {
@@ -110,9 +177,10 @@ export function PreviewableImage({
   return (
     <>
       <Pressable onPress={openPreview} accessibilityLabel={accessibilityLabel}>
-        <ImageBackground source={normalizedSource} style={style} imageStyle={imageStyle}>
+        <View style={[style, styles.imageContainer]}>
+          <Image source={resolvedSource} resizeMode="cover" style={[StyleSheet.absoluteFill, imageStyle]} />
           {overlay ? <View style={[styles.overlay, { padding: overlayPadding }]}>{overlay}</View> : null}
-        </ImageBackground>
+        </View>
       </Pressable>
 
       {previewVisible ? (
@@ -142,9 +210,9 @@ export function PreviewableImage({
                   }}
                 >
                   <Image
-                    source={resolvedUri ? { uri: resolvedUri } : normalizedSource}
+                    source={resolvedSource}
                     style={styles.previewImage}
-                    contentFit="contain"
+                    resizeMode="contain"
                   />
                 </ScrollView>
               </View>
@@ -157,6 +225,9 @@ export function PreviewableImage({
 }
 
 const styles = StyleSheet.create({
+  imageContainer: {
+    overflow: 'hidden',
+  },
   overlay: {
     flex: 1,
   },

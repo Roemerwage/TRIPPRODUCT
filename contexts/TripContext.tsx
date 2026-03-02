@@ -1,21 +1,28 @@
 import createContextHook from '@nkzw/create-context-hook';
 import { useState, useEffect, useMemo } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Day, Accommodation, PackingItem, Participant } from '@/types/trip';
+import { Day, Activity, Accommodation, PackingItem, Participant } from '@/types/trip';
 import {
-  buildManifestFromLegacyTSV,
-  DEFAULT_MANIFEST_OPTIONS,
   isTripManifestInput,
   manifestToDays,
+  buildManifestFromLegacyTSV,
+  DEFAULT_MANIFEST_OPTIONS,
+  daysToManifest,
   parseTripManifest,
 } from '@/utils/trip-manifest';
 import * as Notifications from 'expo-notifications';
 import { Platform } from 'react-native';
-import { INITIAL_TSV_DATA } from '@/constants/initialTripData';
-import { INITIAL_PLACES_DATA } from '@/constants/initialPlacesData';
 import { PARTICIPANTS } from '@/constants/participants';
 import { ROOM_ASSIGNMENTS } from '@/constants/roomAssignments';
 import { TripManifest } from '@/types/tripManifest';
+import { tripCodeResolver } from '@/data/trip/tripCodeResolver';
+import { createDefaultTripManifest } from '@/data/trip/defaultManifest';
+import {
+  loadTripSessionSnapshot,
+  clearTripSession,
+  saveActiveTripCode,
+  saveTripManifest,
+} from '@/data/trip/tripSessionStore';
 
 function hashString(input: string): string {
   let hash = 0;
@@ -25,15 +32,12 @@ function hashString(input: string): string {
   return hash.toString(16);
 }
 
-const STORAGE_KEY_TRIP = '@trip_data';
-const STORAGE_KEY_TRIP_VERSION = '@trip_data_version';
 const STORAGE_KEY_PACKING = '@packing_list';
 const STORAGE_KEY_PACKING_VERSION = '@packing_list_version';
 const STORAGE_KEY_NOTIFICATIONS_ENABLED = '@notifications_enabled';
 const STORAGE_KEY_NOTIFICATIONS_SCHEDULED_HASH = '@notifications_scheduled_hash';
 const CUSTOM_TRIP_VERSION = 'custom';
-// tz-fix suffix forces a refresh so stored data is rehydrated with floating times
-const CURRENT_TRIP_VERSION = `2026-01-22-tzfix-${hashString(INITIAL_TSV_DATA + INITIAL_PLACES_DATA)}`;
+const CURRENT_TRIP_VERSION = 'manifest-v1';
 
 const DEFAULT_PACKING_ITEMS: Omit<PackingItem, 'id' | 'checked'>[] = [
   { naam: 'Paspoort', categorie: 'Documenten & geld', suggested: false },
@@ -102,7 +106,21 @@ const DEFAULT_ROOM_ASSIGNMENTS = Object.entries(ROOM_ASSIGNMENTS).reduce<Record<
 
 const normalizeLookupKey = (value?: string | null) => value?.trim().toLowerCase() ?? '';
 
+const normalizeImageUri = (value?: string | null) => {
+  const trimmed = String(value || '').trim();
+  if (!trimmed) return '';
+  if (!trimmed.startsWith('data:')) return trimmed;
+  const commaIndex = trimmed.indexOf(',');
+  if (commaIndex < 0) return trimmed;
+  const prefix = trimmed.slice(0, commaIndex + 1);
+  const payload = trimmed.slice(commaIndex + 1).replace(/\s+/g, '');
+  return `${prefix}${payload}`;
+};
+
 const buildParticipantsFromManifest = (manifest: TripManifest | null): Participant[] => {
+  if (!manifest) {
+    return [];
+  }
   const manifestParticipants = manifest?.people?.participants;
   if (manifestParticipants === undefined) {
     return PARTICIPANTS;
@@ -112,7 +130,7 @@ const buildParticipantsFromManifest = (manifest: TripManifest | null): Participa
     id: person.id,
     naam: person.name,
     bio: person.bio,
-    avatar: person.avatarUrl ? { uri: person.avatarUrl } : null,
+    avatar: person.avatarUrl ? { uri: normalizeImageUri(person.avatarUrl) } : null,
     emergencyContacts: person.emergencyContacts?.map(contact => ({
       naam: contact.name,
       telefoon: contact.phone,
@@ -121,6 +139,9 @@ const buildParticipantsFromManifest = (manifest: TripManifest | null): Participa
 };
 
 const buildRoomAssignmentsFromManifest = (manifest: TripManifest | null): Record<string, string[]> => {
+  if (!manifest) {
+    return {};
+  }
   const manifestAssignments = manifest?.people?.roomAssignments;
   if (manifestAssignments === undefined) {
     return DEFAULT_ROOM_ASSIGNMENTS;
@@ -162,70 +183,150 @@ const parseDateTimeFloating = (value?: string | null): Date | null => {
   return Number.isNaN(date.getTime()) ? null : date;
 };
 
+const inferActivityTypeFromLegacyPlace = (place: any): Activity['type'] => {
+  const type = String(place?.type || '').toLowerCase().trim();
+  const hints = String([place?.group, place?.naam, place?.beschrijving].filter(Boolean).join(' ')).toLowerCase();
+
+  if (/(ontbijt|breakfast|brunch)/.test(hints)) return 'breakfast';
+  if (/\blunch\b/.test(hints)) return 'lunch';
+  if (/(diner|dinner|avondeten|supper)/.test(hints)) return 'dinner';
+  if (/(drinks?|borrel|cocktail|bier|wijn|wine|bar|night)/.test(hints)) return 'drinks';
+  if (type === 'food') return 'lunch';
+  if (type === 'drink' || type === 'nightlife') return 'drinks';
+  if (type === 'logistics') return 'travel';
+  if (type === 'spot') return 'tour';
+  return 'event';
+};
+
+const activitySignature = (activity: Activity) =>
+  [
+    String(activity.naam || '').toLowerCase(),
+    String(activity.type || '').toLowerCase(),
+    String(activity.locatie || '').toLowerCase(),
+    activity.startTijd ? activity.startTijd.toISOString() : '',
+    activity.verzamelTijd ? activity.verzamelTijd.toISOString() : '',
+    String(activity.mapsLink || '').trim().toLowerCase(),
+  ].join('|');
+
+const legacyPlaceToActivity = (dateRaw: string, place: any, idx: number): Activity => {
+  const primaryMapsLink = String(place?.mapsLink || '').trim() || String(place?.locations?.[0]?.url || '').trim();
+  const lines: string[] = [];
+  const group = String(place?.group || '').trim();
+  const description = String(place?.beschrijving || '').trim();
+  if (group) lines.push(`Moment: ${group}`);
+  if (description) lines.push(description);
+  (Array.isArray(place?.links) ? place.links : []).forEach((link: any) => {
+    const label = String(link?.label || '').trim();
+    const url = String(link?.url || '').trim();
+    if (!label || !url) return;
+    lines.push(`${label}: ${url}`);
+  });
+  (Array.isArray(place?.locations) ? place.locations : []).forEach((location: any) => {
+    const label = String(location?.label || '').trim();
+    const url = String(location?.url || '').trim();
+    if (!label || !url) return;
+    if (primaryMapsLink && url.trim().toLowerCase() === primaryMapsLink.trim().toLowerCase()) return;
+    lines.push(`${label}: ${url}`);
+  });
+
+  return {
+    id: String(place?.id || `${dateRaw}-legacy-place-${idx + 1}`) + '-activity',
+    naam: String(place?.naam || '').trim() || `Legacy place ${idx + 1}`,
+    type: inferActivityTypeFromLegacyPlace(place),
+    locatie: String(place?.locatie || '').trim() || String(place?.locations?.[0]?.label || '').trim(),
+    startTijd: parseDateTimeFloating(place?.startTijd),
+    verzamelTijd: null,
+    vertrekVanaf: '',
+    vervoer: '',
+    reisTijd: null,
+    beschrijving: lines.join('\n').trim(),
+    mapsLink: primaryMapsLink,
+    imageUrl: '',
+  };
+};
+
 const deserializeDaysFloating = (input: any): Day[] => {
   if (!Array.isArray(input)) return [];
   return input
     .map(raw => {
       const datum = parseDateOnly(raw?.datum);
       if (!datum) return null;
+      const activities: Activity[] = Array.isArray(raw?.activiteiten)
+        ? raw.activiteiten.map((act: any) => ({
+            ...act,
+            startTijd: parseDateTimeFloating(act?.startTijd),
+            verzamelTijd: parseDateTimeFloating(act?.verzamelTijd),
+          }))
+        : [];
+      const legacyPlaceActivities: Activity[] = Array.isArray(raw?.places)
+        ? raw.places.map((place: any, idx: number) => legacyPlaceToActivity(String(raw?.datum || ''), place, idx))
+        : [];
+
+      const mergedActivities = [...activities];
+      const seen = new Set(activities.map(activitySignature));
+      legacyPlaceActivities.forEach(activity => {
+        const signature = activitySignature(activity);
+        if (!signature || seen.has(signature)) return;
+        seen.add(signature);
+        mergedActivities.push(activity);
+      });
+      mergedActivities.sort((a, b) => {
+        const aTime = a.verzamelTijd || a.startTijd;
+        const bTime = b.verzamelTijd || b.startTijd;
+        if (aTime && bTime) return aTime.getTime() - bTime.getTime();
+        if (aTime) return -1;
+        if (bTime) return 1;
+        return a.naam.localeCompare(b.naam);
+      });
+
       return {
         ...raw,
         datum,
         meldingTijd: parseDateTimeFloating(raw?.meldingTijd),
-        activiteiten: Array.isArray(raw?.activiteiten)
-          ? raw.activiteiten.map((act: any) => ({
-              ...act,
-              startTijd: parseDateTimeFloating(act?.startTijd),
-              verzamelTijd: parseDateTimeFloating(act?.verzamelTijd),
-            }))
-          : [],
-        places: Array.isArray(raw?.places)
-          ? raw.places.map((place: any) => ({
-              ...place,
-              startTijd: parseDateTimeFloating(place?.startTijd),
-            }))
-          : [],
+        activiteiten: mergedActivities,
+        places: [],
       } as Day;
     })
     .filter(Boolean) as Day[];
 };
 
+const generateSuggestedItems = (days: Day[]): PackingItem[] => {
+  const items: PackingItem[] = [];
+  const hasEvent = days.some(day => day.activiteiten.some(act => act.type === 'event'));
+
+  if (hasEvent) {
+    items.push(
+      { id: 'event-1', naam: 'Oordoppen', categorie: 'Event', checked: false, suggested: true },
+      { id: 'event-2', naam: 'Cash geld', categorie: 'Event', checked: false, suggested: true },
+    );
+  }
+
+  return items;
+};
+
+const buildDefaultPackingList = (days: Day[], includeSuggested: boolean) => {
+  const defaultList = DEFAULT_PACKING_ITEMS.map((item, idx) => ({
+    ...item,
+    id: `default-${idx}`,
+    checked: false,
+  }));
+  const suggestedItems = includeSuggested ? generateSuggestedItems(days) : [];
+  return [...defaultList, ...suggestedItems];
+};
+
+const mergePackingLists = (base: PackingItem[], extras: PackingItem[]) => {
+  const existingIds = new Set(base.map(item => item.id));
+  const mergedExtras = extras.filter(item => !existingIds.has(item.id));
+  return [...base, ...mergedExtras];
+};
+
 export const [TripProvider, useTrip] = createContextHook(() => {
     const [days, setDays] = useState<Day[]>([]);
     const [activeManifest, setActiveManifest] = useState<TripManifest | null>(null);
+    const [activeTripCode, setActiveTripCode] = useState<string | null>(null);
     const [packingList, setPackingList] = useState<PackingItem[]>([]);
     const [notificationsEnabled, setNotificationsEnabled] = useState(true);
     const [isLoading, setIsLoading] = useState(true);
-
-    const generateSuggestedItems = (days: Day[]): PackingItem[] => {
-      const items: PackingItem[] = [];
-      const hasEvent = days.some(day => day.activiteiten.some(act => act.type === 'event'));
-
-      if (hasEvent) {
-        items.push(
-          { id: 'event-1', naam: 'Oordoppen', categorie: 'Event', checked: false, suggested: true },
-          { id: 'event-2', naam: 'Cash geld', categorie: 'Event', checked: false, suggested: true },
-        );
-      }
-
-      return items;
-    };
-
-    const buildDefaultPackingList = (days: Day[], includeSuggested: boolean) => {
-      const defaultList = DEFAULT_PACKING_ITEMS.map((item, idx) => ({
-        ...item,
-        id: `default-${idx}`,
-        checked: false,
-      }));
-      const suggestedItems = includeSuggested ? generateSuggestedItems(days) : [];
-      return [...defaultList, ...suggestedItems];
-    };
-
-    const mergePackingLists = (base: PackingItem[], extras: PackingItem[]) => {
-      const existingIds = new Set(base.map(item => item.id));
-      const mergedExtras = extras.filter(item => !existingIds.has(item.id));
-      return [...base, ...mergedExtras];
-    };
 
     const scheduleNotifications = async (days: Day[]) => {
       if (Platform.OS === 'web') return;
@@ -311,73 +412,126 @@ export const [TripProvider, useTrip] = createContextHook(() => {
       await AsyncStorage.setItem(STORAGE_KEY_NOTIFICATIONS_SCHEDULED_HASH, scheduleHash);
     };
 
-  const buildSeedManifest = () =>
-    buildManifestFromLegacyTSV(INITIAL_TSV_DATA, INITIAL_PLACES_DATA, {
-      ...DEFAULT_MANIFEST_OPTIONS,
-      source: 'seed',
-    });
+  const persistManifest = async (
+    manifest: TripManifest,
+    version: string,
+    tripCode: string | null
+  ) => {
+    await saveTripManifest(manifest, version);
+    await saveActiveTripCode(tripCode);
+  };
 
-  const persistManifest = async (manifest: TripManifest, version: string) => {
+  const applyManifest = async (
+    manifest: TripManifest,
+    options: { version: string; tripCode: string | null }
+  ) => {
+    const parsedDays = manifestToDays(manifest);
+    setActiveManifest(manifest);
+    setActiveTripCode(options.tripCode);
+    setDays(parsedDays);
+    await persistManifest(manifest, options.version, options.tripCode);
+
+    const suggestedItems = generateSuggestedItems(parsedDays);
+    const existingIds = new Set(packingList.map(item => item.id));
+    const newItems = suggestedItems.filter(item => !existingIds.has(item.id));
+    const updatedList = [...packingList, ...newItems];
+    setPackingList(updatedList);
     await AsyncStorage.multiSet([
-      [STORAGE_KEY_TRIP, JSON.stringify(manifest)],
-      [STORAGE_KEY_TRIP_VERSION, version],
+      [STORAGE_KEY_PACKING, JSON.stringify(updatedList)],
+      [STORAGE_KEY_PACKING_VERSION, CURRENT_PACKING_VERSION],
     ]);
+
+    if (notificationsEnabled && Platform.OS !== 'web') {
+      await scheduleNotifications(parsedDays);
+    }
   };
 
   const loadDaysFromStoredTrip = (
     tripData: string
-  ): { days: Day[]; manifest: TripManifest | null } => {
+  ): { days: Day[]; manifest: TripManifest; migratedFromLegacy: boolean } => {
     const parsed = JSON.parse(tripData);
     if (isTripManifestInput(parsed)) {
       const manifest = parseTripManifest(parsed);
-      return { days: manifestToDays(manifest), manifest };
+      return { days: manifestToDays(manifest), manifest, migratedFromLegacy: false };
     }
     const legacyDays = deserializeDaysFloating(parsed);
     if (legacyDays.length === 0) {
       throw new Error('Stored trip payload is invalid');
     }
-    return { days: legacyDays, manifest: null };
+    const migratedManifest = daysToManifest(legacyDays, {
+      ...DEFAULT_MANIFEST_OPTIONS,
+      source: 'legacy-tsv',
+    });
+    return {
+      days: legacyDays,
+      manifest: migratedManifest,
+      migratedFromLegacy: true,
+    };
   };
 
   useEffect(() => {
     const loadData = async () => {
       try {
-        const [tripData, tripVersion, packingData, packingVersion, notifEnabled] = await Promise.all([
-          AsyncStorage.getItem(STORAGE_KEY_TRIP),
-          AsyncStorage.getItem(STORAGE_KEY_TRIP_VERSION),
+        const [tripSession, packingData, packingVersion, notifEnabled] = await Promise.all([
+          loadTripSessionSnapshot(),
           AsyncStorage.getItem(STORAGE_KEY_PACKING),
           AsyncStorage.getItem(STORAGE_KEY_PACKING_VERSION),
           AsyncStorage.getItem(STORAGE_KEY_NOTIFICATIONS_ENABLED),
         ]);
 
-        let loadedDays: Day[];
-        let isFirstLoad = false;
+        let loadedDays: Day[] = [];
+        let hasLoadedTrip = false;
 
-        const shouldForceInitial =
-          !tripData || (tripVersion !== CURRENT_TRIP_VERSION && tripVersion !== CUSTOM_TRIP_VERSION);
-
-        if (tripData && !shouldForceInitial) {
+        if (tripSession.tripData) {
           try {
-            const loadedTrip = loadDaysFromStoredTrip(tripData);
+            const loadedTrip = loadDaysFromStoredTrip(tripSession.tripData);
             loadedDays = loadedTrip.days;
             setActiveManifest(loadedTrip.manifest);
+            setActiveTripCode(tripSession.activeTripCode);
             setDays(loadedDays);
+            hasLoadedTrip = loadedDays.length > 0;
+            if (loadedTrip.migratedFromLegacy) {
+              await persistManifest(
+                loadedTrip.manifest,
+                CURRENT_TRIP_VERSION,
+                tripSession.activeTripCode
+              );
+            }
           } catch (parseError) {
-            console.error('Error parsing trip data, loading initial data:', parseError);
-            const seedManifest = buildSeedManifest();
-            loadedDays = manifestToDays(seedManifest);
-            setActiveManifest(seedManifest);
-            setDays(loadedDays);
-            await persistManifest(seedManifest, CURRENT_TRIP_VERSION);
-            isFirstLoad = true;
+            console.error('Error parsing trip data, clearing local session:', parseError);
+            await clearTripSession();
+            loadedDays = [];
+            setActiveManifest(null);
+            setActiveTripCode(null);
+            setDays([]);
           }
         } else {
-          const seedManifest = buildSeedManifest();
-          loadedDays = manifestToDays(seedManifest);
-          setActiveManifest(seedManifest);
-          setDays(loadedDays);
-          await persistManifest(seedManifest, CURRENT_TRIP_VERSION);
-          isFirstLoad = true;
+          setActiveManifest(null);
+          setActiveTripCode(null);
+          setDays([]);
+        }
+
+        // If a trip was activated via join code earlier, refresh it from server on startup.
+        // This keeps the app in sync with newly published itinerary changes.
+        if (hasLoadedTrip && tripSession.activeTripCode) {
+          try {
+            const resolved = await tripCodeResolver.resolveTripCode(tripSession.activeTripCode);
+            const storedVersion = String(tripSession.tripVersion || '').trim();
+            if (resolved.tripVersion !== storedVersion) {
+              const refreshedDays = manifestToDays(resolved.manifest);
+              loadedDays = refreshedDays;
+              setActiveManifest(resolved.manifest);
+              setActiveTripCode(resolved.normalizedCode);
+              setDays(refreshedDays);
+              await persistManifest(
+                resolved.manifest,
+                resolved.tripVersion,
+                resolved.normalizedCode
+              );
+            }
+          } catch (refreshError) {
+            console.warn('Could not refresh active trip from server:', refreshError);
+          }
         }
 
         const shouldResetPacking = packingVersion !== CURRENT_PACKING_VERSION;
@@ -388,7 +542,7 @@ export const [TripProvider, useTrip] = createContextHook(() => {
             setPackingList(parsedPacking);
           } catch (parseError) {
             console.error('Error parsing packing data, loading defaults:', parseError);
-            const defaultList = buildDefaultPackingList(loadedDays, isFirstLoad);
+            const defaultList = buildDefaultPackingList(loadedDays, false);
             setPackingList(defaultList);
             await AsyncStorage.multiSet([
               [STORAGE_KEY_PACKING, JSON.stringify(defaultList)],
@@ -408,7 +562,7 @@ export const [TripProvider, useTrip] = createContextHook(() => {
             }
           }
 
-          const baseList = buildDefaultPackingList(loadedDays, isFirstLoad || shouldResetPacking);
+          const baseList = buildDefaultPackingList(loadedDays, loadedDays.length > 0 && shouldResetPacking);
           const fullList = mergePackingLists(baseList, customItems);
           setPackingList(fullList);
           await AsyncStorage.multiSet([
@@ -421,7 +575,7 @@ export const [TripProvider, useTrip] = createContextHook(() => {
           setNotificationsEnabled(notifEnabled === 'true');
         }
 
-        if (isFirstLoad && notifEnabled !== 'false' && Platform.OS !== 'web') {
+        if (hasLoadedTrip && notifEnabled !== 'false' && Platform.OS !== 'web') {
           await scheduleNotifications(loadedDays);
         }
 
@@ -435,13 +589,19 @@ export const [TripProvider, useTrip] = createContextHook(() => {
     loadData();
   }, []);
 
+  const activateTripByCode = async (rawCode: string) => {
+    const resolved = await tripCodeResolver.resolveTripCode(rawCode);
+    await applyManifest(resolved.manifest, {
+      version: resolved.tripVersion,
+      tripCode: resolved.normalizedCode,
+    });
+  };
+
   const loadInitialTripData = async () => {
-    const seedManifest = buildSeedManifest();
-    const loadedDays = manifestToDays(seedManifest);
-    setActiveManifest(seedManifest);
-    setDays(loadedDays);
-    await persistManifest(seedManifest, CURRENT_TRIP_VERSION);
-    // Skip scheduling here to avoid firing a burst of notifications when reloading the default plan.
+    await applyManifest(createDefaultTripManifest(), {
+      version: CURRENT_TRIP_VERSION,
+      tripCode: null,
+    });
   };
 
   const importTSV = async (tsvContent: string) => {
@@ -450,24 +610,7 @@ export const [TripProvider, useTrip] = createContextHook(() => {
         ...DEFAULT_MANIFEST_OPTIONS,
         source: 'legacy-tsv',
       });
-      const parsedDays = manifestToDays(manifest);
-      setActiveManifest(manifest);
-      setDays(parsedDays);
-      await persistManifest(manifest, CUSTOM_TRIP_VERSION);
-      
-      const suggestedItems = generateSuggestedItems(parsedDays);
-      const existingIds = new Set(packingList.map(item => item.id));
-      const newItems = suggestedItems.filter(item => !existingIds.has(item.id));
-      const updatedList = [...packingList, ...newItems];
-      setPackingList(updatedList);
-      await AsyncStorage.multiSet([
-        [STORAGE_KEY_PACKING, JSON.stringify(updatedList)],
-        [STORAGE_KEY_PACKING_VERSION, CURRENT_PACKING_VERSION],
-      ]);
-
-      if (notificationsEnabled && Platform.OS !== 'web') {
-        await scheduleNotifications(parsedDays);
-      }
+      await applyManifest(manifest, { version: CUSTOM_TRIP_VERSION, tripCode: null });
     } catch (error) {
       console.error('Error importing TSV:', error);
       throw error;
@@ -477,24 +620,7 @@ export const [TripProvider, useTrip] = createContextHook(() => {
   const importTripManifest = async (manifestContent: string) => {
     try {
       const parsedManifest = parseTripManifest(manifestContent);
-      const parsedDays = manifestToDays(parsedManifest);
-      setActiveManifest(parsedManifest);
-      setDays(parsedDays);
-      await persistManifest(parsedManifest, CUSTOM_TRIP_VERSION);
-
-      const suggestedItems = generateSuggestedItems(parsedDays);
-      const existingIds = new Set(packingList.map(item => item.id));
-      const newItems = suggestedItems.filter(item => !existingIds.has(item.id));
-      const updatedList = [...packingList, ...newItems];
-      setPackingList(updatedList);
-      await AsyncStorage.multiSet([
-        [STORAGE_KEY_PACKING, JSON.stringify(updatedList)],
-        [STORAGE_KEY_PACKING_VERSION, CURRENT_PACKING_VERSION],
-      ]);
-
-      if (notificationsEnabled && Platform.OS !== 'web') {
-        await scheduleNotifications(parsedDays);
-      }
+      await applyManifest(parsedManifest, { version: CURRENT_TRIP_VERSION, tripCode: null });
     } catch (error) {
       console.error('Error importing trip manifest:', error);
       throw error;
@@ -502,9 +628,8 @@ export const [TripProvider, useTrip] = createContextHook(() => {
   };
 
   const clearData = async () => {
+    await clearTripSession();
     await AsyncStorage.multiRemove([
-      STORAGE_KEY_TRIP,
-      STORAGE_KEY_TRIP_VERSION,
       STORAGE_KEY_PACKING,
       STORAGE_KEY_PACKING_VERSION,
       STORAGE_KEY_NOTIFICATIONS_SCHEDULED_HASH,
@@ -513,6 +638,7 @@ export const [TripProvider, useTrip] = createContextHook(() => {
       await Notifications.cancelAllScheduledNotificationsAsync();
     }
     setActiveManifest(null);
+    setActiveTripCode(null);
     setDays([]);
     const defaultList = buildDefaultPackingList([], false);
     setPackingList(defaultList);
@@ -648,6 +774,8 @@ export const [TripProvider, useTrip] = createContextHook(() => {
     [activeManifest]
   );
 
+  const hasActiveTrip = !!activeManifest && days.length > 0;
+
   const getRoomAssignments = (naam?: string | null) => {
     const normalized = normalizeLookupKey(naam);
     if (!normalized) return [];
@@ -660,8 +788,13 @@ export const [TripProvider, useTrip] = createContextHook(() => {
     accommodations,
     participants,
     getRoomAssignments,
+    activeTripCode,
+    activeTripId: activeManifest?.trip?.id ?? null,
+    activeManifest,
+    hasActiveTrip,
     notificationsEnabled,
     isLoading,
+    activateTripByCode,
     importTSV,
     importTripManifest,
     clearData,

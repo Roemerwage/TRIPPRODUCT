@@ -1,18 +1,7 @@
 import { z } from 'zod';
 import { ImageSourcePropType } from 'react-native';
 
-export const ActivityTypeSchema = z.enum([
-  'travel',
-  'tour',
-  'hike',
-  'event',
-  'breakfast',
-  'lunch',
-  'dinner',
-  'drinks',
-  'free_day',
-  'flight',
-]);
+export const ActivityTypeSchema = z.enum(['travel', 'tour', 'hike', 'event', 'free_day', 'flight']);
 export type ActivityType = z.infer<typeof ActivityTypeSchema>;
 export type PlaceType = 'food' | 'drink' | 'nightlife' | 'logistics' | 'spot' | 'other';
 
@@ -27,7 +16,6 @@ export const TripRowSchema = z.object({
   activiteit: z.string(),
   activiteitType: z.string(),
   activiteitLocatie: z.string(),
-  activiteitMapsLink: z.string(),
   startTijd: z.string(),
   verzamelTijd: z.string(),
   vertrekVanaf: z.string(),
@@ -52,7 +40,6 @@ export interface Activity {
   reisTijd: number | null;
   beschrijving: string;
   mapsLink: string;
-  imageUrl?: string;
 }
 
 export interface Day {

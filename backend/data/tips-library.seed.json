@@ -1,0 +1,146 @@
+[
+  {
+    "id": "tip-carnival-fan-fest",
+    "title": "Carnival Fan Fest (Posto 3)",
+    "description": "Zaterdag, 08:00 - Copacabana Posto 3.",
+    "link": "https://maps.app.goo.gl/QkAZ8TouDFfANCVZ8",
+    "type": "event",
+    "destinationKeys": ["rio"],
+    "active": true
+  },
+  {
+    "id": "tip-megabloco-cha-da-alice",
+    "title": "Megabloco Cha da Alice",
+    "description": "Zaterdag, 07:00 - Rua Primeiro de Marco.",
+    "link": "https://maps.app.goo.gl/LpT1EbizZduugLtF7",
+    "type": "event",
+    "destinationKeys": ["rio"],
+    "active": true
+  },
+  {
+    "id": "tip-glory-ball",
+    "title": "BLOCO: Glory Ball",
+    "description": "Donderdag, 00:00 - 08:00.",
+    "link": "https://maps.app.goo.gl/YbR8jgUELmNk9A8y7",
+    "type": "event",
+    "destinationKeys": ["rio"],
+    "active": true
+  },
+  {
+    "id": "tip-boteco-belmonte",
+    "title": "Boteco Belmonte",
+    "description": "Schijnt vooral op donderdagavond erg gaande te zijn.",
+    "link": "https://maps.app.goo.gl/NceukHhADnY23nve8?g_st=ic",
+    "type": "bar",
+    "destinationKeys": ["rio"],
+    "active": true
+  },
+  {
+    "id": "tip-ct-boucherie",
+    "title": "CT Boucherie",
+    "description": "Super vlees restaurant met onbeperkt pannetjes bijgerechten. Tip van Mota.",
+    "link": "https://maps.app.goo.gl/KC3Ydj34tasjKvab7",
+    "type": "restaurant",
+    "destinationKeys": ["rio"],
+    "active": true
+  },
+  {
+    "id": "tip-braseiro-gavea",
+    "title": "Braseiro da Gavea",
+    "description": "Goede lunchplek. Informeel, vlees.",
+    "link": "https://maps.app.goo.gl/oN6ZRMzPYicXRwVu6",
+    "type": "restaurant",
+    "destinationKeys": ["rio"],
+    "active": true
+  },
+  {
+    "id": "tip-nusa-cafe",
+    "title": "Nusa Cafe",
+    "description": "Goede brunch en ontbijtplek.",
+    "link": "https://maps.app.goo.gl/vahZvxGSt3FDhyMu7",
+    "type": "brunch",
+    "destinationKeys": ["rio"],
+    "active": true
+  },
+  {
+    "id": "tip-bibi-sucos",
+    "title": "Bibi Sucos",
+    "description": "Goede acai en verse juices.",
+    "link": "https://maps.app.goo.gl/dqHWzSREB8Fz5aDB7",
+    "type": "juice",
+    "destinationKeys": ["rio"],
+    "active": true
+  },
+  {
+    "id": "tip-public-gym",
+    "title": "Public gym",
+    "description": "Zalige buitengym, prachtig uitzicht.",
+    "link": "https://maps.app.goo.gl/Eemub3iXxThfBFde7",
+    "type": "gym",
+    "destinationKeys": ["rio"],
+    "active": true
+  },
+  {
+    "id": "tip-restaurante-cervantes",
+    "title": "Restaurante Cervantes",
+    "description": "After party sandwich: is tot 05:00 open.",
+    "link": "https://maps.app.goo.gl/7xRyN8ge44PGnFwM9",
+    "type": "restaurant",
+    "destinationKeys": ["rio"],
+    "active": true
+  },
+  {
+    "id": "tip-bar-bukowski",
+    "title": "Bar Bukowski",
+    "description": "Schijnt de place to go op donderdag te zijn.",
+    "link": "https://maps.app.goo.gl/mZD2NVAqu3H9GjZ76",
+    "type": "bar",
+    "destinationKeys": ["rio"],
+    "active": true
+  },
+  {
+    "id": "tip-chanchada-bar",
+    "title": "Chanchada bar",
+    "description": "Walk-in, echte must maar misschien moeilijk met 10 man.",
+    "link": "https://maps.app.goo.gl/ebcdHPtmB1iW166Z8",
+    "type": "restaurant",
+    "destinationKeys": ["rio"],
+    "active": true
+  },
+  {
+    "id": "tip-calma-bar",
+    "title": "Calma Bar",
+    "description": "Botafogo party spot.",
+    "link": "https://maps.app.goo.gl/VL4HJLYUnuJ44gmJ6",
+    "type": "bar",
+    "destinationKeys": ["rio"],
+    "active": true
+  },
+  {
+    "id": "tip-aprazivel",
+    "title": "Aprazivel",
+    "description": "MUST. Hier gaan we wss donderdag lunchen na Favela tour.",
+    "link": "https://maps.app.goo.gl/EUzwgGZqWhkyTHt6A",
+    "type": "restaurant",
+    "destinationKeys": ["rio"],
+    "active": true
+  },
+  {
+    "id": "tip-r-do-senado",
+    "title": "R. do Senado - Centro",
+    "description": "In 2025 uitgeroepen tot coolste straat van de wereld. Barretjes, caipirinhas, eten, street art, samba.",
+    "link": "https://maps.app.goo.gl/wzd9NgSbo7dTELfA6",
+    "type": "street",
+    "destinationKeys": ["rio"],
+    "active": true
+  },
+  {
+    "id": "tip-pedra-do-sal",
+    "title": "Pedra do Sal",
+    "description": "Gekkenhuis op maandagavond. Voor als we de boot naar Ilha Grande missen.",
+    "link": "https://maps.app.goo.gl/gie4M6e77hAhumw27",
+    "type": "square",
+    "destinationKeys": ["rio"],
+    "active": true
+  }
+]

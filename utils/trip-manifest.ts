@@ -49,6 +49,219 @@ const hasMeaningfulText = (value?: string | null) => {
   return normalized !== '' && normalized !== 'x' && normalized !== 'unknown' && normalized !== 'tba';
 };
 
+const normalizeComparable = (value?: string | null) =>
+  (value || '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .trim();
+
+const normalizeLinkComparable = (value?: string | null) =>
+  normalizeComparable(value).replace(/\/+$/, '');
+
+const stripPlacePrefix = (value: string) =>
+  value.replace(/^verblijf:\s*/i, '').replace(/^accommodation:\s*/i, '').trim();
+
+const textIncludesAny = (value: string, candidates: string[]) =>
+  candidates.some(candidate => value.includes(candidate));
+
+const inferActivityTypeFromLegacyPlace = (input: {
+  type?: string | null;
+  group?: string | null;
+  name?: string | null;
+  description?: string | null;
+}): Activity['type'] => {
+  const hints = normalizeComparable(
+    [input.group, input.name, input.description].filter(Boolean).join(' ')
+  );
+
+  if (textIncludesAny(hints, ['ontbijt', 'breakfast', 'brunch'])) return 'breakfast';
+  if (textIncludesAny(hints, ['lunch'])) return 'lunch';
+  if (textIncludesAny(hints, ['diner', 'dinner', 'avondeten', 'supper'])) return 'dinner';
+  if (textIncludesAny(hints, ['drinks', 'drink', 'borrel', 'cocktail', 'bier', 'wijn', 'wine', 'bar', 'night']))
+    return 'drinks';
+
+  const normalizedType = normalizeComparable(input.type);
+  if (normalizedType === 'food') return 'lunch';
+  if (normalizedType === 'drink' || normalizedType === 'nightlife') return 'drinks';
+  if (normalizedType === 'logistics') return 'travel';
+  if (normalizedType === 'spot') return 'tour';
+  return 'event';
+};
+
+const buildLegacyPlaceDescription = (input: {
+  group?: string | null;
+  description?: string | null;
+  links?: { label: string; url: string }[] | null;
+  locations?: { label: string; url: string }[] | null;
+  primaryMapsLink?: string | null;
+}) => {
+  const lines: string[] = [];
+  const group = normalizeString(input.group).trim();
+  const description = normalizeString(input.description).trim();
+  if (group) lines.push(`Moment: ${group}`);
+  if (description) lines.push(description);
+
+  (Array.isArray(input.links) ? input.links : []).forEach(link => {
+    const label = normalizeString(link?.label).trim();
+    const url = normalizeString(link?.url).trim();
+    if (!label || !url) return;
+    lines.push(`${label}: ${url}`);
+  });
+
+  const normalizedPrimaryMapsLink = normalizeLinkComparable(input.primaryMapsLink);
+  (Array.isArray(input.locations) ? input.locations : []).forEach(location => {
+    const label = normalizeString(location?.label).trim();
+    const url = normalizeString(location?.url).trim();
+    if (!label || !url) return;
+    if (normalizedPrimaryMapsLink && normalizeLinkComparable(url) === normalizedPrimaryMapsLink) return;
+    lines.push(`${label}: ${url}`);
+  });
+
+  return lines.join('\n').trim();
+};
+
+const activityMergeSignature = (activity: Pick<Activity, 'naam' | 'type' | 'locatie' | 'startTijd' | 'verzamelTijd' | 'mapsLink'>) =>
+  [
+    normalizeComparable(activity.naam),
+    normalizeComparable(activity.type),
+    normalizeComparable(activity.locatie),
+    formatDateTime(activity.startTijd) || '',
+    formatDateTime(activity.verzamelTijd) || '',
+    normalizeLinkComparable(activity.mapsLink),
+  ].join('|');
+
+const mergeActivitiesWithLegacyPlaceActivities = (
+  baseActivities: Activity[],
+  placeActivities: Activity[]
+): Activity[] => {
+  const merged = [...baseActivities];
+  const seen = new Set(merged.map(activityMergeSignature));
+
+  placeActivities.forEach(activity => {
+    const signature = activityMergeSignature(activity);
+    if (!signature || seen.has(signature)) return;
+    seen.add(signature);
+    merged.push(activity);
+  });
+
+  merged.sort((a, b) => {
+    const aTime = a.verzamelTijd || a.startTijd;
+    const bTime = b.verzamelTijd || b.startTijd;
+    if (aTime && bTime) return aTime.getTime() - bTime.getTime();
+    if (aTime) return -1;
+    if (bTime) return 1;
+    return a.naam.localeCompare(b.naam);
+  });
+
+  return merged;
+};
+
+const manifestPlaceToActivity = (
+  dayId: string,
+  dayDate: string,
+  place: {
+    id?: string;
+    name?: string;
+    type?: string;
+    group?: string;
+    location?: string;
+    mapsLink?: string;
+    startTime?: string | null;
+    description?: string;
+    links?: { label: string; url: string }[];
+    locations?: { label: string; url: string }[];
+  },
+  idx: number
+): Activity => {
+  const primaryMapsLink = normalizeString(place.mapsLink).trim() || normalizeString(place.locations?.[0]?.url).trim();
+  const location = normalizeString(place.location).trim() || normalizeString(place.locations?.[0]?.label).trim();
+  const description = buildLegacyPlaceDescription({
+    group: place.group,
+    description: place.description,
+    links: place.links,
+    locations: place.locations,
+    primaryMapsLink,
+  });
+  return {
+    id: `${String(place.id || `${dayId}-legacy-place-${idx + 1}`)}-activity`,
+    naam: normalizeString(place.name) || `Legacy place ${idx + 1}`,
+    type: inferActivityTypeFromLegacyPlace({
+      type: place.type,
+      group: place.group,
+      name: place.name,
+      description: place.description,
+    }),
+    locatie: location,
+    imageUrl: '',
+    startTijd: parseDateTimeFloating(place.startTime),
+    verzamelTijd: null,
+    vertrekVanaf: '',
+    vervoer: '',
+    reisTijd: null,
+    beschrijving: description,
+    mapsLink: primaryMapsLink,
+  };
+};
+
+const dayPlaceToActivity = (day: Day, place: Place, idx: number): Activity => {
+  const primaryMapsLink = normalizeString(place.mapsLink).trim() || normalizeString(place.locations?.[0]?.url).trim();
+  const location = normalizeString(place.locatie).trim() || normalizeString(place.locations?.[0]?.label).trim();
+  const description = buildLegacyPlaceDescription({
+    group: place.group,
+    description: place.beschrijving,
+    links: place.links,
+    locations: place.locations,
+    primaryMapsLink,
+  });
+  return {
+    id: `${place.id || `${formatDateOnly(day.datum)}-legacy-place-${idx + 1}`}-activity`,
+    naam: normalizeString(place.naam) || `Legacy place ${idx + 1}`,
+    type: inferActivityTypeFromLegacyPlace({
+      type: place.type,
+      group: place.group,
+      name: place.naam,
+      description: place.beschrijving,
+    }),
+    locatie: location,
+    imageUrl: '',
+    startTijd: place.startTijd ?? null,
+    verzamelTijd: null,
+    vertrekVanaf: '',
+    vervoer: '',
+    reisTijd: null,
+    beschrijving: description,
+    mapsLink: primaryMapsLink,
+  };
+};
+
+const filterDomainOverlappingPlaces = (day: Day): Place[] => {
+  const places = day.places ?? [];
+  if (places.length === 0) return [];
+
+  const lodgingName = normalizeComparable(day.verblijf);
+  const lodgingLink = normalizeLinkComparable(day.verblijfMapsLink);
+  const activityNameSet = new Set(day.activiteiten.map(activity => normalizeComparable(activity.naam)).filter(Boolean));
+  const activityLinkSet = new Set(
+    day.activiteiten.map(activity => normalizeLinkComparable(activity.mapsLink)).filter(Boolean)
+  );
+
+  return places.filter(place => {
+    const rawName = normalizeComparable(place.naam);
+    const placeName = stripPlacePrefix(rawName);
+    const placeLink = normalizeLinkComparable(place.mapsLink);
+    const looksLikeAccommodation = rawName.startsWith('verblijf:') || rawName.startsWith('accommodation:');
+
+    if (looksLikeAccommodation && lodgingName) return false;
+    if (lodgingName && placeName && placeName === lodgingName) return false;
+    if (placeName && activityNameSet.has(placeName)) return false;
+    if (lodgingLink && placeLink && placeLink === lodgingLink) return false;
+    if (placeLink && activityLinkSet.has(placeLink)) return false;
+
+    return true;
+  });
+};
+
 type ManifestDefaults = {
   tripId: string;
   tripName: string;
@@ -83,11 +296,12 @@ export function manifestToDays(manifest: TripManifest): Day[] {
       throw new Error(`Invalid day.date value: ${day.date}`);
     }
 
-    const activiteiten: Activity[] = day.activities.map(activity => ({
+    const baseActivities: Activity[] = day.activities.map(activity => ({
       id: activity.id,
       naam: activity.name,
       type: activity.type,
       locatie: normalizeString(activity.location),
+      imageUrl: normalizeString(activity.imageUrl),
       startTijd: parseDateTimeFloating(activity.startTime),
       verzamelTijd: parseDateTimeFloating(activity.meetTime),
       vertrekVanaf: normalizeString(activity.departFrom),
@@ -97,27 +311,10 @@ export function manifestToDays(manifest: TripManifest): Day[] {
       mapsLink: normalizeString(activity.mapsLink),
     }));
 
-    activiteiten.sort((a, b) => {
-      const aTime = a.verzamelTijd || a.startTijd;
-      const bTime = b.verzamelTijd || b.startTijd;
-      if (aTime && bTime) return aTime.getTime() - bTime.getTime();
-      if (aTime) return -1;
-      if (bTime) return 1;
-      return 0;
-    });
-
-    const places: Place[] | undefined = day.places?.map(place => ({
-      id: place.id,
-      naam: place.name,
-      type: place.type,
-      locatie: normalizeString(place.location),
-      mapsLink: normalizeString(place.mapsLink),
-      startTijd: parseDateTimeFloating(place.startTime),
-      beschrijving: place.description,
-      group: place.group,
-      links: place.links,
-      locations: place.locations,
-    }));
+    const legacyPlaceActivities = (day.places || []).map((place, idx) =>
+      manifestPlaceToActivity(day.id, day.date, place, idx)
+    );
+    const activiteiten = mergeActivitiesWithLegacyPlaceActivities(baseActivities, legacyPlaceActivities);
 
     return {
       datum,
@@ -128,7 +325,6 @@ export function manifestToDays(manifest: TripManifest): Day[] {
       verblijfAdres: day.lodging?.address ?? '',
       verblijfMapsLink: day.lodging?.mapsLink ?? '',
       activiteiten,
-      places,
       meldingTijd: parseDateTimeFloating(day.notification?.time),
       avondMelding: day.notification?.eveningTemplate,
     } satisfies Day;
@@ -160,11 +356,14 @@ export function daysToManifest(days: Day[], options: DaysToManifestOptions): Tri
     },
     days: sortedDays.map(day => {
       const id = `day-${formatDateOnly(day.datum)}`;
-      const activities = day.activiteiten.map(activity => ({
+      const legacyPlaceActivities = (day.places || []).map((place, idx) => dayPlaceToActivity(day, place, idx));
+      const mergedActivities = mergeActivitiesWithLegacyPlaceActivities(day.activiteiten, legacyPlaceActivities);
+      const activities = mergedActivities.map(activity => ({
         id: activity.id,
         name: activity.naam,
         type: activity.type,
         location: normalizeString(activity.locatie),
+        imageUrl: normalizeString(activity.imageUrl),
         startTime: formatDateTime(activity.startTijd),
         meetTime: formatDateTime(activity.verzamelTijd),
         departFrom: normalizeString(activity.vertrekVanaf),
@@ -172,19 +371,6 @@ export function daysToManifest(days: Day[], options: DaysToManifestOptions): Tri
         travelMinutes: activity.reisTijd,
         description: normalizeString(activity.beschrijving),
         mapsLink: normalizeString(activity.mapsLink),
-      }));
-
-      const places = day.places?.map(place => ({
-        id: place.id,
-        name: place.naam,
-        type: place.type,
-        location: normalizeString(place.locatie),
-        mapsLink: normalizeString(place.mapsLink),
-        startTime: formatDateTime(place.startTijd),
-        description: place.beschrijving,
-        group: place.group,
-        links: place.links,
-        locations: place.locations,
       }));
 
       const hasLodging =
@@ -214,7 +400,6 @@ export function daysToManifest(days: Day[], options: DaysToManifestOptions): Tri
               }
             : undefined,
         activities,
-        places,
       };
     }),
   };
@@ -230,7 +415,10 @@ export function buildManifestFromLegacyTSV(
   const mergedDays = parsedDays.map(day => {
     const dateKey = dateKeyFromDate(day.datum);
     const places = placesMap.get(dateKey) ?? [];
-    return { ...day, places };
+    const filtered = filterDomainOverlappingPlaces({ ...day, places });
+    const placeActivities = filtered.map((place, idx) => dayPlaceToActivity(day, place, idx));
+    const activiteiten = mergeActivitiesWithLegacyPlaceActivities(day.activiteiten, placeActivities);
+    return { ...day, activiteiten };
   });
 
   return daysToManifest(mergedDays, {

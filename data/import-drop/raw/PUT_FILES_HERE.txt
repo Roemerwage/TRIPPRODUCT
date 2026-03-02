@@ -1,0 +1,9 @@
+Drop your original files in this folder.
+
+Accepted for conversion:
+- csv / tsv / txt
+- js / ts
+- json
+
+Optional:
+- Add raw/notes.txt with extra context.

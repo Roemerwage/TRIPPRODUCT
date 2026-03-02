@@ -39,3 +39,8 @@ yarn-error.*
 .vercel
 
 .env
+
+# local API sqlite
+backend/data/app.db
+backend/data/app.db-shm
+backend/data/app.db-wal

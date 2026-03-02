@@ -1,0 +1,132 @@
+{
+  "version": 1,
+  "trip": {
+    "id": "trip_demo_rio",
+    "name": "Rio Demo Trip",
+    "timezone": "America/Sao_Paulo",
+    "locale": "nl-NL",
+    "startDate": "2026-01-21",
+    "endDate": "2026-01-22",
+    "source": "manifest-import"
+  },
+  "days": [
+    {
+      "id": "day-2026-01-21",
+      "date": "2026-01-21",
+      "dayName": "Woensdag",
+      "region": "City 1",
+      "lodging": {
+        "name": "Accommodation 1",
+        "address": "Address 1"
+      },
+      "notification": {
+        "time": "2026-01-20T21:00:00",
+        "eveningTemplate": "Morgen staat er een activiteit gepland. Check de app voor tijden en locatie."
+      },
+      "activities": [
+        {
+          "id": "a-2026-01-21-1",
+          "name": "Activity 1",
+          "type": "flight",
+          "location": "Location 1",
+          "startTime": "2026-01-21T18:10:00",
+          "meetTime": "2026-01-21T16:00:00",
+          "departFrom": "Airport",
+          "transport": "Transport 1",
+          "travelMinutes": 70,
+          "description": "Geanonimiseerde vluchtbeschrijving.",
+          "mapsLink": ""
+        }
+      ],
+      "places": [
+        {
+          "id": "p-2026-01-21-1",
+          "name": "Place 1",
+          "type": "logistics",
+          "location": "Area 1",
+          "mapsLink": "",
+          "startTime": "2026-01-21T17:00:00",
+          "description": "Handige logistieke plek."
+        }
+      ]
+    },
+    {
+      "id": "day-2026-01-22",
+      "date": "2026-01-22",
+      "dayName": "Donderdag",
+      "region": "City 3",
+      "lodging": {
+        "name": "Accommodation 1",
+        "address": "Address 1"
+      },
+      "notification": {
+        "time": "2026-01-21T21:00:00",
+        "eveningTemplate": "Morgen staat er een activiteit gepland. Check de app voor tijden en locatie."
+      },
+      "activities": [
+        {
+          "id": "a-2026-01-22-1",
+          "name": "Activity 2",
+          "type": "tour",
+          "location": "Location 3",
+          "startTime": "2026-01-22T09:00:00",
+          "meetTime": "2026-01-22T08:15:00",
+          "departFrom": "Meeting Point 1",
+          "transport": "Transport 2",
+          "travelMinutes": 30,
+          "description": "Geanonimiseerde beschrijving van de activiteit.",
+          "mapsLink": ""
+        }
+      ]
+    }
+  ],
+  "people": {
+    "participants": [
+      {
+        "id": "p1",
+        "name": "Person 1",
+        "bio": "Reiziger 1",
+        "avatarUrl": "https://picsum.photos/seed/avatar-1/600/600",
+        "emergencyContacts": [
+          {
+            "name": "Noodcontact 1",
+            "phone": "+00 000000001"
+          }
+        ]
+      },
+      {
+        "id": "p2",
+        "name": "Person 2",
+        "bio": "Reiziger 2",
+        "avatarUrl": "https://picsum.photos/seed/avatar-2/600/600",
+        "emergencyContacts": [
+          {
+            "name": "Noodcontact 2",
+            "phone": "+00 000000002"
+          }
+        ]
+      },
+      {
+        "id": "p3",
+        "name": "Person 3",
+        "bio": "Reiziger 3",
+        "avatarUrl": "https://picsum.photos/seed/avatar-3/600/600",
+        "emergencyContacts": [
+          {
+            "name": "Noodcontact 3",
+            "phone": "+00 000000003"
+          }
+        ]
+      }
+    ],
+    "roomAssignments": [
+      {
+        "lodgingName": "Accommodation 1",
+        "rooms": [
+          "Person 1 – Person 2",
+          "Person 3 – Person 4"
+        ]
+      }
+    ]
+  }
+}

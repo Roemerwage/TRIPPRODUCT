@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "Trip Planner",
-    "slug": "trip-planner-demo",
+    "name": "RioTrip",
+    "slug": "riotrip",
     "version": "1.0.2",
     "orientation": "portrait",
     "icon": "./assets/images/ios-icon-1024.png",
-    "scheme": "trip-planner",
+    "scheme": "riotrip",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "splash": {
@@ -15,7 +15,7 @@
     },
     "ios": {
       "supportsTablet": false,
-      "bundleIdentifier": "com.example.tripplanner",
+      "bundleIdentifier": "com.roemerwage.riotrip",
       "buildNumber": "7",
       "infoPlist": {
         "NSLocationWhenInUseUsageDescription": "We gebruiken je locatie om relevante plekken en informatie in de app te tonen.",
@@ -27,13 +27,13 @@
       }
     },
     "android": {
-      "appName": "Trip Planner",
+      "appName": "RioTrip",
       "versionCode": 7,
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/ios-icon-512.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.example.tripplanner",
+      "package": "com.roemerwage.riotrip",
       "permissions": [
         "android.permission.RECEIVE_BOOT_COMPLETED",
         "android.permission.SCHEDULE_EXACT_ALARM",

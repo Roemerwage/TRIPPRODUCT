@@ -95,7 +95,7 @@ export default function PlanningScreen() {
         <View style={[styles.centerContainer, { paddingTop: actionBarOffset }]}>
           <EmptyState
             title="Nog geen planning"
-            subtitle="Importeer je TSV-bestand om de planning te vullen"
+            subtitle="Vul eerst je tripcode in op het startscherm of importeer een manifest in Instellingen."
             icon={<Calendar size={56} color={colors.muted} />}
           />
         </View>
