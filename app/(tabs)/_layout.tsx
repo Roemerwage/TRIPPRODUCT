@@ -1,10 +1,16 @@
-import { Tabs } from "expo-router";
+import { Redirect, Tabs } from "expo-router";
 import { Calendar, Map, Home, Package, Users } from "lucide-react-native";
 import React from "react";
 import { useThemeMode } from "@/contexts/ThemeContext";
+import { useTrip } from "@/contexts/TripContext";
 
 export default function TabLayout() {
   const { colors } = useThemeMode();
+  const { isLoading, hasActiveTrip, needsProfileSetup } = useTrip();
+
+  if (!isLoading && hasActiveTrip && needsProfileSetup) {
+    return <Redirect href="/profile-setup" />;
+  }
 
   return (
     <Tabs

@@ -13,7 +13,7 @@ export default function JoinTripScreen() {
   const styles = useMemo(() => createStyles(colors), [colors]);
   const insets = useSafeAreaInsets();
   const router = useRouter();
-  const { isLoading, hasActiveTrip, activateTripByCode } = useTrip();
+  const { isLoading, hasActiveTrip, needsProfileSetup, activateTripByCode } = useTrip();
   const [tripCode, setTripCode] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -26,7 +26,7 @@ export default function JoinTripScreen() {
   }
 
   if (hasActiveTrip) {
-    return <Redirect href="/planning" />;
+    return <Redirect href={needsProfileSetup ? "/profile-setup" : "/planning"} />;
   }
 
   const handleSubmit = async (overrideCode?: string) => {
@@ -38,9 +38,9 @@ export default function JoinTripScreen() {
 
     try {
       setIsSubmitting(true);
-      await activateTripByCode(inputCode);
+      const activation = await activateTripByCode(inputCode);
       setTripCode('');
-      router.replace('/planning');
+      router.replace(activation?.needsProfileSetup ? '/profile-setup' : '/planning');
     } catch (error) {
       const message = error instanceof Error ? error.message : 'Trip laden mislukt.';
       Alert.alert('Tripcode ongeldig', message);

@@ -157,10 +157,6 @@ export default function PackingScreen() {
           scrollEventThrottle={16}
           showsVerticalScrollIndicator={false}
         >
-          <Text style={styles.noteText}>
-            Alles wat je meeneemt naar je strandvakantie in Spanje, maar houd extra rekening met het
-            volgende:
-          </Text>
           {categories.map(category => (
             <View key={category} style={styles.categorySection}>
               <Text style={styles.categoryTitle}>{category}</Text>
@@ -317,11 +313,6 @@ const createStyles = (palette: any) => StyleSheet.create({
     alignItems: 'center',
     backgroundColor: palette.background,
     paddingHorizontal: Spacing.xl,
-  },
-  noteText: {
-    fontSize: Typography.body,
-    color: palette.textSecondary,
-    marginBottom: Spacing.sm,
   },
   headerCard: {
     marginHorizontal: Spacing.md,

@@ -1378,6 +1378,8 @@
                   <button class="builder-tab-btn" data-builder-tab="accommodations" type="button">Accommodations</button>
                   <button class="builder-tab-btn" data-builder-tab="activities-trip" type="button">Trip Activities</button>
                   <button class="builder-tab-btn" data-builder-tab="notifications" type="button">Notifications</button>
+                  <button class="builder-tab-btn" data-builder-tab="emergency" type="button">Emergency</button>
+                  <button class="builder-tab-btn" data-builder-tab="packing" type="button">Packing</button>
                   <button class="builder-tab-btn" data-builder-tab="activities-library" type="button">Activity Library</button>
                   <button class="builder-tab-btn" data-builder-tab="trip-tips" type="button">Tips</button>
                   <button class="builder-tab-btn" data-builder-tab="people" type="button">People</button>
@@ -1619,6 +1621,161 @@
                   <p id="notificationListMeta" class="muted activity-list-meta">No days in range yet.</p>
                   <div id="notificationRows" class="notification-list"></div>
                 </article>
+              </div>
+
+              <div class="builder-panel" data-builder-panel="emergency">
+                <p class="muted">Configure emergency sections shown in the ICE sidebar inside the traveler app.</p>
+                <article class="card">
+                  <div class="list-header">
+                    <h2>Emergency Sidebar</h2>
+                    <button id="addEmergencyBtn" type="button" class="table-action-btn" title="Add emergency section">➕</button>
+                  </div>
+                  <p id="emergencyListMeta" class="muted activity-list-meta">No emergency sections yet.</p>
+                  <div id="emergencyRows" class="activity-list"></div>
+                </article>
+              </div>
+
+              <div class="builder-panel" data-builder-panel="packing">
+                <p class="muted">Manage trip packing items and reusable destination packing templates.</p>
+                <div class="split">
+                  <article class="card">
+                    <div class="list-header">
+                      <h2>Trip Packing Template</h2>
+                      <button id="addPackingTemplateItemBtn" type="button" class="table-action-btn" title="Add packing item">➕</button>
+                    </div>
+                    <div class="builder-fields" style="margin-bottom: 10px;">
+                      <div>
+                        <label for="packingTemplateLibrarySelect">Apply reusable list</label>
+                        <select id="packingTemplateLibrarySelect"></select>
+                      </div>
+                      <div style="display: flex; align-items: end; gap: 8px;">
+                        <button id="applyPackingTemplateListBtn" type="button">Add list to trip</button>
+                        <button id="replacePackingTemplateListBtn" type="button" class="outline">Replace with list</button>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <label for="packingTemplateBulkPaste">Quick paste list (one item per line)</label>
+                      <textarea
+                        id="packingTemplateBulkPaste"
+                        rows="6"
+                        placeholder="Documents:&#10;Passport&#10;Insurance paper&#10;&#10;Beach | Sunscreen&#10;Beach | Swimwear"
+                      ></textarea>
+                    </div>
+                    <div class="builder-inline-actions">
+                      <button id="packingTemplateBulkAddBtn" type="button">Add lines</button>
+                      <button id="packingTemplateBulkReplaceBtn" type="button" class="outline">Replace template</button>
+                      <button id="packingTemplateBulkClearBtn" type="button" class="outline">Clear text</button>
+                    </div>
+                    <p id="packingTemplateMeta" class="muted activity-list-meta">No packing items yet.</p>
+                    <div id="packingTemplateRows" class="activity-list"></div>
+                  </article>
+
+                  <article class="card">
+                    <div class="list-header">
+                      <h2>Reusable Packing Lists</h2>
+                      <button id="packingLibraryOpenCreateBtn" type="button" class="table-action-btn" title="Create new packing template">➕</button>
+                    </div>
+                    <div class="row">
+                      <label for="packingLibraryGroupInput">Destination Group</label>
+                      <input
+                        id="packingLibraryGroupInput"
+                        list="packingLibraryGroupOptions"
+                        placeholder="Type e.g. rio"
+                      />
+                      <datalist id="packingLibraryGroupOptions"></datalist>
+                    </div>
+                    <p id="packingLibraryGroupInfo" class="muted">No group selected. Showing all templates.</p>
+                    <div class="table-wrap"><table id="packingLibraryTable"></table></div>
+                    <p class="muted" style="margin-top: 8px;">Use ➕ to apply list to this trip, ✏️ to edit, and 🗑️ to delete.</p>
+
+                    <div id="packingLibraryCreateDrawer" class="inline-drawer">
+                      <div class="inline-drawer-header">
+                        <h3>Create Packing List</h3>
+                        <button id="packingLibraryCloseCreateBtn" type="button" class="table-action-btn" title="Close">✕</button>
+                      </div>
+                      <form id="packingLibraryCreateForm">
+                        <div class="row">
+                          <label for="packingLibraryCreateId">Template ID (optional)</label>
+                          <input id="packingLibraryCreateId" name="packingLibraryCreateId" placeholder="pack_tpl_brazil_basics" />
+                        </div>
+                        <div class="row">
+                          <label for="packingLibraryCreateName">Name</label>
+                          <input id="packingLibraryCreateName" name="packingLibraryCreateName" placeholder="Brazil basics" required />
+                        </div>
+                        <div class="row">
+                          <label for="packingLibraryCreateDestinationKeys">Destinations (comma separated)</label>
+                          <input
+                            id="packingLibraryCreateDestinationKeys"
+                            name="packingLibraryCreateDestinationKeys"
+                            list="packingLibraryGroupOptions"
+                            placeholder="rio, buzios"
+                          />
+                        </div>
+                        <div class="row">
+                          <label for="packingLibraryCreateTags">Tags (comma separated)</label>
+                          <input id="packingLibraryCreateTags" name="packingLibraryCreateTags" placeholder="beach, warm-weather" />
+                        </div>
+                        <div class="row">
+                          <label for="packingLibraryCreateItems">Items (one line per item)</label>
+                          <textarea
+                            id="packingLibraryCreateItems"
+                            name="packingLibraryCreateItems"
+                            rows="8"
+                            placeholder="Documents:&#10;Passport&#10;Insurance card&#10;&#10;Beach | Swimwear&#10;Beach | Sunscreen"
+                          ></textarea>
+                        </div>
+                        <div class="checkbox-row">
+                          <input id="packingLibraryCreateActive" name="packingLibraryCreateActive" type="checkbox" checked />
+                          <label for="packingLibraryCreateActive">Template is active</label>
+                        </div>
+                        <div class="builder-inline-actions">
+                          <button type="submit">Save Template</button>
+                          <button id="packingLibraryCreateCancelBtn" type="button" class="outline">Cancel</button>
+                        </div>
+                      </form>
+                    </div>
+
+                    <div id="packingLibraryEditDrawer" class="inline-drawer">
+                      <div class="inline-drawer-header">
+                        <h3>Edit Packing List</h3>
+                        <button id="packingLibraryEditCloseBtn" type="button" class="table-action-btn" title="Close">✕</button>
+                      </div>
+                      <p id="packingLibraryEditMeta" class="muted">Select a template and press ✏️ to edit.</p>
+                      <form id="packingLibraryEditForm">
+                        <input id="packingLibraryEditId" name="packingLibraryEditId" type="hidden" />
+                        <div class="row">
+                          <label for="packingLibraryEditName">Name</label>
+                          <input id="packingLibraryEditName" name="packingLibraryEditName" required />
+                        </div>
+                        <div class="row">
+                          <label for="packingLibraryEditDestinationKeys">Destinations (comma separated)</label>
+                          <input
+                            id="packingLibraryEditDestinationKeys"
+                            name="packingLibraryEditDestinationKeys"
+                            list="packingLibraryGroupOptions"
+                            placeholder="rio, buzios"
+                          />
+                        </div>
+                        <div class="row">
+                          <label for="packingLibraryEditTags">Tags (comma separated)</label>
+                          <input id="packingLibraryEditTags" name="packingLibraryEditTags" placeholder="beach, warm-weather" />
+                        </div>
+                        <div class="row">
+                          <label for="packingLibraryEditItems">Items (one line per item)</label>
+                          <textarea id="packingLibraryEditItems" name="packingLibraryEditItems" rows="8"></textarea>
+                        </div>
+                        <div class="checkbox-row">
+                          <input id="packingLibraryEditActive" name="packingLibraryEditActive" type="checkbox" checked />
+                          <label for="packingLibraryEditActive">Template is active</label>
+                        </div>
+                        <div class="builder-inline-actions">
+                          <button type="submit">Save Changes</button>
+                          <button id="packingLibraryEditResetBtn" type="button" class="outline">Cancel</button>
+                        </div>
+                      </form>
+                    </div>
+                  </article>
+                </div>
               </div>
 
               <div class="builder-panel" data-builder-panel="activities-library">
@@ -1971,6 +2128,20 @@
               <div class="builder-panel" data-builder-panel="people">
                 <h3>People</h3>
                 <p class="muted">Participants appear in the traveler/crew experience and emergency context.</p>
+                <div class="row">
+                  <label for="peopleBulkPaste">Quick paste people (one person per line)</label>
+                  <textarea
+                    id="peopleBulkPaste"
+                    rows="6"
+                    placeholder="Name&#10;Name | +31612345678&#10;Name | Bio&#10;Name | Emergency Contact | +31612345678 | Bio"
+                  ></textarea>
+                  <p class="muted">Supported separators: <code>|</code>, <code>;</code>, or tab.</p>
+                  <div class="builder-inline-actions">
+                    <button id="peopleBulkAddBtn" type="button" class="outline">Add lines</button>
+                    <button id="peopleBulkReplaceBtn" type="button" class="outline">Replace people</button>
+                    <button id="peopleBulkClearBtn" type="button" class="outline">Clear text</button>
+                  </div>
+                </div>
                 <div id="peopleRows"></div>
                 <div class="builder-inline-actions">
                   <button id="addPersonBtn" type="button">Add Person</button>
@@ -2358,6 +2529,31 @@
       const notificationRowsEl = document.getElementById("notificationRows");
       const notificationListMetaEl = document.getElementById("notificationListMeta");
       const autoFillNotificationsBtnEl = document.getElementById("autoFillNotificationsBtn");
+      const emergencyRowsEl = document.getElementById("emergencyRows");
+      const emergencyListMetaEl = document.getElementById("emergencyListMeta");
+      const addPackingTemplateItemBtnEl = document.getElementById("addPackingTemplateItemBtn");
+      const packingTemplateRowsEl = document.getElementById("packingTemplateRows");
+      const packingTemplateMetaEl = document.getElementById("packingTemplateMeta");
+      const packingTemplateBulkPasteEl = document.getElementById("packingTemplateBulkPaste");
+      const packingTemplateBulkAddBtnEl = document.getElementById("packingTemplateBulkAddBtn");
+      const packingTemplateBulkReplaceBtnEl = document.getElementById("packingTemplateBulkReplaceBtn");
+      const packingTemplateBulkClearBtnEl = document.getElementById("packingTemplateBulkClearBtn");
+      const packingTemplateLibrarySelectEl = document.getElementById("packingTemplateLibrarySelect");
+      const applyPackingTemplateListBtnEl = document.getElementById("applyPackingTemplateListBtn");
+      const replacePackingTemplateListBtnEl = document.getElementById("replacePackingTemplateListBtn");
+      const packingLibraryOpenCreateBtnEl = document.getElementById("packingLibraryOpenCreateBtn");
+      const packingLibraryGroupInputEl = document.getElementById("packingLibraryGroupInput");
+      const packingLibraryGroupOptionsEl = document.getElementById("packingLibraryGroupOptions");
+      const packingLibraryGroupInfoEl = document.getElementById("packingLibraryGroupInfo");
+      const packingLibraryTableEl = document.getElementById("packingLibraryTable");
+      const packingLibraryCreateDrawerEl = document.getElementById("packingLibraryCreateDrawer");
+      const packingLibraryCloseCreateBtnEl = document.getElementById("packingLibraryCloseCreateBtn");
+      const packingLibraryCreateCancelBtnEl = document.getElementById("packingLibraryCreateCancelBtn");
+      const packingLibraryCreateFormEl = document.getElementById("packingLibraryCreateForm");
+      const packingLibraryEditDrawerEl = document.getElementById("packingLibraryEditDrawer");
+      const packingLibraryEditCloseBtnEl = document.getElementById("packingLibraryEditCloseBtn");
+      const packingLibraryEditFormEl = document.getElementById("packingLibraryEditForm");
+      const packingLibraryEditMetaEl = document.getElementById("packingLibraryEditMeta");
       const tripActivitiesAddBtnEl = document.getElementById("tripActivitiesAddBtn");
       const tripActivitiesAddDrawerEl = document.getElementById("tripActivitiesAddDrawer");
       const tripActivitiesAddCloseBtnEl = document.getElementById("tripActivitiesAddCloseBtn");
@@ -2390,6 +2586,10 @@
       const activityLibraryEditFormEl = document.getElementById("activityLibraryEditForm");
       const activityLibraryEditMetaEl = document.getElementById("activityLibraryEditMeta");
       const peopleRowsEl = document.getElementById("peopleRows");
+      const peopleBulkPasteEl = document.getElementById("peopleBulkPaste");
+      const peopleBulkAddBtnEl = document.getElementById("peopleBulkAddBtn");
+      const peopleBulkReplaceBtnEl = document.getElementById("peopleBulkReplaceBtn");
+      const peopleBulkClearBtnEl = document.getElementById("peopleBulkClearBtn");
 
       const statDaysEl = document.getElementById("statDays");
       const statActivitiesEl = document.getElementById("statActivities");
@@ -2406,6 +2606,7 @@
         joinCodes: [],
         tipsLibrary: [],
         activityLibrary: [],
+        packingLibrary: [],
         imageLibrary: []
       };
       let selectedTripId = "";
@@ -2413,6 +2614,7 @@
       let builderSelectedTipIds = [];
       let tripTipsEditingTipId = "";
       let activityLibraryEditingId = "";
+      let packingLibraryEditingId = "";
       let activityTemplateSelectedId = "";
       let activityTemplateApplyMode = "library";
 
@@ -2877,7 +3079,7 @@
             if (!imageIdToDelete) return;
             const entryToDelete = state.libraryEntries.find(item => String(item.id || "") === imageIdToDelete);
             const imageName = getImageDisplayName(entryToDelete || {});
-            const shouldDelete = window.confirm('Delete "' + imageName + '" from the library?');
+            const shouldDelete = confirmDelete('Delete "' + imageName + '" from the library?');
             if (!shouldDelete) return;
             try {
               await api("/admin/image-library/" + encodeURIComponent(imageIdToDelete) + "/delete", { method: "POST" });
@@ -3417,6 +3619,122 @@
         );
       }
 
+      function normalizePackingTemplateItem(item, idx = 0) {
+        if (!item || typeof item !== "object") return null;
+        const name = String(item.name || item.naam || "").trim();
+        const category = String(item.category || item.categorie || "").trim();
+        if (!name || !category) return null;
+        const idRaw = String(item.id || "").trim();
+        const id = idRaw || "pack_" + (idx + 1);
+        const assignedTo = String(item.assignedTo || "").trim();
+        return {
+          id,
+          name,
+          category,
+          suggested: item.suggested === true,
+          personal: item.personal === true,
+          assignedTo: assignedTo || ""
+        };
+      }
+
+      function dedupePackingTemplateItems(items) {
+        const deduped = [];
+        const seen = new Set();
+        (Array.isArray(items) ? items : []).forEach((item, idx) => {
+          const normalized = normalizePackingTemplateItem(item, idx);
+          if (!normalized) return;
+          const key = (normalized.category + "|" + normalized.name).toLowerCase().trim();
+          if (!key || seen.has(key)) return;
+          seen.add(key);
+          deduped.push(normalized);
+        });
+        return deduped;
+      }
+
+      function parsePackingTemplateLines(raw, options = {}) {
+        const defaultCategory = String(options.defaultCategory || "General").trim() || "General";
+        let activeCategory = defaultCategory;
+        const items = [];
+
+        String(raw || "")
+          .split(/\r?\n/)
+          .forEach((line, idx) => {
+            const stripped = String(line || "").replace(/^[\s•\-*]+/, "").trim();
+            if (!stripped) return;
+
+            const categoryHeaderMatch = stripped.match(/^(.+):$/);
+            if (categoryHeaderMatch && !stripped.includes("|")) {
+              activeCategory = String(categoryHeaderMatch[1] || "").trim() || activeCategory;
+              return;
+            }
+
+            let category = "";
+            let itemText = stripped;
+            if (stripped.includes("|")) {
+              const [left, ...right] = stripped.split("|");
+              category = String(left || "").trim();
+              itemText = String(right.join("|") || "").trim();
+            } else {
+              const dashMatch = stripped.match(/^([^:]{1,28})\s[-–—]\s(.+)$/);
+              if (dashMatch) {
+                category = String(dashMatch[1] || "").trim();
+                itemText = String(dashMatch[2] || "").trim();
+              }
+            }
+
+            const tags = Array.from(itemText.matchAll(/\[([^\]]+)\]/g))
+              .map(match => String(match?.[1] || "").trim().toLowerCase())
+              .filter(Boolean);
+            let suggested = false;
+            let personal = false;
+            let assignedTo = "";
+            tags.forEach(tag => {
+              if (tag === "suggested" || tag === "auto") suggested = true;
+              if (tag === "personal" || tag === "persoonlijk") personal = true;
+              if (tag.startsWith("assigned:")) {
+                assignedTo = String(tag.slice("assigned:".length) || "").trim();
+              }
+            });
+            itemText = itemText.replace(/\[[^\]]+\]/g, "").trim();
+            if (!itemText) return;
+
+            items.push({
+              id: "pack_" + (idx + 1),
+              name: itemText,
+              category: category || activeCategory || defaultCategory,
+              suggested,
+              personal,
+              assignedTo
+            });
+          });
+
+        return dedupePackingTemplateItems(items);
+      }
+
+      function formatPackingTemplateLines(items) {
+        return (Array.isArray(items) ? items : [])
+          .map(item => {
+            const normalized = normalizePackingTemplateItem(item);
+            if (!normalized) return "";
+            const tags = [];
+            if (normalized.suggested) tags.push("[suggested]");
+            if (normalized.personal) tags.push("[personal]");
+            if (normalized.assignedTo) tags.push("[assigned:" + normalized.assignedTo + "]");
+            return (
+              normalized.category +
+              " | " +
+              normalized.name +
+              (tags.length > 0 ? " " + tags.join(" ") : "")
+            );
+          })
+          .filter(Boolean)
+          .join("\n");
+      }
+
+      function getAllPackingLibraryEntries() {
+        return Array.isArray(latestAdminState.packingLibrary) ? latestAdminState.packingLibrary : [];
+      }
+
       function getAllLibraryTips() {
         return Array.isArray(latestAdminState.tipsLibrary) ? latestAdminState.tipsLibrary : [];
       }
@@ -3934,6 +4252,68 @@
         });
       }
 
+      function getKnownPackingLibraryGroupKeys() {
+        const keys = new Set(TRIP_TIP_GROUP_SUGGESTIONS.map(normalizeTipDestinationKey).filter(Boolean));
+        const defaultRegion = normalizeTipDestinationKey(document.getElementById("builderDefaultRegion")?.value || "");
+        if (defaultRegion) keys.add(defaultRegion);
+        Array.from(builderDayRegionByDate.values()).forEach(region => {
+          const key = normalizeTipDestinationKey(region);
+          if (key) keys.add(key);
+        });
+        getAllPackingLibraryEntries().forEach(entry => {
+          normalizeDestinationKeyList(entry.destinationKeys).forEach(key => keys.add(key));
+        });
+        return Array.from(keys).sort();
+      }
+
+      function getSelectedPackingLibraryGroupKey() {
+        return normalizeTipDestinationKey(packingLibraryGroupInputEl?.value || "");
+      }
+
+      function updatePackingLibraryGroupOptions() {
+        if (!packingLibraryGroupOptionsEl) return;
+        const options = getKnownPackingLibraryGroupKeys()
+          .map(key => '<option value="' + escapeHtml(key) + '"></option>')
+          .join("");
+        packingLibraryGroupOptionsEl.innerHTML = options;
+      }
+
+      function getPackingLibraryEntriesByGroup(groupKeyRaw) {
+        const groupKey = normalizeTipDestinationKey(groupKeyRaw);
+        const all = getAllPackingLibraryEntries();
+        if (!groupKey) return all;
+        return all.filter(entry => {
+          const keys = normalizeDestinationKeyList(entry.destinationKeys);
+          return keys.includes(groupKey);
+        });
+      }
+
+      function getTripDestinationKeySet() {
+        const keys = new Set();
+        const defaultRegion = normalizeTipDestinationKey(document.getElementById("builderDefaultRegion")?.value || "");
+        if (defaultRegion) keys.add(defaultRegion);
+        parseBuilderAdditionalDestinationKeys().forEach(key => {
+          const normalized = normalizeTipDestinationKey(key);
+          if (normalized) keys.add(normalized);
+        });
+        Array.from(builderDayRegionByDate.values()).forEach(region => {
+          const normalized = normalizeTipDestinationKey(region);
+          if (normalized) keys.add(normalized);
+        });
+        return keys;
+      }
+
+      function getTripScopedPackingLibraryEntries() {
+        const activeEntries = getAllPackingLibraryEntries().filter(entry => entry.active !== false);
+        const keySet = getTripDestinationKeySet();
+        if (keySet.size === 0) return activeEntries;
+        return activeEntries.filter(entry => {
+          const keys = normalizeDestinationKeyList(entry.destinationKeys);
+          if (keys.length === 0) return true;
+          return keys.some(key => keySet.has(key));
+        });
+      }
+
       function syncActivityModalBodyClass() {
         const hasOpenModal =
           Boolean(tripActivitiesAddDrawerEl?.classList.contains("open")) ||
@@ -4189,6 +4569,166 @@
         activityLibraryTableEl.innerHTML = head + "<tbody>" + body + "</tbody>";
       }
 
+      function renderPackingTemplateLibrarySelect() {
+        if (!packingTemplateLibrarySelectEl) return;
+        const entries = getTripScopedPackingLibraryEntries();
+        if (entries.length === 0) {
+          packingTemplateLibrarySelectEl.innerHTML = '<option value="">No reusable lists</option>';
+          packingTemplateLibrarySelectEl.value = "";
+          return;
+        }
+        const options = [
+          '<option value="">Select reusable list...</option>',
+          ...entries.map(entry => {
+            const destinations = normalizeDestinationKeyList(entry.destinationKeys);
+            const suffix = destinations.length > 0 ? " [" + destinations.join(", ") + "]" : "";
+            return (
+              '<option value="' +
+              escapeHtml(entry.id || "") +
+              '">' +
+              escapeHtml((entry.name || entry.id || "Template") + suffix) +
+              "</option>"
+            );
+          })
+        ];
+        const current = String(packingTemplateLibrarySelectEl.value || "");
+        packingTemplateLibrarySelectEl.innerHTML = options.join("");
+        if (current && entries.some(entry => String(entry.id || "") === current)) {
+          packingTemplateLibrarySelectEl.value = current;
+        }
+      }
+
+      function renderPackingLibraryTable() {
+        if (!packingLibraryTableEl || !packingLibraryGroupInfoEl) return;
+        updatePackingLibraryGroupOptions();
+        const selectedGroup = getSelectedPackingLibraryGroupKey();
+        packingLibraryGroupInfoEl.textContent = selectedGroup
+          ? "Group filter: " + selectedGroup
+          : "No group selected. Showing all templates.";
+
+        const rows = getPackingLibraryEntriesByGroup(selectedGroup);
+        if (rows.length === 0) {
+          packingLibraryTableEl.innerHTML =
+            "<thead><tr><th>Name</th><th>Items</th><th>Destinations</th><th>Status</th><th>Actions</th></tr></thead>" +
+            '<tbody><tr><td colspan="5" class="muted">No packing templates found.</td></tr></tbody>';
+          return;
+        }
+
+        const head = "<thead><tr><th>Name</th><th>Items</th><th>Destinations</th><th>Status</th><th>Actions</th></tr></thead>";
+        const body = rows
+          .map(entry => {
+            const destinations = normalizeDestinationKeyList(entry.destinationKeys);
+            const destinationText = destinations.length > 0 ? destinations.join(", ") : "all";
+            const items = Array.isArray(entry.items) ? entry.items.length : 0;
+            const active = entry.active !== false;
+            return (
+              "<tr>" +
+              "<td>" + escapeHtml(entry.name || entry.id || "") + "</td>" +
+              "<td>" + escapeHtml(String(items)) + "</td>" +
+              "<td>" + escapeHtml(destinationText) + "</td>" +
+              "<td>" + (active ? "active" : "inactive") + "</td>" +
+              "<td>" +
+              '<div class="table-action-wrap">' +
+              (active
+                ? '<button type="button" class="table-action-btn" title="Add to trip" data-packing-template-apply="' +
+                  escapeHtml(entry.id || "") +
+                  '">➕</button>'
+                : "") +
+              '<button type="button" class="table-action-btn" title="Edit template" data-packing-template-edit="' +
+                escapeHtml(entry.id || "") +
+                '">✏️</button>' +
+              '<button type="button" class="table-action-btn" title="Delete template" data-packing-template-delete="' +
+                escapeHtml(entry.id || "") +
+                '">🗑️</button>' +
+              "</div>" +
+              "</td>" +
+              "</tr>"
+            );
+          })
+          .join("");
+        packingLibraryTableEl.innerHTML = head + "<tbody>" + body + "</tbody>";
+      }
+
+      function clearPackingLibraryCreateForm() {
+        if (!packingLibraryCreateFormEl) return;
+        packingLibraryCreateFormEl.reset();
+        const activeInput = document.getElementById("packingLibraryCreateActive");
+        if (activeInput) activeInput.checked = true;
+      }
+
+      function closePackingLibraryCreateDrawer(options = {}) {
+        if (packingLibraryCreateDrawerEl) packingLibraryCreateDrawerEl.classList.remove("open");
+        if (options.reset !== false) {
+          clearPackingLibraryCreateForm();
+        }
+      }
+
+      function openPackingLibraryCreateDrawer() {
+        if (packingLibraryEditDrawerEl) packingLibraryEditDrawerEl.classList.remove("open");
+        if (packingLibraryCreateDrawerEl) packingLibraryCreateDrawerEl.classList.add("open");
+        const destinationInput = document.getElementById("packingLibraryCreateDestinationKeys");
+        const selectedGroup = getSelectedPackingLibraryGroupKey();
+        if (destinationInput && selectedGroup && !String(destinationInput.value || "").trim()) {
+          destinationInput.value = selectedGroup;
+        }
+        const nameInput = document.getElementById("packingLibraryCreateName");
+        if (nameInput) nameInput.focus();
+      }
+
+      function resetPackingLibraryEditForm(options = {}) {
+        packingLibraryEditingId = "";
+        if (packingLibraryEditFormEl) packingLibraryEditFormEl.reset();
+        const idInput = document.getElementById("packingLibraryEditId");
+        if (idInput) idInput.value = "";
+        const activeInput = document.getElementById("packingLibraryEditActive");
+        if (activeInput) activeInput.checked = true;
+        if (packingLibraryEditMetaEl) {
+          packingLibraryEditMetaEl.textContent = "Select a template and press ✏️ to edit.";
+        }
+        if (options.close !== false && packingLibraryEditDrawerEl) {
+          packingLibraryEditDrawerEl.classList.remove("open");
+        }
+      }
+
+      function openPackingLibraryEditor(entry) {
+        if (!entry || !packingLibraryEditFormEl) return;
+        if (packingLibraryCreateDrawerEl) packingLibraryCreateDrawerEl.classList.remove("open");
+        if (packingLibraryEditDrawerEl) packingLibraryEditDrawerEl.classList.add("open");
+        packingLibraryEditingId = String(entry.id || "").trim();
+        document.getElementById("packingLibraryEditId").value = packingLibraryEditingId;
+        document.getElementById("packingLibraryEditName").value = String(entry.name || "");
+        document.getElementById("packingLibraryEditDestinationKeys").value = normalizeDestinationKeyList(entry.destinationKeys).join(", ");
+        document.getElementById("packingLibraryEditTags").value = Array.isArray(entry.tags) ? entry.tags.join(", ") : "";
+        document.getElementById("packingLibraryEditItems").value = formatPackingTemplateLines(entry.items);
+        document.getElementById("packingLibraryEditActive").checked = entry.active !== false;
+        if (packingLibraryEditMetaEl) {
+          packingLibraryEditMetaEl.textContent = "Editing template: " + (entry.name || entry.id || "");
+        }
+        const nameInput = document.getElementById("packingLibraryEditName");
+        if (nameInput) nameInput.focus();
+      }
+
+      function applyPackingLibraryTemplateToTrip(templateId, options = {}) {
+        const id = String(templateId || "").trim();
+        if (!id) throw new Error("Selecteer eerst een packing template.");
+        const entry = getAllPackingLibraryEntries().find(row => String(row.id || "") === id);
+        if (!entry) throw new Error("Packing template niet gevonden.");
+        const added = appendPackingTemplateItems(entry.items, {
+          replace: options.replace === true,
+          expand: options.expand === true,
+        });
+        if (added === 0 && options.replace !== true) {
+          setFlash("Template already present in trip packing list.", "ok");
+          return;
+        }
+        setFlash(
+          options.replace === true
+            ? "Trip packing replaced with template: " + (entry.name || entry.id || "-")
+            : "Added " + added + " packing item(s) from template: " + (entry.name || entry.id || "-"),
+          "ok"
+        );
+      }
+
       function openActivityLibraryCreateDrawer() {
         closeTripActivitiesAddDrawer();
         closeActivityTemplateApplyDrawer({ reset: false });
@@ -4349,11 +4889,12 @@
         const removeBtn = rowEl.querySelector(".remove-row-btn");
         if (!removeBtn) return;
         removeBtn.addEventListener("click", () => {
-          const name = readRowField(rowEl, "name");
+          const name = readRowField(rowEl, "name") || readRowField(rowEl, "title");
           const label = name ? ' "' + name + '"' : "";
           let kind = "item";
           if (rowEl.classList.contains("accommodation-row")) kind = "accommodation";
           else if (rowEl.classList.contains("person-row")) kind = "person";
+          else if (rowEl.classList.contains("emergency-row")) kind = "emergency section";
           else if (rowEl.classList.contains("activity-row")) kind = "activity";
           const confirmed = confirmDelete("Delete " + kind + label + "?");
           if (!confirmed) return;
@@ -4531,6 +5072,11 @@
       }
 
       function setPersonRowExpanded(rowEl, expanded) {
+        if (!rowEl) return;
+        rowEl.classList.toggle("expanded", Boolean(expanded));
+      }
+
+      function setEmergencyRowExpanded(rowEl, expanded) {
         if (!rowEl) return;
         rowEl.classList.toggle("expanded", Boolean(expanded));
       }
@@ -4991,6 +5537,518 @@
         return migrated;
       }
 
+      function parseEmergencyContacts(value) {
+        return String(value || "")
+          .split(/\n+/)
+          .map(line => String(line || "").trim())
+          .filter(Boolean)
+          .map(line => {
+            let label = "";
+            let phone = "";
+            if (line.includes("|")) {
+              const [left, ...right] = line.split("|");
+              label = String(left || "").trim();
+              phone = String(right.join("|") || "").trim();
+            } else {
+              const match = line.match(/^(.+?)(?:\s*[-:]\s*|\s{2,})(.+)$/);
+              if (match) {
+                label = String(match[1] || "").trim();
+                phone = String(match[2] || "").trim();
+              }
+            }
+            if (!label || !phone) return null;
+            return { label, phone };
+          })
+          .filter(Boolean);
+      }
+
+      function formatEmergencyContacts(contacts) {
+        return (Array.isArray(contacts) ? contacts : [])
+          .map(contact => {
+            const label = String(contact?.label || "").trim();
+            const phone = String(contact?.phone || "").trim();
+            if (!label && !phone) return "";
+            return label + " | " + phone;
+          })
+          .filter(Boolean)
+          .join("\n");
+      }
+
+      function updateEmergencyListMeta() {
+        if (!emergencyRowsEl || !emergencyListMetaEl) return;
+        const rows = Array.from(emergencyRowsEl.querySelectorAll(".emergency-row"));
+        if (rows.length === 0) {
+          emergencyListMetaEl.textContent = "No emergency sections yet.";
+          return;
+        }
+        const expanded = rows.filter(row => row.classList.contains("expanded")).length;
+        emergencyListMetaEl.textContent = rows.length + " section(s) · " + expanded + " expanded";
+      }
+
+      function createEmergencyRow(seed = {}) {
+        const rowEl = document.createElement("div");
+        rowEl.className = "builder-row activity-row emergency-row";
+        rowEl.innerHTML = `
+          <div class="activity-row-summary">
+            <div class="activity-row-thumb-wrap">
+              <div class="activity-row-thumb-fallback">🚨</div>
+            </div>
+            <div class="activity-row-summary-text">
+              <div class="activity-row-title-line">
+                <p class="activity-row-title emergency-row-title">Emergency section</p>
+                <span class="activity-row-type-badge">Emergency</span>
+              </div>
+              <p class="activity-row-meta emergency-row-meta">No contact numbers yet.</p>
+            </div>
+            <div class="activity-row-summary-actions">
+              <button type="button" class="table-action-btn emergency-row-edit-btn" title="Edit emergency section">✏️</button>
+              <button type="button" class="table-action-btn remove-row-btn emergency-row-delete" title="Delete emergency section">🗑️</button>
+            </div>
+          </div>
+          <div class="activity-row-body">
+            <div class="builder-fields">
+              <div><label>Section ID (optional)</label><input data-field="id" placeholder="emergency-main" value="${escapeHtml(seed.id)}" /></div>
+              <div><label>Section title</label><input data-field="title" placeholder="Noodnummers" value="${escapeHtml(seed.title)}" /></div>
+              <div class="activity-media-fields">
+                <div>
+                  <label>Description (optional)</label>
+                  <textarea data-field="description" rows="3" placeholder="Embassy address, hospital details...">${escapeHtml(seed.description)}</textarea>
+                </div>
+                <div>
+                  <label>Contacts (one per line: Label | Phone)</label>
+                  <textarea data-field="contacts" rows="3" placeholder="Alarmnummer | 190&#10;Ambulance | 192">${escapeHtml(seed.contacts || "")}</textarea>
+                </div>
+              </div>
+            </div>
+            <div class="builder-inline-actions">
+              <button type="button" class="secondary emergency-row-save-btn">Save & minimize</button>
+            </div>
+          </div>
+        `;
+        attachRemoveHandler(rowEl);
+
+        const updateEmergencyRowSummary = () => {
+          const title = readRowField(rowEl, "title");
+          const description = readRowField(rowEl, "description");
+          const contacts = parseEmergencyContacts(readRowField(rowEl, "contacts"));
+          const titleEl = rowEl.querySelector(".emergency-row-title");
+          const metaEl = rowEl.querySelector(".emergency-row-meta");
+
+          if (titleEl) {
+            titleEl.textContent = title || "Emergency section";
+          }
+          if (metaEl) {
+            const metaParts = [];
+            if (contacts.length > 0) {
+              const first = contacts[0];
+              metaParts.push(String(contacts.length) + " contact(s)");
+              metaParts.push(first.label + ": " + first.phone);
+            }
+            const firstDescriptionLine = String(description || "")
+              .split("\n")
+              .map(line => String(line || "").trim())
+              .find(Boolean);
+            if (firstDescriptionLine) metaParts.push(firstDescriptionLine);
+            metaEl.textContent = metaParts.length > 0 ? metaParts.join(" · ") : "No contact numbers yet.";
+          }
+        };
+
+        const summaryEl = rowEl.querySelector(".activity-row-summary");
+        if (summaryEl) {
+          summaryEl.addEventListener("click", event => {
+            const target = event.target;
+            if (target instanceof HTMLElement && target.closest("button")) return;
+            setEmergencyRowExpanded(rowEl, !rowEl.classList.contains("expanded"));
+            updateEmergencyListMeta();
+          });
+        }
+        const editBtn = rowEl.querySelector(".emergency-row-edit-btn");
+        if (editBtn) {
+          editBtn.addEventListener("click", () => {
+            setEmergencyRowExpanded(rowEl, !rowEl.classList.contains("expanded"));
+            updateEmergencyListMeta();
+          });
+        }
+        const saveBtn = rowEl.querySelector(".emergency-row-save-btn");
+        if (saveBtn) {
+          saveBtn.addEventListener("click", () => {
+            updateEmergencyRowSummary();
+            setEmergencyRowExpanded(rowEl, false);
+            refreshBuilderHealth();
+            scheduleBuilderAutosave();
+          });
+        }
+        ["id", "title", "description", "contacts"].forEach(field => {
+          const inputEl = rowEl.querySelector('[data-field="' + field + '"]');
+          if (!inputEl) return;
+          inputEl.addEventListener("input", updateEmergencyRowSummary);
+          inputEl.addEventListener("change", updateEmergencyRowSummary);
+        });
+
+        updateEmergencyRowSummary();
+        setEmergencyRowExpanded(rowEl, Boolean(seed.__expanded));
+        return rowEl;
+      }
+
+      function readRowCheckbox(rowEl, fieldName) {
+        const input = rowEl.querySelector('[data-field="' + fieldName + '"]');
+        return Boolean(input && input.checked);
+      }
+
+      function setPackingTemplateRowExpanded(rowEl, expanded) {
+        if (!rowEl) return;
+        rowEl.classList.toggle("expanded", Boolean(expanded));
+      }
+
+      function getTripPackingTemplateItemsFromRows() {
+        if (!packingTemplateRowsEl) return [];
+        const items = Array.from(packingTemplateRowsEl.querySelectorAll(".packing-template-row")).map((rowEl, idx) => ({
+          id: readRowField(rowEl, "id") || "pack_" + (idx + 1),
+          name: readRowField(rowEl, "name"),
+          category: readRowField(rowEl, "category"),
+          suggested: readRowCheckbox(rowEl, "suggested"),
+          personal: readRowCheckbox(rowEl, "personal"),
+          assignedTo: readRowField(rowEl, "assignedTo"),
+        }));
+        return dedupePackingTemplateItems(items);
+      }
+
+      function updatePackingTemplateMeta() {
+        if (!packingTemplateRowsEl || !packingTemplateMetaEl) return;
+        const rows = Array.from(packingTemplateRowsEl.querySelectorAll(".packing-template-row"));
+        if (rows.length === 0) {
+          packingTemplateMetaEl.textContent = "No packing items yet.";
+          return;
+        }
+        const personalCount = rows.filter(row => readRowCheckbox(row, "personal")).length;
+        const suggestedCount = rows.filter(row => readRowCheckbox(row, "suggested")).length;
+        const expanded = rows.filter(row => row.classList.contains("expanded")).length;
+        packingTemplateMetaEl.textContent =
+          rows.length +
+          " item(s) · " +
+          personalCount +
+          " personal · " +
+          suggestedCount +
+          " suggested · " +
+          expanded +
+          " expanded";
+      }
+
+      function updatePackingTemplateRowSummary(rowEl) {
+        if (!rowEl) return;
+        const name = readRowField(rowEl, "name");
+        const category = readRowField(rowEl, "category");
+        const personal = readRowCheckbox(rowEl, "personal");
+        const suggested = readRowCheckbox(rowEl, "suggested");
+        const assignedTo = readRowField(rowEl, "assignedTo");
+        const titleEl = rowEl.querySelector(".packing-template-row-title");
+        const metaEl = rowEl.querySelector(".packing-template-row-meta");
+        const badgeEl = rowEl.querySelector(".packing-template-row-type");
+
+        if (titleEl) {
+          titleEl.textContent = name || "Packing item";
+        }
+        if (badgeEl) {
+          badgeEl.textContent = category || "General";
+        }
+        if (metaEl) {
+          const parts = [];
+          if (suggested) parts.push("suggested");
+          if (personal) parts.push("personal");
+          if (assignedTo) parts.push("assigned: " + assignedTo);
+          metaEl.textContent = parts.length > 0 ? parts.join(" · ") : "No flags";
+        }
+      }
+
+      function createPackingTemplateRow(seed = {}) {
+        const normalized = normalizePackingTemplateItem(seed) || {
+          id: String(seed.id || "").trim(),
+          name: String(seed.name || "").trim(),
+          category: String(seed.category || "").trim(),
+          suggested: seed.suggested === true,
+          personal: seed.personal === true,
+          assignedTo: String(seed.assignedTo || "").trim(),
+        };
+        const rowEl = document.createElement("div");
+        rowEl.className = "builder-row activity-row packing-template-row";
+        rowEl.innerHTML = `
+          <div class="activity-row-summary">
+            <div class="activity-row-thumb-wrap">
+              <div class="activity-row-thumb-fallback">🧳</div>
+            </div>
+            <div class="activity-row-summary-text">
+              <div class="activity-row-title-line">
+                <p class="activity-row-title packing-template-row-title">Packing item</p>
+                <span class="activity-row-type-badge packing-template-row-type">General</span>
+              </div>
+              <p class="activity-row-meta packing-template-row-meta">No flags</p>
+            </div>
+            <div class="activity-row-summary-actions">
+              <button type="button" class="table-action-btn packing-template-row-edit-btn" title="Edit packing item">✏️</button>
+              <button type="button" class="table-action-btn remove-row-btn packing-template-row-delete" title="Delete packing item">🗑️</button>
+            </div>
+          </div>
+          <div class="activity-row-body">
+            <div class="builder-fields">
+              <div><label>Item ID (optional)</label><input data-field="id" placeholder="pack_passport" value="${escapeHtml(normalized.id)}" /></div>
+              <div><label>Name</label><input data-field="name" placeholder="Passport" value="${escapeHtml(normalized.name)}" /></div>
+              <div><label>Category</label><input data-field="category" placeholder="Documents" value="${escapeHtml(normalized.category)}" /></div>
+              <div><label>Assigned to (optional)</label><input data-field="assignedTo" placeholder="p1" value="${escapeHtml(normalized.assignedTo)}" /></div>
+              <div class="checkbox-row">
+                <input data-field="suggested" type="checkbox" ${normalized.suggested ? "checked" : ""} />
+                <label>Suggested item</label>
+              </div>
+              <div class="checkbox-row">
+                <input data-field="personal" type="checkbox" ${normalized.personal ? "checked" : ""} />
+                <label>Personal item</label>
+              </div>
+            </div>
+            <div class="builder-inline-actions">
+              <button type="button" class="secondary packing-template-row-save-btn">Save & minimize</button>
+            </div>
+          </div>
+        `;
+        attachRemoveHandler(rowEl);
+
+        const summaryEl = rowEl.querySelector(".activity-row-summary");
+        if (summaryEl) {
+          summaryEl.addEventListener("click", event => {
+            const target = event.target;
+            if (target instanceof HTMLElement && target.closest("button")) return;
+            setPackingTemplateRowExpanded(rowEl, !rowEl.classList.contains("expanded"));
+            updatePackingTemplateMeta();
+          });
+        }
+        const editBtn = rowEl.querySelector(".packing-template-row-edit-btn");
+        if (editBtn) {
+          editBtn.addEventListener("click", () => {
+            setPackingTemplateRowExpanded(rowEl, !rowEl.classList.contains("expanded"));
+            updatePackingTemplateMeta();
+          });
+        }
+        const saveBtn = rowEl.querySelector(".packing-template-row-save-btn");
+        if (saveBtn) {
+          saveBtn.addEventListener("click", () => {
+            updatePackingTemplateRowSummary(rowEl);
+            setPackingTemplateRowExpanded(rowEl, false);
+            refreshBuilderHealth();
+            scheduleBuilderAutosave();
+          });
+        }
+
+        ["id", "name", "category", "assignedTo"].forEach(field => {
+          const inputEl = rowEl.querySelector('[data-field="' + field + '"]');
+          if (!inputEl) return;
+          inputEl.addEventListener("input", () => updatePackingTemplateRowSummary(rowEl));
+          inputEl.addEventListener("change", () => updatePackingTemplateRowSummary(rowEl));
+        });
+        ["suggested", "personal"].forEach(field => {
+          const inputEl = rowEl.querySelector('[data-field="' + field + '"]');
+          if (!inputEl) return;
+          inputEl.addEventListener("change", () => updatePackingTemplateRowSummary(rowEl));
+        });
+
+        updatePackingTemplateRowSummary(rowEl);
+        setPackingTemplateRowExpanded(rowEl, Boolean(seed.__expanded));
+        return rowEl;
+      }
+
+      function appendPackingTemplateItems(items, options = {}) {
+        if (!packingTemplateRowsEl) return 0;
+        const replace = options.replace === true;
+        const expand = options.expand === true;
+        if (replace) {
+          packingTemplateRowsEl.innerHTML = "";
+        }
+
+        const existingKeys = new Set(
+          Array.from(packingTemplateRowsEl.querySelectorAll(".packing-template-row")).map(row => {
+            const name = readRowField(row, "name").toLowerCase();
+            const category = readRowField(row, "category").toLowerCase();
+            return category + "|" + name;
+          })
+        );
+
+        const normalizedItems = dedupePackingTemplateItems(items);
+        let added = 0;
+        normalizedItems.forEach((item, idx) => {
+          const key = (String(item.category || "") + "|" + String(item.name || "")).toLowerCase().trim();
+          if (!key || existingKeys.has(key)) return;
+          existingKeys.add(key);
+          packingTemplateRowsEl.appendChild(
+            createPackingTemplateRow({
+              ...item,
+              id: item.id || "pack_" + (idx + 1),
+              __expanded: expand,
+            })
+          );
+          added += 1;
+        });
+
+        updatePackingTemplateMeta();
+        refreshBuilderHealth();
+        scheduleBuilderAutosave();
+        return added;
+      }
+
+      function looksLikePhoneNumber(value) {
+        const raw = String(value || "").trim();
+        if (!raw) return false;
+        const digits = raw.replace(/\D/g, "");
+        if (digits.length < 6) return false;
+        return /^[\d+\s().\-/#]+$/.test(raw);
+      }
+
+      function normalizePersonBulkSeed(seed = {}, idx = 0) {
+        const name = String(seed.name || "").trim();
+        if (!name) return null;
+        const emergencyPhone = String(seed.emergencyPhone || "").trim();
+        const emergencyNameRaw = String(seed.emergencyName || "").trim();
+        const emergencyName = emergencyPhone && !emergencyNameRaw ? "Noodcontact" : emergencyNameRaw;
+        return {
+          id: String(seed.id || "").trim() || "person_" + (idx + 1),
+          name,
+          bio: String(seed.bio || "").trim(),
+          avatarUrl: String(seed.avatarUrl || "").trim(),
+          emergencyName,
+          emergencyPhone
+        };
+      }
+
+      function parsePeopleBulkLines(raw) {
+        const parsed = [];
+        String(raw || "")
+          .split(/\r?\n/)
+          .forEach((line, idx) => {
+            const stripped = String(line || "").replace(/^[\s•\-*]+/, "").trim();
+            if (!stripped) return;
+
+            let columns = [stripped];
+            if (stripped.includes("|")) {
+              columns = stripped.split("|");
+            } else if (stripped.includes("\t")) {
+              columns = stripped.split(/\t+/);
+            } else if (stripped.includes(";")) {
+              columns = stripped.split(";");
+            }
+            columns = columns.map(col => String(col || "").trim());
+            while (columns.length > 0 && !columns[columns.length - 1]) columns.pop();
+
+            const name = String(columns[0] || "").trim();
+            if (!name) return;
+
+            let bio = "";
+            let emergencyName = "";
+            let emergencyPhone = "";
+
+            if (columns.length === 2) {
+              const second = String(columns[1] || "").trim();
+              if (looksLikePhoneNumber(second)) {
+                emergencyPhone = second;
+                emergencyName = "Noodcontact";
+              } else {
+                bio = second;
+              }
+            } else if (columns.length === 3) {
+              const second = String(columns[1] || "").trim();
+              const third = String(columns[2] || "").trim();
+              if (looksLikePhoneNumber(second)) {
+                emergencyPhone = second;
+                emergencyName = "Noodcontact";
+                bio = third;
+              } else if (looksLikePhoneNumber(third)) {
+                emergencyName = second || "Noodcontact";
+                emergencyPhone = third;
+              } else {
+                bio = [second, third].filter(Boolean).join(" | ");
+              }
+            } else if (columns.length >= 4) {
+              const second = String(columns[1] || "").trim();
+              const third = String(columns[2] || "").trim();
+              const rest = columns.slice(3).map(col => String(col || "").trim()).filter(Boolean).join(" | ");
+              if (looksLikePhoneNumber(second)) {
+                emergencyPhone = second;
+                emergencyName = "Noodcontact";
+                bio = [third, rest].filter(Boolean).join(" | ");
+              } else {
+                emergencyName = second;
+                emergencyPhone = third;
+                bio = rest;
+              }
+            }
+
+            parsed.push({
+              id: "person_" + (idx + 1),
+              name,
+              bio,
+              avatarUrl: "",
+              emergencyName,
+              emergencyPhone
+            });
+          });
+
+        const deduped = [];
+        const seen = new Set();
+        parsed.forEach((entry, idx) => {
+          const normalized = normalizePersonBulkSeed(entry, idx);
+          if (!normalized) return;
+          const key = [
+            String(normalized.name || "").toLowerCase().trim(),
+            String(normalized.emergencyPhone || "").replace(/\s+/g, ""),
+            String(normalized.bio || "").toLowerCase().trim()
+          ].join("|");
+          if (seen.has(key)) return;
+          seen.add(key);
+          deduped.push(normalized);
+        });
+        return deduped;
+      }
+
+      function appendPeopleFromBulk(items, options = {}) {
+        if (!peopleRowsEl) return 0;
+        const replace = options.replace === true;
+        const expand = options.expand === true;
+
+        const normalizedItems = (Array.isArray(items) ? items : [])
+          .map((item, idx) => normalizePersonBulkSeed(item, idx))
+          .filter(Boolean);
+        if (replace) {
+          peopleRowsEl.innerHTML = "";
+        }
+
+        const existingKeys = new Set(
+          Array.from(peopleRowsEl.querySelectorAll(".person-row")).map(rowEl => {
+            const name = String(readRowField(rowEl, "name") || "").toLowerCase().trim();
+            const emergencyPhone = String(readRowField(rowEl, "emergencyPhone") || "").replace(/\s+/g, "");
+            const bio = String(readRowField(rowEl, "bio") || "").toLowerCase().trim();
+            return [name, emergencyPhone, bio].join("|");
+          })
+        );
+
+        let added = 0;
+        normalizedItems.forEach((item, idx) => {
+          const key = [
+            String(item.name || "").toLowerCase().trim(),
+            String(item.emergencyPhone || "").replace(/\s+/g, ""),
+            String(item.bio || "").toLowerCase().trim()
+          ].join("|");
+          if (!item.name || existingKeys.has(key)) return;
+          existingKeys.add(key);
+          peopleRowsEl.appendChild(
+            createPersonRow({
+              ...item,
+              id: item.id || "person_" + (idx + 1),
+              __expanded: expand
+            })
+          );
+          added += 1;
+        });
+
+        refreshBuilderHealth();
+        scheduleBuilderAutosave();
+        return added;
+      }
+
       function createPersonRow(seed = {}) {
         const rowEl = document.createElement("div");
         rowEl.className = "builder-row activity-row person-row";
@@ -5044,8 +6102,9 @@
           if (metaEl) {
             const metaParts = [];
             if (bio) metaParts.push(bio);
-            if (emergencyName) {
-              metaParts.push("Emergency: " + emergencyName + (emergencyPhone ? " (" + emergencyPhone + ")" : ""));
+            if (emergencyName || emergencyPhone) {
+              const emergencyLabel = emergencyName || "Noodcontact";
+              metaParts.push("Emergency: " + emergencyLabel + (emergencyPhone ? " (" + emergencyPhone + ")" : ""));
             }
             metaEl.textContent = metaParts.length > 0 ? metaParts.join(" · ") : "No bio yet";
           }
@@ -5436,6 +6495,10 @@
           if (activityLibraryCreateDrawerEl) activityLibraryCreateDrawerEl.classList.remove("open");
           if (activityLibraryEditDrawerEl) activityLibraryEditDrawerEl.classList.remove("open");
         }
+        if (tabKey !== "packing") {
+          if (packingLibraryCreateDrawerEl) packingLibraryCreateDrawerEl.classList.remove("open");
+          if (packingLibraryEditDrawerEl) packingLibraryEditDrawerEl.classList.remove("open");
+        }
         syncActivityModalBodyClass();
         updateBuilderSectionTitle(tabKey);
       }
@@ -5446,6 +6509,8 @@
           accommodations: "Accommodations",
           "activities-trip": "Trip Activities",
           notifications: "Notifications",
+          emergency: "Emergency",
+          packing: "Packing",
           "activities-library": "Activity Library",
           "trip-tips": "Tips",
           people: "People",
@@ -5468,6 +6533,8 @@
         statRoomingEl.textContent = "Room Blocks: " + getRoomAssignmentsFromAccommodationRows().length;
         updateAccommodationListMeta();
         updateNotificationListMeta();
+        updateEmergencyListMeta();
+        updatePackingTemplateMeta();
       }
 
       function getActiveBuilderTab() {
@@ -5728,6 +6795,30 @@
         return Array.from(byLodging.values());
       }
 
+      function mergeEmergencySections(currentSections, importedSections) {
+        const byKey = new Map();
+
+        const readKey = section => {
+          const idKey = String(section?.id || "").trim().toLowerCase();
+          if (idKey) return idKey;
+          return String(section?.title || "").trim().toLowerCase();
+        };
+
+        (Array.isArray(importedSections) ? importedSections : []).forEach(section => {
+          const key = readKey(section);
+          if (!key) return;
+          byKey.set(key, section);
+        });
+
+        (Array.isArray(currentSections) ? currentSections : []).forEach(section => {
+          const key = readKey(section);
+          if (!key) return;
+          byKey.set(key, section);
+        });
+
+        return Array.from(byKey.values());
+      }
+
       function mergeImportedManifestIntoCurrent(currentManifest, importedManifest) {
         const current = deepClone(currentManifest);
         const imported = deepClone(importedManifest);
@@ -5788,6 +6879,30 @@
           if (roomAssignments.length > 0) merged.people.roomAssignments = roomAssignments;
         } else {
           delete merged.people;
+        }
+
+        const emergencySections = mergeEmergencySections(current.emergency?.sections, imported.emergency?.sections);
+        if (emergencySections.length > 0) {
+          merged.emergency = { sections: emergencySections };
+        } else {
+          delete merged.emergency;
+        }
+
+        const currentPackingTemplate = dedupePackingTemplateItems(current.packingTemplate);
+        const importedPackingTemplate = dedupePackingTemplateItems(imported.packingTemplate);
+        const mergedPackingTemplate =
+          currentPackingTemplate.length > 0 ? currentPackingTemplate : importedPackingTemplate;
+        if (mergedPackingTemplate.length > 0) {
+          merged.packingTemplate = mergedPackingTemplate.map(item => ({
+            id: item.id,
+            name: item.name,
+            category: item.category,
+            suggested: item.suggested === true,
+            personal: item.personal === true,
+            assignedTo: item.assignedTo || undefined,
+          }));
+        } else {
+          delete merged.packingTemplate;
         }
 
         return merged;
@@ -5936,6 +7051,20 @@
               "emergencyName",
               "emergencyPhone"
             ]),
+            emergency: serializeRows(emergencyRowsEl, [
+              "id",
+              "title",
+              "description",
+              "contacts"
+            ]),
+            packingTemplate: getTripPackingTemplateItemsFromRows().map(item => ({
+              id: String(item.id || "").trim(),
+              name: String(item.name || "").trim(),
+              category: String(item.category || "").trim(),
+              suggested: item.suggested === true,
+              personal: item.personal === true,
+              assignedTo: String(item.assignedTo || "").trim(),
+            })),
             rooming: getRoomAssignmentsFromAccommodationRows().map(item => ({
               lodgingName: String(item.lodgingName || "").trim(),
               rooms: (Array.isArray(item.rooms) ? item.rooms : []).join("\n")
@@ -5999,6 +7128,12 @@
         (Array.isArray(rows.people) ? rows.people : []).forEach(row => {
           peopleRowsEl.appendChild(createPersonRow(row));
         });
+        (Array.isArray(rows.emergency) ? rows.emergency : []).forEach(row => {
+          emergencyRowsEl.appendChild(createEmergencyRow(row));
+        });
+        (Array.isArray(rows.packingTemplate) ? rows.packingTemplate : []).forEach(row => {
+          packingTemplateRowsEl.appendChild(createPackingTemplateRow(row));
+        });
         mergeRoomAssignmentsIntoAccommodationRows(
           (Array.isArray(rows.rooming) ? rows.rooming : []).map(row => ({
             lodgingName: row?.lodgingName || "",
@@ -6006,6 +7141,8 @@
           }))
         );
         sortAccommodationRowsInDom();
+        updateEmergencyListMeta();
+        updatePackingTemplateMeta();
 
         if (accommodationRowsEl.children.length === 0) accommodationRowsEl.appendChild(createAccommodationRow());
         if (activityRowsEl.children.length === 0) activityRowsEl.appendChild(createActivityRow());
@@ -6102,6 +7239,8 @@
         updateBuilderStatsFromDom();
         updateBuilderSectionTitle(getActiveBuilderTab());
         renderTripTipsPanel();
+        renderPackingTemplateLibrarySelect();
+        updatePackingTemplateMeta();
         applyActivitySearchFilter();
 
         try {
@@ -6257,12 +7396,39 @@
           };
 
           if (avatarUrl) participant.avatarUrl = avatarUrl;
-          if (emergencyName && emergencyPhone) {
-            participant.emergencyContacts = [{ name: emergencyName, phone: emergencyPhone }];
+          if (emergencyPhone) {
+            participant.emergencyContacts = [{ name: emergencyName || "Noodcontact", phone: emergencyPhone }];
           }
 
           participants.push(participant);
         });
+
+        const emergencySections = [];
+        const emergencyRows = Array.from(emergencyRowsEl.querySelectorAll(".emergency-row"));
+        emergencyRows.forEach((rowEl, idx) => {
+          const title = readRowField(rowEl, "title");
+          if (!title) return;
+
+          const section = {
+            id: readRowField(rowEl, "id") || "emergency-" + (idx + 1),
+            title,
+            contacts: parseEmergencyContacts(readRowField(rowEl, "contacts")),
+          };
+          const description = readRowField(rowEl, "description");
+          if (description) section.description = description;
+          emergencySections.push(section);
+        });
+
+        const packingTemplate = getTripPackingTemplateItemsFromRows()
+          .map((item, idx) => ({
+            id: String(item.id || "").trim() || "pack_" + (idx + 1),
+            name: String(item.name || "").trim(),
+            category: String(item.category || "").trim(),
+            suggested: item.suggested === true,
+            personal: item.personal === true,
+            assignedTo: String(item.assignedTo || "").trim(),
+          }))
+          .filter(item => item.name && item.category);
 
         const roomAssignments = getRoomAssignmentsFromAccommodationRows();
 
@@ -6312,6 +7478,21 @@
           if (participants.length > 0) manifest.people.participants = participants;
           if (roomAssignments.length > 0) manifest.people.roomAssignments = roomAssignments;
         }
+        if (emergencySections.length > 0) {
+          manifest.emergency = {
+            sections: emergencySections
+          };
+        }
+        if (packingTemplate.length > 0) {
+          manifest.packingTemplate = packingTemplate.map(item => ({
+            id: item.id,
+            name: item.name,
+            category: item.category,
+            suggested: item.suggested,
+            personal: item.personal,
+            assignedTo: item.assignedTo || undefined,
+          }));
+        }
 
         return {
           manifest,
@@ -6321,6 +7502,8 @@
             activities: days.reduce((sum, day) => sum + day.activities.length, 0),
             tips: builderSelectedTipIds.length,
             participants: participants.length,
+            emergencySections: emergencySections.length,
+            packingItems: packingTemplate.length,
             roomBlocks: roomAssignments.length
           }
         };
@@ -6397,6 +7580,8 @@
         activityRowsEl.innerHTML = "";
         notificationRowsEl.innerHTML = "";
         peopleRowsEl.innerHTML = "";
+        emergencyRowsEl.innerHTML = "";
+        packingTemplateRowsEl.innerHTML = "";
       }
 
       function groupLodgingRanges(days) {
@@ -6575,6 +7760,28 @@
             })
           );
         });
+        (manifest.emergency?.sections || []).forEach((section, idx) => {
+          emergencyRowsEl.appendChild(
+            createEmergencyRow({
+              id: section?.id || "emergency-" + (idx + 1),
+              title: section?.title || "",
+              description: section?.description || "",
+              contacts: formatEmergencyContacts(section?.contacts || [])
+            })
+          );
+        });
+        (Array.isArray(manifest.packingTemplate) ? manifest.packingTemplate : []).forEach((item, idx) => {
+          packingTemplateRowsEl.appendChild(
+            createPackingTemplateRow({
+              id: item?.id || "pack_" + (idx + 1),
+              name: item?.name || "",
+              category: item?.category || "",
+              suggested: item?.suggested === true,
+              personal: item?.personal === true,
+              assignedTo: item?.assignedTo || "",
+            })
+          );
+        });
 
         mergeRoomAssignmentsIntoAccommodationRows(
           (manifest.people?.roomAssignments || []).map(assignment => ({
@@ -6583,6 +7790,8 @@
           }))
         );
         sortAccommodationRowsInDom();
+        updateEmergencyListMeta();
+        updatePackingTemplateMeta();
 
         if (accommodationRowsEl.children.length === 0) accommodationRowsEl.appendChild(createAccommodationRow());
         if (activityRowsEl.children.length === 0)
@@ -6674,6 +7883,7 @@
           joinCodes: Array.isArray(state.joinCodes) ? state.joinCodes : [],
           tipsLibrary: Array.isArray(state.tipsLibrary) ? state.tipsLibrary : [],
           activityLibrary: Array.isArray(state.activityLibrary) ? state.activityLibrary : [],
+          packingLibrary: Array.isArray(state.packingLibrary) ? state.packingLibrary : [],
           imageLibrary: Array.isArray(state.imageLibrary) ? state.imageLibrary : []
         };
         window.dispatchEvent(new Event("riotrip:image-library-updated"));
@@ -6742,6 +7952,8 @@
         renderTipsLibraryTable(latestAdminState.tipsLibrary);
         renderTripTipsPanel();
         renderActivityLibraryTable();
+        renderPackingLibraryTable();
+        renderPackingTemplateLibrarySelect();
       }
 
       async function saveTripDraftToServer(options = {}) {
@@ -7034,7 +8246,7 @@
           if (deleteId) {
             const activity = getAllActivityLibraryEntries().find(row => String(row.id || "") === deleteId);
             const label = activity?.name || deleteId;
-            const confirmed = window.confirm('Delete activity template "' + label + '"?');
+            const confirmed = confirmDelete('Delete activity template "' + label + '"?');
             if (!confirmed) return;
             await api("/admin/activity-library/" + encodeURIComponent(deleteId) + "/delete", { method: "POST" });
             resetActivityLibraryEditForm({ close: true });
@@ -7127,6 +8339,247 @@
         peopleRowsEl.appendChild(createPersonRow({ __expanded: true }));
         refreshBuilderHealth();
         scheduleBuilderAutosave();
+      });
+
+      if (peopleBulkAddBtnEl) {
+        peopleBulkAddBtnEl.addEventListener("click", () => {
+          const parsed = parsePeopleBulkLines(peopleBulkPasteEl?.value || "");
+          if (parsed.length === 0) {
+            setFlash("No valid people lines found in pasted text.", "error");
+            return;
+          }
+          const added = appendPeopleFromBulk(parsed, { replace: false, expand: false });
+          setFlash("Added " + added + " person(s) from paste.", "ok");
+        });
+      }
+
+      if (peopleBulkReplaceBtnEl) {
+        peopleBulkReplaceBtnEl.addEventListener("click", () => {
+          const parsed = parsePeopleBulkLines(peopleBulkPasteEl?.value || "");
+          if (parsed.length === 0) {
+            setFlash("No valid people lines found in pasted text.", "error");
+            return;
+          }
+          const confirmed = confirmDelete("Replace current people list with pasted lines?");
+          if (!confirmed) return;
+          const added = appendPeopleFromBulk(parsed, { replace: true, expand: false });
+          setFlash("People list replaced from paste (" + added + " person(s)).", "ok");
+        });
+      }
+
+      if (peopleBulkClearBtnEl) {
+        peopleBulkClearBtnEl.addEventListener("click", () => {
+          if (peopleBulkPasteEl) peopleBulkPasteEl.value = "";
+        });
+      }
+
+      document.getElementById("addEmergencyBtn").addEventListener("click", () => {
+        emergencyRowsEl.appendChild(createEmergencyRow({ __expanded: true }));
+        updateEmergencyListMeta();
+        refreshBuilderHealth();
+        scheduleBuilderAutosave();
+      });
+
+      addPackingTemplateItemBtnEl.addEventListener("click", () => {
+        packingTemplateRowsEl.appendChild(createPackingTemplateRow({ __expanded: true }));
+        updatePackingTemplateMeta();
+        refreshBuilderHealth();
+        scheduleBuilderAutosave();
+      });
+
+      if (packingTemplateBulkAddBtnEl) {
+        packingTemplateBulkAddBtnEl.addEventListener("click", () => {
+          const parsed = parsePackingTemplateLines(packingTemplateBulkPasteEl?.value || "");
+          if (parsed.length === 0) {
+            setFlash("No valid packing lines found in pasted text.", "error");
+            return;
+          }
+          const added = appendPackingTemplateItems(parsed, { replace: false, expand: false });
+          setFlash("Added " + added + " packing item(s) from paste.", "ok");
+        });
+      }
+
+      if (packingTemplateBulkReplaceBtnEl) {
+        packingTemplateBulkReplaceBtnEl.addEventListener("click", () => {
+          const parsed = parsePackingTemplateLines(packingTemplateBulkPasteEl?.value || "");
+          if (parsed.length === 0) {
+            setFlash("No valid packing lines found in pasted text.", "error");
+            return;
+          }
+          appendPackingTemplateItems(parsed, { replace: true, expand: false });
+          setFlash("Trip packing template replaced from pasted text.", "ok");
+        });
+      }
+
+      if (packingTemplateBulkClearBtnEl) {
+        packingTemplateBulkClearBtnEl.addEventListener("click", () => {
+          if (packingTemplateBulkPasteEl) packingTemplateBulkPasteEl.value = "";
+        });
+      }
+
+      if (applyPackingTemplateListBtnEl) {
+        applyPackingTemplateListBtnEl.addEventListener("click", () => {
+          try {
+            applyPackingLibraryTemplateToTrip(String(packingTemplateLibrarySelectEl?.value || ""), { replace: false });
+          } catch (error) {
+            setFlash(error.message, "error");
+          }
+        });
+      }
+
+      if (replacePackingTemplateListBtnEl) {
+        replacePackingTemplateListBtnEl.addEventListener("click", () => {
+          try {
+            const templateId = String(packingTemplateLibrarySelectEl?.value || "");
+            const template = getAllPackingLibraryEntries().find(row => String(row.id || "") === templateId);
+            const label = template?.name || templateId || "template";
+            const confirmed = confirmDelete('Replace current trip packing with "' + label + '"?');
+            if (!confirmed) return;
+            applyPackingLibraryTemplateToTrip(templateId, { replace: true });
+          } catch (error) {
+            setFlash(error.message, "error");
+          }
+        });
+      }
+
+      packingLibraryOpenCreateBtnEl.addEventListener("click", () => {
+        openPackingLibraryCreateDrawer();
+      });
+
+      packingLibraryCloseCreateBtnEl.addEventListener("click", () => {
+        closePackingLibraryCreateDrawer();
+      });
+
+      packingLibraryCreateCancelBtnEl.addEventListener("click", () => {
+        closePackingLibraryCreateDrawer();
+      });
+
+      packingLibraryTableEl.addEventListener("click", async event => {
+        try {
+          const target = event.target;
+          if (!(target instanceof HTMLElement)) return;
+
+          const applyId = target.getAttribute("data-packing-template-apply");
+          if (applyId) {
+            setBuilderTab("packing");
+            applyPackingLibraryTemplateToTrip(applyId, { replace: false });
+            return;
+          }
+
+          const editId = target.getAttribute("data-packing-template-edit");
+          if (editId) {
+            const entry = getAllPackingLibraryEntries().find(row => String(row.id || "") === editId);
+            if (!entry) throw new Error("Packing template niet gevonden.");
+            openPackingLibraryEditor(entry);
+            return;
+          }
+
+          const deleteId = target.getAttribute("data-packing-template-delete");
+          if (deleteId) {
+            const entry = getAllPackingLibraryEntries().find(row => String(row.id || "") === deleteId);
+            const label = entry?.name || deleteId;
+            const confirmed = confirmDelete('Delete packing template "' + label + '"?');
+            if (!confirmed) return;
+            await api("/admin/packing-library/" + encodeURIComponent(deleteId) + "/delete", { method: "POST" });
+            resetPackingLibraryEditForm({ close: true });
+            await refreshState();
+            setFlash("Packing template deleted: " + label, "ok");
+          }
+        } catch (error) {
+          setFlash(error.message, "error");
+        }
+      });
+
+      packingLibraryCreateFormEl.addEventListener("submit", async event => {
+        event.preventDefault();
+        try {
+          const form = new FormData(event.currentTarget);
+          const items = parsePackingTemplateLines(String(form.get("packingLibraryCreateItems") || ""));
+          if (items.length === 0) {
+            throw new Error("Voeg minimaal 1 geldig packing item toe.");
+          }
+
+          const payload = {
+            id: String(form.get("packingLibraryCreateId") || "").trim() || undefined,
+            name: String(form.get("packingLibraryCreateName") || "").trim(),
+            destinationKeys: parseCommaSeparatedValues(form.get("packingLibraryCreateDestinationKeys")),
+            tags: parseCommaSeparatedValues(form.get("packingLibraryCreateTags")),
+            items: items.map((item, idx) => ({
+              id: item.id || "pack_" + (idx + 1),
+              name: item.name,
+              category: item.category,
+              suggested: item.suggested === true,
+              personal: item.personal === true,
+              assignedTo: item.assignedTo || undefined,
+            })),
+            active: form.get("packingLibraryCreateActive") === "on"
+          };
+
+          const saved = await api("/admin/packing-library", {
+            method: "POST",
+            body: payload
+          });
+          closePackingLibraryCreateDrawer();
+          await refreshState();
+          setFlash("Packing template saved: " + (saved?.template?.name || saved?.template?.id || "-"), "ok");
+        } catch (error) {
+          setFlash(error.message, "error");
+        }
+      });
+
+      packingLibraryEditFormEl.addEventListener("submit", async event => {
+        event.preventDefault();
+        try {
+          const form = new FormData(event.currentTarget);
+          const templateId = String(form.get("packingLibraryEditId") || "").trim();
+          if (!templateId) throw new Error("Selecteer eerst een template om te bewerken.");
+          const items = parsePackingTemplateLines(String(form.get("packingLibraryEditItems") || ""));
+          if (items.length === 0) {
+            throw new Error("Voeg minimaal 1 geldig packing item toe.");
+          }
+
+          const payload = {
+            id: templateId,
+            name: String(form.get("packingLibraryEditName") || "").trim(),
+            destinationKeys: parseCommaSeparatedValues(form.get("packingLibraryEditDestinationKeys")),
+            tags: parseCommaSeparatedValues(form.get("packingLibraryEditTags")),
+            items: items.map((item, idx) => ({
+              id: item.id || "pack_" + (idx + 1),
+              name: item.name,
+              category: item.category,
+              suggested: item.suggested === true,
+              personal: item.personal === true,
+              assignedTo: item.assignedTo || undefined,
+            })),
+            active: form.get("packingLibraryEditActive") === "on"
+          };
+
+          await api("/admin/packing-library", {
+            method: "POST",
+            body: payload
+          });
+          await refreshState();
+          resetPackingLibraryEditForm({ close: true });
+          setFlash("Packing template bijgewerkt.", "ok");
+        } catch (error) {
+          setFlash(error.message, "error");
+        }
+      });
+
+      packingLibraryEditCloseBtnEl.addEventListener("click", () => {
+        resetPackingLibraryEditForm({ close: true });
+      });
+
+      document.getElementById("packingLibraryEditResetBtn").addEventListener("click", () => {
+        resetPackingLibraryEditForm({ close: true });
+      });
+
+      packingLibraryGroupInputEl.addEventListener("input", () => {
+        renderPackingLibraryTable();
+      });
+
+      packingLibraryGroupInputEl.addEventListener("change", () => {
+        renderPackingLibraryTable();
       });
 
       if (autoFillNotificationsBtnEl) {
@@ -7324,7 +8777,10 @@
         if (
           targetId.startsWith("activityLibrary") ||
           targetId.startsWith("activityTemplateApply") ||
-          targetId.startsWith("tripActivitiesAdd")
+          targetId.startsWith("tripActivitiesAdd") ||
+          targetId.startsWith("packingLibrary") ||
+          targetId === "packingTemplateBulkPaste" ||
+          targetId === "peopleBulkPaste"
         )
           return false;
         const panel = target.closest("[data-builder-panel]");
@@ -7741,7 +9197,7 @@
           if (deleteId) {
             const tip = (latestAdminState.tipsLibrary || []).find(row => String(row.id || "") === deleteId);
             const label = tip?.title || deleteId;
-            const confirmed = window.confirm('Delete tip "' + label + '"?');
+            const confirmed = confirmDelete('Delete tip "' + label + '"?');
             if (!confirmed) return;
             await api("/admin/tips-library/" + encodeURIComponent(deleteId) + "/delete", { method: "POST" });
             clearTipLibraryForm();
@@ -7809,6 +9265,8 @@
       closeActivityTemplateApplyDrawer({ reset: true });
       closeActivityLibraryCreateDrawer();
       resetActivityLibraryEditForm({ close: true });
+      closePackingLibraryCreateDrawer();
+      resetPackingLibraryEditForm({ close: true });
 
       const restoredDraft = restoreBuilderDraft({ silent: true });
       if (!restoredDraft) {

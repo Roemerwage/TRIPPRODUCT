@@ -1,23 +1,35 @@
 {
   "cli": {
-    "version": ">= 7.0.0"
+    "version": ">= 7.0.0",
+    "appVersionSource": "remote"
   },
   "build": {
     "development": {
       "developmentClient": true,
       "distribution": "internal",
-      "channel": "development"
+      "channel": "development",
+      "environment": "development"
     },
     "preview": {
       "distribution": "internal",
-      "channel": "preview"
+      "channel": "preview",
+      "environment": "preview"
+    },
+    "testflight": {
+      "distribution": "store",
+      "channel": "production",
+      "environment": "production",
+      "autoIncrement": true
     },
     "production": {
       "distribution": "store",
-      "channel": "production"
+      "channel": "production",
+      "environment": "production",
+      "autoIncrement": true
     }
   },
   "submit": {
+    "testflight": {},
     "production": {}
   }
 }

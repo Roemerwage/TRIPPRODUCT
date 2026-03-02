@@ -114,3 +114,15 @@ export interface Participant {
   avatar?: ImageSourcePropType | null;
   emergencyContacts?: { naam: string; telefoon: string }[];
 }
+
+export interface EmergencyContactNumber {
+  label: string;
+  phone: string;
+}
+
+export interface EmergencySection {
+  id: string;
+  title: string;
+  description?: string;
+  contacts: EmergencyContactNumber[];
+}

@@ -91,6 +91,18 @@ export const TripManifestRoomAssignmentSchema = z.object({
   rooms: z.array(z.string().min(1)).default([]),
 });
 
+export const TripManifestEmergencyContactSchema = z.object({
+  label: z.string().min(1),
+  phone: z.string().min(1),
+});
+
+export const TripManifestEmergencySectionSchema = z.object({
+  id: z.string().min(1),
+  title: z.string().min(1),
+  description: z.string().optional(),
+  contacts: z.array(TripManifestEmergencyContactSchema).default([]),
+});
+
 export const TripManifestPackingItemSchema = z.object({
   id: z.string().optional(),
   name: z.string().min(1),
@@ -117,6 +129,11 @@ export const TripManifestSchema = z.object({
     .object({
       participants: z.array(TripManifestParticipantSchema).optional(),
       roomAssignments: z.array(TripManifestRoomAssignmentSchema).optional(),
+    })
+    .optional(),
+  emergency: z
+    .object({
+      sections: z.array(TripManifestEmergencySectionSchema).optional(),
     })
     .optional(),
   packingTemplate: z.array(TripManifestPackingItemSchema).optional(),

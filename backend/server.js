@@ -15,6 +15,7 @@ const DB_PATH = path.join(DATA_DIR, 'app.db');
 const JOIN_CODES_SEED_PATH = path.join(DATA_DIR, 'join-codes.json');
 const TIPS_LIBRARY_SEED_PATH = path.join(DATA_DIR, 'tips-library.seed.json');
 const ACTIVITY_LIBRARY_SEED_PATH = path.join(DATA_DIR, 'activity-library.seed.json');
+const PACKING_LIBRARY_SEED_PATH = path.join(DATA_DIR, 'packing-library.seed.json');
 const DEMO_MANIFEST_PATH = path.join(MANIFESTS_DIR, 'trv_demo.json');
 
 const MAX_BODY_BYTES = 12 * 1024 * 1024;
@@ -59,6 +60,7 @@ const ACTIVITY_LIBRARY_TYPES = new Set([
   'flight',
 ]);
 const IMAGE_LIBRARY_USAGE_TYPES = new Set(['activity', 'avatar', 'template', 'generic']);
+const MAX_PROFILE_AVATAR_LENGTH = 2_000_000;
 const DESTINATION_KEY_ALIAS_MAP = new Map([
   ['brazilie', 'brazil'],
   ['brazili', 'brazil'],
@@ -111,7 +113,26 @@ const normalizeActivityLibraryType = input => {
   if (normalized === 'drink') return 'drinks';
   return normalized;
 };
+const normalizePackingCategory = input => String(input || '').trim();
+const normalizePackingAssignedTo = input => {
+  const value = String(input || '').trim();
+  return value || null;
+};
 const normalizeTipId = input => String(input || '').trim();
+const normalizeParticipantId = input => String(input || '').trim();
+const normalizeClientId = input => String(input || '').trim().slice(0, 128);
+const normalizeProfileAvatarUrl = input => {
+  const trimmed = String(input || '').trim();
+  if (!trimmed) return '';
+  if (!trimmed.startsWith('data:')) return trimmed;
+  const commaIndex = trimmed.indexOf(',');
+  if (commaIndex < 0) return trimmed;
+  const prefix = trimmed.slice(0, commaIndex + 1);
+  const payload = trimmed
+    .slice(commaIndex + 1)
+    .replace(/\s+/g, '');
+  return `${prefix}${payload}`;
+};
 const normalizeTipDestinationKey = input => {
   const normalized = String(input || '')
     .normalize('NFD')
@@ -139,6 +160,42 @@ const normalizeTipDestinationKeys = input => {
     )
   );
 };
+
+function normalizePackingTemplateItems(input) {
+  const rows = Array.isArray(input) ? input : [];
+  const seenIds = new Set();
+  const normalizedRows = [];
+
+  rows.forEach((row, idx) => {
+    if (!row || typeof row !== 'object') return;
+    const name = String(row.name || row.naam || '').trim();
+    const category = normalizePackingCategory(row.category || row.categorie);
+    if (!name || !category) return;
+
+    let id = String(row.id || '').trim();
+    if (id && !VALID_TIP_ID_REGEX.test(id)) {
+      id = '';
+    }
+    if (!id) {
+      id = `pack_${idx + 1}`;
+    }
+    if (seenIds.has(id)) {
+      id = `${id}_${idx + 1}`;
+    }
+    seenIds.add(id);
+
+    normalizedRows.push({
+      id,
+      name,
+      category,
+      suggested: row.suggested === true,
+      personal: row.personal === true,
+      assignedTo: normalizePackingAssignedTo(row.assignedTo),
+    });
+  });
+
+  return normalizedRows;
+}
 
 const normalizeHost = rawHost => String(rawHost || '').trim().toLowerCase();
 
@@ -483,6 +540,34 @@ function openDatabase() {
     CREATE INDEX IF NOT EXISTS idx_image_library_active ON image_library(active);
     CREATE INDEX IF NOT EXISTS idx_image_library_usage_type ON image_library(usage_type);
     CREATE INDEX IF NOT EXISTS idx_image_library_updated_at ON image_library(updated_at DESC);
+
+    CREATE TABLE IF NOT EXISTS packing_library (
+      id TEXT PRIMARY KEY,
+      name TEXT NOT NULL,
+      destination_keys_json TEXT NOT NULL DEFAULT '[]',
+      tags_json TEXT NOT NULL DEFAULT '[]',
+      items_json TEXT NOT NULL DEFAULT '[]',
+      active INTEGER NOT NULL DEFAULT 1,
+      created_at TEXT NOT NULL,
+      updated_at TEXT NOT NULL
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_packing_library_active ON packing_library(active);
+    CREATE INDEX IF NOT EXISTS idx_packing_library_updated_at ON packing_library(updated_at DESC);
+
+    CREATE TABLE IF NOT EXISTS participant_profiles (
+      trip_version_id TEXT NOT NULL,
+      participant_id TEXT NOT NULL,
+      avatar_url TEXT NOT NULL DEFAULT '',
+      updated_by_client_id TEXT NOT NULL DEFAULT '',
+      created_at TEXT NOT NULL,
+      updated_at TEXT NOT NULL,
+      PRIMARY KEY (trip_version_id, participant_id),
+      FOREIGN KEY (trip_version_id) REFERENCES trip_versions(id) ON DELETE CASCADE
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_participant_profiles_trip_version_id ON participant_profiles(trip_version_id);
+    CREATE INDEX IF NOT EXISTS idx_participant_profiles_updated_at ON participant_profiles(updated_at DESC);
   `);
   try {
     db.exec(`ALTER TABLE tips_library ADD COLUMN emoji TEXT NOT NULL DEFAULT ''`);
@@ -697,6 +782,52 @@ async function bootstrapActivityLibrary(db) {
   });
 }
 
+async function bootstrapPackingLibrary(db) {
+  const countRow = db.prepare(`SELECT COUNT(*) AS count FROM packing_library`).get();
+  const hasPackingTemplates = Number(countRow?.count || 0) > 0;
+  if (hasPackingTemplates) return;
+
+  const seedTemplates = await readJsonFile(PACKING_LIBRARY_SEED_PATH, []);
+  if (!Array.isArray(seedTemplates) || seedTemplates.length === 0) return;
+
+  const upsertPackingTemplate = db.prepare(
+    `INSERT INTO packing_library (id, name, destination_keys_json, tags_json, items_json, active, created_at, updated_at)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+     ON CONFLICT(id) DO UPDATE SET
+       name = excluded.name,
+       destination_keys_json = excluded.destination_keys_json,
+       tags_json = excluded.tags_json,
+       items_json = excluded.items_json,
+       active = excluded.active,
+       updated_at = excluded.updated_at`
+  );
+
+  const now = nowIso();
+  seedTemplates.forEach((template, index) => {
+    const rawId = normalizeTipId(template?.id);
+    const id = rawId || `packing_seed_${index + 1}`;
+    const name = String(template?.name || '').trim();
+    if (!name) return;
+    const destinationKeys = normalizeTipDestinationKeys(template?.destinationKeys);
+    const tags = Array.isArray(template?.tags)
+      ? template.tags.map(item => String(item || '').trim()).filter(Boolean)
+      : [];
+    const items = normalizePackingTemplateItems(template?.items);
+    if (items.length === 0) return;
+    const active = template?.active === false ? 0 : 1;
+    upsertPackingTemplate.run(
+      id,
+      name,
+      JSON.stringify(destinationKeys),
+      JSON.stringify(tags),
+      JSON.stringify(items),
+      active,
+      now,
+      now
+    );
+  });
+}
+
 async function bootstrapSeedData(db) {
   const versionCountRow = db.prepare(`SELECT COUNT(*) AS count FROM trip_versions`).get();
   const hasAnyVersion = Number(versionCountRow?.count || 0) > 0;
@@ -751,6 +882,7 @@ async function bootstrapSeedData(db) {
 
   await bootstrapTipsLibrary(db);
   await bootstrapActivityLibrary(db);
+  await bootstrapPackingLibrary(db);
 }
 
 function listTrips(db) {
@@ -881,6 +1013,50 @@ function getActivityLibraryById(db, activityId) {
   );
 }
 
+function listPackingLibrary(db, options = {}) {
+  const activeOnly = options.activeOnly === true;
+  const rows = activeOnly
+    ? db
+        .prepare(
+          `SELECT id, name, destination_keys_json AS destinationKeysJson, tags_json AS tagsJson, items_json AS itemsJson, active, created_at AS createdAt, updated_at AS updatedAt
+           FROM packing_library
+           WHERE active = 1
+           ORDER BY updated_at DESC`
+        )
+        .all()
+    : db
+        .prepare(
+          `SELECT id, name, destination_keys_json AS destinationKeysJson, tags_json AS tagsJson, items_json AS itemsJson, active, created_at AS createdAt, updated_at AS updatedAt
+           FROM packing_library
+           ORDER BY updated_at DESC`
+        )
+        .all();
+
+  return rows.map(row => ({
+    id: row.id,
+    name: row.name,
+    destinationKeys: parseJsonArray(row.destinationKeysJson).map(normalizeTipDestinationKey).filter(Boolean),
+    tags: parseJsonArray(row.tagsJson).map(item => String(item || '').trim()).filter(Boolean),
+    items: normalizePackingTemplateItems(parseJsonArray(row.itemsJson)),
+    active: Boolean(row.active),
+    createdAt: row.createdAt,
+    updatedAt: row.updatedAt,
+  }));
+}
+
+function getPackingLibraryById(db, packingId) {
+  return (
+    db
+      .prepare(
+        `SELECT id, name, destination_keys_json AS destinationKeysJson, tags_json AS tagsJson, items_json AS itemsJson, active, created_at AS createdAt, updated_at AS updatedAt
+         FROM packing_library
+         WHERE id = ?
+         LIMIT 1`
+      )
+      .get(packingId) || null
+  );
+}
+
 function normalizeImageUsageType(input) {
   const normalized = String(input || '').trim().toLowerCase();
   if (!normalized) return 'generic';
@@ -1002,6 +1178,73 @@ function getPublishedManifest(db, tripVersionId) {
   const parsed = parseJsonSafely(row.manifestJson);
   if (!parsed.ok) return null;
   return parsed.value;
+}
+
+function listParticipantProfilesByTripVersion(db, tripVersionId) {
+  if (!tripVersionId) return [];
+  const rows = db
+    .prepare(
+      `SELECT trip_version_id AS tripVersionId, participant_id AS participantId, avatar_url AS avatarUrl, updated_by_client_id AS updatedByClientId, created_at AS createdAt, updated_at AS updatedAt
+       FROM participant_profiles
+       WHERE trip_version_id = ?
+       ORDER BY updated_at DESC`
+    )
+    .all(tripVersionId);
+
+  return rows.map(row => ({
+    tripVersionId: row.tripVersionId,
+    participantId: row.participantId,
+    avatarUrl: String(row.avatarUrl || ''),
+    updatedByClientId: String(row.updatedByClientId || ''),
+    createdAt: row.createdAt,
+    updatedAt: row.updatedAt,
+  }));
+}
+
+function applyParticipantProfilesToManifest(manifest, profiles) {
+  if (!manifest || typeof manifest !== 'object') return manifest;
+  const participants = Array.isArray(manifest?.people?.participants)
+    ? manifest.people.participants
+    : null;
+  if (!participants || participants.length === 0) return manifest;
+
+  const profileById = new Map();
+  (Array.isArray(profiles) ? profiles : []).forEach(profile => {
+    const participantId = normalizeParticipantId(profile?.participantId);
+    if (!participantId) return;
+    profileById.set(participantId, normalizeProfileAvatarUrl(profile?.avatarUrl));
+  });
+
+  if (profileById.size === 0) return manifest;
+
+  const mergedParticipants = participants.map(person => {
+    const participantId = normalizeParticipantId(person?.id);
+    if (!participantId || !profileById.has(participantId)) return person;
+    const avatarUrlOverride = String(profileById.get(participantId) || '').trim();
+    if (!avatarUrlOverride) return person;
+    return {
+      ...person,
+      avatarUrl: avatarUrlOverride,
+    };
+  });
+
+  return {
+    ...manifest,
+    people: {
+      ...(manifest.people || {}),
+      participants: mergedParticipants,
+    },
+  };
+}
+
+function listParticipantIdsFromManifest(manifest) {
+  if (!manifest || typeof manifest !== 'object') return [];
+  const participants = Array.isArray(manifest?.people?.participants)
+    ? manifest.people.participants
+    : [];
+  return participants
+    .map(person => normalizeParticipantId(person?.id))
+    .filter(Boolean);
 }
 
 function runTransaction(db, work) {
@@ -1887,6 +2130,96 @@ function handleDeleteActivityLibrary(db, res, activityIdRaw) {
   respondJson(res, 200, { id: activityId, deleted: true });
 }
 
+async function handleUpsertPackingLibrary(db, req, res) {
+  let body;
+  try {
+    body = await parseRequestBody(req);
+  } catch (error) {
+    respondJson(res, 400, { message: error.message });
+    return;
+  }
+
+  const templateInput = body?.template && typeof body.template === 'object' ? body.template : body;
+  const idInput = normalizeTipId(templateInput?.id);
+  const id = idInput || makeId('packing_tpl');
+  if (!VALID_TIP_ID_REGEX.test(id)) {
+    respondJson(res, 400, { message: 'Packing template id bevat ongeldige tekens.' });
+    return;
+  }
+
+  const name = String(templateInput?.name || '').trim();
+  const destinationKeys = normalizeTipDestinationKeys(templateInput?.destinationKeys);
+  const tags = Array.isArray(templateInput?.tags)
+    ? templateInput.tags.map(item => String(item || '').trim()).filter(Boolean)
+    : [];
+  const items = normalizePackingTemplateItems(templateInput?.items);
+  const active = templateInput?.active === false ? 0 : 1;
+
+  if (!name) {
+    respondJson(res, 400, { message: 'Packing template name is verplicht.' });
+    return;
+  }
+  if (items.length === 0) {
+    respondJson(res, 400, { message: 'Packing template moet minimaal 1 item bevatten.' });
+    return;
+  }
+
+  const now = nowIso();
+  const existing = getPackingLibraryById(db, id);
+  if (existing) {
+    db.prepare(
+      `UPDATE packing_library
+       SET name = ?, destination_keys_json = ?, tags_json = ?, items_json = ?, active = ?, updated_at = ?
+       WHERE id = ?`
+    ).run(
+      name,
+      JSON.stringify(destinationKeys),
+      JSON.stringify(tags),
+      JSON.stringify(items),
+      active,
+      now,
+      id
+    );
+  } else {
+    db.prepare(
+      `INSERT INTO packing_library (id, name, destination_keys_json, tags_json, items_json, active, created_at, updated_at)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?)`
+    ).run(
+      id,
+      name,
+      JSON.stringify(destinationKeys),
+      JSON.stringify(tags),
+      JSON.stringify(items),
+      active,
+      now,
+      now
+    );
+  }
+
+  const saved = listPackingLibrary(db, { activeOnly: false }).find(template => template.id === id) || null;
+  respondJson(res, existing ? 200 : 201, {
+    template: saved,
+    created: !existing,
+  });
+}
+
+function handleDeletePackingLibrary(db, res, packingIdRaw) {
+  const packingId = normalizeTipId(packingIdRaw);
+  if (!packingId || !VALID_TIP_ID_REGEX.test(packingId)) {
+    respondJson(res, 400, { message: 'Packing template id is ongeldig.' });
+    return;
+  }
+
+  const existing = getPackingLibraryById(db, packingId);
+  if (!existing) {
+    respondJson(res, 404, { message: 'Packing template niet gevonden.' });
+    return;
+  }
+
+  db.prepare(`DELETE FROM packing_library WHERE id = ?`).run(packingId);
+  respondJson(res, 200, { id: packingId, deleted: true });
+}
+
 async function handleUpsertImageLibrary(db, req, res) {
   let body;
   try {
@@ -2056,7 +2389,142 @@ function handleGetManifest(db, res, tripVersionId) {
     return;
   }
 
-  respondJson(res, 200, manifest);
+  const profiles = listParticipantProfilesByTripVersion(db, tripVersionId);
+  const enrichedManifest = applyParticipantProfilesToManifest(manifest, profiles);
+  respondJson(res, 200, enrichedManifest);
+}
+
+function handleGetParticipantProfiles(db, req, res) {
+  const url = new URL(req.url || '/', `http://${req.headers.host || 'localhost'}`);
+  const code = normalizeCode(url.searchParams.get('code'));
+  if (!code) {
+    respondJson(res, 400, { message: 'Code is verplicht.' });
+    return;
+  }
+
+  const match = resolvePublishedCode(db, code);
+  if (!match) {
+    respondJson(res, 404, { message: 'Tripcode niet gevonden.' });
+    return;
+  }
+
+  const profiles = listParticipantProfilesByTripVersion(db, match.tripVersionId);
+  respondJson(res, 200, {
+    tripCode: code,
+    tripVersionId: match.tripVersionId,
+    profiles,
+  });
+}
+
+async function handleUpsertParticipantProfile(db, req, res) {
+  let body;
+  try {
+    body = await parseRequestBody(req);
+  } catch (error) {
+    respondJson(res, 400, { message: error.message });
+    return;
+  }
+
+  const code = normalizeCode(body?.code);
+  const participantId = normalizeParticipantId(body?.participantId);
+  const clientId = normalizeClientId(body?.clientId);
+  const avatarUrl = normalizeProfileAvatarUrl(body?.avatarUrl);
+
+  if (!code) {
+    respondJson(res, 400, { message: 'Code is verplicht.' });
+    return;
+  }
+  if (!participantId || !VALID_ID_REGEX.test(participantId)) {
+    respondJson(res, 400, { message: 'participantId is ongeldig.' });
+    return;
+  }
+  if (!clientId || !VALID_ID_REGEX.test(clientId)) {
+    respondJson(res, 400, { message: 'clientId is verplicht en ongeldig.' });
+    return;
+  }
+  if (avatarUrl.length > MAX_PROFILE_AVATAR_LENGTH) {
+    respondJson(res, 400, { message: 'Avatar is te groot.' });
+    return;
+  }
+  if (
+    avatarUrl &&
+    !avatarUrl.startsWith('data:image/') &&
+    !/^https?:\/\//i.test(avatarUrl)
+  ) {
+    respondJson(res, 400, { message: 'Avatar moet een data:image of http(s) URL zijn.' });
+    return;
+  }
+
+  const match = resolvePublishedCode(db, code);
+  if (!match) {
+    respondJson(res, 404, { message: 'Tripcode niet gevonden.' });
+    return;
+  }
+
+  const manifest = getPublishedManifest(db, match.tripVersionId);
+  if (!manifest) {
+    respondJson(res, 404, { message: 'Manifest niet gevonden.' });
+    return;
+  }
+  const validIds = new Set(listParticipantIdsFromManifest(manifest));
+  if (!validIds.has(participantId)) {
+    respondJson(res, 400, { message: 'participantId bestaat niet in deze trip.' });
+    return;
+  }
+
+  const now = nowIso();
+  try {
+    runTransaction(db, () => {
+      const existingProfile = db
+        .prepare(
+          `SELECT updated_by_client_id AS updatedByClientId
+           FROM participant_profiles
+           WHERE trip_version_id = ? AND participant_id = ?
+           LIMIT 1`
+        )
+        .get(match.tripVersionId, participantId);
+      const existingClientId = normalizeClientId(existingProfile?.updatedByClientId);
+      if (existingClientId && existingClientId !== clientId) {
+        const conflictError = new Error('Deze deelnemer is al geclaimd door iemand anders.');
+        conflictError.statusCode = 409;
+        throw conflictError;
+      }
+
+      // One device can only claim one participant per trip version.
+      db.prepare(
+        `UPDATE participant_profiles
+         SET updated_by_client_id = '', updated_at = ?
+         WHERE trip_version_id = ?
+           AND updated_by_client_id = ?
+           AND participant_id <> ?`
+      ).run(now, match.tripVersionId, clientId, participantId);
+
+      db.prepare(
+        `INSERT INTO participant_profiles (trip_version_id, participant_id, avatar_url, updated_by_client_id, created_at, updated_at)
+         VALUES (?, ?, ?, ?, ?, ?)
+         ON CONFLICT(trip_version_id, participant_id) DO UPDATE SET
+           avatar_url = excluded.avatar_url,
+           updated_by_client_id = excluded.updated_by_client_id,
+           updated_at = excluded.updated_at`
+      ).run(match.tripVersionId, participantId, avatarUrl, clientId, now, now);
+    });
+  } catch (error) {
+    if (error?.statusCode === 409) {
+      respondJson(res, 409, { message: error.message });
+      return;
+    }
+    throw error;
+  }
+
+  const profiles = listParticipantProfilesByTripVersion(db, match.tripVersionId);
+  const saved = profiles.find(profile => profile.participantId === participantId) || null;
+  respondJson(res, 200, {
+    tripCode: code,
+    tripVersionId: match.tripVersionId,
+    participantId,
+    profile: saved,
+    profiles,
+  });
 }
 
 async function handleResolveMapLink(req, res) {
@@ -2138,6 +2606,7 @@ async function createServer() {
           joinCodes: listJoinCodes(db),
           tipsLibrary: listTipsLibrary(db),
           activityLibrary: listActivityLibrary(db),
+          packingLibrary: listPackingLibrary(db, { activeOnly: false }),
           imageLibrary: listImageLibrary(db, { activeOnly: false }),
         });
         return;
@@ -2160,6 +2629,16 @@ async function createServer() {
 
       if (method === 'POST' && pathname === '/admin/activity-library') {
         await handleUpsertActivityLibrary(db, req, res);
+        return;
+      }
+
+      if (method === 'GET' && pathname === '/admin/packing-library') {
+        respondJson(res, 200, { templates: listPackingLibrary(db, { activeOnly: false }) });
+        return;
+      }
+
+      if (method === 'POST' && pathname === '/admin/packing-library') {
+        await handleUpsertPackingLibrary(db, req, res);
         return;
       }
 
@@ -2266,6 +2745,14 @@ async function createServer() {
         return;
       }
 
+      const deletePackingMatch =
+        method === 'POST' ? pathname.match(/^\/admin\/packing-library\/([^/]+)\/delete$/) : null;
+      if (deletePackingMatch) {
+        const packingId = decodeURIComponent(deletePackingMatch[1]);
+        handleDeletePackingLibrary(db, res, packingId);
+        return;
+      }
+
       const deleteImageMatch =
         method === 'POST' ? pathname.match(/^\/admin\/image-library\/([^/]+)\/delete$/) : null;
       if (deleteImageMatch) {
@@ -2294,6 +2781,16 @@ async function createServer() {
 
       if (method === 'GET' && pathname === '/public/tips-library') {
         respondJson(res, 200, { tips: listTipsLibrary(db, { activeOnly: true }) });
+        return;
+      }
+
+      if (method === 'GET' && pathname === '/public/trip-profiles') {
+        handleGetParticipantProfiles(db, req, res);
+        return;
+      }
+
+      if (method === 'POST' && pathname === '/public/trip-profiles/upsert') {
+        await handleUpsertParticipantProfile(db, req, res);
         return;
       }
 

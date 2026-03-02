@@ -144,6 +144,12 @@ export default function SettingsScreen() {
             style={styles.fullWidthButton}
           />
           <Button
+            label="Mijn profiel instellen"
+            variant="secondary"
+            onPress={() => router.push('/profile-setup')}
+            style={styles.fullWidthButton}
+          />
+          <Button
             label="Verlaat huidige trip"
             variant="secondary"
             onPress={handleLeaveTrip}

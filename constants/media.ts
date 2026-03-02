@@ -270,6 +270,7 @@ const COORDINATE_PATTERNS: RegExp[] = [
 const resolvedGoogleLinkCache = new Map<string, Coordinate | null>();
 const RESOLVE_MAP_LINK_PATH = "/public/resolve-map-link";
 const PUBLIC_TIPS_LIBRARY_PATH = "/public/tips-library";
+const MAP_RESOLVE_TIMEOUT_MS = 5000;
 
 function isValidCoordinatePair(latitude: number, longitude: number) {
   return (
@@ -320,6 +321,20 @@ const buildAbsoluteUrl = (baseUrl: string, input: string) => {
   const sanitizedPath = input.startsWith("/") ? input : `/${input}`;
   return `${sanitizedBase}${sanitizedPath}`;
 };
+
+async function fetchWithTimeout(
+  input: string,
+  init: RequestInit,
+  timeoutMs: number
+): Promise<Response> {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    return await fetch(input, { ...init, signal: controller.signal });
+  } finally {
+    clearTimeout(timeoutId);
+  }
+}
 
 const isGoogleMapsHost = (link: string) => {
   try {
@@ -401,13 +416,17 @@ async function resolveCoordinatesViaBackend(link: string): Promise<Coordinate | 
   if (!apiBaseUrl) return undefined;
 
   try {
-    const response = await fetch(buildAbsoluteUrl(apiBaseUrl, RESOLVE_MAP_LINK_PATH), {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
+    const response = await fetchWithTimeout(
+      buildAbsoluteUrl(apiBaseUrl, RESOLVE_MAP_LINK_PATH),
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ url: link }),
       },
-      body: JSON.stringify({ url: link }),
-    });
+      MAP_RESOLVE_TIMEOUT_MS
+    );
 
     if (!response.ok) return undefined;
     const payload = await response.json();
@@ -469,10 +488,14 @@ export async function resolveCoordinatesFromGoogleMapsLink(link?: string | null)
     for (let hop = 0; hop < 6; hop += 1) {
       let response: Response;
       try {
-        response = await fetch(currentUrl, {
-          method: "GET",
-          redirect: "manual",
-        });
+        response = await fetchWithTimeout(
+          currentUrl,
+          {
+            method: "GET",
+            redirect: "manual",
+          },
+          MAP_RESOLVE_TIMEOUT_MS
+        );
       } catch {
         break;
       }
@@ -497,10 +520,14 @@ export async function resolveCoordinatesFromGoogleMapsLink(link?: string | null)
       currentUrl = nextUrl;
     }
 
-    const response = await fetch(normalized, {
-      method: "GET",
-      redirect: "follow",
-    });
+    const response = await fetchWithTimeout(
+      normalized,
+      {
+        method: "GET",
+        redirect: "follow",
+      },
+      MAP_RESOLVE_TIMEOUT_MS
+    );
 
     const finalUrl = response.url || normalized;
     const fromFinalUrl = extractCoordinatesFromLink(finalUrl);

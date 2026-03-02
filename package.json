@@ -8,6 +8,9 @@
     "start-web-dev": "EXPO_DEBUG=true expo start --web",
     "start:api": "node backend/server.js",
     "preflight:prod": "node scripts/preflight-prod.js",
+    "build:ios:testflight": "eas build --platform ios --profile testflight",
+    "submit:ios:testflight": "eas submit --platform ios --profile testflight",
+    "release:ios:testflight": "npm run preflight:prod && npm run build:ios:testflight",
     "lint": "expo lint",
     "android": "expo run:android",
     "ios": "expo run:ios"

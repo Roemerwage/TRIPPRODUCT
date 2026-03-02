@@ -110,6 +110,36 @@ Local backend seed data:
 - Step-by-step rollout for ~40 travelers: `docs/TESTFLIGHT_40_TRAVELERS.md`
 - Includes production checklist, backend/public API requirements, and launch operations.
 
+## Internal TestFlight Quickstart
+
+1. Set production API URL in EAS environment:
+
+```sh
+eas env:create --environment production --name EXPO_PUBLIC_API_BASE_URL --value https://api.your-domain.com
+```
+
+2. Run production preflight locally:
+
+```sh
+npm run preflight:prod
+```
+
+3. Build iOS for internal TestFlight:
+
+```sh
+npm run build:ios:testflight
+```
+
+4. Submit latest iOS build to App Store Connect:
+
+```sh
+npm run submit:ios:testflight
+```
+
+Notes:
+- `eas.json` uses `appVersionSource: "remote"` + `autoIncrement: true`, so iOS build numbers are bumped automatically on each cloud build.
+- Use `testflight` profile for internal dogfooding; keep `production` profile for final store rollout.
+
 ## Project Structure
 - `app/` – Screens and routes (Expo Router)
 - `constants/` – Anonymized seed data and media mapping

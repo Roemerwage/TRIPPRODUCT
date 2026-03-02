@@ -43,13 +43,13 @@ npm run preflight:prod
 1. iOS build:
 
 ```sh
-eas build --platform ios --profile production
+npm run build:ios:testflight
 ```
 
 2. Submit build:
 
 ```sh
-eas submit --platform ios --profile production
+npm run submit:ios:testflight
 ```
 
 3. In App Store Connect:

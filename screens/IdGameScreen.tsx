@@ -15,7 +15,7 @@ import {
   View,
 } from 'react-native';
 import { Stack } from 'expo-router';
-import { Check, Plus, X } from 'lucide-react-native';
+import { Check, Plus, Search, X } from 'lucide-react-native';
 import { useTrip } from '@/contexts/TripContext';
 import { useThemeMode } from '@/contexts/ThemeContext';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -126,6 +126,7 @@ export default function IdGameScreen({ statementsSeed }: IdGameScreenProps) {
   const [showGuestModal, setShowGuestModal] = useState(false);
   const [guestName, setGuestName] = useState('');
   const [guestError, setGuestError] = useState<string | null>(null);
+  const [participantSearch, setParticipantSearch] = useState('');
   const [selectionTouched, setSelectionTouched] = useState(false);
   const dragY = useRef(new Animated.Value(0)).current;
   const dragStartIndex = useRef<number | null>(null);
@@ -147,12 +148,24 @@ export default function IdGameScreen({ statementsSeed }: IdGameScreenProps) {
   const [state, dispatch] = useReducer(reducer, statements, initGameState);
 
   const crew = useMemo(() => [...participants, ...guestPlayers], [participants, guestPlayers]);
+  const sortedCrew = useMemo(
+    () =>
+      [...crew].sort((a, b) =>
+        a.naam.localeCompare(b.naam, 'nl', { sensitivity: 'base' })
+      ),
+    [crew]
+  );
+  const participantSearchQuery = participantSearch.trim().toLowerCase();
+  const visibleCrew = useMemo(() => {
+    if (!participantSearchQuery) return sortedCrew;
+    return sortedCrew.filter(person => person.naam.toLowerCase().includes(participantSearchQuery));
+  }, [sortedCrew, participantSearchQuery]);
   const crewPlayers = useMemo(() => crew.map(mapPersonToPlayer), [crew]);
 
   useEffect(() => {
     if (selectionTouched || started) return;
-    setSelectedIds(crew.map(person => person.id));
-  }, [crew, selectionTouched, started]);
+    setSelectedIds(sortedCrew.map(person => person.id));
+  }, [sortedCrew, selectionTouched, started]);
 
   useEffect(() => {
     if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
@@ -230,7 +243,7 @@ export default function IdGameScreen({ statementsSeed }: IdGameScreenProps) {
 
   const selectAll = () => {
     setSelectionTouched(true);
-    setSelectedIds(crew.map(person => person.id));
+    setSelectedIds(sortedCrew.map(person => person.id));
   };
 
   const clearSelection = () => {
@@ -333,9 +346,35 @@ export default function IdGameScreen({ statementsSeed }: IdGameScreenProps) {
                       </TouchableOpacity>
                     </View>
                   </View>
+                  <View style={styles.searchRow}>
+                    <View style={styles.searchInputWrap}>
+                      <Search size={15} color={colors.textSecondary} />
+                      <TextInput
+                        value={participantSearch}
+                        onChangeText={setParticipantSearch}
+                        placeholder="Zoek deelnemer"
+                        placeholderTextColor={colors.textSecondary}
+                        style={styles.searchInput}
+                        autoCapitalize="none"
+                        autoCorrect={false}
+                      />
+                      {participantSearch.length > 0 && (
+                        <TouchableOpacity
+                          onPress={() => setParticipantSearch('')}
+                          style={styles.searchClearButton}
+                          activeOpacity={0.8}
+                        >
+                          <X size={14} color={colors.textSecondary} />
+                        </TouchableOpacity>
+                      )}
+                    </View>
+                  </View>
                   <Text style={styles.hintText}>Kies minimaal 2 spelers uit de crew.</Text>
+                  {participantSearchQuery.length > 0 && visibleCrew.length === 0 && (
+                    <Text style={styles.searchEmptyText}>Geen deelnemers gevonden.</Text>
+                  )}
                   <View style={styles.participantGrid}>
-                    {crew.map(person => {
+                    {visibleCrew.map(person => {
                       const selected = selectedIds.includes(person.id);
                       const avatarSource = 'avatar' in person ? person.avatar : undefined;
                       const showFallback = imageErrors[person.id] || !avatarSource;
@@ -766,6 +805,8 @@ const createStyles = (palette: any) =>
     sectionActions: {
       flexDirection: 'row',
       gap: 10,
+      alignItems: 'center',
+      justifyContent: 'flex-end',
     },
     linkButton: {
       paddingVertical: 8,
@@ -775,6 +816,36 @@ const createStyles = (palette: any) =>
       fontWeight: '700',
     },
     hintText: {
+      fontSize: Typography.label,
+      color: palette.textSecondary,
+    },
+    searchRow: {
+      marginTop: 2,
+    },
+    searchInputWrap: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: 8,
+      borderWidth: 1,
+      borderColor: palette.border,
+      borderRadius: 999,
+      paddingHorizontal: 12,
+      paddingVertical: 8,
+      backgroundColor: palette.background,
+    },
+    searchInput: {
+      flex: 1,
+      fontSize: 14,
+      color: palette.textPrimary,
+      paddingVertical: 0,
+    },
+    searchClearButton: {
+      width: 20,
+      height: 20,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    searchEmptyText: {
       fontSize: Typography.label,
       color: palette.textSecondary,
     },

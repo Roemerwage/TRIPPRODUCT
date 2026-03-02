@@ -47,7 +47,10 @@ export default function MapScreen() {
   const [selectedFilter, setSelectedFilter] = useState<'all' | 'tips' | string>('all');
   const [tipsLibrary, setTipsLibrary] = useState<TipMarker[] | null>(null);
   const mapRef = useRef<MapView | null>(null);
+  const resolvingLinksRef = useRef<Set<string>>(new Set());
+  const fitDebounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [mapReady, setMapReady] = useState(false);
+  const [mapLayoutReady, setMapLayoutReady] = useState(false);
   const [resolvedLinkCoordinates, setResolvedLinkCoordinates] = useState<Record<string, { latitude: number; longitude: number } | null>>({});
   const { colors } = useThemeMode();
   const styles = useMemo(() => createStyles(colors), [colors]);
@@ -156,24 +159,24 @@ export default function MapScreen() {
     if (linksToResolve.length === 0) return;
 
     let cancelled = false;
-    (async () => {
-      const resolvedEntries = await Promise.all(
-        linksToResolve.map(async link => {
+    linksToResolve.forEach(link => {
+      if (resolvingLinksRef.current.has(link)) return;
+      resolvingLinksRef.current.add(link);
+
+      void (async () => {
+        try {
           const coordinate = await resolveCoordinatesFromGoogleMapsLink(link);
-          return { link, coordinate: coordinate ?? null };
-        })
-      );
+          if (cancelled) return;
 
-      if (cancelled) return;
-
-      setResolvedLinkCoordinates(prev => {
-        const next = { ...prev };
-        resolvedEntries.forEach(entry => {
-          next[entry.link] = entry.coordinate;
-        });
-        return next;
-      });
-    })();
+          setResolvedLinkCoordinates(prev => {
+            if (prev[link] !== undefined) return prev;
+            return { ...prev, [link]: coordinate ?? null };
+          });
+        } finally {
+          resolvingLinksRef.current.delete(link);
+        }
+      })();
+    });
 
     return () => {
       cancelled = true;
@@ -192,7 +195,7 @@ export default function MapScreen() {
           if (normalizedActivityLink && normalizedLodgingLink && normalizedActivityLink === normalizedLodgingLink) {
             return null;
           }
-          const coordinate = getCoordinateFromLink(link) || getActivityCoordinate(activity, undefined);
+          const coordinate = getCoordinateFromLink(link) || getActivityCoordinate(activity, day.stadRegio);
           if (!coordinate) return null;
           return { activity, coordinate, day, link };
         })
@@ -307,30 +310,46 @@ export default function MapScreen() {
   }, [activitiesWithCoords, accommodationMarkers, showFreeDayMarkers, tipCoords]);
 
   const initialRegion = useMemo(() => {
-    if (coordinates.length === 0) {
-      return {
-        latitude: -22.9068,
-        longitude: -43.1729,
-        latitudeDelta: 1.2,
-        longitudeDelta: 1.2,
-      };
-    }
-    return getRegionForCoordinates(coordinates);
-  }, [coordinates]);
+    return {
+      latitude: -22.9068,
+      longitude: -43.1729,
+      latitudeDelta: 1.2,
+      longitudeDelta: 1.2,
+    };
+  }, []);
 
   useEffect(() => {
     if (Platform.OS === 'web') return;
-    if (coordinates.length > 0 && mapReady) {
+    if (!mapReady || !mapLayoutReady) return;
+
+    const minCoordinates = selectedFilter === 'all' ? 2 : 1;
+    if (coordinates.length < minCoordinates) return;
+
+    if (fitDebounceRef.current) {
+      clearTimeout(fitDebounceRef.current);
+    }
+
+    // Batch fast coordinate updates while link resolving is running.
+    fitDebounceRef.current = setTimeout(() => {
       try {
-        mapRef.current?.fitToCoordinates(coordinates, {
-          edgePadding: { top: 80, right: 40, bottom: 120, left: 40 },
-          animated: true,
+        requestAnimationFrame(() => {
+          mapRef.current?.fitToCoordinates(coordinates, {
+            edgePadding: { top: 80, right: 40, bottom: 120, left: 40 },
+            animated: true,
+          });
         });
       } catch (err) {
         console.warn('fitToCoordinates failed', err);
       }
-    }
-  }, [coordinates, selectedFilter, mapReady]);
+    }, 140);
+
+    return () => {
+      if (fitDebounceRef.current) {
+        clearTimeout(fitDebounceRef.current);
+        fitDebounceRef.current = null;
+      }
+    };
+  }, [coordinates, selectedFilter, mapReady, mapLayoutReady]);
 
   const dayChips = useMemo(() => {
     return [
@@ -442,6 +461,7 @@ export default function MapScreen() {
           style={styles.map}
           initialRegion={initialRegion}
           onMapReady={() => setMapReady(true)}
+          onLayout={() => setMapLayoutReady(true)}
         >
           {accommodationMarkers.map(({ id, name, region, nights, coordinate, link }) => (
             <Marker
@@ -582,26 +602,6 @@ const coordinateKey = (coordinate: { latitude: number; longitude: number }) =>
 function getMonthName(month: number): string {
   const months = ['jan', 'feb', 'mrt', 'apr', 'mei', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'];
   return months[month];
-}
-
-function getRegionForCoordinates(coords: { latitude: number; longitude: number }[]) {
-  const minLat = Math.min(...coords.map(c => c.latitude));
-  const maxLat = Math.max(...coords.map(c => c.latitude));
-  const minLng = Math.min(...coords.map(c => c.longitude));
-  const maxLng = Math.max(...coords.map(c => c.longitude));
-
-  const latitude = (minLat + maxLat) / 2;
-  const longitude = (minLng + maxLng) / 2;
-
-  const latitudeDelta = Math.max((maxLat - minLat) * 1.4, 0.3);
-  const longitudeDelta = Math.max((maxLng - minLng) * 1.4, 0.3);
-
-  return {
-    latitude,
-    longitude,
-    latitudeDelta,
-    longitudeDelta,
-  };
 }
 
 const createStyles = (palette: any) =>

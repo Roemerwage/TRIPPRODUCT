@@ -5,7 +5,7 @@ import { useTrip } from '@/contexts/TripContext';
 import { useThemeMode } from '@/contexts/ThemeContext';
 
 export default function Index() {
-  const { isLoading, hasActiveTrip } = useTrip();
+  const { isLoading, hasActiveTrip, needsProfileSetup } = useTrip();
   const { colors } = useThemeMode();
 
   if (isLoading) {
@@ -23,5 +23,5 @@ export default function Index() {
     );
   }
 
-  return <Redirect href={hasActiveTrip ? '/planning' : '/join'} />;
+  return <Redirect href={hasActiveTrip ? (needsProfileSetup ? '/profile-setup' : '/planning') : '/join'} />;
 }

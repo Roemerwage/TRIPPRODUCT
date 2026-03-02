@@ -3,6 +3,12 @@
     "name": "RioTrip",
     "slug": "riotrip",
     "version": "1.0.2",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/157222aa-fd7d-4395-ac9c-84f41344d29a"
+    },
     "orientation": "portrait",
     "icon": "./assets/images/ios-icon-1024.png",
     "scheme": "riotrip",
@@ -15,7 +21,7 @@
     },
     "ios": {
       "supportsTablet": false,
-      "bundleIdentifier": "com.roemerwage.riotrip",
+      "bundleIdentifier": "nl.roemerwage.riotrip",
       "buildNumber": "7",
       "infoPlist": {
         "NSLocationWhenInUseUsageDescription": "We gebruiken je locatie om relevante plekken en informatie in de app te tonen.",
@@ -33,7 +39,7 @@
         "foregroundImage": "./assets/images/ios-icon-512.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.roemerwage.riotrip",
+      "package": "nl.roemerwage.riotrip",
       "permissions": [
         "android.permission.RECEIVE_BOOT_COMPLETED",
         "android.permission.SCHEDULE_EXACT_ALARM",
@@ -70,7 +76,10 @@
       "router": {
         "origin": "https://example.com/"
       },
-      "testNotificationPassword": ""
+      "testNotificationPassword": "",
+      "eas": {
+        "projectId": "157222aa-fd7d-4395-ac9c-84f41344d29a"
+      }
     }
   }
 }

@@ -33,7 +33,7 @@ const SECURITY_TIMESLOT_TIPS = [
 
 export default function DayDetailScreen() {
   const { dayId, dir } = useLocalSearchParams<{ dayId: string; dir?: 'next' | 'prev' }>();
-  const { days, getRoomAssignments, loadInitialTripData, sendTestNotificationForDay } = useTrip();
+  const { days, getRoomAssignments, loadInitialTripData, sendTestNotificationForDay, emergencySections } = useTrip();
   const router = useRouter();
   const [roomsExpanded, setRoomsExpanded] = useState(false);
   const [freeDayTab, setFreeDayTab] = useState<FreeDayTabKey | null>(null);
@@ -726,119 +726,25 @@ export default function DayDetailScreen() {
           </View>
 
           <ScrollView style={styles.sidebarScroll} showsVerticalScrollIndicator={false}>
-            <View style={styles.sidebarCard}>
-              <Text style={styles.sidebarSectionTitle}>Noodnummers</Text>
-              {[
-                { label: 'Alarmnummer', value: '190' },
-                { label: 'Ambulance', value: '192' },
-                { label: 'Brandweer', value: '193' },
-              ].map(item => (
-                <TouchableOpacity
-                  key={item.value}
-                  style={styles.sidebarRow}
-                  activeOpacity={0.75}
-                  onPress={() => handleDial(item.value)}
-                >
-                  <Text style={styles.sidebarRowLabel}>{item.label}</Text>
-                  <Text style={styles.sidebarRowValue}>{item.value}</Text>
-                </TouchableOpacity>
-              ))}
-            </View>
-
-            <View style={styles.sidebarCard}>
-              <Text style={styles.sidebarSectionTitle}>Noodinformatie</Text>
-              <Text style={styles.sidebarBody}>
-                Ambassade (placeholder){'\n'}
-                Example Street 1{'\n'}
-                0000 AB, Stad
-              </Text>
-              <TouchableOpacity
-                style={[styles.sidebarRow, styles.sidebarRowTight]}
-                activeOpacity={0.75}
-                onPress={() => handleDial('+000000000')}
-              >
-                <Text style={styles.sidebarRowLabel}>Telefoon (24/7)</Text>
-                <Text style={styles.sidebarRowValue}>+00 000000000</Text>
-              </TouchableOpacity>
-            </View>
-
-            <View style={styles.sidebarCard}>
-              <Text style={styles.sidebarSectionTitle}>Lokale arts</Text>
-              <Text style={styles.sidebarBody}>
-                Arts (placeholder){'\n'}
-                Example Street 2, Stad
-              </Text>
-              <TouchableOpacity
-                style={styles.sidebarRow}
-                activeOpacity={0.75}
-                onPress={() => handleDial('+000000001')}
-              >
-                <Text style={styles.sidebarRowLabel}>Telefoon</Text>
-                <Text style={styles.sidebarRowValue}>+00 000000001</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={styles.sidebarRow}
-                activeOpacity={0.75}
-                onPress={() => handleDial('+000000002')}
-              >
-                <Text style={styles.sidebarRowLabel}>Alternatief</Text>
-                <Text style={styles.sidebarRowValue}>+00 000000002</Text>
-              </TouchableOpacity>
-            </View>
-
-            <View style={styles.sidebarCard}>
-              <Text style={styles.sidebarSectionTitle}>Lokale tandarts</Text>
-              <Text style={styles.sidebarBody}>
-                Tandarts (placeholder){'\n'}
-                Example Street 3, Stad
-              </Text>
-              <TouchableOpacity
-                style={styles.sidebarRow}
-                activeOpacity={0.75}
-                onPress={() => handleDial('+000000003')}
-              >
-                <Text style={styles.sidebarRowLabel}>Telefoon</Text>
-                <Text style={styles.sidebarRowValue}>+00 000000003</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={styles.sidebarRow}
-                activeOpacity={0.75}
-                onPress={() => handleDial('+000000004')}
-              >
-                <Text style={styles.sidebarRowLabel}>Alternatief</Text>
-                <Text style={styles.sidebarRowValue}>+00 000000004</Text>
-              </TouchableOpacity>
-              <Text style={styles.sidebarEmail}>info@example.com</Text>
-            </View>
-
-            <View style={styles.sidebarCard}>
-              <Text style={styles.sidebarSectionTitle}>Ziekenhuizen</Text>
-              <Text style={styles.sidebarBody}>
-                Ziekenhuis A{'\n'}
-                Example Street 4, Stad
-              </Text>
-              <TouchableOpacity
-                style={styles.sidebarRow}
-                activeOpacity={0.75}
-                onPress={() => handleDial('+000000005')}
-              >
-                <Text style={styles.sidebarRowLabel}>Telefoon</Text>
-                <Text style={styles.sidebarRowValue}>+00 000000005</Text>
-              </TouchableOpacity>
-              <View style={styles.sidebarDivider} />
-              <Text style={styles.sidebarBody}>
-                Ziekenhuis B{'\n'}
-                Example Street 5, Stad
-              </Text>
-              <TouchableOpacity
-                style={styles.sidebarRow}
-                activeOpacity={0.75}
-                onPress={() => handleDial('+000000006')}
-              >
-                <Text style={styles.sidebarRowLabel}>Telefoon</Text>
-                <Text style={styles.sidebarRowValue}>+00 000000006</Text>
-              </TouchableOpacity>
-            </View>
+            {emergencySections.map(section => (
+              <View key={section.id} style={styles.sidebarCard}>
+                <Text style={styles.sidebarSectionTitle}>{section.title}</Text>
+                {section.description ? (
+                  <Text style={styles.sidebarBody}>{section.description}</Text>
+                ) : null}
+                {section.contacts.map((contact, contactIndex) => (
+                  <TouchableOpacity
+                    key={`${section.id}-${contact.label}-${contact.phone}-${contactIndex}`}
+                    style={styles.sidebarRow}
+                    activeOpacity={0.75}
+                    onPress={() => handleDial(contact.phone)}
+                  >
+                    <Text style={styles.sidebarRowLabel}>{contact.label}</Text>
+                    <Text style={styles.sidebarRowValue}>{contact.phone}</Text>
+                  </TouchableOpacity>
+                ))}
+              </View>
+            ))}
           </ScrollView>
         </Animated.View>
       </View>

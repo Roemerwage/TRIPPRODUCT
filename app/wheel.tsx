@@ -14,7 +14,7 @@ import {
 } from 'react-native';
 import { Stack } from 'expo-router';
 import Svg, { G, Path } from 'react-native-svg';
-import { Check, Plus, X } from 'lucide-react-native';
+import { Check, Plus, Search, X } from 'lucide-react-native';
 import { useTrip } from '@/contexts/TripContext';
 import { Participant } from '@/types/trip';
 import { FloatingActions } from '@/components/FloatingActions';
@@ -56,6 +56,7 @@ export default function WheelScreen() {
   const [showGuestModal, setShowGuestModal] = useState(false);
   const [guestName, setGuestName] = useState('');
   const [guestError, setGuestError] = useState<string | null>(null);
+  const [participantSearch, setParticipantSearch] = useState('');
   const [wheelSectionY, setWheelSectionY] = useState(0);
   const [selectionSectionY, setSelectionSectionY] = useState(0);
   const { colors } = useThemeMode();
@@ -79,6 +80,20 @@ export default function WheelScreen() {
     () => [...participants, ...guestPlayers],
     [participants, guestPlayers]
   );
+  const sortedParticipants = useMemo(
+    () =>
+      [...allParticipants].sort((a, b) =>
+        a.naam.localeCompare(b.naam, 'nl', { sensitivity: 'base' })
+      ),
+    [allParticipants]
+  );
+  const participantSearchQuery = participantSearch.trim().toLowerCase();
+  const visibleParticipants = useMemo(() => {
+    if (!participantSearchQuery) return sortedParticipants;
+    return sortedParticipants.filter(person =>
+      person.naam.toLowerCase().includes(participantSearchQuery)
+    );
+  }, [sortedParticipants, participantSearchQuery]);
   const selectedParticipants = useMemo(
     () => allParticipants.filter(p => selectedIds.includes(p.id)),
     [selectedIds, allParticipants]
@@ -173,7 +188,7 @@ export default function WheelScreen() {
     );
   };
 
-  const selectAll = () => setSelectedIds(allParticipants.map(p => p.id));
+  const selectAll = () => setSelectedIds(sortedParticipants.map(p => p.id));
   const clearSelection = () => {
     setSelectedIds([]);
     setWinners([]);
@@ -355,9 +370,35 @@ export default function WheelScreen() {
                 </TouchableOpacity>
               </View>
             </View>
+            <View style={styles.searchRow}>
+              <View style={styles.searchInputWrap}>
+                <Search size={15} color={colors.textSecondary} />
+                <TextInput
+                  value={participantSearch}
+                  onChangeText={setParticipantSearch}
+                  placeholder="Zoek deelnemer"
+                  placeholderTextColor={colors.textSecondary}
+                  style={styles.searchInput}
+                  autoCapitalize="none"
+                  autoCorrect={false}
+                />
+                {participantSearch.length > 0 && (
+                  <TouchableOpacity
+                    onPress={() => setParticipantSearch('')}
+                    style={styles.searchClearButton}
+                    activeOpacity={0.8}
+                  >
+                    <X size={14} color={colors.textSecondary} />
+                  </TouchableOpacity>
+                )}
+              </View>
+            </View>
+            {participantSearchQuery.length > 0 && visibleParticipants.length === 0 && (
+              <Text style={styles.searchEmptyText}>Geen deelnemers gevonden.</Text>
+            )}
 
             <View style={styles.participantGrid}>
-              {allParticipants.map(participant => {
+              {visibleParticipants.map(participant => {
                 const isSelected = selectedIds.includes(participant.id);
                 const showFallback = participant.isGuest || !participant.avatar || imageErrors[participant.id];
                 const initials = getInitials(participant.naam);
@@ -780,6 +821,38 @@ const createStyles = (palette: any) => StyleSheet.create({
   sectionActions: {
     flexDirection: 'row',
     gap: 10,
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+  },
+  searchRow: {
+    marginTop: 2,
+  },
+  searchInputWrap: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    borderWidth: 1,
+    borderColor: palette.border,
+    borderRadius: 999,
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    backgroundColor: palette.background,
+  },
+  searchInput: {
+    flex: 1,
+    fontSize: 14,
+    color: palette.textPrimary,
+    paddingVertical: 0,
+  },
+  searchClearButton: {
+    width: 20,
+    height: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  searchEmptyText: {
+    fontSize: 13,
+    color: palette.textSecondary,
   },
   linkButton: {
     paddingVertical: 8,
