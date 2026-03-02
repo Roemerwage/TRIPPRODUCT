@@ -80,7 +80,7 @@ export default function AccommodationDetailScreen() {
         )}
         scrollEventThrottle={16}
       >
-        {media?.image ? (
+        {media?.image && (
           <PreviewableImage
             source={media.image}
             style={styles.hero}
@@ -92,10 +92,12 @@ export default function AccommodationDetailScreen() {
             }
             accessibilityLabel={`Afbeelding van ${accommodation.naam}`}
           />
-        ) : (
-          <View style={styles.heroPlaceholder}>
-            <Text style={styles.heroTitle}>{accommodation.naam}</Text>
-            <Text style={styles.heroSubtitle}>{dateRange}</Text>
+        )}
+
+        {!media?.image && (
+          <View style={styles.heroTextHeader}>
+            <Text style={styles.heroTitlePlain}>{accommodation.naam}</Text>
+            <Text style={styles.heroSubtitlePlain}>{dateRange}</Text>
           </View>
         )}
 
@@ -200,16 +202,14 @@ const createStyles = (palette: any) =>
       borderRadius: Radius.md,
       overflow: 'hidden',
     },
-    heroPlaceholder: {
-      height: 220,
+    heroTextHeader: {
+      minHeight: 80,
       marginHorizontal: Spacing.md,
       borderRadius: Radius.md,
-      borderWidth: 1,
-      borderColor: palette.border,
-      backgroundColor: palette.surface,
-      alignItems: 'center',
+      paddingHorizontal: Spacing.md,
+      paddingVertical: Spacing.md,
+      backgroundColor: palette.cardBackground,
       justifyContent: 'center',
-      gap: 6,
     },
     heroOverlay: {
       flex: 1,
@@ -224,6 +224,16 @@ const createStyles = (palette: any) =>
     },
     heroSubtitle: {
       color: palette.surface,
+      fontSize: Typography.body,
+      marginTop: Spacing.xs,
+    },
+    heroTitlePlain: {
+      color: palette.textPrimary,
+      fontSize: Typography.title,
+      fontWeight: '700',
+    },
+    heroSubtitlePlain: {
+      color: palette.textSecondary,
       fontSize: Typography.body,
       marginTop: Spacing.xs,
     },

@@ -16,16 +16,7 @@ interface MediaEntry {
 const normalizeKey = (value?: string | null) =>
   value?.trim().toLowerCase() || undefined;
 
-const CITY_IMAGES: Record<string, string> = {
-  'city 1': 'https://picsum.photos/seed/city-1/1600/900',
-  'city 2': 'https://picsum.photos/seed/city-2/1600/900',
-  'city 3': 'https://picsum.photos/seed/city-3/1600/900',
-  'city 4': 'https://picsum.photos/seed/city-4/1600/900',
-  'city 5': 'https://picsum.photos/seed/city-5/1600/900',
-  'city 6': 'https://picsum.photos/seed/city-6/1600/900',
-  'city 7': 'https://picsum.photos/seed/city-7/1600/900',
-  'city 8': 'https://picsum.photos/seed/city-8/1600/900',
-};
+const CITY_IMAGES: Record<string, string> = {};
 
 const CITY_COORDINATES: Record<string, Coordinate> = {
   amsterdam: { latitude: 52.3676, longitude: 4.9041 },
@@ -49,19 +40,15 @@ const CITY_COORDINATES: Record<string, Coordinate> = {
 
 const ACCOMMODATION_META: Record<string, MediaEntry> = {
   'accommodation 1': {
-    image: 'https://picsum.photos/seed/accommodation-1/1600/900',
     coordinate: { latitude: 11.0, longitude: 11.2 },
   },
   'accommodation 2': {
-    image: 'https://picsum.photos/seed/accommodation-2/1600/900',
     coordinate: { latitude: 11.8, longitude: 11.6 },
   },
   'accommodation 3': {
-    image: 'https://picsum.photos/seed/accommodation-3/1600/900',
     coordinate: { latitude: 12.6, longitude: 12.3 },
   },
   'accommodation 4': {
-    image: 'https://picsum.photos/seed/accommodation-4/1600/900',
     coordinate: { latitude: 13.3, longitude: 13.0 },
   },
 };
@@ -71,22 +58,22 @@ const ACTIVITY_META: Record<string, MediaEntry> = {};
 const ACTIVITY_TYPE_FALLBACK: Record<ActivityType, MediaEntry & { color: string }> =
   {
     travel: {
-      image: 'https://picsum.photos/seed/activity-travel/1600/900',
+      image: undefined,
       coordinate: undefined,
       color: "#FF9500",
     },
     tour: {
-      image: 'https://picsum.photos/seed/activity-tour/1600/900',
+      image: undefined,
       coordinate: undefined,
       color: "#34C759",
     },
     hike: {
-      image: 'https://picsum.photos/seed/activity-hike/1600/900',
+      image: undefined,
       coordinate: undefined,
       color: "#A2845E",
     },
     event: {
-      image: 'https://picsum.photos/seed/activity-event/1600/900',
+      image: undefined,
       coordinate: undefined,
       color: "#AF52DE",
     },
@@ -111,12 +98,12 @@ const ACTIVITY_TYPE_FALLBACK: Record<ActivityType, MediaEntry & { color: string 
       color: "#0F766E",
     },
     free_day: {
-      image: 'https://picsum.photos/seed/activity-free/1600/900',
+      image: undefined,
       coordinate: undefined,
       color: "#2DD4BF",
     },
     flight: {
-      image: 'https://picsum.photos/seed/activity-flight/1600/900',
+      image: undefined,
       coordinate: undefined,
       color: "#0A84FF",
     },
